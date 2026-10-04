@@ -191,9 +191,9 @@ const rotH = p => {
 const HEAD = [[-0.15, -1.47], [0.12, -1.41], [0.31, -1.22], [0.39, -0.98], [0.41, -0.78], [0.36, -0.58], [0.28, -0.42], [0.12, -0.35], [-0.08, -0.42], [-0.28, -0.50], [-0.46, -0.63], [-0.58, -0.86], [-0.59, -1.10], [-0.44, -1.37]].map(rotH);
 // hair: a soft bob, close to the bowed skull, falling with gravity in front of the face (final body coords)
 const HAIR = [
-  [-0.31, -1.22], [-0.03, -1.41], [0.32, -1.37], [0.57, -1.15], [0.665, -0.88], [0.676, -0.62], [0.652, -0.40],
-  [0.618, -0.24], [0.555, -0.185], [0.45, -0.18], [0.34, -0.17], [0.25, -0.165], [0.12, -0.26], [-0.10, -0.40],
-  [-0.28, -0.24], [-0.38, -0.12], [-0.45, -0.09], [-0.50, -0.16], [-0.505, -0.40], [-0.48, -0.70], [-0.42, -1.00],
+  [-0.31, -1.22], [-0.03, -1.41], [0.32, -1.37], [0.57, -1.15], [0.665, -0.88], [0.683, -0.60], [0.668, -0.36],
+  [0.640, -0.16], [0.600, -0.035], [0.53, 0.0], [0.43, -0.01], [0.30, -0.03], [0.18, -0.06], [0.05, -0.20], [-0.12, -0.38],
+  [-0.30, -0.26], [-0.40, -0.17], [-0.46, -0.16], [-0.49, -0.26], [-0.50, -0.45], [-0.48, -0.72], [-0.42, -1.00],
 ];
 const NECK = [rotH([-0.40, -0.70]), [-0.50, -0.10], [0.03, 0.02], [0.12, -0.08], rotH([0.10, -0.38]), rotH([-0.10, -0.46])];
 // slightly smaller head (elegant ~8-head proportion), scaled towards the base of the neck
@@ -207,7 +207,7 @@ const TORSO = [
   [0.23, 1.45], [0.25, 1.12], [0.32, 0.92], [0.42, 0.70], [0.39, 0.48], [0.25, 0.26], [0.10, 0.10], [0.03, 0.02], [-0.20, -0.06],
 ];
 // frame: glass side towards her, top tilted slightly away from the chest (she is looking down at it)
-const FR = { bl: [0.37, 1.02], tl: [0.53, 0.10] };
+const FR = { bl: [0.37, 1.11], tl: [0.53, 0.19] };
 {
   const d = v2norm([FR.tl[0] - FR.bl[0], FR.tl[1] - FR.bl[1]]), th = 0.10;
   FR.n = [-d[1], d[0]]; if (FR.n[0] < 0) FR.n = [-FR.n[0], -FR.n[1]];
@@ -217,7 +217,7 @@ const FLEN = Math.hypot(FR.tl[0] - FR.bl[0], FR.tl[1] - FR.bl[1]);
 // t along the frame (0 bottom .. 1 top), off across it (0 glass face .. 0.10 back face), in head units
 const along = (t, off) => [lerp(FR.bl[0], FR.tl[0], t) + FR.n[0] * off, lerp(FR.bl[1], FR.tl[1], t) + FR.n[1] * off];
 const UPPER_ARM = limb([[-0.26, 0.08, 0.19], [-0.22, 0.50, 0.165], [-0.16, 1.00, 0.14], [-0.10, 1.42, 0.13]]);
-const FOREARM = limb([[-0.10, 1.42, 0.13], [0.08, 1.25, 0.12], [0.22, 1.10, 0.105], [0.34, 0.985, 0.088]]);
+const FOREARM = limb([[-0.10, 1.42, 0.13], [0.08, 1.30, 0.12], [0.22, 1.18, 0.105], [0.34, 1.075, 0.088]]);
 // near hand wraps the near edge of the frame: thumb on the glass side, fingers curled over the back
 const HAND = [
   [-0.03, -0.05], [0.04, -0.085], [0.14, -0.08], [0.24, -0.065], [0.31, -0.08], [0.365, -0.065], [0.40, -0.03],
@@ -383,7 +383,7 @@ function drawFigure2(c, fills) {
 const mask = newLayer(), mk = mask.getContext('2d');
 drawFigure2(mk, { body: '#fff', arm: '#fff', hand: '#fff', frame: '#fff', hair: '#fff' });
 const hairM = newLayer(), hmk = hairM.getContext('2d'); hmk.fillStyle = '#fff'; drawHair(hmk);
-const maskSoft = blurCopy(mask, 1.0);
+const maskSoft = (() => { const m = blurCopy(mask, 1.0), c = m.getContext('2d'); c.drawImage(blurCopy(hairM, 2.6), 0, 0); return m; })();
 const fig = newLayer(), fc = fig.getContext('2d');
 drawFigure2(fc, { body: '#1c1815', arm: '#201b18', hand: '#231d1a', frame: '#1b1613', hair: '#16110e' });
 {
@@ -424,34 +424,38 @@ ctx.drawImage(fig, 0, 0);
   }
   ctx.putImageData(id, 0, 0);
 }
-// hair: strands along the outer edge, following the fall of the hair, and tapered tips on the bob
+// hair: soft translucent edge, fine streaks following the fall, a few backlit flyaways
 {
-  const hl = newLayer(), hc = hl.getContext('2d'); hc.lineCap = 'round';
-  const N = hairPx.length, crown = T([0.18, -1.38]);
+  const N = hairPx.length, crown = T([0.14, -1.36]);
   const hr = makeRand(4471);
-  for (let k = 0; k < 900; k++) {
+  // fine streaks inside the hair mass (clipped), slightly lighter near the edges where light passes through
+  const st = newLayer(), sc = st.getContext('2d'); sc.lineCap = 'round';
+  for (let k = 0; k < 520; k++) {
     const j = Math.floor(hr() * N), p = hairPx[j], q = hairPx[(j + 1) % N];
-    if (p[1] > OY - 0.2 * HU && p[0] < OX + 0.3 * HU && p[0] > OX - 0.3 * HU) continue;      // inner underside: skip
     let tx = q[0] - p[0], ty = q[1] - p[1]; const tl = Math.hypot(tx, ty) || 1; tx /= tl; ty /= tl;
-    if ((p[0] - crown[0]) * tx + (p[1] - crown[1]) * ty < 0) { tx = -tx; ty = -ty; }          // flow away from the crown
+    if ((p[0] - crown[0]) * tx + (p[1] - crown[1]) * ty < 0) { tx = -tx; ty = -ty; }
     let nx = p[0] - hairPx.cx, ny = p[1] - hairPx.cy; const nl = Math.hypot(nx, ny) || 1; nx /= nl; ny /= nl;
-    const inset = hr.range(1, 16), len = hr.range(18, 70), out = hr.range(-1, 4.5);
+    const inset = hr.range(2, 30), len = hr.range(30, 110);
     const sx = p[0] - nx * inset, sy = p[1] - ny * inset;
-    const ex = sx + tx * len + nx * (inset + out), ey = sy + ty * len + ny * (inset + out) + len * 0.12;
-    const lightS = hr() < 0.45;
-    hc.strokeStyle = lightS ? `rgba(236,206,170,${hr.range(0.06, 0.2)})` : `rgba(22,17,14,${hr.range(0.35, 0.8)})`;
-    hc.lineWidth = hr.range(0.5, 1.3);
-    hc.beginPath(); hc.moveTo(sx, sy); hc.quadraticCurveTo(sx + tx * len * 0.55 + nx * out, sy + ty * len * 0.55 + ny * out, ex, ey); hc.stroke();
+    const lightS = inset < 12;
+    sc.strokeStyle = lightS ? `rgba(150,120,96,${hr.range(0.05, 0.12)})` : `rgba(8,6,5,${hr.range(0.08, 0.2)})`;
+    sc.lineWidth = hr.range(0.7, 1.6);
+    sc.beginPath(); sc.moveTo(sx, sy); sc.quadraticCurveTo(sx + tx * len * 0.5, sy + ty * len * 0.5 + len * 0.05, sx + tx * len - nx * 4, sy + ty * len + len * 0.15); sc.stroke();
   }
-  // tips of the bob (front fall and nape): tapered clumps
-  const tipRanges = [[7, 11], [14, 18]];
-  for (const [i0, i1] of tipRanges) for (let k = 0; k < 70; k++) {
-    const f = hr.range(i0, i1) * 16, j = Math.floor(f) % N, p = hairPx[j];
-    const len = hr.range(6, 30), w = hr.range(1.5, 4.5), dx = hr.range(-0.25, 0.25);
-    hc.fillStyle = `rgba(22,17,14,${hr.range(0.5, 0.95)})`;
-    hc.beginPath(); hc.moveTo(p[0] - w, p[1] - 6); hc.lineTo(p[0] + w, p[1] - 6); hc.lineTo(p[0] + dx * len, p[1] + len); hc.closePath(); hc.fill();
+  sc.globalCompositeOperation = 'destination-in'; sc.drawImage(blurCopy(hairM, 2), 0, 0);
+  ctx.drawImage(blurCopy(st, 0.5), 0, 0);
+  // a handful of flyaway hairs catching the backlight (top and back of the head only)
+  const fl = newLayer(), flc = fl.getContext('2d'); flc.lineCap = 'round';
+  for (let k = 0; k < 34; k++) {
+    const j = Math.floor(hr.range(0.0, 0.42) * N + N * 0.79) % N, p = hairPx[j];
+    if (p[1] > OY - 0.55 * HU) continue;
+    let nx = p[0] - hairPx.cx, ny = p[1] - hairPx.cy; const nl = Math.hypot(nx, ny) || 1; nx /= nl; ny /= nl;
+    const len = hr.range(14, 48), bend = hr.range(-0.6, 0.6);
+    const ex = p[0] + nx * len * 0.55 + (-ny) * len * bend * 0.6, ey = p[1] + ny * len * 0.55 + nx * len * bend * 0.6 + len * 0.25;
+    flc.strokeStyle = `rgba(250,232,204,${hr.range(0.10, 0.28)})`; flc.lineWidth = hr.range(0.5, 0.9);
+    flc.beginPath(); flc.moveTo(p[0] - nx * 3, p[1] - ny * 3); flc.quadraticCurveTo(p[0] + nx * len * 0.35, p[1] + ny * len * 0.35, ex, ey); flc.stroke();
   }
-  ctx.drawImage(blurCopy(hl, 0.6), 0, 0);
+  ctx.drawImage(fl, 0, 0);
 }
 // frame: the moulding's top edge and the strut catch the light
 {
