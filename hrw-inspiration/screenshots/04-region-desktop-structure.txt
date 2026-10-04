@@ -1,0 +1,390 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar/middle-east/north-africa
+      - link "简中":
+        - /url: /zh-hans/middle-east/north-africa
+      - link "繁中":
+        - /url: /zh-hant/middle-east/north-africa
+      - listitem: English
+      - link "Français":
+        - /url: /fr/moyen-orient/afrique-du-nord
+      - link "Deutsch":
+        - /url: /de/middle-east/north-africa
+      - link "日本語":
+        - /url: /ja/middle-east/north-africa
+      - link "Português":
+        - /url: /pt/middle-east/north-africa
+      - link "Русский":
+        - /url: /ru/middle-east/north-africa
+      - link "Español":
+        - /url: /es/middle-east/north-africa
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - navigation "Explore Middle East/North Africa":
+    - button "Explore Middle East/North Africa":
+      - text: Explore Middle East/North Africa
+  - heading "Middle East/North Africa" [level=1]:
+    - text: Middle East/
+    - text: North Africa
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - 'heading "Egypt: Authorities Arrest Entire Investigative Newsroom" [level=2]':
+    - 'link "Egypt: Authorities Arrest Entire Investigative Newsroom"':
+      - /url: /news/2026/10/02/egypt-authorities-arrest-entire-investigative-newsroom
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - 'img "Map: Middle East North Africa"'
+  - list:
+    - text: Detention Centers
+    - figure:
+      - img "Samuel Peter Oyay"
+      - link:
+        - /url: /news/2026/09/30/united-arab-emirates-a-year-on-critic-remains-in-detention
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|News Release"
+    - 'link "United Arab Emirates: A Year On, Critic Remains in Detention"':
+      - /url: /news/2026/09/30/united-arab-emirates-a-year-on-critic-remains-in-detention
+    - text: Internally Displaced People
+    - figure:
+      - img "A destroyed school in Ghadfa village, Idlib countryside, Syria."
+      - link:
+        - /url: /news/2026/09/27/syria-reconstruction-deals-lack-critical-rights-framework
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|Report"
+    - 'link "Syria: Reconstruction Deals Lack Critical Rights Framework"':
+      - /url: /news/2026/09/27/syria-reconstruction-deals-lack-critical-rights-framework
+    - text: United Nations
+    - figure:
+      - img "United Nations headquarters in New York City, December 2020."
+      - link:
+        - /url: /news/2026/09/21/un-commit-to-human-rights-justice-for-grave-crimes
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|News Release"
+    - 'link "UN: Commit to Human Rights, Justice for Grave Crimes"':
+      - /url: /news/2026/09/21/un-commit-to-human-rights-justice-for-grave-crimes
+  - heading "Videos" [level=2]
+  - link "Watch more Videos":
+    - /url: /video-photos?country%5B0%5D=9455#form--inline-filters--block
+    - text: Watch more
+    - generic: Videos
+  - 'tabpanel "Iran: Politically Motivated Executions"':
+    - 'img "Iran: Politically Motivated Executions"'
+    - button "click to play video":
+    - iframe
+  - tablist:
+    - 'tab "Iran: Politically Motivated Executions" [selected]':
+      - generic: "Iran: Politically Motivated Executions"
+    - tab "Deadly Crackdown, Mass Arrests in Iran":
+      - generic: Deadly Crackdown, Mass Arrests in Iran
+    - tab "Iranian Authorities Brutally Repressing Protests":
+      - generic: Iranian Authorities Brutally Repressing Protests
+  - heading "Reports" [level=2]
+  - link "More reports":
+    - /url: /publications?country%5B0%5D=9455
+    - text: More reports
+  - list:
+    - article:
+      - generic: September 27, 2026 | Report
+      - 'heading "Syria: Reconstruction Deals Lack Critical Rights Framework" [level=3]':
+        - 'link "Syria: Reconstruction Deals Lack Critical Rights Framework"':
+          - /url: /news/2026/09/27/syria-reconstruction-deals-lack-critical-rights-framework
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A destroyed school in Ghadfa village, Idlib countryside, Syria."
+      - link:
+        - /url: /news/2026/09/27/syria-reconstruction-deals-lack-critical-rights-framework
+    - article:
+      - generic: September 10, 2026 | Report
+      - 'heading "Iran: Ongoing Unlawful Execution Campaign Against Protesters" [level=3]':
+        - 'link "Iran: Ongoing Unlawful Execution Campaign Against Protesters"':
+          - /url: /news/2026/09/10/iran-ongoing-unlawful-execution-campaign-against-protesters
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A person's mouth covered with tape bearing a message “no to executions” in Iran, in Paris in France, January 31, 2026."
+      - link:
+        - /url: /news/2026/09/10/iran-ongoing-unlawful-execution-campaign-against-protesters
+    - article:
+      - generic: September 2, 2026 | Report
+      - heading "“We Are Living on Borrowed Time”" [level=3]:
+        - link "“We Are Living on Borrowed Time”":
+          - /url: /report/2026/09/02/we-are-living-on-borrowed-time/repression-of-civil-society-in-tunisia
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Tunisians hold up placards during a march organized by the Campaign Against the Criminalization of Civil Work to protest racism in Tunis, April 11, 2026"
+      - link:
+        - /url: /report/2026/09/02/we-are-living-on-borrowed-time/repression-of-civil-society-in-tunisia
+    - article:
+      - generic: August 20, 2026 | Report
+      - 'heading "West Bank: Israel-Backed Settler Violence Drives Displacement" [level=3]':
+        - 'link "West Bank: Israel-Backed Settler Violence Drives Displacement"':
+          - /url: /news/2026/08/20/west-bank-israel-backed-settler-violence-drives-displacement
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A Palestinian uses a flashlight on a nearby hill while taking part in a night watch with other volunteers to deter settler attacks on the West Bank village of Sinjil, July 16, 2026."
+      - link:
+        - /url: /news/2026/08/20/west-bank-israel-backed-settler-violence-drives-displacement
+  - heading "News" [level=2]
+  - list:
+    - article:
+      - generic: September 21, 2026 | Statement
+      - 'heading "Iran: Urgent action needed to prevent atrocities and advance accountability" [level=3]':
+        - 'link "Iran: Urgent action needed to prevent atrocities and advance accountability"':
+          - /url: /news/2026/09/21/iran-urgent-action-needed-to-prevent-atrocities-and-advance-accountability
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "UN Secretary-General Antonio Guterres speaks during the opening of the 61st session of the United Nations Human Rights Council at the European headquarters of the United Nations in Geneva, February 23, 2026."
+      - link:
+        - /url: /news/2026/09/21/iran-urgent-action-needed-to-prevent-atrocities-and-advance-accountability
+    - article:
+      - generic: September 15, 2026 | News Release
+      - 'heading "Yemen: New Attacks by Houthi Include Likely War Crimes" [level=3]':
+        - 'link "Yemen: New Attacks by Houthi Include Likely War Crimes"':
+          - /url: /news/2026/09/15/yemen-new-attacks-by-houthi-include-likely-war-crimes
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "The navigation bridge of a sunken vessel in the Port of Mokha, Yemen, the day after an attack by the Houthis on the city, August 10, 2026."
+      - link:
+        - /url: /news/2026/09/15/yemen-new-attacks-by-houthi-include-likely-war-crimes
+    - article:
+      - generic: September 10, 2026 | Report
+      - 'heading "Iran: Ongoing Unlawful Execution Campaign Against Protesters" [level=3]':
+        - 'link "Iran: Ongoing Unlawful Execution Campaign Against Protesters"':
+          - /url: /news/2026/09/10/iran-ongoing-unlawful-execution-campaign-against-protesters
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A person's mouth covered with tape bearing a message “no to executions” in Iran, in Paris in France, January 31, 2026."
+      - link:
+        - /url: /news/2026/09/10/iran-ongoing-unlawful-execution-campaign-against-protesters
+    - article:
+      - generic: September 9, 2026 | News Release
+      - 'heading "Lebanon/Israel: Hezbollah’s Use of Cluster Munitions" [level=3]':
+        - 'link "Lebanon/Israel: Hezbollah’s Use of Cluster Munitions"':
+          - /url: /news/2026/09/09/lebanon/israel-hezbollahs-use-of-cluster-munitions
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Israelis look at the border with Lebanon from a position in the northern village of Metula on March 5, 2026, after Hezbollah launched rockets at Israel during the ongoing conflict."
+      - link:
+        - /url: /news/2026/09/09/lebanon/israel-hezbollahs-use-of-cluster-munitions
+    - article:
+      - generic: September 8, 2026 | Statement
+      - heading "UK, France, Canada Ban Trade With Israel’s Illegal Settlements" [level=3]:
+        - link "UK, France, Canada Ban Trade With Israel’s Illegal Settlements":
+          - /url: /news/2026/09/08/uk-france-canada-ban-trade-with-israels-illegal-settlements
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - article:
+      - generic: September 8, 2026 | Statement
+      - heading "HRW Oral Statement on Sri Lanka and Tunisia" [level=3]:
+        - link "HRW Oral Statement on Sri Lanka and Tunisia":
+          - /url: /news/2026/09/08/hrw-oral-statement-on-sri-lanka-and-tunisia
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "UN Secretary-General Antonio Guterres speaks during the opening of the 61st session of the United Nations Human Rights Council at the European headquarters of the United Nations in Geneva, February 23, 2026."
+      - link:
+        - /url: /news/2026/09/08/hrw-oral-statement-on-sri-lanka-and-tunisia
+    - article:
+      - generic: September 4, 2026 | Background Briefing
+      - heading "Human Rights Watch Updated Briefing Paper on the Human Rights Situation in Tunisia" [level=3]:
+        - link "Human Rights Watch Updated Briefing Paper on the Human Rights Situation in Tunisia":
+          - /url: /news/2026/09/04/human-rights-watch-updated-briefing-paper-on-the-human-rights-situation-in-tunisia
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - article:
+      - generic: September 3, 2026 | Statement
+      - 'heading "Tunisia: Court Upholds Unjust Conspiracy Convictions" [level=3]':
+        - 'link "Tunisia: Court Upholds Unjust Conspiracy Convictions"':
+          - /url: /news/2026/09/03/tunisia-court-upholds-unjust-conspiracy-convictions
+    - article:
+      - generic: September 2, 2026 | News Release
+      - 'heading "Tunisia: Civil Society Under Siege" [level=3]':
+        - 'link "Tunisia: Civil Society Under Siege"':
+          - /url: /news/2026/09/02/tunisia-civil-society-under-siege
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Tunisians hold up placards during a march organized by the Campaign Against the Criminalization of Civil Work to protest racism in Tunis, April 11, 2026"
+      - link:
+        - /url: /news/2026/09/02/tunisia-civil-society-under-siege
+    - article:
+      - generic: August 26, 2026 | Statement
+      - heading "Update on the Human Rights Situation in Yemen and the Need to Secure the Release of Arbitrarily Detained Humanitarian Workers" [level=3]:
+        - link "Update on the Human Rights Situation in Yemen and the Need to Secure the Release of Arbitrarily Detained Humanitarian Workers":
+          - /url: /news/2026/08/26/update-on-the-human-rights-situation-in-yemen-and-the-need-to-secure-the-release-of
+      - img "A convoy from the United Nations and World Food Program crosses from Houthi-controlled areas to a government-controlled area to reach grain mills in an eastern suburb of Hodeidah, Yemen, February 26, 2019."
+      - link:
+        - /url: /news/2026/08/26/update-on-the-human-rights-situation-in-yemen-and-the-need-to-secure-the-release-of
+  - link "Read More":
+    - /url: /news?country%5B%5D=9455
+    - generic: Read More
+  - heading "Our people" [level=2]
+  - link "Balkees Jarrah":
+    - /url: /about/people/balkees-jarrah
+  - generic: Director, Middle East and North Africa Division
+  - link "balkeesjarrah balkeesjarrah":
+    - /url: https://twitter.com/balkeesjarrah
+    - generic: balkeesjarrah
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Adam Coogle":
+    - /url: /about/people/adam-coogle
+  - generic: Deputy Director, Middle East and North Africa Division
+  - link "adamcoogle adamcoogle":
+    - /url: https://twitter.com/adamcoogle
+    - generic: adamcoogle
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Bassam Khawaja":
+    - /url: /about/people/bassam-khawaja
+  - generic: Deputy Director, Middle East and North Africa Division
+  - link "Bassam_Khawaja Bassam_Khawaja":
+    - /url: https://twitter.com/Bassam_Khawaja
+    - generic: Bassam_Khawaja
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Michael Page":
+    - /url: /about/people/michael-page
+  - generic: Deputy Director, Middle East and North Africa Division
+  - link "MichaelARPage MichaelARPage":
+    - /url: https://twitter.com/MichaelARPage
+    - generic: MichaelARPage
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Ahmed Benchemsi":
+    - /url: /about/people/ahmed-benchemsi
+  - generic: Advocacy and Communications Director, Middle East and North Africa Division
+  - link "AhmedBenchemsi AhmedBenchemsi":
+    - /url: https://twitter.com/AhmedBenchemsi
+    - generic: AhmedBenchemsi
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Niku Jafarnia":
+    - /url: /about/people/niku-jafarnia
+  - generic: Researcher, Yemen and Bahrain
+  - link "nikujafarnia nikujafarnia":
+    - /url: https://twitter.com/nikujafarnia
+    - generic: nikujafarnia
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Ramzi Kaiss":
+    - /url: /about/people/ramzi-kaiss
+  - generic: Lebanon Researcher, Middle East and North Africa
+  - link "kaiss_ramzi kaiss_ramzi":
+    - /url: https://twitter.com/kaiss_ramzi
+    - generic: kaiss_ramzi
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Amr Magdi":
+    - /url: /about/people/amr-magdi
+  - generic: Former Senior Researcher, Middle East and North Africa Division
+  - link "Hanan Salah":
+    - /url: /about/people/hanan-salah
+  - generic: Associate Director, Middle East and North Africa Division
+  - link "HananMSalah HananMSalah":
+    - /url: https://twitter.com/HananMSalah
+    - generic: HananMSalah
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Joey Shea":
+    - /url: /about/people/joey-shea
+  - generic: Senior Researcher, Saudi Arabia and United Arab Emirates
+  - link "joey_shea joey_shea":
+    - /url: https://twitter.com/joey_shea
+    - generic: joey_shea
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Hiba Zayadin":
+    - /url: /about/people/hiba-zayadin
+  - generic: Senior Advisor, Middle East and North Africa Division
+  - link "Abier Almasri":
+    - /url: /about/people/abier-almasri
+  - generic: Senior Research Assistant, Middle East and North Africa Division
+  - link "abier_i abier_i":
+    - /url: https://twitter.com/abier_i
+    - generic: abier_i
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Sarah Sanbar":
+    - /url: /about/people/sarah-sanbar
+  - generic: Iraq Researcher, Middle East and North Africa Division
+  - link "SarahSanbar SarahSanbar":
+    - /url: https://twitter.com/SarahSanbar
+    - generic: SarahSanbar
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Bahar Saba":
+    - /url: /about/people/bahar-saba
+  - generic: Senior Iran Researcher
+  - link "Leila Saad":
+    - /url: /about/people/leila-saad
+  - link "Protecting Rights, Saving Lives Human Right Watch defends the rights of people in 90 countries worldwide, spotlighting abuses and bringing perpetrators to justice. Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2024EVcntpg1
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: Enter an email address
+  - textbox "Enter an email address"
+  - button "Sign up"
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/middle-east/north-africa
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

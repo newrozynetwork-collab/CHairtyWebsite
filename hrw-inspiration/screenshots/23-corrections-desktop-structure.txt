@@ -1,0 +1,226 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar/corrections
+      - link "简中":
+        - /url: /zh-hans/corrections
+      - link "繁中":
+        - /url: /zh-hant
+      - listitem: English
+      - link "Français":
+        - /url: /fr/corrections
+      - link "Deutsch":
+        - /url: /de/corrections
+      - link "日本語":
+        - /url: /ja/corrections
+      - link "Português":
+        - /url: /pt/corrections
+      - link "Русский":
+        - /url: /ru/corrections
+      - link "Español":
+        - /url: /es/corrections
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - heading "Corrections" [level=1]
+  - heading "Corrections to our publications" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Or Send Your Corrections to:" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Recent Corrections" [level=4]
+  - list:
+    - time: August 27, 2026
+    - heading "Federal Presence at US Polls Could Intimidate Voters" [level=2]:
+      - link "Federal Presence at US Polls Could Intimidate Voters":
+        - /url: /news/2026/08/27/federal-presence-at-us-polls-could-intimidate-voters
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - time: August 25, 2026
+    - heading "Houthis Prosecute UN, Civil Society Staff in Yemen" [level=2]:
+      - link "Houthis Prosecute UN, Civil Society Staff in Yemen":
+        - /url: /news/2026/08/25/houthis-prosecute-un-civil-society-staff-in-yemen
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - time: August 17, 2026
+    - 'heading "Thailand: Ethnic Karen Face Deportation to Myanmar" [level=2]':
+      - 'link "Thailand: Ethnic Karen Face Deportation to Myanmar"':
+        - /url: /news/2026/08/18/thailand-ethnic-karen-face-deportation-to-myanmar
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - time: August 4, 2026
+    - 'heading "Uganda: Opposition Politician Tortured, Faces Abusive Charges" [level=2]':
+      - 'link "Uganda: Opposition Politician Tortured, Faces Abusive Charges"':
+        - /url: /news/2026/08/04/uganda-opposition-politician-tortured-faces-abusive-charges
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - time: July 28, 2026
+    - heading "Strikes Endangering Civilians in Yemen and Saudi Arabia" [level=2]:
+      - link "Strikes Endangering Civilians in Yemen and Saudi Arabia":
+        - /url: /news/2026/07/28/strikes-endangering-civilians-in-yemen-and-saudi-arabia
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - time: July 24, 2026
+    - 'heading "West Bank: Surge in Settler Violence Threatens Mass Atrocities" [level=2]':
+      - 'link "West Bank: Surge in Settler Violence Threatens Mass Atrocities"':
+        - /url: /news/2026/07/24/west-bank-surge-in-settler-violence-threatens-mass-atrocities
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - time: July 19, 2026
+    - 'heading "Bangladesh: First Enforced Disappearance Case Since July 2024 Uprising" [level=2]':
+      - 'link "Bangladesh: First Enforced Disappearance Case Since July 2024 Uprising"':
+        - /url: /news/2026/07/20/bangladesh-first-enforced-disappearance-case-since-july-2024-uprising
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - time: July 13, 2026
+    - 'heading "Thailand: Don’t Forcibly Return Chinese Dissidents" [level=2]':
+      - 'link "Thailand: Don’t Forcibly Return Chinese Dissidents"':
+        - /url: /news/2026/07/13/thailand-dont-forcibly-return-chinese-dissidents
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - time: July 2, 2026
+    - heading "Japan Should Reject Myanmar Junta’s Call for Development Aid" [level=2]:
+      - link "Japan Should Reject Myanmar Junta’s Call for Development Aid":
+        - /url: /news/2026/07/02/japan-should-reject-myanmar-juntas-call-for-development-aid
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - time: June 29, 2026
+    - heading "Central African Republic Latest ‘Third Country’ for US Deportees" [level=2]:
+      - link "Central African Republic Latest ‘Third Country’ for US Deportees":
+        - /url: /news/2026/06/29/central-african-republic-latest-third-country-for-us-deportees
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - navigation "Pagination":
+    - heading "Pagination" [level=4]
+    - list:
+      - link "Current page 1":
+        - /url: "?page=0"
+        - generic: Current page
+        - text: "1"
+      - link "Page 2":
+        - /url: "?page=1"
+        - generic: Page
+        - text: "2"
+      - link "Page 3":
+        - /url: "?page=2"
+        - generic: Page
+        - text: "3"
+      - link "Page 4":
+        - /url: "?page=3"
+        - generic: Page
+        - text: "4"
+      - link "Page 5":
+        - /url: "?page=4"
+        - generic: Page
+        - text: "5"
+      - link "Page 6":
+        - /url: "?page=5"
+        - generic: Page
+        - text: "6"
+      - link "Page 7":
+        - /url: "?page=6"
+        - generic: Page
+        - text: "7"
+      - link "Page 8":
+        - /url: "?page=7"
+        - generic: Page
+        - text: "8"
+      - link "Page 9":
+        - /url: "?page=8"
+        - generic: Page
+        - text: "9"
+      - text: …
+      - link "Next page":
+        - /url: "?page=1"
+        - generic: Next page
+        - text: Next ›
+      - link "Last page":
+        - /url: "?page=56"
+        - generic: Last page
+        - text: Last »
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

@@ -1,0 +1,227 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - button "English"
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+  - button "Open the main menu":
+    - generic: Open the main menu
+  - generic: Trending
+  - link "Trump Administration and Human Rights":
+    - /url: /tag/trump-administration-and-human-rights
+    - text: Trump Administration and Human Rights
+  - link "Russia-Ukraine War":
+    - /url: /tag/russia-ukraine-war
+    - text: Russia-Ukraine War
+  - link "Israel/Palestine":
+    - /url: /middle-east/north-africa/israel/palestine
+    - text: Israel/Palestine
+  - link "International Criminal Court":
+    - /url: /topic/international-justice/international-criminal-court
+    - text: International Criminal Court
+  - link "Crisis in the Middle East":
+    - /url: /tag/crisis-in-the-middle-east
+    - text: Crisis in the Middle East
+- main:
+  - time
+  - navigation "Available In":
+    - generic: Available In
+    - list:
+      - listitem: English
+      - link "Français":
+        - /url: /fr/contactez-nous
+      - link "Deutsch":
+        - /url: /de/contact-us
+      - link "Português":
+        - /url: /pt/contato
+      - link "Español":
+        - /url: /es/contacto
+  - heading "Contact Us" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "General Information" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "New York" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Amsterdam" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Beirut" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Berlin" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Brussels" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Chicago" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Geneva" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Johannesburg" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "London" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Los Angeles" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Nairobi" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Oslo" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Paris" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "San Francisco" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "São Paulo" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Silicon Valley" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Sydney" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Sweden" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Tokyo" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Toronto" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Washington, DC" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Zürich" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Media Contacts" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "New York" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "London" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Berlin" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Brussels/Amsterdam" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Paris" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "If you have a question regarding your donation, please contact us at +1 212 377 9479" [level=4]
+  - navigation "Main navigation":
+    - heading "Main navigation" [level=2]
+    - heading "About" [level=2]
+    - list:
+      - link "About Us":
+        - /url: /about-us
+      - link "Newsletters":
+        - /url: /newsletters
+      - link "Careers":
+        - /url: /careers
+      - link "People":
+        - /url: /about/people
+      - link "Social Media":
+        - /url: /about/social-media
+      - link "Human Rights Education":
+        - /url: /students-and-educators
+      - link "Partners":
+        - /url: /about/partners
+      - link "Financials and Fundraising Policy":
+        - /url: /financials
+      - link "Accessibility":
+        - /url: /about/accessibility
+      - link "Contact":
+        - /url: /contact-us
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

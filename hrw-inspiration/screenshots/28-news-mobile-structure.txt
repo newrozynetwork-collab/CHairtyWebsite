@@ -1,0 +1,283 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - button "English"
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+  - button "Open the main menu":
+    - generic: Open the main menu
+  - generic: Trending
+  - link "Trump Administration and Human Rights":
+    - /url: /tag/trump-administration-and-human-rights
+    - text: Trump Administration and Human Rights
+  - link "Russia-Ukraine War":
+    - /url: /tag/russia-ukraine-war
+    - text: Russia-Ukraine War
+  - link "Israel/Palestine":
+    - /url: /middle-east/north-africa/israel/palestine
+    - text: Israel/Palestine
+  - link "International Criminal Court":
+    - /url: /topic/international-justice/international-criminal-court
+    - text: International Criminal Court
+  - link "Crisis in the Middle East":
+    - /url: /tag/crisis-in-the-middle-east
+    - text: Crisis in the Middle East
+- main:
+  - article:
+    - generic: October 3, 2026 | News Release
+    - 'heading "Greece: Rights Defenders on Trial" [level=3]':
+      - 'link "Greece: Rights Defenders on Trial"':
+        - /url: /news/2026/10/03/greece-rights-defenders-on-trial
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - 'img "Left: Panayote Dimitras. Right: Tommy Olsen. © 2019 EIN Secretariat – Agnes Ciccarone"'
+    - link:
+      - /url: /news/2026/10/03/greece-rights-defenders-on-trial
+  - article:
+    - generic: October 2, 2026 | Dispatches
+    - heading "Hong Kong Silences Remembrance of Police Abuses" [level=3]:
+      - link "Hong Kong Silences Remembrance of Police Abuses":
+        - /url: /news/2026/10/02/hong-kong-silences-remembrance-of-police-abuses
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "Police officers stand guard outside the Prince Edward subway station"
+    - link:
+      - /url: /news/2026/10/02/hong-kong-silences-remembrance-of-police-abuses
+  - article:
+    - generic: October 2, 2026 | News Release
+    - 'heading "Egypt: Authorities Arrest Entire Investigative Newsroom" [level=3]':
+      - 'link "Egypt: Authorities Arrest Entire Investigative Newsroom"':
+        - /url: /news/2026/10/02/egypt-authorities-arrest-entire-investigative-newsroom
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "collage of 6 headshots"
+    - link:
+      - /url: /news/2026/10/02/egypt-authorities-arrest-entire-investigative-newsroom
+  - article:
+    - generic: October 2, 2026 | Dispatches
+    - heading "US ICE Detains Son of Slain Philippine Journalist" [level=3]:
+      - link "US ICE Detains Son of Slain Philippine Journalist":
+        - /url: /news/2026/10/02/us-ice-detains-son-of-slain-philippine-journalist
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "Aerial photo of an ICE facility"
+    - link:
+      - /url: /news/2026/10/02/us-ice-detains-son-of-slain-philippine-journalist
+  - article:
+    - generic: October 2, 2026 | News Release
+    - 'heading "US: Rights Concerns for Maritime Operations Near Ecuador" [level=3]':
+      - 'link "US: Rights Concerns for Maritime Operations Near Ecuador"':
+        - /url: /news/2026/10/02/us-rights-concerns-for-maritime-operations-near-ecuador
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "A group of detained fishermen are transported on a National Police bus to the Community Surveillance Unit (UVC) from the port of Manta, Ecuador, on September 4, 2026."
+    - link:
+      - /url: /news/2026/10/02/us-rights-concerns-for-maritime-operations-near-ecuador
+  - article:
+    - generic: October 2, 2026 | Statement
+    - 'heading "Cambodia: Imprisonment of Activists, Politicians, and Journalists Amid Unrelenting Crackdown" [level=3]':
+      - 'link "Cambodia: Imprisonment of Activists, Politicians, and Journalists Amid Unrelenting Crackdown"':
+        - /url: /news/2026/10/02/cambodia-imprisonment-of-activists-politicians-and-journalists-amid-unrelenting
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "UN Secretary-General Antonio Guterres speaks during the opening of the 61st session of the United Nations Human Rights Council at the European headquarters of the United Nations in Geneva, February 23, 2026."
+    - link:
+      - /url: /news/2026/10/02/cambodia-imprisonment-of-activists-politicians-and-journalists-amid-unrelenting
+  - article:
+    - generic: October 2, 2026 | News Release
+    - 'heading "US: Victims of Nicaraguan Government Risk Deportation" [level=3]':
+      - 'link "US: Victims of Nicaraguan Government Risk Deportation"':
+        - /url: /news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "Activists hold signs with the names of some of the 222 former prisoners released and expelled by the Nicaraguan government, as they await their arrival at Dulles International Airport, Virginia, United States, February 9, 2023."
+    - link:
+      - /url: /news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation
+  - article:
+    - generic: October 1, 2026 | Dispatches
+    - heading "South Korea Should Center Rights in North Korea Policy" [level=3]:
+      - link "South Korea Should Center Rights in North Korea Policy":
+        - /url: /news/2026/10/01/south-korea-should-center-rights-in-north-korea-policy
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "North Korea's Vice Minister of Foreign Affairs Kim Son Gyong addresses the 81st session of the United Nations General Assembly in New York, September 28, 2026."
+    - link:
+      - /url: /news/2026/10/01/south-korea-should-center-rights-in-north-korea-policy
+  - article:
+    - generic: October 1, 2026 | Dispatches
+    - heading "A Long Road to Justice in the Central African Republic" [level=3]:
+      - link "A Long Road to Justice in the Central African Republic":
+        - /url: /news/2026/10/01/a-long-road-to-justice-in-the-central-african-republic
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "Seleka forces patrol a street of Bangui in a truck"
+    - link:
+      - /url: /news/2026/10/01/a-long-road-to-justice-in-the-central-african-republic
+  - article:
+    - generic: October 1, 2026 | Commentary
+    - heading "The Taliban Aren’t United. Accountability Can Exploit the Gaps." [level=3]:
+      - link "The Taliban Aren’t United. Accountability Can Exploit the Gaps.":
+        - /url: /news/2026/10/01/the-taliban-arent-united-accountability-can-exploit-the-gaps
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "Afghan women protesting"
+    - link:
+      - /url: /news/2026/10/01/the-taliban-arent-united-accountability-can-exploit-the-gaps
+  - article:
+    - generic: October 1, 2026 | Dispatches
+    - heading "Mauritius Rights Body Calls for Marriage Equality" [level=3]:
+      - link "Mauritius Rights Body Calls for Marriage Equality":
+        - /url: /news/2026/10/01/mauritius-rights-body-calls-for-marriage-equality
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "Port Louis, Mauritius"
+    - link:
+      - /url: /news/2026/10/01/mauritius-rights-body-calls-for-marriage-equality
+  - article:
+    - generic: October 1, 2026 | Letter
+    - heading "Joint Submission to GANHRI Regarding Review of the Accreditation Status of the National Human Rights Commission of India" [level=3]:
+      - link "Joint Submission to GANHRI Regarding Review of the Accreditation Status of the National Human Rights Commission of India":
+        - /url: /news/2026/10/01/joint-submission-to-ganhri-regarding-review-of-the-accreditation-status-of-the
+  - article:
+    - generic: October 1, 2026 | Statement
+    - heading "Eradicating Systemic Racism Is Key To Secure Rights For All" [level=3]:
+      - link "Eradicating Systemic Racism Is Key To Secure Rights For All":
+        - /url: /news/2026/10/01/eradicating-systemic-racism-is-key-to-secure-rights-for-all
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "UN Secretary-General Antonio Guterres speaks during the opening of the 61st session of the United Nations Human Rights Council at the European headquarters of the United Nations in Geneva, February 23, 2026."
+    - link:
+      - /url: /news/2026/10/01/eradicating-systemic-racism-is-key-to-secure-rights-for-all
+  - article:
+    - generic: October 1, 2026 | Report
+    - 'heading "US: Nebraskans Losing Coverage as Medicaid Changes" [level=3]':
+      - 'link "US: Nebraskans Losing Coverage as Medicaid Changes"':
+        - /url: /news/2026/10/01/us-nebraskans-losing-coverage-as-medicaid-changes
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "Protesters hold a placard that reads \"Care Not Cuts\""
+    - link:
+      - /url: /news/2026/10/01/us-nebraskans-losing-coverage-as-medicaid-changes
+  - article:
+    - generic: October 1, 2026 | Dispatches
+    - heading "UK Trial Challenges Gold Industry’s ‘Responsible Gold’ Certification" [level=3]:
+      - link "UK Trial Challenges Gold Industry’s ‘Responsible Gold’ Certification":
+        - /url: /news/2026/10/01/uk-trial-challenges-gold-industrys-responsible-gold-certification
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "North Mara Gold Mine in Tarime district, northwest Tanzania."
+    - link:
+      - /url: /news/2026/10/01/uk-trial-challenges-gold-industrys-responsible-gold-certification
+  - navigation "Pagination":
+    - heading "Pagination" [level=4]
+    - list:
+      - link "Current page 1":
+        - /url: "?page=0"
+        - generic: Current page
+        - text: "1"
+      - link "Page 2":
+        - /url: "?page=1"
+        - generic: Page
+        - text: "2"
+      - link "Page 3":
+        - /url: "?page=2"
+        - generic: Page
+        - text: "3"
+      - link "Page 4":
+        - /url: "?page=3"
+        - generic: Page
+        - text: "4"
+      - link "Page 5":
+        - /url: "?page=4"
+        - generic: Page
+        - text: "5"
+      - link "Page 6":
+        - /url: "?page=5"
+        - generic: Page
+        - text: "6"
+      - link "Page 7":
+        - /url: "?page=6"
+        - generic: Page
+        - text: "7"
+      - link "Page 8":
+        - /url: "?page=7"
+        - generic: Page
+        - text: "8"
+      - link "Page 9":
+        - /url: "?page=8"
+        - generic: Page
+        - text: "9"
+      - text: …
+      - link "Next page":
+        - /url: "?page=1"
+        - generic: Next page
+        - text: ››
+      - link "Last page":
+        - /url: "?page=2943"
+        - generic: Last page
+        - text: Last »
+  - generic: Keyword
+  - textbox "Keyword"
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - button "Country":
+    - generic: Country
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - button "Topic":
+    - generic: Topic
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - button "Tags":
+    - generic: Tags
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - button "News Type":
+    - generic: News Type
+  - button "Apply"
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

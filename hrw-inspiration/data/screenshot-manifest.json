@@ -1,0 +1,710 @@
+[
+  {
+    "id": "01-home-desktop",
+    "url": "https://www.hrw.org/",
+    "title": "Human Rights Watch | Defending Human Rights Worldwide",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 9146,
+    "direction": "ltr",
+    "fullPage": "screenshots/01-home-desktop-full.jpg",
+    "viewportImage": "screenshots/01-home-desktop-viewport.jpg",
+    "structure": "screenshots/01-home-desktop-structure.txt",
+    "imageCount": 67,
+    "loadedImageCount": 48,
+    "template": "home"
+  },
+  {
+    "id": "02-countries-desktop",
+    "url": "https://www.hrw.org/countries",
+    "title": "Countries | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 2910,
+    "direction": "ltr",
+    "fullPage": "screenshots/02-countries-desktop-full.jpg",
+    "viewportImage": "screenshots/02-countries-desktop-viewport.jpg",
+    "structure": "screenshots/02-countries-desktop-structure.txt",
+    "imageCount": 0,
+    "loadedImageCount": 0,
+    "template": "countries"
+  },
+  {
+    "id": "03-country-iraq-desktop",
+    "url": "https://www.hrw.org/middle-east/north-africa/iraq",
+    "title": "Iraq | Country Page | World | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 4449,
+    "direction": "ltr",
+    "fullPage": "screenshots/03-country-iraq-desktop-full.jpg",
+    "viewportImage": "screenshots/03-country-iraq-desktop-viewport.jpg",
+    "structure": "screenshots/03-country-iraq-desktop-structure.txt",
+    "imageCount": 25,
+    "loadedImageCount": 19,
+    "template": "country"
+  },
+  {
+    "id": "04-region-desktop",
+    "url": "https://www.hrw.org/middle-east/north-africa",
+    "title": "Middle East/North Africa | Country Page | World | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 4179,
+    "direction": "ltr",
+    "fullPage": "screenshots/04-region-desktop-full.jpg",
+    "viewportImage": "screenshots/04-region-desktop-viewport.jpg",
+    "structure": "screenshots/04-region-desktop-structure.txt",
+    "imageCount": 33,
+    "loadedImageCount": 26,
+    "template": "region"
+  },
+  {
+    "id": "05-topic-desktop",
+    "url": "https://www.hrw.org/topic/womens-rights",
+    "title": "Women's Rights | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 4738,
+    "direction": "ltr",
+    "fullPage": "screenshots/05-topic-desktop-full.jpg",
+    "viewportImage": "screenshots/05-topic-desktop-viewport.jpg",
+    "structure": "screenshots/05-topic-desktop-structure.txt",
+    "imageCount": 34,
+    "loadedImageCount": 31,
+    "template": "topic"
+  },
+  {
+    "id": "06-news-index-desktop",
+    "url": "https://www.hrw.org/news",
+    "title": "News | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 2929,
+    "direction": "ltr",
+    "fullPage": "screenshots/06-news-index-desktop-full.jpg",
+    "viewportImage": "screenshots/06-news-index-desktop-viewport.jpg",
+    "structure": "screenshots/06-news-index-desktop-structure.txt",
+    "imageCount": 14,
+    "loadedImageCount": 14,
+    "template": "news"
+  },
+  {
+    "id": "07-news-article-desktop",
+    "url": "https://www.hrw.org/news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation",
+    "title": "US: Victims of Nicaraguan Government Risk Deportation | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 5902,
+    "direction": "ltr",
+    "fullPage": "screenshots/07-news-article-desktop-full.jpg",
+    "viewportImage": "screenshots/07-news-article-desktop-viewport.jpg",
+    "structure": "screenshots/07-news-article-desktop-structure.txt",
+    "imageCount": 12,
+    "loadedImageCount": 10,
+    "template": "article"
+  },
+  {
+    "id": "08-reports-index-desktop",
+    "url": "https://www.hrw.org/publications",
+    "title": "Reports | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 5617,
+    "direction": "ltr",
+    "fullPage": "screenshots/08-reports-index-desktop-full.jpg",
+    "viewportImage": "screenshots/08-reports-index-desktop-viewport.jpg",
+    "structure": "screenshots/08-reports-index-desktop-structure.txt",
+    "imageCount": 19,
+    "loadedImageCount": 18,
+    "template": "reports"
+  },
+  {
+    "id": "09-research-report-desktop",
+    "url": "https://www.hrw.org/report/2026/09/09/uncontrolled-burn/the-inhumane-effects-of-white-phosphorus-munitions-and-the-need",
+    "title": "Uncontrolled Burn: The Inhumane Effects of White Phosphorus Munitions and the Need for Stronger Law | HRW",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 44977,
+    "direction": "ltr",
+    "fullPage": "screenshots/09-research-report-desktop-full.jpg",
+    "viewportImage": "screenshots/09-research-report-desktop-viewport.jpg",
+    "structure": "screenshots/09-research-report-desktop-structure.txt",
+    "imageCount": 6,
+    "loadedImageCount": 4,
+    "template": "research"
+  },
+  {
+    "id": "10-world-report-desktop",
+    "url": "https://www.hrw.org/world-report/2026",
+    "title": "World Report 2026 | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 36586,
+    "direction": "ltr",
+    "fullPage": "screenshots/10-world-report-desktop-full.jpg",
+    "viewportImage": "screenshots/10-world-report-desktop-viewport.jpg",
+    "structure": "screenshots/10-world-report-desktop-structure.txt",
+    "imageCount": 23,
+    "loadedImageCount": 23,
+    "template": "world"
+  },
+  {
+    "id": "11-media-index-desktop",
+    "url": "https://www.hrw.org/video-photos",
+    "title": "Video & Photos | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 3601,
+    "direction": "ltr",
+    "fullPage": "screenshots/11-media-index-desktop-full.jpg",
+    "viewportImage": "screenshots/11-media-index-desktop-viewport.jpg",
+    "structure": "screenshots/11-media-index-desktop-structure.txt",
+    "imageCount": 14,
+    "loadedImageCount": 14,
+    "template": "media"
+  },
+  {
+    "id": "12-impact-desktop",
+    "url": "https://www.hrw.org/impact",
+    "title": "Impact | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 5318,
+    "direction": "ltr",
+    "fullPage": "screenshots/12-impact-desktop-full.jpg",
+    "viewportImage": "screenshots/12-impact-desktop-viewport.jpg",
+    "structure": "screenshots/12-impact-desktop-structure.txt",
+    "imageCount": 22,
+    "loadedImageCount": 16,
+    "template": "impact"
+  },
+  {
+    "id": "13-about-desktop",
+    "url": "https://www.hrw.org/about-us",
+    "title": "About Us | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 4986,
+    "direction": "ltr",
+    "fullPage": "screenshots/13-about-desktop-full.jpg",
+    "viewportImage": "screenshots/13-about-desktop-viewport.jpg",
+    "structure": "screenshots/13-about-desktop-structure.txt",
+    "imageCount": 15,
+    "loadedImageCount": 15,
+    "template": "about"
+  },
+  {
+    "id": "14-newsletters-desktop",
+    "url": "https://www.hrw.org/newsletters",
+    "title": "Newsletters | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 1685,
+    "direction": "ltr",
+    "fullPage": "screenshots/14-newsletters-desktop-full.jpg",
+    "viewportImage": "screenshots/14-newsletters-desktop-viewport.jpg",
+    "structure": "screenshots/14-newsletters-desktop-structure.txt",
+    "imageCount": 2,
+    "loadedImageCount": 2,
+    "template": "newsletter"
+  },
+  {
+    "id": "15-sitemap-desktop",
+    "url": "https://www.hrw.org/sitemap",
+    "title": "Sitemap | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 15707,
+    "direction": "ltr",
+    "fullPage": "screenshots/15-sitemap-desktop-full.jpg",
+    "viewportImage": "screenshots/15-sitemap-desktop-viewport.jpg",
+    "structure": "screenshots/15-sitemap-desktop-structure.txt",
+    "imageCount": 1,
+    "loadedImageCount": 1,
+    "template": "sitemap"
+  },
+  {
+    "id": "16-campaign-tag-desktop",
+    "url": "https://www.hrw.org/tag/crisis-in-the-middle-east",
+    "title": "Crisis in the Middle East | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 4462,
+    "direction": "ltr",
+    "fullPage": "screenshots/16-campaign-tag-desktop-full.jpg",
+    "viewportImage": "screenshots/16-campaign-tag-desktop-viewport.jpg",
+    "structure": "screenshots/16-campaign-tag-desktop-structure.txt",
+    "imageCount": 22,
+    "loadedImageCount": 13,
+    "template": "campaign"
+  },
+  {
+    "id": "17-contact-desktop",
+    "url": "https://www.hrw.org/contact-us",
+    "title": "Contact Us | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 10351,
+    "direction": "ltr",
+    "fullPage": "screenshots/17-contact-desktop-full.jpg",
+    "viewportImage": "screenshots/17-contact-desktop-viewport.jpg",
+    "structure": "screenshots/17-contact-desktop-structure.txt",
+    "imageCount": 0,
+    "loadedImageCount": 0,
+    "template": "contact"
+  },
+  {
+    "id": "18-financials-desktop",
+    "url": "https://www.hrw.org/financials",
+    "title": "Financials | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 3557,
+    "direction": "ltr",
+    "fullPage": "screenshots/18-financials-desktop-full.jpg",
+    "viewportImage": "screenshots/18-financials-desktop-viewport.jpg",
+    "structure": "screenshots/18-financials-desktop-structure.txt",
+    "imageCount": 3,
+    "loadedImageCount": 1,
+    "template": "financials"
+  },
+  {
+    "id": "19-board-desktop",
+    "url": "https://www.hrw.org/about/people/board-directors",
+    "title": "Board of Directors | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 7849,
+    "direction": "ltr",
+    "fullPage": "screenshots/19-board-desktop-full.jpg",
+    "viewportImage": "screenshots/19-board-desktop-viewport.jpg",
+    "structure": "screenshots/19-board-desktop-structure.txt",
+    "imageCount": 48,
+    "loadedImageCount": 48,
+    "template": "board"
+  },
+  {
+    "id": "20-careers-desktop",
+    "url": "https://www.hrw.org/careers",
+    "title": "Careers | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 2557,
+    "direction": "ltr",
+    "fullPage": "screenshots/20-careers-desktop-full.jpg",
+    "viewportImage": "screenshots/20-careers-desktop-viewport.jpg",
+    "structure": "screenshots/20-careers-desktop-structure.txt",
+    "imageCount": 5,
+    "loadedImageCount": 3,
+    "template": "careers"
+  },
+  {
+    "id": "21-history-desktop",
+    "url": "https://www.hrw.org/about/about-us/history",
+    "title": "History | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 3748,
+    "direction": "ltr",
+    "fullPage": "screenshots/21-history-desktop-full.jpg",
+    "viewportImage": "screenshots/21-history-desktop-viewport.jpg",
+    "structure": "screenshots/21-history-desktop-structure.txt",
+    "imageCount": 4,
+    "loadedImageCount": 4,
+    "template": "history"
+  },
+  {
+    "id": "22-accessibility-desktop",
+    "url": "https://www.hrw.org/about/accessibility",
+    "title": "Accessibility | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 3507,
+    "direction": "ltr",
+    "fullPage": "screenshots/22-accessibility-desktop-full.jpg",
+    "viewportImage": "screenshots/22-accessibility-desktop-viewport.jpg",
+    "structure": "screenshots/22-accessibility-desktop-structure.txt",
+    "imageCount": 10,
+    "loadedImageCount": 10,
+    "template": "accessibility"
+  },
+  {
+    "id": "23-corrections-desktop",
+    "url": "https://www.hrw.org/corrections",
+    "title": "Corrections | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 2778,
+    "direction": "ltr",
+    "fullPage": "screenshots/23-corrections-desktop-full.jpg",
+    "viewportImage": "screenshots/23-corrections-desktop-viewport.jpg",
+    "structure": "screenshots/23-corrections-desktop-structure.txt",
+    "imageCount": 0,
+    "loadedImageCount": 0,
+    "template": "corrections"
+  },
+  {
+    "id": "24-arabic-desktop",
+    "url": "https://www.hrw.org/ar",
+    "title": "Human Rights Watch | الدفاع عن حقوق الناس في أنحاء العالم",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 8518,
+    "direction": "rtl",
+    "fullPage": "screenshots/24-arabic-desktop-full.jpg",
+    "viewportImage": "screenshots/24-arabic-desktop-viewport.jpg",
+    "structure": "screenshots/24-arabic-desktop-structure.txt",
+    "imageCount": 68,
+    "loadedImageCount": 47,
+    "template": "arabic"
+  },
+  {
+    "id": "25-home-mobile",
+    "url": "https://www.hrw.org/",
+    "title": "Human Rights Watch | Defending Human Rights Worldwide",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 10006,
+    "direction": "ltr",
+    "fullPage": "screenshots/25-home-mobile-full.jpg",
+    "viewportImage": "screenshots/25-home-mobile-viewport.jpg",
+    "structure": "screenshots/25-home-mobile-structure.txt",
+    "imageCount": 67,
+    "loadedImageCount": 35,
+    "template": "home"
+  },
+  {
+    "id": "26-country-mobile",
+    "url": "https://www.hrw.org/middle-east/north-africa/iraq",
+    "title": "Iraq | Country Page | World | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 6866,
+    "direction": "ltr",
+    "fullPage": "screenshots/26-country-mobile-full.jpg",
+    "viewportImage": "screenshots/26-country-mobile-viewport.jpg",
+    "structure": "screenshots/26-country-mobile-structure.txt",
+    "imageCount": 25,
+    "loadedImageCount": 8,
+    "template": "country"
+  },
+  {
+    "id": "27-topic-mobile",
+    "url": "https://www.hrw.org/topic/womens-rights",
+    "title": "Women's Rights | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 8463,
+    "direction": "ltr",
+    "fullPage": "screenshots/27-topic-mobile-full.jpg",
+    "viewportImage": "screenshots/27-topic-mobile-viewport.jpg",
+    "structure": "screenshots/27-topic-mobile-structure.txt",
+    "imageCount": 34,
+    "loadedImageCount": 12,
+    "template": "topic"
+  },
+  {
+    "id": "28-news-mobile",
+    "url": "https://www.hrw.org/news",
+    "title": "News | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 5022,
+    "direction": "ltr",
+    "fullPage": "screenshots/28-news-mobile-full.jpg",
+    "viewportImage": "screenshots/28-news-mobile-viewport.jpg",
+    "structure": "screenshots/28-news-mobile-structure.txt",
+    "imageCount": 14,
+    "loadedImageCount": 12,
+    "template": "news"
+  },
+  {
+    "id": "29-article-mobile",
+    "url": "https://www.hrw.org/news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation",
+    "title": "US: Victims of Nicaraguan Government Risk Deportation | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 8015,
+    "direction": "ltr",
+    "fullPage": "screenshots/29-article-mobile-full.jpg",
+    "viewportImage": "screenshots/29-article-mobile-viewport.jpg",
+    "structure": "screenshots/29-article-mobile-structure.txt",
+    "imageCount": 12,
+    "loadedImageCount": 7,
+    "template": "article"
+  },
+  {
+    "id": "30-reports-mobile",
+    "url": "https://www.hrw.org/publications",
+    "title": "Reports | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 16866,
+    "direction": "ltr",
+    "fullPage": "screenshots/30-reports-mobile-full.jpg",
+    "viewportImage": "screenshots/30-reports-mobile-viewport.jpg",
+    "structure": "screenshots/30-reports-mobile-structure.txt",
+    "imageCount": 19,
+    "loadedImageCount": 18,
+    "template": "reports"
+  },
+  {
+    "id": "31-newsletters-mobile",
+    "url": "https://www.hrw.org/newsletters",
+    "title": "Newsletters | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 2331,
+    "direction": "ltr",
+    "fullPage": "screenshots/31-newsletters-mobile-full.jpg",
+    "viewportImage": "screenshots/31-newsletters-mobile-viewport.jpg",
+    "structure": "screenshots/31-newsletters-mobile-structure.txt",
+    "imageCount": 2,
+    "loadedImageCount": 2,
+    "template": "newsletter"
+  },
+  {
+    "id": "32-arabic-mobile",
+    "url": "https://www.hrw.org/ar",
+    "title": "Human Rights Watch | الدفاع عن حقوق الناس في أنحاء العالم",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 8575,
+    "direction": "rtl",
+    "fullPage": "screenshots/32-arabic-mobile-full.jpg",
+    "viewportImage": "screenshots/32-arabic-mobile-viewport.jpg",
+    "structure": "screenshots/32-arabic-mobile-structure.txt",
+    "imageCount": 68,
+    "loadedImageCount": 34,
+    "template": "arabic"
+  },
+  {
+    "id": "38-video-detail-desktop",
+    "url": "https://www.hrw.org/video-photos/video/2026/06/12/violence-and-discrimination-against-people-with-albinism-in-malawi",
+    "title": "Violence and Discrimination Against People with Albinism in Malawi | Human Rights Watch",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "pageHeight": 2626,
+    "direction": "ltr",
+    "fullPage": "screenshots/38-video-detail-desktop-full.jpg",
+    "viewportImage": "screenshots/38-video-detail-desktop-viewport.jpg",
+    "structure": "screenshots/38-video-detail-desktop-structure.txt",
+    "imageCount": 5,
+    "loadedImageCount": 5,
+    "template": "media"
+  },
+  {
+    "id": "39-impact-mobile",
+    "url": "https://www.hrw.org/impact",
+    "title": "Impact | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 10663,
+    "direction": "ltr",
+    "fullPage": "screenshots/39-impact-mobile-full.jpg",
+    "viewportImage": "screenshots/39-impact-mobile-viewport.jpg",
+    "structure": "screenshots/39-impact-mobile-structure.txt",
+    "imageCount": 22,
+    "loadedImageCount": 22,
+    "template": "impact"
+  },
+  {
+    "id": "40-about-mobile",
+    "url": "https://www.hrw.org/about-us",
+    "title": "About Us | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 8614,
+    "direction": "ltr",
+    "fullPage": "screenshots/40-about-mobile-full.jpg",
+    "viewportImage": "screenshots/40-about-mobile-viewport.jpg",
+    "structure": "screenshots/40-about-mobile-structure.txt",
+    "imageCount": 15,
+    "loadedImageCount": 15,
+    "template": "about"
+  },
+  {
+    "id": "41-research-report-mobile",
+    "url": "https://www.hrw.org/report/2026/09/09/uncontrolled-burn/the-inhumane-effects-of-white-phosphorus-munitions-and-the-need",
+    "title": "Uncontrolled Burn: The Inhumane Effects of White Phosphorus Munitions and the Need for Stronger Law | HRW",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 54975,
+    "direction": "ltr",
+    "fullPage": "screenshots/41-research-report-mobile-full.jpg",
+    "viewportImage": "screenshots/41-research-report-mobile-viewport.jpg",
+    "structure": "screenshots/41-research-report-mobile-structure.txt",
+    "imageCount": 6,
+    "loadedImageCount": 3,
+    "template": "research"
+  },
+  {
+    "id": "42-media-mobile",
+    "url": "https://www.hrw.org/video-photos",
+    "title": "Video & Photos | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 8160,
+    "direction": "ltr",
+    "fullPage": "screenshots/42-media-mobile-full.jpg",
+    "viewportImage": "screenshots/42-media-mobile-viewport.jpg",
+    "structure": "screenshots/42-media-mobile-structure.txt",
+    "imageCount": 14,
+    "loadedImageCount": 14,
+    "template": "media"
+  },
+  {
+    "id": "43-contact-mobile",
+    "url": "https://www.hrw.org/contact-us",
+    "title": "Contact Us | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 10449,
+    "direction": "ltr",
+    "fullPage": "screenshots/43-contact-mobile-full.jpg",
+    "viewportImage": "screenshots/43-contact-mobile-viewport.jpg",
+    "structure": "screenshots/43-contact-mobile-structure.txt",
+    "imageCount": 0,
+    "loadedImageCount": 0,
+    "template": "contact"
+  },
+  {
+    "id": "44-campaign-mobile",
+    "url": "https://www.hrw.org/tag/crisis-in-the-middle-east",
+    "title": "Crisis in the Middle East | Human Rights Watch",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "pageHeight": 6682,
+    "direction": "ltr",
+    "fullPage": "screenshots/44-campaign-mobile-full.jpg",
+    "viewportImage": "screenshots/44-campaign-mobile-viewport.jpg",
+    "structure": "screenshots/44-campaign-mobile-structure.txt",
+    "imageCount": 22,
+    "loadedImageCount": 20,
+    "template": "campaign"
+  },
+  {
+    "id": "33-mobile-menu",
+    "url": "https://www.hrw.org/",
+    "kind": "expanded navigation state",
+    "files": [
+      "screenshots/33-mobile-menu-structure.txt",
+      "screenshots/33-mobile-menu-viewport.jpg"
+    ]
+  },
+  {
+    "id": "34-mobile-countries-menu",
+    "url": "https://www.hrw.org/",
+    "kind": "expanded navigation state",
+    "files": [
+      "screenshots/34-mobile-countries-menu-full.jpg",
+      "screenshots/34-mobile-countries-menu-structure.txt"
+    ]
+  },
+  {
+    "id": "35-mobile-language",
+    "url": "https://www.hrw.org/",
+    "kind": "expanded navigation state",
+    "files": [
+      "screenshots/35-mobile-language-structure.txt",
+      "screenshots/35-mobile-language-viewport.jpg"
+    ]
+  },
+  {
+    "id": "36-desktop-countries-menu",
+    "url": "https://www.hrw.org/",
+    "kind": "expanded navigation state",
+    "files": [
+      "screenshots/36-desktop-countries-menu-structure.txt",
+      "screenshots/36-desktop-countries-menu-viewport.jpg"
+    ]
+  },
+  {
+    "id": "37-desktop-topics-menu",
+    "url": "https://www.hrw.org/",
+    "kind": "expanded navigation state",
+    "files": [
+      "screenshots/37-desktop-topics-menu-structure.txt",
+      "screenshots/37-desktop-topics-menu-viewport.jpg"
+    ]
+  }
+]

@@ -1,0 +1,1902 @@
+[
+  {
+    "source": "screenshots/01-home-desktop-full.jpg",
+    "width": 1424,
+    "height": 9145,
+    "slices": [
+      {
+        "file": "screenshots/slices/01-home-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/01-home-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/01-home-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/01-home-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 6750,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/01-home-desktop-full-05.jpg",
+        "top": 6600,
+        "bottom": 8400,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/01-home-desktop-full-06.jpg",
+        "top": 8250,
+        "bottom": 9145,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/02-countries-desktop-full.jpg",
+    "width": 1424,
+    "height": 2909,
+    "slices": [
+      {
+        "file": "screenshots/slices/02-countries-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/02-countries-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 2909,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/03-country-iraq-desktop-full.jpg",
+    "width": 1424,
+    "height": 4448,
+    "slices": [
+      {
+        "file": "screenshots/slices/03-country-iraq-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/03-country-iraq-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/03-country-iraq-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 4448,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/04-region-desktop-full.jpg",
+    "width": 1424,
+    "height": 4179,
+    "slices": [
+      {
+        "file": "screenshots/slices/04-region-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/04-region-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/04-region-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 4179,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/05-topic-desktop-full.jpg",
+    "width": 1424,
+    "height": 4738,
+    "slices": [
+      {
+        "file": "screenshots/slices/05-topic-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/05-topic-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/05-topic-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 4738,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/06-news-index-desktop-full.jpg",
+    "width": 1424,
+    "height": 2928,
+    "slices": [
+      {
+        "file": "screenshots/slices/06-news-index-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/06-news-index-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 2928,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/07-news-article-desktop-full.jpg",
+    "width": 1424,
+    "height": 5901,
+    "slices": [
+      {
+        "file": "screenshots/slices/07-news-article-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/07-news-article-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/07-news-article-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/07-news-article-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 5901,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/08-reports-index-desktop-full.jpg",
+    "width": 1424,
+    "height": 5616,
+    "slices": [
+      {
+        "file": "screenshots/slices/08-reports-index-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/08-reports-index-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/08-reports-index-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/08-reports-index-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 5616,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/09-research-report-desktop-full.jpg",
+    "width": 1424,
+    "height": 44976,
+    "slices": [
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 6750,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-05.jpg",
+        "top": 6600,
+        "bottom": 8400,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-06.jpg",
+        "top": 8250,
+        "bottom": 10050,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-07.jpg",
+        "top": 9900,
+        "bottom": 11700,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-08.jpg",
+        "top": 11550,
+        "bottom": 13350,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-09.jpg",
+        "top": 13200,
+        "bottom": 15000,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-10.jpg",
+        "top": 14850,
+        "bottom": 16650,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-11.jpg",
+        "top": 16500,
+        "bottom": 18300,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-12.jpg",
+        "top": 18150,
+        "bottom": 19950,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-13.jpg",
+        "top": 19800,
+        "bottom": 21600,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-14.jpg",
+        "top": 21450,
+        "bottom": 23250,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-15.jpg",
+        "top": 23100,
+        "bottom": 24900,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-16.jpg",
+        "top": 24750,
+        "bottom": 26550,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-17.jpg",
+        "top": 26400,
+        "bottom": 28200,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-18.jpg",
+        "top": 28050,
+        "bottom": 29850,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-19.jpg",
+        "top": 29700,
+        "bottom": 31500,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-20.jpg",
+        "top": 31350,
+        "bottom": 33150,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-21.jpg",
+        "top": 33000,
+        "bottom": 34800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-22.jpg",
+        "top": 34650,
+        "bottom": 36450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-23.jpg",
+        "top": 36300,
+        "bottom": 38100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-24.jpg",
+        "top": 37950,
+        "bottom": 39750,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-25.jpg",
+        "top": 39600,
+        "bottom": 41400,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-26.jpg",
+        "top": 41250,
+        "bottom": 43050,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-27.jpg",
+        "top": 42900,
+        "bottom": 44700,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/09-research-report-desktop-full-28.jpg",
+        "top": 44550,
+        "bottom": 44976,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/10-world-report-desktop-full.jpg",
+    "width": 1424,
+    "height": 36585,
+    "slices": [
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 6750,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-05.jpg",
+        "top": 6600,
+        "bottom": 8400,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-06.jpg",
+        "top": 8250,
+        "bottom": 10050,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-07.jpg",
+        "top": 9900,
+        "bottom": 11700,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-08.jpg",
+        "top": 11550,
+        "bottom": 13350,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-09.jpg",
+        "top": 13200,
+        "bottom": 15000,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-10.jpg",
+        "top": 14850,
+        "bottom": 16650,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-11.jpg",
+        "top": 16500,
+        "bottom": 18300,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-12.jpg",
+        "top": 18150,
+        "bottom": 19950,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-13.jpg",
+        "top": 19800,
+        "bottom": 21600,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-14.jpg",
+        "top": 21450,
+        "bottom": 23250,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-15.jpg",
+        "top": 23100,
+        "bottom": 24900,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-16.jpg",
+        "top": 24750,
+        "bottom": 26550,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-17.jpg",
+        "top": 26400,
+        "bottom": 28200,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-18.jpg",
+        "top": 28050,
+        "bottom": 29850,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-19.jpg",
+        "top": 29700,
+        "bottom": 31500,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-20.jpg",
+        "top": 31350,
+        "bottom": 33150,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-21.jpg",
+        "top": 33000,
+        "bottom": 34800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-22.jpg",
+        "top": 34650,
+        "bottom": 36450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/10-world-report-desktop-full-23.jpg",
+        "top": 36300,
+        "bottom": 36585,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/11-media-index-desktop-full.jpg",
+    "width": 1424,
+    "height": 3600,
+    "slices": [
+      {
+        "file": "screenshots/slices/11-media-index-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/11-media-index-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/11-media-index-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 3600,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/12-impact-desktop-full.jpg",
+    "width": 1424,
+    "height": 5317,
+    "slices": [
+      {
+        "file": "screenshots/slices/12-impact-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/12-impact-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/12-impact-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/12-impact-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 5317,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/13-about-desktop-full.jpg",
+    "width": 1424,
+    "height": 4985,
+    "slices": [
+      {
+        "file": "screenshots/slices/13-about-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/13-about-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/13-about-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 4985,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/14-newsletters-desktop-full.jpg",
+    "width": 1424,
+    "height": 1684,
+    "slices": [
+      {
+        "file": "screenshots/slices/14-newsletters-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1684,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/15-sitemap-desktop-full.jpg",
+    "width": 1424,
+    "height": 15707,
+    "slices": [
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 6750,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-05.jpg",
+        "top": 6600,
+        "bottom": 8400,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-06.jpg",
+        "top": 8250,
+        "bottom": 10050,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-07.jpg",
+        "top": 9900,
+        "bottom": 11700,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-08.jpg",
+        "top": 11550,
+        "bottom": 13350,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-09.jpg",
+        "top": 13200,
+        "bottom": 15000,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/15-sitemap-desktop-full-10.jpg",
+        "top": 14850,
+        "bottom": 15707,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/16-campaign-tag-desktop-full.jpg",
+    "width": 1424,
+    "height": 4461,
+    "slices": [
+      {
+        "file": "screenshots/slices/16-campaign-tag-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/16-campaign-tag-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/16-campaign-tag-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 4461,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/17-contact-desktop-full.jpg",
+    "width": 1424,
+    "height": 10351,
+    "slices": [
+      {
+        "file": "screenshots/slices/17-contact-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/17-contact-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/17-contact-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/17-contact-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 6750,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/17-contact-desktop-full-05.jpg",
+        "top": 6600,
+        "bottom": 8400,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/17-contact-desktop-full-06.jpg",
+        "top": 8250,
+        "bottom": 10050,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/17-contact-desktop-full-07.jpg",
+        "top": 9900,
+        "bottom": 10351,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/18-financials-desktop-full.jpg",
+    "width": 1424,
+    "height": 3556,
+    "slices": [
+      {
+        "file": "screenshots/slices/18-financials-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/18-financials-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/18-financials-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 3556,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/19-board-desktop-full.jpg",
+    "width": 1424,
+    "height": 7848,
+    "slices": [
+      {
+        "file": "screenshots/slices/19-board-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/19-board-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/19-board-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/19-board-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 6750,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/19-board-desktop-full-05.jpg",
+        "top": 6600,
+        "bottom": 7848,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/20-careers-desktop-full.jpg",
+    "width": 1424,
+    "height": 2556,
+    "slices": [
+      {
+        "file": "screenshots/slices/20-careers-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/20-careers-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 2556,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/21-history-desktop-full.jpg",
+    "width": 1424,
+    "height": 3748,
+    "slices": [
+      {
+        "file": "screenshots/slices/21-history-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/21-history-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/21-history-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 3748,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/22-accessibility-desktop-full.jpg",
+    "width": 1424,
+    "height": 3507,
+    "slices": [
+      {
+        "file": "screenshots/slices/22-accessibility-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/22-accessibility-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/22-accessibility-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 3507,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/23-corrections-desktop-full.jpg",
+    "width": 1424,
+    "height": 2777,
+    "slices": [
+      {
+        "file": "screenshots/slices/23-corrections-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/23-corrections-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 2777,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/24-arabic-desktop-full.jpg",
+    "width": 1424,
+    "height": 8518,
+    "slices": [
+      {
+        "file": "screenshots/slices/24-arabic-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/24-arabic-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 3450,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/24-arabic-desktop-full-03.jpg",
+        "top": 3300,
+        "bottom": 5100,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/24-arabic-desktop-full-04.jpg",
+        "top": 4950,
+        "bottom": 6750,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/24-arabic-desktop-full-05.jpg",
+        "top": 6600,
+        "bottom": 8400,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/24-arabic-desktop-full-06.jpg",
+        "top": 8250,
+        "bottom": 8518,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/25-home-mobile-full.jpg",
+    "width": 375,
+    "height": 10006,
+    "slices": [
+      {
+        "file": "screenshots/slices/25-home-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/25-home-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/25-home-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/25-home-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/25-home-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/25-home-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8250,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/25-home-mobile-full-07.jpg",
+        "top": 8100,
+        "bottom": 9600,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/25-home-mobile-full-08.jpg",
+        "top": 9450,
+        "bottom": 10006,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/26-country-mobile-full.jpg",
+    "width": 375,
+    "height": 6866,
+    "slices": [
+      {
+        "file": "screenshots/slices/26-country-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/26-country-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/26-country-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/26-country-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/26-country-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6866,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/27-topic-mobile-full.jpg",
+    "width": 430,
+    "height": 8463,
+    "slices": [
+      {
+        "file": "screenshots/slices/27-topic-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 430
+      },
+      {
+        "file": "screenshots/slices/27-topic-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 430
+      },
+      {
+        "file": "screenshots/slices/27-topic-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 430
+      },
+      {
+        "file": "screenshots/slices/27-topic-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 430
+      },
+      {
+        "file": "screenshots/slices/27-topic-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 430
+      },
+      {
+        "file": "screenshots/slices/27-topic-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8250,
+        "width": 430
+      },
+      {
+        "file": "screenshots/slices/27-topic-mobile-full-07.jpg",
+        "top": 8100,
+        "bottom": 8463,
+        "width": 430
+      }
+    ]
+  },
+  {
+    "source": "screenshots/28-news-mobile-full.jpg",
+    "width": 375,
+    "height": 5022,
+    "slices": [
+      {
+        "file": "screenshots/slices/28-news-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/28-news-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/28-news-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/28-news-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5022,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/29-article-mobile-full.jpg",
+    "width": 375,
+    "height": 8015,
+    "slices": [
+      {
+        "file": "screenshots/slices/29-article-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/29-article-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/29-article-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/29-article-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/29-article-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/29-article-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8015,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/30-reports-mobile-full.jpg",
+    "width": 375,
+    "height": 16865,
+    "slices": [
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8250,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-07.jpg",
+        "top": 8100,
+        "bottom": 9600,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-08.jpg",
+        "top": 9450,
+        "bottom": 10950,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-09.jpg",
+        "top": 10800,
+        "bottom": 12300,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-10.jpg",
+        "top": 12150,
+        "bottom": 13650,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-11.jpg",
+        "top": 13500,
+        "bottom": 15000,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-12.jpg",
+        "top": 14850,
+        "bottom": 16350,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/30-reports-mobile-full-13.jpg",
+        "top": 16200,
+        "bottom": 16865,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/31-newsletters-mobile-full.jpg",
+    "width": 375,
+    "height": 2331,
+    "slices": [
+      {
+        "file": "screenshots/slices/31-newsletters-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/31-newsletters-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2331,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/32-arabic-mobile-full.jpg",
+    "width": 375,
+    "height": 8575,
+    "slices": [
+      {
+        "file": "screenshots/slices/32-arabic-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/32-arabic-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/32-arabic-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/32-arabic-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/32-arabic-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/32-arabic-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8250,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/32-arabic-mobile-full-07.jpg",
+        "top": 8100,
+        "bottom": 8575,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/34-mobile-countries-menu-full.jpg",
+    "width": 390,
+    "height": 9767,
+    "slices": [
+      {
+        "file": "screenshots/slices/34-mobile-countries-menu-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 390
+      },
+      {
+        "file": "screenshots/slices/34-mobile-countries-menu-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 390
+      },
+      {
+        "file": "screenshots/slices/34-mobile-countries-menu-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 390
+      },
+      {
+        "file": "screenshots/slices/34-mobile-countries-menu-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 390
+      },
+      {
+        "file": "screenshots/slices/34-mobile-countries-menu-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 390
+      },
+      {
+        "file": "screenshots/slices/34-mobile-countries-menu-full-06.jpg",
+        "top": 6750,
+        "bottom": 8250,
+        "width": 390
+      },
+      {
+        "file": "screenshots/slices/34-mobile-countries-menu-full-07.jpg",
+        "top": 8100,
+        "bottom": 9600,
+        "width": 390
+      },
+      {
+        "file": "screenshots/slices/34-mobile-countries-menu-full-08.jpg",
+        "top": 9450,
+        "bottom": 9767,
+        "width": 390
+      }
+    ]
+  },
+  {
+    "source": "screenshots/38-video-detail-desktop-full.jpg",
+    "width": 1424,
+    "height": 2626,
+    "slices": [
+      {
+        "file": "screenshots/slices/38-video-detail-desktop-full-01.jpg",
+        "top": 0,
+        "bottom": 1800,
+        "width": 1424
+      },
+      {
+        "file": "screenshots/slices/38-video-detail-desktop-full-02.jpg",
+        "top": 1650,
+        "bottom": 2626,
+        "width": 1424
+      }
+    ]
+  },
+  {
+    "source": "screenshots/39-impact-mobile-full.jpg",
+    "width": 375,
+    "height": 10663,
+    "slices": [
+      {
+        "file": "screenshots/slices/39-impact-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/39-impact-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/39-impact-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/39-impact-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/39-impact-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/39-impact-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8250,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/39-impact-mobile-full-07.jpg",
+        "top": 8100,
+        "bottom": 9600,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/39-impact-mobile-full-08.jpg",
+        "top": 9450,
+        "bottom": 10663,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/40-about-mobile-full.jpg",
+    "width": 375,
+    "height": 8614,
+    "slices": [
+      {
+        "file": "screenshots/slices/40-about-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/40-about-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/40-about-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/40-about-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/40-about-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/40-about-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8250,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/40-about-mobile-full-07.jpg",
+        "top": 8100,
+        "bottom": 8614,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/41-research-report-mobile-full.jpg",
+    "width": 375,
+    "height": 54975,
+    "slices": [
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8250,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-07.jpg",
+        "top": 8100,
+        "bottom": 9600,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-08.jpg",
+        "top": 9450,
+        "bottom": 10950,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-09.jpg",
+        "top": 10800,
+        "bottom": 12300,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-10.jpg",
+        "top": 12150,
+        "bottom": 13650,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-11.jpg",
+        "top": 13500,
+        "bottom": 15000,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-12.jpg",
+        "top": 14850,
+        "bottom": 16350,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-13.jpg",
+        "top": 16200,
+        "bottom": 17700,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-14.jpg",
+        "top": 17550,
+        "bottom": 19050,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-15.jpg",
+        "top": 18900,
+        "bottom": 20400,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-16.jpg",
+        "top": 20250,
+        "bottom": 21750,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-17.jpg",
+        "top": 21600,
+        "bottom": 23100,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-18.jpg",
+        "top": 22950,
+        "bottom": 24450,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-19.jpg",
+        "top": 24300,
+        "bottom": 25800,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-20.jpg",
+        "top": 25650,
+        "bottom": 27150,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-21.jpg",
+        "top": 27000,
+        "bottom": 28500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-22.jpg",
+        "top": 28350,
+        "bottom": 29850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-23.jpg",
+        "top": 29700,
+        "bottom": 31200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-24.jpg",
+        "top": 31050,
+        "bottom": 32550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-25.jpg",
+        "top": 32400,
+        "bottom": 33900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-26.jpg",
+        "top": 33750,
+        "bottom": 35250,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-27.jpg",
+        "top": 35100,
+        "bottom": 36600,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-28.jpg",
+        "top": 36450,
+        "bottom": 37950,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-29.jpg",
+        "top": 37800,
+        "bottom": 39300,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-30.jpg",
+        "top": 39150,
+        "bottom": 40650,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-31.jpg",
+        "top": 40500,
+        "bottom": 42000,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-32.jpg",
+        "top": 41850,
+        "bottom": 43350,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-33.jpg",
+        "top": 43200,
+        "bottom": 44700,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-34.jpg",
+        "top": 44550,
+        "bottom": 46050,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-35.jpg",
+        "top": 45900,
+        "bottom": 47400,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-36.jpg",
+        "top": 47250,
+        "bottom": 48750,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-37.jpg",
+        "top": 48600,
+        "bottom": 50100,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-38.jpg",
+        "top": 49950,
+        "bottom": 51450,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-39.jpg",
+        "top": 51300,
+        "bottom": 52800,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-40.jpg",
+        "top": 52650,
+        "bottom": 54150,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/41-research-report-mobile-full-41.jpg",
+        "top": 54000,
+        "bottom": 54975,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/42-media-mobile-full.jpg",
+    "width": 375,
+    "height": 8160,
+    "slices": [
+      {
+        "file": "screenshots/slices/42-media-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/42-media-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/42-media-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/42-media-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/42-media-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/42-media-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8160,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/43-contact-mobile-full.jpg",
+    "width": 375,
+    "height": 10448,
+    "slices": [
+      {
+        "file": "screenshots/slices/43-contact-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/43-contact-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/43-contact-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/43-contact-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/43-contact-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6900,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/43-contact-mobile-full-06.jpg",
+        "top": 6750,
+        "bottom": 8250,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/43-contact-mobile-full-07.jpg",
+        "top": 8100,
+        "bottom": 9600,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/43-contact-mobile-full-08.jpg",
+        "top": 9450,
+        "bottom": 10448,
+        "width": 375
+      }
+    ]
+  },
+  {
+    "source": "screenshots/44-campaign-mobile-full.jpg",
+    "width": 375,
+    "height": 6682,
+    "slices": [
+      {
+        "file": "screenshots/slices/44-campaign-mobile-full-01.jpg",
+        "top": 0,
+        "bottom": 1500,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/44-campaign-mobile-full-02.jpg",
+        "top": 1350,
+        "bottom": 2850,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/44-campaign-mobile-full-03.jpg",
+        "top": 2700,
+        "bottom": 4200,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/44-campaign-mobile-full-04.jpg",
+        "top": 4050,
+        "bottom": 5550,
+        "width": 375
+      },
+      {
+        "file": "screenshots/slices/44-campaign-mobile-full-05.jpg",
+        "top": 5400,
+        "bottom": 6682,
+        "width": 375
+      }
+    ]
+  }
+]

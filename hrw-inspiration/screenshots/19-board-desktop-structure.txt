@@ -1,0 +1,494 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar
+      - link "简中":
+        - /url: /zh-hans
+      - link "繁中":
+        - /url: /zh-hant
+      - listitem: English
+      - link "Français":
+        - /url: /fr
+      - link "Deutsch":
+        - /url: /de
+      - link "日本語":
+        - /url: /ja
+      - link "Português":
+        - /url: /pt
+      - link "Русский":
+        - /url: /ru
+      - link "Español":
+        - /url: /es
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - heading "Board of Directors" [level=2]
+  - list:
+    - link "David Lakhdhir":
+      - /url: /about/people/david-lakhdhir
+      - img "David Lakhdhir"
+    - link "David Lakhdhir":
+      - /url: /about/people/david-lakhdhir
+    - generic: Co-Chair; International Lawyer
+    - link "Gina Maya":
+      - /url: /about/people/gina-maya
+      - img "Gina Maya"
+    - link "Gina Maya":
+      - /url: /about/people/gina-maya
+    - generic: Co-Chair; Human Rights Activist
+    - link "Akwasi Aidoo":
+      - /url: /about/people/akwasi-aidoo
+      - img "Akwasi Aidoo"
+    - link "Akwasi Aidoo":
+      - /url: /about/people/akwasi-aidoo
+    - generic: Senior Fellow, Humanity United
+    - link "Lishan Aklog":
+      - /url: /about/people/lishan-aklog-0
+      - img "Lishan Aklog"
+    - link "Lishan Aklog":
+      - /url: /about/people/lishan-aklog-0
+    - generic: Chairman and CEO, PAVmed Inc.
+    - link "Mark S. Bonham":
+      - /url: /about/people/mark-s-bonham
+      - img "Mark S. Bonham"
+    - link "Mark S. Bonham":
+      - /url: /about/people/mark-s-bonham
+    - link "Ghislaine Brenninkmeijer":
+      - /url: /about/people/ghislaine-brenninkmeijer
+      - img "Ghislaine Brenninkmeijer"
+    - link "Ghislaine Brenninkmeijer":
+      - /url: /about/people/ghislaine-brenninkmeijer
+    - link "Isabelle de Wismes":
+      - /url: /about/people/isabelle-de-wismes
+      - img "Isabelle de Wismes"
+    - link "Isabelle de Wismes":
+      - /url: /about/people/isabelle-de-wismes
+    - generic: Non-Executive Director
+    - link "Catalina Devandas Aguilar":
+      - /url: /about/people/catalina-devandas-aguilar
+      - img "Catalina Devandas Aguilar"
+    - link "Catalina Devandas Aguilar":
+      - /url: /about/people/catalina-devandas-aguilar
+    - generic: Lawyer and Human Rights Advocate
+    - link "Loubna Freih":
+      - /url: /about/people/loubna-freih
+      - img "Loubna Freih"
+    - link "Loubna Freih":
+      - /url: /about/people/loubna-freih
+    - generic: Human Rights Activist & Performance Coach
+    - link "Leslie Gilbert-Lurie":
+      - /url: /about/people/leslie-gilbert-lurie
+      - img "Leslie Gilbert-Lurie"
+    - link "Leslie Gilbert-Lurie":
+      - /url: /about/people/leslie-gilbert-lurie
+    - generic: Writer, Lawyer, Human Rights Advocate
+    - link "Paul Gray":
+      - /url: /about/people/paul-gray
+      - img "Paul Gray"
+    - link "Paul Gray":
+      - /url: /about/people/paul-gray
+    - generic: Managing Director, Richard Gray Gallery
+    - link "Caitlin Heising":
+      - /url: /about/people/caitlin-heising
+      - img "Caitlin Heising"
+    - link "Caitlin Heising":
+      - /url: /about/people/caitlin-heising
+    - generic: Vice Chair, Heising-Simons Foundation
+    - link "Morten Hummelmose":
+      - /url: /about/people/morten-hummelmose
+      - img "Morten Hummelmose"
+    - link "Morten Hummelmose":
+      - /url: /about/people/morten-hummelmose
+    - generic: Founder & CEO, Frececo
+    - link "Louisa Lee-Reizes":
+      - /url: /about/people/louisa-lee-reizes
+      - img "Louisa Lee-Reizes"
+    - link "Louisa Lee-Reizes":
+      - /url: /about/people/louisa-lee-reizes
+    - generic: Luxury Brand Consultant
+    - link "Kimberly Marteau Emerson":
+      - /url: /about/people/kimberly-marteau-emerson
+      - img "Kimberly Marteau Emerson"
+    - link "Kimberly Marteau Emerson":
+      - /url: /about/people/kimberly-marteau-emerson
+    - generic: Principal, KME Consulting
+    - link "Alicia Miñana":
+      - /url: /about/people/alicia-minana
+      - img "Alicia Miñana"
+    - link "Alicia Miñana":
+      - /url: /about/people/alicia-minana
+    - generic: Lawyer, Law Offices of Alicia Miñana
+    - link "Simone Otus Coxe":
+      - /url: /about/people/simone-otus-coxe
+      - img "Simone Otus Coxe"
+    - link "Simone Otus Coxe":
+      - /url: /about/people/simone-otus-coxe
+    - link "Gloria Principe":
+      - /url: /about/people/gloria-principe
+      - img "Gloria Principe"
+    - link "Gloria Principe":
+      - /url: /about/people/gloria-principe
+    - generic: Human Rights Supporter, Non-Profit Board Member
+    - link "Bruce Rabb":
+      - /url: /about/people/bruce-rabb
+      - img "Bruce Rabb"
+    - link "Bruce Rabb":
+      - /url: /about/people/bruce-rabb
+    - generic: Secretary; Legal Adviser to Nonprofit Organizations
+    - link "Allan Rock":
+      - /url: /about/people/allan-rock
+      - img "Allan Rock"
+    - link "Allan Rock":
+      - /url: /about/people/allan-rock
+    - generic: President Emeritus, University of Ottawa
+    - link "Bijan Sabet":
+      - /url: /about/people/bijan-sabet
+      - img "Bijan Sabet"
+    - link "Bijan Sabet":
+      - /url: /about/people/bijan-sabet
+    - generic: United States Ambassador to the Czech Republic (ret.); Spark Capital co-founder and Partner Emeritus
+    - link "Joseph Skrzynski AO":
+      - /url: /about/people/joseph-skrzynski-ao
+      - img "Joseph Skrzynski AO"
+    - link "Joseph Skrzynski AO":
+      - /url: /about/people/joseph-skrzynski-ao
+    - generic: Co-Founder, CPE Capital
+    - link "Donna Slaight, C.M.":
+      - /url: /about/people/donna-slaight-cm
+      - img "Donna Slaight, C.M."
+    - link "Donna Slaight, C.M.":
+      - /url: /about/people/donna-slaight-cm
+    - generic: Human Rights Activist
+    - link "Katherine Todrys":
+      - /url: /about/people/katherine-todrys
+      - img "Katherine Todrys"
+    - link "Katherine Todrys":
+      - /url: /about/people/katherine-todrys
+    - generic: Human Rights Lawyer and Author
+  - heading "Former Board Chairs" [level=2]
+  - list:
+    - link "Amy Rao":
+      - /url: /about/people/amy-rao
+      - img "Amy Rao"
+    - link "Amy Rao":
+      - /url: /about/people/amy-rao
+    - generic: Former Board Chair, 2019-2025; Executive Vice President, Schmidt Family Foundation
+    - link "Neil Rimer":
+      - /url: /about/people/neil-rimer
+      - img "Neil Rimer"
+    - link "Neil Rimer":
+      - /url: /about/people/neil-rimer
+    - generic: Former Board Chair, 2019-2025; Co-Founder & General Partner, Index Ventures
+    - link "Robert Kissane":
+      - /url: /about/people/robert-kissane
+      - img "Robert Kissane"
+    - link "Robert Kissane":
+      - /url: /about/people/robert-kissane
+    - generic: Former Board Chair, 2016-2019; Chairman, CCS
+    - link "Hassan Elmasry":
+      - /url: /about/people/hassan-elmasry
+      - img "Hassan Elmasry"
+    - link "Hassan Elmasry":
+      - /url: /about/people/hassan-elmasry
+    - generic: Former Board Chair, 2013-2019; Partner & Lead Portfolio Manager, Independent Franchise Partners, LLP
+    - link "Joel Motley":
+      - /url: /about/people/joel-motley
+      - img "Joel Motley"
+    - link "Joel Motley":
+      - /url: /about/people/joel-motley
+    - generic: Former Board Chair, 2013-2016; Managing Director, Public Capital Advisors, LLC
+    - link "James F. Hoge Jr. (In Memoriam 1935-2023)":
+      - /url: /about/people/james-f-hoge-jr-memoriam-1935-2023
+      - img "James F. Hoge Jr. (In Memoriam 1935-2023)"
+    - link "James F. Hoge Jr. (In Memoriam 1935-2023)":
+      - /url: /about/people/james-f-hoge-jr-memoriam-1935-2023
+    - generic: Former Board Chair, 2010-2013
+    - link "Jane Olson":
+      - /url: /about/people/jane-olson
+      - img "Jane Olson"
+    - link "Jane Olson":
+      - /url: /about/people/jane-olson
+    - generic: Former Board Chair, 2004-2010; Chair, Landmine Survivors Network 1998-2010; Board Member, Pacific Council on International Policy
+    - link "Jonathan F. Fanton":
+      - /url: /about/people/jonathan-f-fanton
+      - img "Jonathan F. Fanton"
+    - link "Jonathan F. Fanton":
+      - /url: /about/people/jonathan-f-fanton
+    - generic: Former Board Chair, 1998-2003; Former President, John D. and Catherine T. MacArthur Foundation; Franklin D. Roosevelt Visiting Fellow, Hunter College, CUNY
+    - link "Robert L. Bernstein (In Memoriam 1923—2019)":
+      - /url: /about/people/robert-l-bernstein-memoriam-1923-2019
+      - img "Robert L. Bernstein (In Memoriam 1923—2019)"
+    - link "Robert L. Bernstein (In Memoriam 1923—2019)":
+      - /url: /about/people/robert-l-bernstein-memoriam-1923-2019
+    - generic: Founding Chair, 1978-1998; Former Chairman & President, 1966-1990, Random House
+  - heading "In Memoriam" [level=2]
+  - link "The In Memoriam page is where Human Rights Watch remembers and honors our closest supporters who have passed.":
+    - /url: https://www.hrw.org/about/people/in-memoriam
+  - heading "Board Members Emeriti" [level=2]
+  - list:
+    - link:
+      - /url: /about/people/lisa-anderson
+    - link "Lisa Anderson":
+      - /url: /about/people/lisa-anderson
+    - generic: Former President, American University in Cairo
+    - link:
+      - /url: /about/people/david-brown
+    - link "David Brown":
+      - /url: /about/people/david-brown
+    - generic: Principal, Penobscot Management, LLC.
+    - link:
+      - /url: /about/people/william-d-carmichael
+    - link "William D. Carmichael":
+      - /url: /about/people/william-d-carmichael
+    - generic: Human Rights Activist; Retired, Ford Foundation
+    - link:
+      - /url: /about/people/alice-h-henkin
+    - link "Alice H. Henkin":
+      - /url: /about/people/alice-h-henkin
+    - generic: Director, Emerita Justice and Society Program, The Aspen Institute
+    - link "Betsy Karel":
+      - /url: /about/people/betsy-karel
+      - img "Betsy Karel"
+    - link "Betsy Karel":
+      - /url: /about/people/betsy-karel
+    - generic: Vice Chair; Photographer; Chair, Trellis Fund
+    - link:
+      - /url: /about/people/stephen-l-kass
+    - link "Stephen L. Kass":
+      - /url: /about/people/stephen-l-kass
+    - generic: Partner & Co-Director, Environmental Practice Group Carter, Ledyard & Milburn; Adjunct Professor of Law, Brooklyn Law School
+    - link "Marina Pinto Kaufman":
+      - /url: /about/people/marina-pinto-kaufman
+      - img "Marina Pinto Kaufman"
+    - link "Marina Pinto Kaufman":
+      - /url: /about/people/marina-pinto-kaufman
+    - generic: Human Rights Activist
+    - link "Wendy Keys":
+      - /url: /about/people/wendy-keys
+      - img "Wendy Keys"
+    - link "Wendy Keys":
+      - /url: /about/people/wendy-keys
+    - generic: Filmmaker, Former Executive Producer of Programming, Film Society of Lincoln Center
+    - link:
+      - /url: /about/people/bruce-j-klatsky
+    - link "Bruce J. Klatsky":
+      - /url: /about/people/bruce-j-klatsky
+    - generic: Former Board Chair & Chief Executive Officer, Phillips-Van Heusen
+    - link "Joanne Leedom-Ackerman":
+      - /url: /about/people/joanne-leedom-ackerman
+      - img "Joanne Leedom-Ackerman"
+    - link "Joanne Leedom-Ackerman":
+      - /url: /about/people/joanne-leedom-ackerman
+    - generic: Author; Vice President, International PEN
+    - link:
+      - /url: /about/people/joshua-mailman
+    - link "Joshua Mailman":
+      - /url: /about/people/joshua-mailman
+    - generic: Joshua Mailman Foundation
+    - link "Susan Manilow":
+      - /url: /about/people/susan-manilow
+      - img "Susan Manilow"
+    - link "Susan Manilow":
+      - /url: /about/people/susan-manilow
+    - generic: Human Rights Activist
+    - link "Oki Matsumoto":
+      - /url: /about/people/oki-matsumoto
+      - img "Oki Matsumoto"
+    - link "Oki Matsumoto":
+      - /url: /about/people/oki-matsumoto
+    - generic: Founder, Chairman, and Chief Executive Officer, Monex Group, Inc.
+    - link:
+      - /url: /about/people/samuel-k-murumba
+    - link "Samuel K. Murumba":
+      - /url: /about/people/samuel-k-murumba
+    - generic: Professor of Law, Brooklyn Law School
+    - link "Kathleen Peratis":
+      - /url: /about/people/kathleen-peratis
+      - img "Kathleen Peratis"
+    - link "Kathleen Peratis":
+      - /url: /about/people/kathleen-peratis
+    - generic: Senior Partner, Outten and Golden
+    - link:
+      - /url: /about/people/sigrid-rausing
+    - link "Sigrid Rausing":
+      - /url: /about/people/sigrid-rausing
+    - generic: Sigrid Rausing Trust
+    - link "Victoria Riskin":
+      - /url: /about/people/victoria-riskin
+      - img "Victoria Riskin"
+    - link "Victoria Riskin":
+      - /url: /about/people/victoria-riskin
+    - generic: Human Rights Activist; Writer-Producer; Former President of the Writers Guild of America
+    - link "Shelley F. Rubin":
+      - /url: /about/people/shelley-f-rubin
+      - img "Shelley F. Rubin"
+    - link "Shelley F. Rubin":
+      - /url: /about/people/shelley-f-rubin
+    - generic: Co-Founder, The Rubin Museum of Art
+    - link "Kevin P. Ryan":
+      - /url: /about/people/kevin-p-ryan
+      - img "Kevin P. Ryan"
+    - link "Kevin P. Ryan":
+      - /url: /about/people/kevin-p-ryan
+    - generic: Chairman and Founder, MongoDB, Zola, Workframe and Nomad Health
+    - link:
+      - /url: /about/people/orville-schell
+    - link "Orville Schell":
+      - /url: /about/people/orville-schell
+    - generic: Director, Center on US-China Relations; Asia Society; Former Dean of Graduate School of Journalism, UC Berkeley
+    - link:
+      - /url: /about/people/gary-sick
+    - link "Gary Sick":
+      - /url: /about/people/gary-sick
+    - generic: Senior Research Scholar & Adjunct Professor of Middle East Politics, Columbia University
+    - link "Siri Stolt-Nielsen":
+      - /url: /about/people/siri-stolt-nielsen
+      - img "Siri Stolt-Nielsen"
+    - link "Siri Stolt-Nielsen":
+      - /url: /about/people/siri-stolt-nielsen
+    - generic: Activist, Artist
+    - link "John J. Studzinski":
+      - /url: /about/people/john-j-studzinski
+      - img "John J. Studzinski"
+    - link "John J. Studzinski":
+      - /url: /about/people/john-j-studzinski
+    - generic: Vice Chairman, PIMCO
+    - link "Darian W. Swig":
+      - /url: /about/people/darian-w-swig
+      - img "Darian W. Swig"
+    - link "Darian W. Swig":
+      - /url: /about/people/darian-w-swig
+    - generic: Human Rights Advocate; Founder & President, Article 3 Advisors
+    - link "Amy Towers":
+      - /url: /about/people/amy-towers
+      - img "Amy Towers"
+    - link "Amy Towers":
+      - /url: /about/people/amy-towers
+    - generic: Founder, Nduna Foundation
+    - link "Catherine Zennström":
+      - /url: /about/people/catherine-zennstrom
+      - img "Catherine Zennström"
+    - link "Catherine Zennström":
+      - /url: /about/people/catherine-zennstrom
+    - generic: Chair & Co-Founder, Zennström Philanthropies
+  - navigation "Main navigation":
+    - heading "Main navigation" [level=2]
+    - heading "About" [level=2]
+    - list:
+      - link "About Us":
+        - /url: /about-us
+      - link "Newsletters":
+        - /url: /newsletters
+      - link "Careers":
+        - /url: /careers
+      - link "People":
+        - /url: /about/people
+      - list:
+        - link "– Board of Directors":
+          - /url: /about/people/board-directors
+        - link "– Advisory Committees":
+          - /url: /about/people/advisory-committees
+      - link "Social Media":
+        - /url: /about/social-media
+      - link "Human Rights Education":
+        - /url: /students-and-educators
+      - link "Partners":
+        - /url: /about/partners
+      - link "Financials and Fundraising Policy":
+        - /url: /financials
+      - link "Accessibility":
+        - /url: /about/accessibility
+      - link "Contact":
+        - /url: /contact-us
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

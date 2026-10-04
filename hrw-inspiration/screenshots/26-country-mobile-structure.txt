@@ -1,0 +1,301 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - button "English"
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+  - button "Open the main menu":
+    - generic: Open the main menu
+  - generic: Trending
+  - link "Trump Administration and Human Rights":
+    - /url: /tag/trump-administration-and-human-rights
+    - text: Trump Administration and Human Rights
+  - link "Russia-Ukraine War":
+    - /url: /tag/russia-ukraine-war
+    - text: Russia-Ukraine War
+  - link "Israel/Palestine":
+    - /url: /middle-east/north-africa/israel/palestine
+    - text: Israel/Palestine
+  - link "International Criminal Court":
+    - /url: /topic/international-justice/international-criminal-court
+    - text: International Criminal Court
+  - link "Crisis in the Middle East":
+    - /url: /tag/crisis-in-the-middle-east
+    - text: Crisis in the Middle East
+- main:
+  - navigation "Explore Middle East/North Africa":
+    - button "Explore Middle East/North Africa":
+      - text: Explore Middle East/North Africa
+  - heading "Iraq" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - img "Map of Iraq"
+  - list:
+    - text: Health
+    - figure:
+      - img "Iraqi police patrol a street in Baghdad, June 28, 2026."
+      - link:
+        - /url: /news/2026/08/18/iraq-man-dies-in-police-drug-unit-custody
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|News Release"
+    - 'link "Iraq: Man Dies in Police Drug Unit Custody"':
+      - /url: /news/2026/08/18/iraq-man-dies-in-police-drug-unit-custody
+    - text: Women's Rights
+    - figure:
+      - img "Yanar Mohammed, founder of the Women's Freedom Organization in Iraq, speaks to reporters while holding a newspaper copy of Iraq's new constitution, Baghdad, July 28, 2005."
+      - link:
+        - /url: /news/2026/03/12/iraq-prominent-womens-rights-activist-assassinated
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|News Release"
+    - 'link "Iraq: Prominent Women’s Rights Activist Assassinated"':
+      - /url: /news/2026/03/12/iraq-prominent-womens-rights-activist-assassinated
+    - text: Children's Rights
+    - figure:
+      - img "A woman walks holding a placard as activists demonstrate against female child marriages, in Tahrir Square, central Baghdad, July 28, 2024."
+      - link:
+        - /url: /news/2026/02/24/marriage-without-safeguards-the-consequences-of-iraqs-personal-status-code
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|Commentary"
+    - 'link "Marriage Without Safeguards: The Consequences of Iraq’s Personal Status Code"':
+      - /url: /news/2026/02/24/marriage-without-safeguards-the-consequences-of-iraqs-personal-status-code
+    - link "Sarah Sanbar":
+      - /url: /about/people/sarah-sanbar
+    - generic: Iraq Researcher, Middle East and North Africa Division
+    - generic: "Published in:"
+    - link "Jummar Media":
+      - /url: https://jummar.media/en/11132
+  - heading "Videos" [level=2]
+  - link "Watch more Videos":
+    - /url: /video-photos?country%5B0%5D=9637#form--inline-filters--block
+    - text: Watch more
+    - generic: Videos
+  - 'tabpanel "Iraq: Teargas Cartridges Killing Protesters"':
+    - img "n/a"
+    - button "click to play video":
+    - iframe
+  - tablist:
+    - 'tab "Iraq: Teargas Cartridges Killing Protesters" [selected]':
+      - generic: "Iraq: Teargas Cartridges Killing Protesters"
+    - 'tab "Video: Water Crisis in Basra"':
+      - generic: "Video: Water Crisis in Basra"
+    - tab "ISIS Child Suspects Arbitrarily Arrested, Tortured in Iraq":
+      - generic: ISIS Child Suspects Arbitrarily Arrested, Tortured in Iraq
+  - heading "Reports" [level=2]
+  - link "More reports":
+    - /url: /publications?country%5B0%5D=9637
+    - text: More reports
+  - list:
+    - article:
+      - generic: July 8, 2024 | Report
+      - 'heading "Iran: Security Forces Killing Kurdish Border Couriers" [level=3]':
+        - 'link "Iran: Security Forces Killing Kurdish Border Couriers"':
+          - /url: /news/2024/07/08/iran-security-forces-killing-kurdish-border-couriers
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Kulbars carry goods on their backs along the mountains of the Iran-Iraq border, Kurdistan, Iran, April 29, 2017."
+      - link:
+        - /url: /news/2024/07/08/iran-security-forces-killing-kurdish-border-couriers
+    - article:
+      - generic: June 4, 2024 | Report
+      - heading "Iraqis with Disabilities Excluded from Jobs" [level=3]:
+        - link "Iraqis with Disabilities Excluded from Jobs":
+          - /url: /news/2024/06/04/iraqis-disabilities-excluded-jobs
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Bab Al-Agha Bakery, Baghdad, Iraq, March 7, 2024."
+      - link:
+        - /url: /news/2024/06/04/iraqis-disabilities-excluded-jobs
+    - article:
+      - generic: March 3, 2024 | Report
+      - heading "“My Marriage was Mistake after Mistake”" [level=3]:
+        - link "“My Marriage was Mistake after Mistake”":
+          - /url: /report/2024/03/03/my-marriage-was-mistake-after-mistake/impact-unregistered-marriages-womens-and
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A woman looks at wedding dresses in a store window"
+      - link:
+        - /url: /report/2024/03/03/my-marriage-was-mistake-after-mistake/impact-unregistered-marriages-womens-and
+    - article:
+      - generic: September 25, 2023 | Report
+      - 'heading "Iraq: Torture Survivors Await US Redress, Accountability" [level=3]':
+        - 'link "Iraq: Torture Survivors Await US Redress, Accountability"':
+          - /url: /news/2023/09/25/iraq-torture-survivors-await-us-redress-accountability
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Taleb Al Majli, an Iraqi who described being tortured by US forces after his detention at Abu Ghraib prison in November 2003, at his home in Baghdad in 2023. The US released him without charge in March 2005."
+      - link:
+        - /url: /news/2023/09/25/iraq-torture-survivors-await-us-redress-accountability
+  - heading "News" [level=2]
+  - list:
+    - article:
+      - generic: February 23, 2026 | News Release
+      - 'heading "Northeast Syria: Camp Closures Leave Thousands Stranded" [level=3]':
+        - 'link "Northeast Syria: Camp Closures Leave Thousands Stranded"':
+          - /url: /news/2026/02/23/northeast-syria-camp-closures-leave-thousands-stranded
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Syrian security forces take control of al-Hol camp in the desert region of al-Hasakah Province, Syria, on January 21, 2026, following the withdrawal of Kurdish forces the previous day."
+      - link:
+        - /url: /news/2026/02/23/northeast-syria-camp-closures-leave-thousands-stranded
+    - article:
+      - generic: February 17, 2026 | News Release
+      - 'heading "Iraq: Alleged ISIS Detainees Transferred from Syria at Risk of Abuse" [level=3]':
+        - 'link "Iraq: Alleged ISIS Detainees Transferred from Syria at Risk of Abuse"':
+          - /url: /news/2026/02/17/iraq-alleged-isis-detainees-transferred-from-syria-at-risk-of-abuse
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A woman walks with a child in Roj camp, which holds foreign wives and children of Islamic State (ISIS) members, in northeast Syria, September 2018. © 2018 Delil Souleiman/AFP/Getty Images"
+      - link:
+        - /url: /news/2026/02/17/iraq-alleged-isis-detainees-transferred-from-syria-at-risk-of-abuse
+    - article:
+      - generic: February 11, 2026 | Statement
+      - heading "Joint Statement by the Coalition for Just Reparations Criminal Justice Working Group" [level=3]:
+        - link "Joint Statement by the Coalition for Just Reparations Criminal Justice Working Group":
+          - /url: /news/2026/02/11/joint-statement-by-the-coalition-for-just-reparations-criminal-justice-working
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - article:
+      - generic: October 15, 2025 | News Release
+      - 'heading "Iraq: New Personal Status Code Makes Women Second Class" [level=3]':
+        - 'link "Iraq: New Personal Status Code Makes Women Second Class"':
+          - /url: /news/2025/10/15/iraq-new-personal-status-code-makes-women-second-class
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A woman holds a sign protesting women being deprived of their rights in marriage in Tahrir Square, Baghdad, Iraq, August 8, 2024."
+      - link:
+        - /url: /news/2025/10/15/iraq-new-personal-status-code-makes-women-second-class
+    - article:
+      - generic: October 9, 2025 | News Release
+      - 'heading "UN: Abusive Governments Set to Win Rights Council Seats" [level=3]':
+        - 'link "UN: Abusive Governments Set to Win Rights Council Seats"':
+          - /url: /news/2025/10/09/un-abusive-governments-set-to-win-rights-council-seats
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "The United Nations Human Rights Council, Geneva, Switzerland, February 26, 2024."
+      - link:
+        - /url: /news/2025/10/09/un-abusive-governments-set-to-win-rights-council-seats
+    - article:
+      - generic: July 29, 2025 | News Release
+      - 'heading "Iraq: Damage to Kurdistan Region Oil Fields Puts Rights at Risk" [level=3]':
+        - 'link "Iraq: Damage to Kurdistan Region Oil Fields Puts Rights at Risk"':
+          - /url: /news/2025/07/29/iraq-damage-to-kurdistan-region-oil-fields-puts-rights-at-risk
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "The Sarsang oilfield operated by HKN Energy, after a drone attack, in Duhok province, Iraq, July 17, 2025."
+      - link:
+        - /url: /news/2025/07/29/iraq-damage-to-kurdistan-region-oil-fields-puts-rights-at-risk
+    - article:
+      - generic: March 27, 2025 | Commentary
+      - heading "Iraq’s Climate Crisis is a Human Rights Crisis" [level=3]:
+        - link "Iraq’s Climate Crisis is a Human Rights Crisis":
+          - /url: /news/2025/03/27/iraqs-climate-crisis-human-rights-crisis
+      - img "A fisherman walks across a dried patch of land in the marshes of southern Iraq in Dhi Qar province, September 2, 2022. Iraq's marshlands are rapidly receding due to drought, domestic water mismanagement, and diversion from neighboring countries."
+      - link:
+        - /url: /news/2025/03/27/iraqs-climate-crisis-human-rights-crisis
+    - article:
+      - generic: March 10, 2025 | News Release
+      - 'heading "Iraq: Personal Status Law Amendment Sets Back Women’s Rights" [level=3]':
+        - 'link "Iraq: Personal Status Law Amendment Sets Back Women’s Rights"':
+          - /url: /news/2025/03/10/iraq-personal-status-law-amendment-sets-back-womens-rights
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A woman holds a sign protesting women being deprived of their rights in marriage in Tahrir Square, Baghdad, Iraq, August 8, 2024."
+      - link:
+        - /url: /news/2025/03/10/iraq-personal-status-law-amendment-sets-back-womens-rights
+    - article:
+      - generic: January 16, 2025 | News Release
+      - 'heading "Iraq: Repressive Laws Roll Back Rights" [level=3]':
+        - 'link "Iraq: Repressive Laws Roll Back Rights"':
+          - /url: /news/2025/01/16/iraq-repressive-laws-roll-back-rights
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A woman walks holding a placard as activists demonstrate against female child marriages, in Tahrir Square, central Baghdad, July 28, 2024."
+      - link:
+        - /url: /news/2025/01/16/iraq-repressive-laws-roll-back-rights
+    - article:
+      - generic: November 19, 2024 | News Release
+      - 'heading "Iraq: Surging Unlawful Executions" [level=3]':
+        - 'link "Iraq: Surging Unlawful Executions"':
+          - /url: /news/2024/11/19/iraq-surging-unlawful-executions
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Barbed wire."
+      - link:
+        - /url: /news/2024/11/19/iraq-surging-unlawful-executions
+  - link "Read More":
+    - /url: /news?country%5B%5D=9637
+    - generic: Read More
+  - img "Iraq - World Report 2026"
+  - link "World Report 2026 Iraq":
+    - /url: /world-report/2026/country-chapters/iraq
+    - heading "World Report 2026" [level=2]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Our people" [level=2]
+  - link "Adam Coogle":
+    - /url: /about/people/adam-coogle
+  - generic: Deputy Director, Middle East and North Africa Division
+  - link "adamcoogle adamcoogle":
+    - /url: https://twitter.com/adamcoogle
+    - generic: adamcoogle
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Sarah Sanbar":
+    - /url: /about/people/sarah-sanbar
+  - generic: Iraq Researcher, Middle East and North Africa Division
+  - link "SarahSanbar SarahSanbar":
+    - /url: https://twitter.com/SarahSanbar
+    - generic: SarahSanbar
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Protecting Rights, Saving Lives Human Right Watch defends the rights of people in 90 countries worldwide, spotlighting abuses and bringing perpetrators to justice. Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2024EVcntpg1
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: Enter an email address
+  - textbox "Enter an email address"
+  - button "Sign up"
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/middle-east/north-africa/iraq
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

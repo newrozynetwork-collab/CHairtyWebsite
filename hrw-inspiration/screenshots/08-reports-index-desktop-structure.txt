@@ -1,0 +1,378 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar/publications
+      - link "简中":
+        - /url: /zh-hans/publications
+      - link "繁中":
+        - /url: /zh-hant/publications
+      - listitem: English
+      - link "Français":
+        - /url: /fr/publications
+      - link "Deutsch":
+        - /url: /de
+      - link "日本語":
+        - /url: /ja/publications
+      - link "Português":
+        - /url: /pt/publications
+      - link "Русский":
+        - /url: /ru/publications
+      - link "Español":
+        - /url: /es/publications
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - heading "Reports" [level=1]
+  - article:
+    - time: September 9, 2026
+    - heading "Uncontrolled Burn" [level=2]:
+      - link "Uncontrolled Burn":
+        - /url: /report/2026/09/09/uncontrolled-burn/the-inhumane-effects-of-white-phosphorus-munitions-and-the-need
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "report cover in English"
+  - figure:
+    - link "A man holds a flower and the message \"Humanity for All\" in front of a line of soldiers":
+      - /url: ""
+      - img "A man holds a flower and the message \"Humanity for All\" in front of a line of soldiers"
+  - heading "World Report 2026" [level=3]:
+    - link "World Report 2026":
+      - /url: /world-report/2026
+  - link "Previous World Reports":
+    - /url: /previous-world-reports
+    - text: Previous World Reports
+  - heading "Search" [level=2]
+  - generic: Keyword
+  - textbox "Keyword"
+  - generic: Year
+  - textbox "Year"
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - button "Country":
+    - generic: Country
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - button "Topic":
+    - generic: Topic
+  - button "Apply"
+  - list:
+    - article:
+      - generic: September 8, 2026
+      - heading "Too Old and A Woman" [level=3]:
+        - link "Too Old and A Woman":
+          - /url: /report/2026/09/08/too-old-and-a-woman/systemic-age-and-gender-discrimination-against-women-at-work
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Systemic Age and Gender Discrimination Against Women at Work in South Korea
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "report cover in English"
+      - link:
+        - /url: /report/2026/09/08/too-old-and-a-woman/systemic-age-and-gender-discrimination-against-women-at-work
+    - article:
+      - generic: September 2, 2026
+      - heading "“We Are Living on Borrowed Time”" [level=3]:
+        - link "“We Are Living on Borrowed Time”":
+          - /url: /report/2026/09/02/we-are-living-on-borrowed-time/repression-of-civil-society-in-tunisia
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Repression of Civil Society in Tunisia
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "report cover in English"
+      - link:
+        - /url: /report/2026/09/02/we-are-living-on-borrowed-time/repression-of-civil-society-in-tunisia
+    - article:
+      - generic: September 1, 2026
+      - heading "“Not Genuine with Justice”" [level=3]:
+        - link "“Not Genuine with Justice”":
+          - /url: /report/2026/09/01/not-genuine-with-justice/sri-lankas-lack-of-will-to-prosecute-past-abuses
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Sri Lanka’s Lack of Will to Prosecute Past Abuses
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Report cover in English"
+      - link:
+        - /url: /report/2026/09/01/not-genuine-with-justice/sri-lankas-lack-of-will-to-prosecute-past-abuses
+    - article:
+      - generic: August 24, 2026
+      - heading "“I Thought I’d Never See My Mom Again”" [level=3]:
+        - link "“I Thought I’d Never See My Mom Again”":
+          - /url: /report/2026/08/24/i-thought-id-never-see-my-mom-again/recruitment-and-use-of-children-by-colombian
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Recruitment and Use of Children by Colombian Armed Groups
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Report cover in English"
+      - link:
+        - /url: /report/2026/08/24/i-thought-id-never-see-my-mom-again/recruitment-and-use-of-children-by-colombian
+    - article:
+      - generic: August 13, 2026
+      - heading "Remedies Abandoned" [level=3]:
+        - link "Remedies Abandoned":
+          - /url: /report/2026/08/13/remedies-abandoned/us-civil-rights-enforcement-under-the-trump-administration
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: US Civil Rights Enforcement Under the Trump Administration
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "report cover in English"
+      - link:
+        - /url: /report/2026/08/13/remedies-abandoned/us-civil-rights-enforcement-under-the-trump-administration
+    - article:
+      - generic: July 28, 2026
+      - heading "Grabbed Land, Silenced Justice" [level=3]:
+        - link "Grabbed Land, Silenced Justice":
+          - /url: /report/2026/07/28/grabbed-land-silenced-justice/the-persecution-of-environmentalists-and-indigenous
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: The Persecution of Environmentalists and Indigenous Leaders in Indonesia
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "report cover in English"
+      - link:
+        - /url: /report/2026/07/28/grabbed-land-silenced-justice/the-persecution-of-environmentalists-and-indigenous
+    - article:
+      - generic: July 21, 2026
+      - heading "A Dangerous Partnership" [level=3]:
+        - link "A Dangerous Partnership":
+          - /url: /report/2026/07/21/a-dangerous-partnership/abuses-unanswered-questions-and-us-ecuador-security
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Abuses, Unanswered Questions, and US-Ecuador Security Cooperation
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Report cover in English"
+      - link:
+        - /url: /report/2026/07/21/a-dangerous-partnership/abuses-unanswered-questions-and-us-ecuador-security
+    - article:
+      - generic: July 15, 2026
+      - heading "“You’re Only Getting Out Deported or Dead”" [level=3]:
+        - link "“You’re Only Getting Out Deported or Dead”":
+          - /url: /report/2026/07/15/youre-only-getting-out-deported-or-dead/abusive-us-immigration-detention-at-ft
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Abusive US Immigration Detention at Ft. Bliss
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Report cover in English"
+      - link:
+        - /url: /report/2026/07/15/youre-only-getting-out-deported-or-dead/abusive-us-immigration-detention-at-ft
+    - article:
+      - generic: June 25, 2026
+      - heading "Dying in Detention" [level=3]:
+        - link "Dying in Detention":
+          - /url: /report/2026/06/25/dying-in-detention/rising-deaths-in-an-expanding-us-immigration-detention-system
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Rising Deaths in an Expanding US Immigration Detention System
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "report cover in English"
+      - link:
+        - /url: /report/2026/06/25/dying-in-detention/rising-deaths-in-an-expanding-us-immigration-detention-system
+    - article:
+      - generic: June 24, 2026
+      - heading "“I Live in Constant Peril”" [level=3]:
+        - link "“I Live in Constant Peril”":
+          - /url: /report/2026/06/24/i-live-in-constant-peril/discrimination-lack-of-economic-autonomy-and-violence
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Discrimination, Lack of Economic Autonomy and Violence Against Women in Cameroon
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Report cover in English"
+      - link:
+        - /url: /report/2026/06/24/i-live-in-constant-peril/discrimination-lack-of-economic-autonomy-and-violence
+    - article:
+      - generic: June 18, 2026
+      - heading "“A Manufactured Crisis”" [level=3]:
+        - link "“A Manufactured Crisis”":
+          - /url: /report/2026/06/18/a-manufactured-crisis/minnesota-communities-terrorized-by-the-federal-government
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Minnesota Communities Terrorized by the Federal Government
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Report cover in English"
+      - link:
+        - /url: /report/2026/06/18/a-manufactured-crisis/minnesota-communities-terrorized-by-the-federal-government
+    - article:
+      - generic: June 17, 2026
+      - heading "Paying the Price of Police Harassment" [level=3]:
+        - link "Paying the Price of Police Harassment":
+          - /url: /report/2026/06/17/paying-the-price-of-police-harassment/discriminatory-fines-target-black-and-arab
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Discriminatory Fines Target Black and Arab Youth in France
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "cover in English"
+      - link:
+        - /url: /report/2026/06/17/paying-the-price-of-police-harassment/discriminatory-fines-target-black-and-arab
+    - article:
+      - generic: June 12, 2026
+      - heading "“I Just Want to Work Without Fear”" [level=3]:
+        - link "“I Just Want to Work Without Fear”":
+          - /url: /report/2026/06/12/i-just-want-to-work-without-fear/discrimination-and-violations-of-the-right-to
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Discrimination and Violations of the Right to Work for Persons with Albinism in Malawi
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "video content"
+      - img "report cover in English"
+      - link:
+        - /url: /report/2026/06/12/i-just-want-to-work-without-fear/discrimination-and-violations-of-the-right-to
+    - article:
+      - generic: June 10, 2026
+      - heading "“Death Was Everywhere”" [level=3]:
+        - link "“Death Was Everywhere”":
+          - /url: /report/2026/06/10/death-was-everywhere/arbitrary-detention-killings-and-forced-recruitment-by-the
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Arbitrary Detention, Killings, and Forced Recruitment by the M23 and the Rwanda Defence Force
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "video content"
+      - img "cover in English"
+      - link:
+        - /url: /report/2026/06/10/death-was-everywhere/arbitrary-detention-killings-and-forced-recruitment-by-the
+    - article:
+      - generic: May 27, 2026
+      - heading "“Casting Us Aside to Die”" [level=3]:
+        - link "“Casting Us Aside to Die”":
+          - /url: /report/2026/05/27/casting-us-aside-to-die/cuban-and-other-third-country-nationals-deported-from-the
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - generic: Cuban and Other Third-Country Nationals Deported from the US to Mexico
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "“Casting Us Aside to Die”"
+      - link:
+        - /url: /report/2026/05/27/casting-us-aside-to-die/cuban-and-other-third-country-nationals-deported-from-the
+  - navigation "Pagination":
+    - heading "Pagination" [level=4]
+    - list:
+      - link "Current page 1":
+        - /url: "?page=0"
+        - generic: Current page
+        - text: "1"
+      - link "Page 2":
+        - /url: "?page=1"
+        - generic: Page
+        - text: "2"
+      - link "Page 3":
+        - /url: "?page=2"
+        - generic: Page
+        - text: "3"
+      - link "Page 4":
+        - /url: "?page=3"
+        - generic: Page
+        - text: "4"
+      - link "Page 5":
+        - /url: "?page=4"
+        - generic: Page
+        - text: "5"
+      - link "Page 6":
+        - /url: "?page=5"
+        - generic: Page
+        - text: "6"
+      - link "Page 7":
+        - /url: "?page=6"
+        - generic: Page
+        - text: "7"
+      - link "Page 8":
+        - /url: "?page=7"
+        - generic: Page
+        - text: "8"
+      - link "Page 9":
+        - /url: "?page=8"
+        - generic: Page
+        - text: "9"
+      - text: …
+      - link "Next page":
+        - /url: "?page=1"
+        - generic: Next page
+        - text: ››
+      - link "Last page":
+        - /url: "?page=188"
+        - generic: Last page
+        - text: Last »
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

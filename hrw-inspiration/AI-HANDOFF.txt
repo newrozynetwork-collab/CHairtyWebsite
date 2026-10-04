@@ -1,0 +1,11 @@
+Use this local reference pack to design an original website inspired by Human Rights Watch's editorial structure and information architecture.
+
+First read REPORT.txt, data/coverage.json, data/screenshot-manifest.json and screenshots/design-measurements.json. Then inspect the relevant full-page images, viewport images, and overlapping slices. REPORT.html offers a human-readable gallery and per-page notes.
+
+The research retrieved 500 HTML pages and discovered 10711 URLs. It did NOT crawl or screenshot the whole archive. There are 39 selected page/viewport captures and 5 expanded navigation states. Some images were lazy-loaded or hidden; use the image completeness records. Treat URL-based classifications as inference. Do not claim all pages share the sample layouts.
+
+Ask for the new organization's identity, audience, content scope, desired languages and functional requirements. Use the reference's strong editorial hierarchy, documentary imagery rhythm, taxonomy discovery, readable long-form pages, research publication structure, and trust/impact modules. Create original branding and content. Use licensed or open fonts/images.
+
+Propose a page map and reusable components before building. Explain how homepage, archives, country/topic/campaign hubs, article, research report, annual collection, media, about/impact, people, newsletter, contact, and policies differ. Derive typography and palette from measured data; document any proposed adaptations. Implement functional search/filter/menu/carousel/forms separately, with appropriate states and tests. Provide responsive desktop/mobile and RTL where requested.
+
+Deliver a coherent original design, not a claim to have recreated HRW's backend or an exhaustive clone.

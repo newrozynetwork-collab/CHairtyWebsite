@@ -1,0 +1,382 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar/topic/hqwq-almrat
+      - link "简中":
+        - /url: /zh-hans/topic/womens-rights
+      - link "繁中":
+        - /url: /zh-hant/topic/womens-rights
+      - listitem: English
+      - link "Français":
+        - /url: /fr/topic/droits-des-femmes
+      - link "Deutsch":
+        - /url: /de/topic/frauenrechte
+      - link "日本語":
+        - /url: /ja/topic/womens-rights
+      - link "Português":
+        - /url: /pt/topic/womens-rights
+      - link "Русский":
+        - /url: /ru/topic/prava-zhenschin
+      - link "Español":
+        - /url: /es/topic/derechos-de-la-mujer
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - navigation "Explore Women's Rights":
+    - button "Explore Women's Rights":
+      - text: Explore Women's Rights
+  - heading "Women's Rights" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: © 2014 Samer Muscati/Human Rights Watch
+  - figure
+  - list:
+    - text: Asia
+    - figure:
+      - img "An elderly person pushing a handcart containing fast food supplies in Seoul, South Korea, August 1, 2025."
+      - link:
+        - /url: /news/2026/09/23/south-koreas-systemic-gender-and-age-discrimination
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|Commentary"
+    - link "South Korea’s Systemic Gender and Age Discrimination":
+      - /url: /news/2026/09/23/south-koreas-systemic-gender-and-age-discrimination
+    - link "Bridget Sleap":
+      - /url: /about/people/bridget-sleap
+    - generic: Senior Researcher, Rights of Older People
+    - generic: "Published in:"
+    - link "Kyunghyang Shinmun":
+      - /url: https://www.khan.co.kr/article/202609131959005
+    - text: United States
+    - figure:
+      - img "MS NOW White House Correspondent Akayla Gardner prepares for a television report on a street corner outside the White House grounds in Washington, DC, on September 21, 2026."
+      - link:
+        - /url: /news/2026/09/23/trumps-latest-media-attacks-again-hit-women-journalists
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|Dispatches"
+    - link "Trump’s Latest Media Attacks Again Hit Women Journalists":
+      - /url: /news/2026/09/23/trumps-latest-media-attacks-again-hit-women-journalists
+    - link "Skye Wheeler":
+      - /url: /about/people/skye-wheeler
+    - generic: Senior Researcher, Women's Rights Division
+    - link "Heather Barr":
+      - /url: /about/people/heather-barr
+    - generic: Associate Director, Women's Rights Division
+    - text: Asia
+    - figure:
+      - img "Four illustrated women, including one pregnant woman"
+      - link:
+        - /url: /news/2026/09/22/myanmar-women-political-prisoners-tortured-ill-treated
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|Report"
+    - 'link "Myanmar: Women Political Prisoners Tortured, Ill-treated"':
+      - /url: /news/2026/09/22/myanmar-women-political-prisoners-tortured-ill-treated
+  - heading "Videos" [level=2]
+  - link "Watch more Videos":
+    - /url: /video-photos?topic%5B0%5D=9698#form--inline-filters--block
+    - text: Watch more
+    - generic: Videos
+  - tabpanel "Black Women are dying from Cervical Cancer at Disproportional Rates in Georgia":
+    - img "Women looking at a sign about HPV Vaccine"
+    - button "click to play video":
+    - iframe
+    - generic "Read a text description of this video"
+  - tablist:
+    - tab "Black Women are dying from Cervical Cancer at Disproportional Rates in Georgia" [selected]:
+      - generic: Black Women are dying from Cervical Cancer at Disproportional Rates in Georgia
+    - tab "Gender-Based Violence Survivors in Kenya Need More Government Support":
+      - generic: Gender-Based Violence Survivors in Kenya Need More Government Support
+    - tab "New Findings on Prison Mass Rape in DR Congo":
+      - generic: New Findings on Prison Mass Rape in DR Congo
+  - heading "Reports" [level=2]
+  - link "More reports":
+    - /url: /publications?topic%5B0%5D=9698
+    - text: More reports
+  - list:
+    - article:
+      - generic: September 22, 2026 | Report
+      - 'heading "Myanmar: Women Political Prisoners Tortured, Ill-treated" [level=3]':
+        - 'link "Myanmar: Women Political Prisoners Tortured, Ill-treated"':
+          - /url: /news/2026/09/22/myanmar-women-political-prisoners-tortured-ill-treated
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Four illustrated women, including one pregnant woman"
+      - link:
+        - /url: /news/2026/09/22/myanmar-women-political-prisoners-tortured-ill-treated
+    - article:
+      - generic: September 8, 2026 | Report
+      - heading "Too Old and A Woman" [level=3]:
+        - link "Too Old and A Woman":
+          - /url: /report/2026/09/08/too-old-and-a-woman/systemic-age-and-gender-discrimination-against-women-at-work
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Cleaner at work in a Seoul metro station, Seoul, South Korea."
+      - link:
+        - /url: /report/2026/09/08/too-old-and-a-woman/systemic-age-and-gender-discrimination-against-women-at-work
+    - article:
+      - generic: June 24, 2026 | Report
+      - heading "“I Live in Constant Peril”" [level=3]:
+        - link "“I Live in Constant Peril”":
+          - /url: /report/2026/06/24/i-live-in-constant-peril/discrimination-lack-of-economic-autonomy-and-violence
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "illustration"
+      - link:
+        - /url: /report/2026/06/24/i-live-in-constant-peril/discrimination-lack-of-economic-autonomy-and-violence
+    - article:
+      - generic: February 19, 2026 | Report
+      - 'heading "Russia: Attacks on Abortion Undermine Women’s Rights" [level=3]':
+        - 'link "Russia: Attacks on Abortion Undermine Women’s Rights"':
+          - /url: /news/2026/02/19/russia-attacks-on-abortion-undermine-womens-rights
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Russian President Vladimir Putin delivers remarks at the 2024 National Healthcare Congress at the Kremlin, in Moscow, October 29, 2024."
+      - link:
+        - /url: /news/2026/02/19/russia-attacks-on-abortion-undermine-womens-rights
+  - heading "News" [level=2]
+  - list:
+    - article:
+      - generic: September 22, 2026 | Dispatches
+      - heading "South African Women Need Protection, Not Warnings" [level=3]:
+        - link "South African Women Need Protection, Not Warnings":
+          - /url: /news/2026/09/22/south-african-women-need-protection-not-warnings
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A student during a vigil for victims of gender-based violence and femicide at the University of Cape Town, South Africa, September 18, 2026."
+      - link:
+        - /url: /news/2026/09/22/south-african-women-need-protection-not-warnings
+    - article:
+      - generic: September 18, 2026 | Letter
+      - 'heading "HRC63: Renew mandate of Special Rapporteur on Afghanistan, and maintain dedicated reporting and dialogues on rights of women and girls amid further entrenchment of gender persecution" [level=3]':
+        - 'link "HRC63: Renew mandate of Special Rapporteur on Afghanistan, and maintain dedicated reporting and dialogues on rights of women and girls amid further entrenchment of gender persecution"':
+          - /url: /news/2026/09/18/hrc63-renew-mandate-of-special-rapporteur-on-afghanistan-and-maintain-dedicated
+    - article:
+      - generic: September 18, 2026 | Q & A
+      - 'heading "Q&A: Canada’s Human Rights Obligations and the “Care Economy”" [level=3]':
+        - 'link "Q&A: Canada’s Human Rights Obligations and the “Care Economy”"':
+          - /url: /news/2026/09/18/qa-canadas-human-rights-obligations-and-the-care-economy
+      - img "Participants hold placards during the Act NOW Rally hosted by Barrier-Free Alberta in front of the Alberta Legislature, Canada, May 6, 2025."
+      - link:
+        - /url: /news/2026/09/18/qa-canadas-human-rights-obligations-and-the-care-economy
+    - article:
+      - generic: September 8, 2026 | News Release
+      - 'heading "South Korea: Systemic Gender, Age Discrimination at Work" [level=3]':
+        - 'link "South Korea: Systemic Gender, Age Discrimination at Work"':
+          - /url: /news/2026/09/08/south-korea-systemic-gender-age-discrimination-at-work
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Cleaner at work in a Seoul metro station, Seoul, South Korea."
+      - link:
+        - /url: /news/2026/09/08/south-korea-systemic-gender-age-discrimination-at-work
+    - article:
+      - generic: August 28, 2026 | Dispatches
+      - heading "Cameroon Grapples with Gender-Based Violence, Increased Femicides" [level=3]:
+        - link "Cameroon Grapples with Gender-Based Violence, Increased Femicides":
+          - /url: /news/2026/08/28/cameroon-grapples-with-gender-based-violence-increased-femicides
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Marie-Thérèse Abena Ondoa, Minister of Women's Empowerment and the Family, at the International Day of Rural Women celebrations in Nguibassal, Centre Cameroon, October 17, 2022."
+      - link:
+        - /url: /news/2026/08/28/cameroon-grapples-with-gender-based-violence-increased-femicides
+    - article:
+      - generic: August 13, 2026 | News Release
+      - 'heading "Afghanistan: Taliban Forcibly Disappear 6 Rights Workers" [level=3]':
+        - 'link "Afghanistan: Taliban Forcibly Disappear 6 Rights Workers"':
+          - /url: /news/2026/08/13/afghanistan-taliban-forcibly-disappear-6-rights-workers
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "An Afghan woman walks by Taliban security personnel inalong a market in the Baharak district of Badakhshan province, February 26, 2024."
+      - link:
+        - /url: /news/2026/08/13/afghanistan-taliban-forcibly-disappear-6-rights-workers
+    - article:
+      - generic: August 12, 2026 | News Release
+      - 'heading "Pakistan: Investigate Deaths of Woman, Girl in Police Custody" [level=3]':
+        - 'link "Pakistan: Investigate Deaths of Woman, Girl in Police Custody"':
+          - /url: /news/2026/08/12/pakistan-investigate-deaths-of-woman-girl-in-police-custody
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A police officer stands guard in Peshawar, Pakistan, August 5, 2023."
+      - link:
+        - /url: /news/2026/08/12/pakistan-investigate-deaths-of-woman-girl-in-police-custody
+    - article:
+      - generic: August 5, 2026 | News Release
+      - 'heading "West Bank: Israel Delaying Palestinian Ambulances Risks Lives" [level=3]':
+        - 'link "West Bank: Israel Delaying Palestinian Ambulances Risks Lives"':
+          - /url: /news/2026/08/05/west-bank-israel-delaying-palestinian-ambulances-risks-lives
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Palestinians wait to cross at the Israeli Awarta military checkpoint on March 23, 2025, south of Nablus in the West Bank."
+      - link:
+        - /url: /news/2026/08/05/west-bank-israel-delaying-palestinian-ambulances-risks-lives
+    - article:
+      - generic: August 3, 2026 | Feature
+      - 'heading "Afghanistan: 5 Years Under Taliban Rule" [level=3]':
+        - 'link "Afghanistan: 5 Years Under Taliban Rule"':
+          - /url: /feature/2026/08/03/afghanistan-5-years-under-taliban-rule/a-human-rights-crisis-a-humanitarian
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A woman looks out of a window"
+      - link:
+        - /url: /feature/2026/08/03/afghanistan-5-years-under-taliban-rule/a-human-rights-crisis-a-humanitarian
+    - article:
+      - generic: July 27, 2026 | Dispatches
+      - heading "Proposed DHS Work Authorization Rule Threatens Immigrant Domestic Violence Survivors" [level=3]:
+        - link "Proposed DHS Work Authorization Rule Threatens Immigrant Domestic Violence Survivors":
+          - /url: /news/2026/07/27/proposed-dhs-work-authorization-rule-threatens-immigrant-domestic-violence
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "In Homestead, Florida, women and their children listen to an explanation of their legal rights and strategies for preparing their families if a parent is detained or deported, January 17, 2025."
+      - link:
+        - /url: /news/2026/07/27/proposed-dhs-work-authorization-rule-threatens-immigrant-domestic-violence
+  - link "Read More":
+    - /url: /news?topic%5B%5D=9698
+    - generic: Read More
+  - heading "Our people" [level=2]
+  - link "Macarena Sáez":
+    - /url: /about/people/macarena-saez
+  - generic: Executive Director, Women's Rights Division
+  - link "Stacey-Leigh Manuel":
+    - /url: /about/people/stacey-leigh-manuel
+  - generic: Deputy Director, Women's Rights Division
+  - link "Heather Barr":
+    - /url: /about/people/heather-barr
+  - generic: Associate Director, Women's Rights Division
+  - link "heatherbarr1 heatherbarr1":
+    - /url: https://twitter.com/heatherbarr1
+    - generic: heatherbarr1
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Susanné Seong-eun Bergsten":
+    - /url: /about/people/susanne-seong-eun-bergsten
+  - generic: Acting Research Assistant, Women's Rights Division
+  - link "SuzeBPark SuzeBPark":
+    - /url: https://twitter.com/SuzeBPark
+    - generic: SuzeBPark
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "@suzebpark.bsky.social @suzebpark.bsky.social":
+    - /url: https://bsky.app/profile/suzebpark.bsky.social
+    - generic: "@suzebpark.bsky.social"
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Cristina Quijano Carrasco":
+    - /url: /about/people/cristina-quijano-carrasco
+  - generic: Researcher, Women's Rights
+  - link "Sahar Fetrat":
+    - /url: /about/people/sahar-fetrat
+  - generic: Researcher, Women's Rights Division
+  - link "Sahar_fetrat Sahar_fetrat":
+    - /url: https://twitter.com/Sahar_fetrat
+    - generic: Sahar_fetrat
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Zenaida Machado":
+    - /url: /about/people/zenaida-machado
+  - generic: Senior Researcher, Women's Rights Division
+  - link "zenaidamz zenaidamz":
+    - /url: https://twitter.com/zenaidamz
+    - generic: zenaidamz
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Juliana Nnoko":
+    - /url: /about/people/juliana-nnoko
+  - generic: Senior Advisor/Associate Director, Women's Rights Division
+  - link "NnokoMewanu NnokoMewanu":
+    - /url: https://twitter.com/NnokoMewanu
+    - generic: NnokoMewanu
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Skye Wheeler":
+    - /url: /about/people/skye-wheeler
+  - generic: Senior Researcher, Women's Rights Division
+  - link "WheelerSkye WheelerSkye":
+    - /url: https://twitter.com/WheelerSkye
+    - generic: WheelerSkye
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - img "Playing a Weapon"
+  - link:
+    - /url: https://www.hrw.org/feature/2024/12/11/human-being-more-delicate-flower-and-tougher-rock
+  - heading "A human being is more delicate than a flower and tougher than a rock" [level=3]:
+    - link "A human being is more delicate than a flower and tougher than a rock":
+      - /url: https://www.hrw.org/feature/2024/12/11/human-being-more-delicate-flower-and-tougher-rock
+      - generic: A human being is more delicate than a flower and tougher than a rock
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "View":
+    - /url: https://www.hrw.org/feature/2024/12/11/human-being-more-delicate-flower-and-tougher-rock
+    - text: View
+  - link "Protecting Rights, Saving Lives Human Right Watch defends the rights of people in 90 countries worldwide, spotlighting abuses and bringing perpetrators to justice. Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2024EVtpcpg1
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: Enter an email address
+  - textbox "Enter an email address"
+  - button "Sign up"
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/topic/womens-rights
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

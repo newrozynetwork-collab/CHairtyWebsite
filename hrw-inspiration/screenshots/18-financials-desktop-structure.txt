@@ -1,0 +1,308 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar
+      - link "简中":
+        - /url: /zh-hans
+      - link "繁中":
+        - /url: /zh-hant
+      - listitem: English
+      - link "Français":
+        - /url: /fr/elements-financiers
+      - link "Deutsch":
+        - /url: /de/finanzen
+      - link "日本語":
+        - /url: /ja
+      - link "Português":
+        - /url: /pt
+      - link "Русский":
+        - /url: /ru
+      - link "Español":
+        - /url: /es
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - time
+  - navigation "Available In":
+    - generic: Available In
+    - list:
+      - listitem: English
+      - link "Français":
+        - /url: /fr/elements-financiers
+      - link "Deutsch":
+        - /url: /de/finanzen
+      - link "한국어":
+        - /url: /ko/financials
+  - heading "Financials" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Related Content" [level=2]
+  - list:
+    - link "2025 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/media_2026/05/2024%20-%20Human%20Rights%20Watch%2C%20Inc.%20-%20Executed%20Form%20990%20%28PD%20Copy%29.pdf
+      - text: 2025 Form 990
+    - link "2025 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/media_2026/03/2025_HRW_Annual_Report.pdf
+      - text: 2025 Annual Report
+    - link "2025 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/media_2026/03/Human%20Rights%20Watch_25%20SHORT%20FS_Final.pdf
+      - text: 2025 Financial Statements
+    - link "2024 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/media_2025/05/2024_HRW_Annual_Report.pdf
+      - text: 2024 Annual Report
+    - link "2024 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/media_2025/05/2024_Audited_Financial_Statements.pdf
+      - text: 2024 Financial Statements
+    - link "2024 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/media_2025/05/2024_Form_990.pdf
+      - text: 2024 Form 990
+    - link "2023 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/media_2024/08/2023_HRW_Annual_Report.pdf
+      - text: 2023 Annual Report
+    - link "2023 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/media_2024/06/Human%20Rights%20Watch%20FY23%20Form%20990%20Public%20Disclosure%20Copy.pdf
+      - text: 2023 Form 990
+    - link "2023 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/media_2024/06/Human%20Rights%20Watch%20Inc%20FY23%20Financial%20Statements.pdf
+      - text: 2023 Financial Statements
+    - link "2022 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/media_2023/05/HRW%20-%20FY22%20Form%20990%20%28Public%20Disclosure%20Copy%29.pdf
+      - text: 2022 Form 990
+    - link "2022 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/media_2023/03/HRW_Annual_Report_2022.pdf
+      - text: 2022 Annual Report
+    - link "2022 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/media_2022/12/Human%20Rights%20Watch%2C%20Inc.%20FY22%20FS%20-%20FINAL.pdf
+      - text: 2022 Financial Statements
+    - link "2021 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/media_2022/05/HRW%20-%20FY21%20Form%20990%20%28Public%20Disclosure%20Copy%29.pdf
+      - text: 2021 Form 990
+    - link "2021 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/media_2021/12/Human_Rights_Watch_21_FS.pdf
+      - text: 2021 Financial Statements
+    - link "2021 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/media_2022/01/HRW_Annual_Report_2021.pdf
+      - text: 2021 Annual Report
+    - link "2020 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/media_2021/05/hrw_2020_Form_990.pdf
+      - text: 2020 Form 990
+    - link "2020 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/media_2021/04/HRW_Annual_Report_2020.pdf
+      - text: 2020 Annual Report
+    - link "2020 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/media_2020/12/Financial-Statements-2020.pdf
+      - text: 2020 Financial Statements
+    - link "2020 Fundraising Policy December":
+      - /url: https://www.hrw.org/sites/default/files/media_2021/02/HRW-Revised-Fundraising-Policy-December-2020.pdf
+      - text: 2020 Fundraising Policy December
+    - link "2019 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/hrw_2019_form_990.pdf
+      - text: 2019 Form 990
+    - link "2019 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/hrw_annual_report_2019_en.pdf
+      - text: 2019 Annual Report
+    - link "2019 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/financial_statement_fy19.pdf
+      - text: 2019 Financial Statements
+    - link "2018 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/hrw_annual_report_2018_en_0.pdf
+      - text: 2018 Annual Report
+    - link "2018 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/fy18_990.pdf
+      - text: 2018 Form 990
+    - link "2018 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/financial_statement_fy18.pdf
+      - text: 2018 Financial Statements
+    - link "2017 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/page_files/hrw_2016_form_990.pdf
+      - text: 2017 Form 990
+    - link "2017 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/media_2020/06/english_annual_report_2017.pdf
+      - text: 2017 Annual Report
+    - link "2017 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/financial_statements_2017.pdf
+      - text: 2017 Financial Statements
+    - link "2016 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/news_attachments/english_annual_report-2016.pdf
+      - text: 2016 Annual Report
+    - link "2016 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/financial-statements-2016.pdf
+      - text: 2016 Financial Statements
+    - link "2016 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/2015-form-990.pdf
+      - text: 2016 Form 990
+    - link "2016 Form 990T":
+      - /url: https://www.hrw.org/sites/default/files/supporting_resources/2015-form-990t_0.pdf
+      - text: 2016 Form 990T
+    - link "2015 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/news_attachments/english_annual_report-2015.pdf
+      - text: 2015 Annual Report
+    - link "2015 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/media_2020/06/financial-statements-2015.pdf
+      - text: 2015 Financial Statements
+    - link "2015 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/page_files/2015-form-990.pdf
+      - text: 2015 Form 990
+    - link "2015 Form 990T":
+      - /url: https://www.hrw.org/sites/default/files/page_files/2014-form-990-t.pdf
+      - text: 2015 Form 990T
+    - link "2014 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/related_material/2014_annual-report.pdf
+      - text: 2014 Annual Report
+    - link "2014 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/related_material/financial-statements-2014.pdf
+      - text: 2014 Financial Statements
+    - link "2014 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/related_material/2014-form-990.pdf
+      - text: 2014 Form 990
+    - link "2014 Form 990T":
+      - /url: https://www.hrw.org/sites/default/files/related_material/2014-form-990-T.pdf
+      - text: 2014 Form 990T
+    - link "2013 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/related_material/2013-annnual-report.pdf
+      - text: 2013 Annual Report
+    - link "2013 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/related_material/financial-statements-2013.pdf
+      - text: 2013 Financial Statements
+    - link "2013 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/related_material/2013-Form-990.pdf
+      - text: 2013 Form 990
+    - link "2013 Form 990T":
+      - /url: https://www.hrw.org/sites/default/files/related_material/2013-Form-990-T_0.pdf
+      - text: 2013 Form 990T
+    - link "2012 Annual Report":
+      - /url: https://www.hrw.org/sites/default/files/related_material/2012-annual-report.pdf
+      - text: 2012 Annual Report
+    - link "2012 Financial Statements":
+      - /url: https://www.hrw.org/sites/default/files/related_material/financial-statements-2012.pdf
+      - text: 2012 Financial Statements
+    - link "2012 Form 990":
+      - /url: https://www.hrw.org/sites/default/files/related_material/2012Form990.pdf
+      - text: 2012 Form 990
+    - link "2012 Form 990T":
+      - /url: https://www.hrw.org/sites/default/files/related_material/2012Form990T.pdf
+      - text: 2012 Form 990T
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - navigation "Main navigation":
+    - heading "Main navigation" [level=2]
+    - heading "About" [level=2]
+    - list:
+      - link "About Us":
+        - /url: /about-us
+      - link "Newsletters":
+        - /url: /newsletters
+      - link "Careers":
+        - /url: /careers
+      - link "People":
+        - /url: /about/people
+      - link "Social Media":
+        - /url: /about/social-media
+      - link "Human Rights Education":
+        - /url: /students-and-educators
+      - link "Partners":
+        - /url: /about/partners
+      - link "Financials and Fundraising Policy":
+        - /url: /financials
+      - link "Accessibility":
+        - /url: /about/accessibility
+      - link "Contact":
+        - /url: /contact-us
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

@@ -1,0 +1,321 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link "Human Rights Watch":
+    - /url: /
+    - img "Human Rights Watch"
+  - button "Open the report summary":
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+- main:
+  - img "A white phosphorus munition airbursts over buildings in the town of Khiam in southern Lebanon during an Israeli bombardment on October 31, 2024."
+  - time: September 9, 2026
+  - heading "Uncontrolled Burn" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - navigation:
+    - list:
+      - link "Video":
+        - /url: "#416988237"
+        - generic: Video
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Summary" [level=1]
+  - text: "|"
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - img "202303ARMS_World_Incendiary_Weapons_v2"
+  - button "click to play video":
+  - iframe
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Related Content" [level=2]
+  - article:
+    - generic: September 9, 2026 | News Release
+    - 'heading "White Phosphorus: Recent Use, Inhumane Effects Require New Law" [level=3]':
+      - 'link "White Phosphorus: Recent Use, Inhumane Effects Require New Law"':
+        - /url: /news/2026/09/09/white-phosphorus-recent-use-inhumane-effects-require-new-law
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - img "A white phosphorus munition airbursts over buildings in the town of Khiam in southern Lebanon during an Israeli bombardment on October 31, 2024."
+    - link:
+      - /url: /news/2026/09/09/white-phosphorus-recent-use-inhumane-effects-require-new-law
+  - heading "Recommendations" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - list:
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Methodology" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - 'heading "I. White Phosphorus: Harm, Use, and Law" [level=1]'
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "White Phosphorus and Its Incendiary Effects" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Recent Uses of White Phosphorus" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "International Law on Incendiary Weapons" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "International State of Play" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "II. The Martens Clause" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "History of the Martens Clause" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Disarmament Treaties" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Significance of the Martens Clause" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "III. The Martens Clause and White Phosphorus" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Origins of the CCW" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Role of the Martens Clause" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Final Result" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "IV. Principles of Humanity" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Humane Treatment" [level=2]
+  - heading "Criteria" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Indiscriminate Use of White Phosphorus" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Severity and Extent of Harm" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Intense Pain" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Treatment and Curing Challenges" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Treatment Challenges" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Curing Challenges" [level=4]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Respect for Human Life and Dignity" [level=2]
+  - heading "Criteria" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Failure to Respect Life or Dignity" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "V. Dictates of Public Conscience" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Opinions of Governments" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Humanitarian Critiques" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Legal Concerns" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Calls for Action" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "International Organizations" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "The Goldstone Report" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "International Committee of the Red Cross" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Civil Society" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Joint Statements" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Individual Statements" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Medical Professionals" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Financial Institutions" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "VI. Conclusion" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Acknowledgments" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: Topic
+  - list:
+    - link "Arms":
+      - /url: /topic/arms
+    - text: ","
+    - link "Incendiary Weapons":
+      - /url: /topic/arms/incendiary-weapons
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/report/2026/09/09/uncontrolled-burn/the-inhumane-effects-of-white-phosphorus-munitions-and-the-need
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

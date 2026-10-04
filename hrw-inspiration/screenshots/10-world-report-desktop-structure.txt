@@ -1,0 +1,300 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link "Human Rights Watch":
+    - /url: /
+    - img "Human Rights Watch"
+  - list:
+    - link "World Report 2026":
+      - /url: /world-report/2026
+    - button "Click to expand Countries":
+      - generic: Countries
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - navigation "Languages":
+    - button "Languages":
+      - generic: Languages
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+- main:
+  - heading "World Report 2026" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: Browse Countries
+  - combobox "Browse Countries":
+    - option "Choose" [selected]
+    - option "Afghanistan"
+    - option "African Union"
+    - option "Algeria"
+    - option "Angola"
+    - option "Argentina"
+    - option "Armenia"
+    - option "Australia"
+    - option "Azerbaijan"
+    - option "Bahrain"
+    - option "Bangladesh"
+    - option "Belarus"
+    - option "Bosnia and Herzegovina"
+    - option "Brazil"
+    - option "Burkina Faso"
+    - option "Burundi"
+    - option "Cambodia"
+    - option "Canada"
+    - option "Central African Republic"
+    - option "Chad"
+    - option "China"
+    - option "Colombia"
+    - option "Cuba"
+    - option "Democratic Republic of Congo"
+    - option "Ecuador"
+    - option "Egypt"
+    - option "El Salvador"
+    - option "Eritrea"
+    - option "Eswatini"
+    - option "Ethiopia"
+    - option "European Union"
+    - option "France"
+    - option "Georgia"
+    - option "Germany"
+    - option "Greece"
+    - option "Guatemala"
+    - option "Haiti"
+    - option "Honduras"
+    - option "Hungary"
+    - option "India"
+    - option "Indonesia"
+    - option "Iran"
+    - option "Iraq"
+    - option "Israel and Palestine"
+    - option "Italy"
+    - option "Japan"
+    - option "Jordan"
+    - option "Kazakhstan"
+    - option "Kenya"
+    - option "Kyrgyzstan"
+    - option "Lebanon"
+    - option "Libya"
+    - option "Malawi"
+    - option "Malaysia"
+    - option "Mali"
+    - option "Mexico"
+    - option "Morocco and Western Sahara"
+    - option "Mozambique"
+    - option "Myanmar"
+    - option "Nepal"
+    - option "Nicaragua"
+    - option "Niger"
+    - option "Nigeria"
+    - option "North Korea"
+    - option "Pakistan"
+    - option "Peru"
+    - option "Philippines"
+    - option "Poland"
+    - option "Qatar"
+    - option "Russia"
+    - option "Rwanda"
+    - option "Saudi Arabia"
+    - option "Serbia/Kosovo"
+    - option "Singapore"
+    - option "Somalia"
+    - option "South Africa"
+    - option "South Korea"
+    - option "South Sudan"
+    - option "Spain"
+    - option "Sri Lanka"
+    - option "Sudan"
+    - option "Syria"
+    - option "Tajikistan"
+    - option "Tanzania"
+    - option "Thailand"
+    - option "Tunisia"
+    - option "Türkiye"
+    - option "Turkmenistan"
+    - option "Uganda"
+    - option "Ukraine"
+    - option "United Arab Emirates"
+    - option "United Kingdom"
+    - option "United States"
+    - option "Uzbekistan"
+    - option "Venezuela"
+    - option "Vietnam"
+    - option "Yemen"
+    - option "Zambia"
+    - option "Zimbabwe"
+  - link "Download the full report":
+    - /url: /sites/default/files/media_2026/01/WR2026%20web_2.pdf
+  - strong:
+    - switch "Play video" [checked]:
+  - heading "Will Human Rights Survive a Trumpian World?" [level=2]:
+    - strong: Will Human Rights Survive a Trumpian World?
+  - heading "Authoritarian Advances Threaten Rules-Based Order" [level=4]:
+    - emphasis:
+      - strong: Authoritarian Advances Threaten Rules-Based Order
+  - link "Philippe Bolopion":
+    - /url: /about/people/philippe-bolopion
+  - generic: Executive Director
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - 'figure "FIRST: The Momentum Movement’s parliamentary representative David Bedo and independent member of parliament Akos Hadhazy protest against a law that bans Pride marches in Hungary and imposes fines on organizers and attendees of such events, Budapest, March 18, 2025. © 2025 Marton Monus/Reuters; SECOND: University students confront riot police in Istanbul’s Beşiktaş district following the arrest of Istanbul Mayor Ekrem İmamoğlu, March 20, 2025. © 2025 Ozan Köse/AFP via Getty Images"':
+    - img "The Momentum Movement’s parliamentary representative David Bedo and independent member of parliament Akos Hadhazy protest against a law that bans Pride marches in Hungary and imposes fines on organizers and attendees of such events, Budapest, March 18, 2025."
+    - img "University students confront riot police in Istanbul’s Beşiktaş district following the arrest of Istanbul Mayor Ekrem İmamoğlu, March 20, 2025."
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure "A volunteer at a food distribution event outside of Brooklyn Borough Hall in New York City, November 21, 2025. © 2025 Angela Weiss/AFP via Getty Images":
+    - img "A volunteer at a food distribution event outside of Brooklyn Borough Hall in New York City, November 21, 2025."
+    - generic: A volunteer at a food distribution event outside of Brooklyn Borough Hall in New York City, November 21, 2025. © 2025 Angela Weiss/AFP via Getty Images
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure "A pregnant asylum seeker comforts her 2-year-old inside the motel room where she and her children are living after her husband was deported to Nicaragua, in Miami, Florida, November 13, 2025. © 2025 Rebecca Blackwell/AP Photo":
+    - img "A pregnant asylum seeker comforts her 2-year-old inside the motel room where she and her children are living after her husband was deported to Nicaragua, in Miami, Florida, November 13, 2025."
+    - generic: [Long prose omitted.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure
+  - article:
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: © 2026 Adam Gray/AP Photo
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: © 2025 Salvadoran Government via Getty Images
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure "US Speaker of the House Mike Johnson talks to reporters after a closed door briefing with Secretary of State Marco Rubio and Secretary of Defense Pete Hegseth on US military strikes on suspected Venezuelan drug boats, Washington, DC, December 16, 2025. © 2025 Samuel Corum/Sipa USA via AP Photo":
+    - img "US Speaker of the House Mike Johnson talks to reporters after a closed door briefing with Secretary of State Marco Rubio and Secretary of Defense Pete Hegseth on US military strikes on suspected Venezuelan drug boats, Washington, DC, December 16, 2025."
+    - generic: [Long prose omitted.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure
+  - article:
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: © 2025 AP Photo
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - 'figure "FIRST: Surveillance cameras installed in Lhasa, Tibet Autonomous Region, June 27, 2025. © 2025 Kyodo News via Getty Images; SECOND: A television in a restaurant in Hong Kong shows a missile being launched during military exercises being held by China around the island of Taiwan, August 5, 2022. © 2022 Isaac Lawrence/AFP via Getty Images"':
+    - img "Surveillance cameras installed in Lhasa, Tibet Autonomous Region, June 27, 2025."
+    - img "A television in a restaurant in Hong Kong shows a missile being launched during military exercises being held by China around the island of Taiwan, August 5, 2022."
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure
+  - article:
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: © 2025 Giles Clarke/UNOCHA via Getty Images
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - 'figure "FIRST: A Palestinian girl stands amidst rubble in Jabalia in the northern Gaza Strip, April 14, 2025. © 2025 Bashar Taleb/AFP via Getty Images; SECOND: Palestinians inspect a house demolished by Israeli military forces in the town of Qabatiya in the Israeli occupied West Bank, July 17, 2025. © 2025 Nasser Ishtayeh/SOPA Images/LightRocket via Getty Images"':
+    - img "A Palestinian girl stands amidst rubble in Jabalia in the northern Gaza Strip, April 14, 2025."
+    - img "Palestinians inspect a house demolished by Israeli military forces in the town of Qabatiya in the Israeli occupied West Bank, July 17, 2025."
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure
+  - article:
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: © 2025 Oleksandr Gimanov/AFP via Getty Images
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure
+  - article:
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: © 2025 AFP/Getty Images
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure "Officials from Belize, Colombia, the Netherlands, Honduras, and Senegal at a press conference of The Hague Group, organized by The Progressive International, in The Hague, Netherlands, January 31, 2025. © 2025 Pierre Crom/Getty Images":
+    - img "Officials from Belize, Colombia, the Netherlands, Honduras, and Senegal at a press conference of The Hague Group, organized by The Progressive International, in The Hague, Netherlands, January 31, 2025."
+    - generic: [Long prose omitted.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure
+  - article:
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: © 2025 Brandon Bell/Getty Images
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure "Sudanese refugees from Zamzam camp outside of El Fasher, in Darfur, receive food at an Emergency Response Room Communal Kitchen while being relocated to the Iridimi transit camp in Tine, eastern Chad, May 4, 2025. © 2025 Lynsey Addario/Getty Images":
+    - img "Sudanese refugees from Zamzam camp outside of El Fasher, in Darfur, receive food at an Emergency Response Room Communal Kitchen while being relocated to the Iridimi transit camp in Tine, eastern Chad, May 4, 2025."
+    - generic: [Long prose omitted.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure
+  - article:
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: © 2025 Mosa'ab Elshamy/AP Photo
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: © 2025 Prabing Ranabhat/AFP via Getty Images
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - text: Header captions
+  - generic: [Long prose omitted.]
+  - generic: [Long prose omitted.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

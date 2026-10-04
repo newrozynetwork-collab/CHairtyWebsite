@@ -1,0 +1,201 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar
+      - link "简中":
+        - /url: /zh-hans/history
+      - link "繁中":
+        - /url: /zh-hant
+      - listitem: English
+      - link "Français":
+        - /url: /fr/histoire-de-hrw
+      - link "Deutsch":
+        - /url: /de
+      - link "日本語":
+        - /url: /ja
+      - link "Português":
+        - /url: /pt/nossa-historia
+      - link "Русский":
+        - /url: /ru
+      - link "Español":
+        - /url: /es
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - time
+  - navigation "Available In":
+    - generic: Available In
+    - list:
+      - listitem: English
+      - link "简体中文":
+        - /url: /zh-hans/history
+      - link "Français":
+        - /url: /fr/histoire-de-hrw
+      - link "한국어":
+        - /url: /ko/history
+      - link "Português":
+        - /url: /pt/nossa-historia
+  - heading "History" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure "From left, Human Rights Watch's Tamara Taraciuk, Executive Director Kenneth Roth and America's Director Jose Miguel Vivanco at a report launch in Mexico.":
+    - link "From left, Human Rights Watch's Tamara Taraciuk, Executive Director Kenneth Roth and America's Director Jose Miguel Vivanco at a report launch in Mexico. Click to expand Image":
+      - /url: /modal/25095
+      - img "From left, Human Rights Watch's Tamara Taraciuk, Executive Director Kenneth Roth and America's Director Jose Miguel Vivanco at a report launch in Mexico."
+      - generic: Click to expand Image
+    - generic: From left, Human Rights Watch's Tamara Taraciuk, Executive Director Kenneth Roth and America's Director Jose Miguel Vivanco at a report launch in Mexico.
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure "Human Rights Watch's Fred Abrahams testifying in the war crimes trial of Slobodan Milosevic. Screen-grab from the movie E-TEAM":
+    - link "Human Rights Watch's Fred Abrahams testifying in the war crimes trial of Slobodan Milosevic. Click to expand Image":
+      - /url: /modal/25098
+      - img "Human Rights Watch's Fred Abrahams testifying in the war crimes trial of Slobodan Milosevic."
+      - generic: Click to expand Image
+    - generic: Human Rights Watch's Fred Abrahams testifying in the war crimes trial of Slobodan Milosevic. Screen-grab from the movie E-TEAM
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure "Human Rights Watch's Nisha Varia shows Senolia Sayeni a Human Rights Watch video in which she was featured. Sayeni was one of thousands of Mozambicans resettled to make way for coal mines, with negative impacts on their access to food, water, and work. © 2013 Human Rights Watch":
+    - link "Human Rights Watch's Nisha Varia shows Senolia Sayeni a Human Rights Watch video in which she was featured. Sayeni was one of thousands of Mozambicans resettled to make way for coal mines, with negative impacts on their access to food, water, and work. Click to expand Image":
+      - /url: /modal/25103
+      - img "Human Rights Watch's Nisha Varia shows Senolia Sayeni a Human Rights Watch video in which she was featured. Sayeni was one of thousands of Mozambicans resettled to make way for coal mines, with negative impacts on their access to food, water, and work."
+      - generic: Click to expand Image
+    - generic: [Long prose omitted.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - figure "Human Rights Watch's Meenakshi Ganguly in Indian Kashmir. © 2005 Robert Nickelsberg":
+    - link "Human Rights Watch's Meenakshi Ganguly in Indian Kashmir. Click to expand Image":
+      - /url: /modal/25094
+      - img "Human Rights Watch's Meenakshi Ganguly in Indian Kashmir."
+      - generic: Click to expand Image
+    - generic: Human Rights Watch's Meenakshi Ganguly in Indian Kashmir. © 2005 Robert Nickelsberg
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - navigation "Main navigation":
+    - heading "Main navigation" [level=2]
+    - heading "About" [level=2]
+    - list:
+      - link "About Us":
+        - /url: /about-us
+      - list:
+        - link "– History":
+          - /url: /about/about-us/history
+      - link "Newsletters":
+        - /url: /newsletters
+      - link "Careers":
+        - /url: /careers
+      - link "People":
+        - /url: /about/people
+      - list:
+        - link "– Board of Directors":
+          - /url: /about/people/board-directors
+        - link "– Advisory Committees":
+          - /url: /about/people/advisory-committees
+      - link "Social Media":
+        - /url: /about/social-media
+      - link "Human Rights Education":
+        - /url: /students-and-educators
+      - link "Partners":
+        - /url: /about/partners
+      - list:
+        - link "– Partner Resources":
+          - /url: /about/partner-resources
+      - link "Financials and Fundraising Policy":
+        - /url: /financials
+      - link "Accessibility":
+        - /url: /about/accessibility
+      - link "Contact":
+        - /url: /contact-us
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

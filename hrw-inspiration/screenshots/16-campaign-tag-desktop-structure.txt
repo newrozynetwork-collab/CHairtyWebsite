@@ -1,0 +1,314 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar/tag/crisis-in-the-middle-east
+      - link "简中":
+        - /url: /zh-hans
+      - link "繁中":
+        - /url: /zh-hant/tag/crisis-in-the-middle-east
+      - listitem: English
+      - link "Français":
+        - /url: /fr/tag/crise-au-moyen-orient
+      - link "Deutsch":
+        - /url: /de/tag/die-krise-im-nahen-osten
+      - link "日本語":
+        - /url: /ja
+      - link "Português":
+        - /url: /pt
+      - link "Русский":
+        - /url: /ru
+      - link "Español":
+        - /url: /es/tag/crisis-en-oriente-medio
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - heading "Crisis in the Middle East" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: © 2026 Adri Salido/Getty Images
+  - figure:
+    - img "Smoke from a building in the center of Beirut, Lebanon, which has been hit by the IDF after an evacuation order, on March 12, 2026."
+  - list:
+    - text: Israel/Palestine
+    - figure:
+      - img "Palestinians wait to cross at the Israeli Awarta military checkpoint on March 23, 2025, south of Nablus in the West Bank."
+      - link:
+        - /url: /news/2026/08/05/west-bank-israel-delaying-palestinian-ambulances-risks-lives
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|News Release"
+    - 'link "West Bank: Israel Delaying Palestinian Ambulances Risks Lives"':
+      - /url: /news/2026/08/05/west-bank-israel-delaying-palestinian-ambulances-risks-lives
+    - text: United States
+    - figure:
+      - img "A woman looks out from her destroyed apartment in the Shahrak-e Gharb neighborhood of Tehran, Iran, March 21, 2026."
+      - link:
+        - /url: /news/2026/07/24/us-iran-threaten-attacks-on-civilian-infrastructure
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|News Release"
+    - link "US, Iran Threaten Attacks on Civilian Infrastructure":
+      - /url: /news/2026/07/24/us-iran-threaten-attacks-on-civilian-infrastructure
+    - text: Iran
+    - figure:
+      - img "Two members of Iran’s security forces stand guard in downtown Tehran, Iran, on April 8, 2026."
+      - link:
+        - /url: /news/2026/07/24/iranians-face-double-peril-of-gallows-and-bombs
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|Dispatches"
+    - link "Iranians Face Double Peril of Gallows and Bombs":
+      - /url: /news/2026/07/24/iranians-face-double-peril-of-gallows-and-bombs
+    - link "Bahar Saba":
+      - /url: /about/people/bahar-saba
+    - generic: Senior Iran Researcher
+  - heading "Reports" [level=2]
+  - link "More reports":
+    - /url: /publications?tags%5B0%5D=9961
+    - text: More reports
+  - list:
+    - article:
+      - generic: April 13, 2026 | Report
+      - 'heading "Iran: Israel’s Oil Depot Strikes Endanger Environment, Health" [level=3]':
+        - 'link "Iran: Israel’s Oil Depot Strikes Endanger Environment, Health"':
+          - /url: /news/2026/04/14/iran-israels-oil-depot-strikes-endanger-environment-health
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Flames and smoke rise from an oil storage facility following Israeli airstrikes in Tehran, Iran, March 7, 2026."
+      - link:
+        - /url: /news/2026/04/14/iran-israels-oil-depot-strikes-endanger-environment-health
+    - article:
+      - generic: April 1, 2026 | Report
+      - 'heading "Iran: Thousands of Prisoners at Risk" [level=3]':
+        - 'link "Iran: Thousands of Prisoners at Risk"':
+          - /url: /news/2026/04/01/iran-thousands-of-prisoners-at-risk
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "An external view of the destruction of buildings in Evin prison's northern premises after the Israeli strikes on June 23, 2025 in Tehran, Iran. Photo taken on July 1, 2025."
+      - link:
+        - /url: /news/2026/04/01/iran-thousands-of-prisoners-at-risk
+    - article:
+      - generic: March 23, 2026 | Report
+      - 'heading "Iran: Deliberate Attacks on Civilian Ships Apparent War Crimes" [level=3]':
+        - 'link "Iran: Deliberate Attacks on Civilian Ships Apparent War Crimes"':
+          - /url: /news/2026/03/23/iran-deliberate-attacks-on-civilian-ships-apparent-war-crimes
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "The Thai cargo ship, Mayuree Naree, was struck and set ablaze in the Strait of Hormuz, March 11, 2026."
+      - link:
+        - /url: /news/2026/03/23/iran-deliberate-attacks-on-civilian-ships-apparent-war-crimes
+    - article:
+      - generic: March 7, 2026 | Report
+      - 'heading "US/Israel: Investigate Iran School Attack as a War Crime" [level=3]':
+        - 'link "US/Israel: Investigate Iran School Attack as a War Crime"':
+          - /url: /news/2026/03/07/us/israel-investigate-iran-school-attack-as-a-war-crime
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "The aftermath of the attack on a school in Minab, southern Iran, on February 28, 2026."
+      - link:
+        - /url: /news/2026/03/07/us/israel-investigate-iran-school-attack-as-a-war-crime
+  - heading "Quick Takes" [level=2]
+  - region:
+    - tabpanel "1 of 4":
+      - text: "Middle East Conflict: Rhetoric, Actions Flout Laws of War"
+      - 'button "Play Middle East Conflict: Rhetoric, Actions Flout Laws of War"':
+        - generic: Play
+        - generic: "Middle East Conflict: Rhetoric, Actions Flout Laws of War"
+    - tabpanel "2 of 4":
+      - text: More than 1 million people across Lebanon displaced following Israeli military’s evacuation orders
+      - button "Play More than 1 million people across Lebanon displaced following Israeli military’s evacuation orders":
+        - generic: Play
+        - generic: More than 1 million people across Lebanon displaced following Israeli military’s evacuation orders
+    - tabpanel:
+      - text: "US, Israel, Iran: All Parties Should Respect Laws of War"
+      - button:
+        - generic: Play
+        - generic: "US, Israel, Iran: All Parties Should Respect Laws of War"
+    - tabpanel:
+      - text: "Iran: Deliberate Attacks on Civilian Ships Apparent War Crimes"
+      - button:
+        - generic: Play
+        - generic: "Iran: Deliberate Attacks on Civilian Ships Apparent War Crimes"
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+  - heading "News" [level=2]
+  - list:
+    - article:
+      - generic: April 22, 2026 | News Release
+      - 'heading "Israel, Iran: Unlawful March Attacks on Energy Infrastructure" [level=3]':
+        - 'link "Israel, Iran: Unlawful March Attacks on Energy Infrastructure"':
+          - /url: /news/2026/04/22/israel-iran-unlawful-march-attacks-on-energy-infrastructure
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Natural gas refineries at the South Pars gas field on the northern coast of the Persian Gulf, in Asaluyeh, Iran, March 16, 2019."
+      - link:
+        - /url: /news/2026/04/22/israel-iran-unlawful-march-attacks-on-energy-infrastructure
+    - article:
+      - generic: April 16, 2026 | News Release
+      - 'heading "Lebanon: Israeli Bridge Attack a Potential War Crime" [level=3]':
+        - 'link "Lebanon: Israeli Bridge Attack a Potential War Crime"':
+          - /url: /news/2026/04/16/lebanon-israeli-bridge-attack-a-potential-war-crime
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "People cross on foot through a crater following an Israeli airstrike that destroyed the Qasmieh Bridge near the coastal city of Tyre, south Lebanon, April 16, 2026."
+      - link:
+        - /url: /news/2026/04/16/lebanon-israeli-bridge-attack-a-potential-war-crime
+    - article:
+      - generic: April 13, 2026 | Report
+      - 'heading "Iran: Israel’s Oil Depot Strikes Endanger Environment, Health" [level=3]':
+        - 'link "Iran: Israel’s Oil Depot Strikes Endanger Environment, Health"':
+          - /url: /news/2026/04/14/iran-israels-oil-depot-strikes-endanger-environment-health
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Flames and smoke rise from an oil storage facility following Israeli airstrikes in Tehran, Iran, March 7, 2026."
+      - link:
+        - /url: /news/2026/04/14/iran-israels-oil-depot-strikes-endanger-environment-health
+    - article:
+      - generic: April 10, 2026 | News Release
+      - 'heading "Lebanon: Israeli Strikes Kill Hundreds, Damage Vital Bridge" [level=3]':
+        - 'link "Lebanon: Israeli Strikes Kill Hundreds, Damage Vital Bridge"':
+          - /url: /news/2026/04/10/lebanon-israeli-strikes-kill-hundreds-damage-vital-bridge
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "A damaged bridge over water"
+      - link:
+        - /url: /news/2026/04/10/lebanon-israeli-strikes-kill-hundreds-damage-vital-bridge
+    - article:
+      - generic: April 9, 2026 | Commentary
+      - heading "War Crimes Are No Longer Shameful. That Should Terrify You." [level=3]:
+        - link "War Crimes Are No Longer Shameful. That Should Terrify You.":
+          - /url: /news/2026/04/09/war-crimes-are-no-longer-shameful-that-should-terrify-you
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "Rescue forces and others at work following a strike on a primary school in Minab, Iran, February 28, 2026."
+      - link:
+        - /url: /news/2026/04/09/war-crimes-are-no-longer-shameful-that-should-terrify-you
+    - article:
+      - generic: April 8, 2026 | Q & A
+      - 'heading "Questions and Answers: US, Israel, Iran, and the Laws of War" [level=3]':
+        - 'link "Questions and Answers: US, Israel, Iran, and the Laws of War"':
+          - /url: /news/2026/04/08/questions-and-answers-us-israel-iran-and-the-laws-of-war
+      - img "Contrails from Israeli fighter jets in the sky over Tyre, Lebanon, March 24, 2026."
+      - link:
+        - /url: /news/2026/04/08/questions-and-answers-us-israel-iran-and-the-laws-of-war
+    - article:
+      - generic: April 7, 2026 | Statement
+      - heading "More than 200 Organizations and Experts Call for an End to Trump’s Threats of War Crimes and Call for Accountability" [level=3]:
+        - link "More than 200 Organizations and Experts Call for an End to Trump’s Threats of War Crimes and Call for Accountability":
+          - /url: /news/2026/04/07/more-than-200-organizations-and-experts-call-for-an-end-to-trumps-threats-of-war
+      - img "Middle East map with Iran shaded gray"
+      - link:
+        - /url: /news/2026/04/07/more-than-200-organizations-and-experts-call-for-an-end-to-trumps-threats-of-war
+    - article:
+      - generic: April 6, 2026 | Letter
+      - heading "Letter to Secretary Hegseth on US Landmines in Iran" [level=3]:
+        - link "Letter to Secretary Hegseth on US Landmines in Iran":
+          - /url: /news/2026/04/06/letter-to-secretary-hegseth-on-us-landmines-in-iran
+    - article:
+      - generic: April 6, 2026 | Commentary
+      - heading "Americans Deserve Answers About Civilian Casualties in Iran" [level=3]:
+        - link "Americans Deserve Answers About Civilian Casualties in Iran":
+          - /url: /news/2026/04/06/americans-deserve-answers-about-civilian-casualties-in-iran
+      - img "Debris tumbles from a residential building hit in an airstrike on March 30, 2026 in Tehran, Iran."
+      - link:
+        - /url: /news/2026/04/06/americans-deserve-answers-about-civilian-casualties-in-iran
+    - article:
+      - generic: April 1, 2026 | Report
+      - 'heading "Iran: Thousands of Prisoners at Risk" [level=3]':
+        - 'link "Iran: Thousands of Prisoners at Risk"':
+          - /url: /news/2026/04/01/iran-thousands-of-prisoners-at-risk
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+      - img "An external view of the destruction of buildings in Evin prison's northern premises after the Israeli strikes on June 23, 2025 in Tehran, Iran. Photo taken on July 1, 2025."
+      - link:
+        - /url: /news/2026/04/01/iran-thousands-of-prisoners-at-risk
+  - link "Read More":
+    - /url: /news?tags%5B%5D=9961
+    - generic: Read More
+  - heading "Stay informed" [level=4]
+  - heading "Get updates on human rights around the world." [level=3]
+  - link "Privacy Policy":
+    - /url: /privacy-policy
+  - generic: Your email address
+  - textbox "Your email address"
+  - button "Subscribe"
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/tag/crisis-in-the-middle-east
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

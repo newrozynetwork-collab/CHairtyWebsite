@@ -1,0 +1,233 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - button "English"
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+  - button "Open the main menu":
+    - generic: Open the main menu
+  - generic: Trending
+  - link "Trump Administration and Human Rights":
+    - /url: /tag/trump-administration-and-human-rights
+    - text: Trump Administration and Human Rights
+  - link "Russia-Ukraine War":
+    - /url: /tag/russia-ukraine-war
+    - text: Russia-Ukraine War
+  - link "Israel/Palestine":
+    - /url: /middle-east/north-africa/israel/palestine
+    - text: Israel/Palestine
+  - link "International Criminal Court":
+    - /url: /topic/international-justice/international-criminal-court
+    - text: International Criminal Court
+  - link "Crisis in the Middle East":
+    - /url: /tag/crisis-in-the-middle-east
+    - text: Crisis in the Middle East
+- main:
+  - article:
+    - time: October 2, 2026 12:00AM EDT
+    - generic: "|"
+    - generic: News Release
+    - navigation "Available In":
+      - generic: Available In
+      - list:
+        - listitem: English
+        - link "Español":
+          - /url: /es/news/2026/10/02/estados-unidos-victimas-del-gobierno-nicaraguense-en-riesgo-de-deportacion
+    - 'heading "US: Victims of Nicaraguan Government Risk Deportation" [level=1]'
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - figure "Activists hold signs with the names of some of the 222 former prisoners released and expelled by the Nicaraguan government, as they await their arrival at Dulles International Airport, Virginia, United States, February 9, 2023. © 2023 Kevin Lamarque/Reuters":
+      - link "3ca66ff1-51f5-4141-a124-fe85ec0417d2 Click to expand Image":
+        - /url: /modal/115251
+        - img "3ca66ff1-51f5-4141-a124-fe85ec0417d2"
+        - generic: Click to expand Image
+      - generic: [Long prose omitted.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - heading "Every piece on our website is resource intensive. If you donate whatever you can today, we will use it to continue investigating abuses and advocate for change in 100+ countries." [level=2]
+    - radio "$15"
+    - generic: $15
+    - radio "$35"
+    - generic: $35
+    - radio "$60"
+    - generic: $60
+    - radio "$100"
+    - generic: $100
+    - radio "$150"
+    - generic: $150
+    - radio "Other"
+    - generic: Other
+    - button "Donate Now"
+    - generic: Region / Country
+    - list:
+      - link "Americas":
+        - /url: /americas
+      - text: ","
+      - link "United States":
+        - /url: /united-states
+      - text: ","
+      - link "Nicaragua":
+        - /url: /americas/nicaragua
+    - heading "More Reading" [level=2]
+    - list:
+      - article:
+        - generic: January 12, 2026 | World Report Chapter
+        - heading "Nicaragua" [level=3]:
+          - link "Nicaragua":
+            - /url: /world-report/2026/country-chapters/nicaragua
+        - img "Claudia Vargas holds a photo of her husband, exiled former Nicaraguan military officer and outspoken government critic Roberto Samcam, who was shot to death in his condo on June 19, during the funeral Mass, in San Jose, Costa Rica, June 22, 2025."
+        - link:
+          - /url: /world-report/2026/country-chapters/nicaragua
+      - article:
+        - generic: October 1, 2026 | Report
+        - 'heading "US: Nebraskans Losing Coverage as Medicaid Changes" [level=3]':
+          - 'link "US: Nebraskans Losing Coverage as Medicaid Changes"':
+            - /url: /news/2026/10/01/us-nebraskans-losing-coverage-as-medicaid-changes
+        - img "Protesters hold a placard that reads \"Care Not Cuts\""
+        - link:
+          - /url: /news/2026/10/01/us-nebraskans-losing-coverage-as-medicaid-changes
+    - heading "Reports" [level=2]
+    - list:
+      - article:
+        - generic: August 24, 2026 | Report
+        - heading "“I Thought I’d Never See My Mom Again”" [level=3]:
+          - link "“I Thought I’d Never See My Mom Again”":
+            - /url: /report/2026/08/24/i-thought-id-never-see-my-mom-again/recruitment-and-use-of-children-by-colombian
+        - paragraph: [Narrative prose omitted; consult visual capture.]
+        - img "An unidentifiable child soldier holding a gun"
+        - link:
+          - /url: /report/2026/08/24/i-thought-id-never-see-my-mom-again/recruitment-and-use-of-children-by-colombian
+      - article:
+        - generic: August 13, 2026 | Report
+        - heading "Remedies Abandoned" [level=3]:
+          - link "Remedies Abandoned":
+            - /url: /report/2026/08/13/remedies-abandoned/us-civil-rights-enforcement-under-the-trump-administration
+        - paragraph: [Narrative prose omitted; consult visual capture.]
+        - img "A man in a wheelchair holds a protest sign at a demonstration"
+        - link:
+          - /url: /report/2026/08/13/remedies-abandoned/us-civil-rights-enforcement-under-the-trump-administration
+    - generic: "| |"
+    - heading "Most Viewed" [level=2]
+    - list:
+      - article:
+        - generic: June 14, 2018 | News Release
+        - 'heading "Africa: Pregnant Girls, Young Mothers Barred from School" [level=3]':
+          - 'link "Africa: Pregnant Girls, Young Mothers Barred from School"':
+            - /url: /news/2018/06/14/africa-pregnant-girls-young-mothers-barred-school
+        - img "Students enrolled in the final year of lower secondary school in the classroom in a village in Kolda region, southern Senegal. Adolescent mothers and married girls study in this school."
+        - link:
+          - /url: /news/2018/06/14/africa-pregnant-girls-young-mothers-barred-school
+      - article:
+        - generic: September 8, 2016 | News Release
+        - 'heading "Nepal: Child Marriage Threatens Girls’ Futures" [level=3]':
+          - 'link "Nepal: Child Marriage Threatens Girls’ Futures"':
+            - /url: /news/2016/09/08/nepal-child-marriage-threatens-girls-futures
+        - img "Lalita B.,17, had an arranged marriage at the age of 12 with a 37-year-old man."
+        - link:
+          - /url: /news/2016/09/08/nepal-child-marriage-threatens-girls-futures
+      - article:
+        - generic: May 17, 2021 | Report
+        - heading "“Years Don’t Wait for Them”" [level=3]:
+          - link "“Years Don’t Wait for Them”":
+            - /url: /report/2021/05/17/years-dont-wait-them/increased-inequalities-childrens-right-education-due-covid
+        - img "A young girl wearing a face mask holds up a cell phone"
+        - link:
+          - /url: /report/2021/05/17/years-dont-wait-them/increased-inequalities-childrens-right-education-due-covid
+      - article:
+        - generic: October 2, 2026 | Dispatches
+        - heading "US ICE Detains Son of Slain Philippine Journalist" [level=3]:
+          - link "US ICE Detains Son of Slain Philippine Journalist":
+            - /url: /news/2026/10/02/us-ice-detains-son-of-slain-philippine-journalist
+        - img "Aerial photo of an ICE facility"
+        - link:
+          - /url: /news/2026/10/02/us-ice-detains-son-of-slain-philippine-journalist
+      - article:
+        - generic: June 9, 2015 | News Release
+        - 'heading "Bangladesh: Girls Damaged by Child Marriage" [level=3]':
+          - 'link "Bangladesh: Girls Damaged by Child Marriage"':
+            - /url: /news/2015/06/09/bangladesh-girls-damaged-child-marriage
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: Enter an email address
+  - textbox "Enter an email address"
+  - button "Sign up"
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

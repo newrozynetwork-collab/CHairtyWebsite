@@ -1,0 +1,171 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar
+      - link "简中":
+        - /url: /zh-hans
+      - link "繁中":
+        - /url: /zh-hant
+      - listitem: English
+      - link "Français":
+        - /url: /fr/video-photos/video/2026/06/12/malawi-les-personnes-atteintes-dalbinisme-face-a-la-discrimination
+      - link "Deutsch":
+        - /url: /de
+      - link "日本語":
+        - /url: /ja
+      - link "Português":
+        - /url: /pt
+      - link "Русский":
+        - /url: /ru
+      - link "Español":
+        - /url: /es
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - time: June 12, 2026
+  - navigation "Available In":
+    - generic: Available In
+    - list:
+      - listitem: English
+      - link "Français":
+        - /url: /fr/video-photos/video/2026/06/12/malawi-les-personnes-atteintes-dalbinisme-face-a-la-discrimination
+  - heading "Violence and Discrimination Against People with Albinism in Malawi" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - img "A musician with albinism sits holding a guitar"
+  - button "click to play video":
+  - iframe
+  - generic "Read a text description of this video"
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: Region / Country
+  - list:
+    - link "Malawi":
+      - /url: /africa/malawi
+  - generic: Tags
+  - list:
+    - link "Rights of Persons with Albinism":
+      - /url: /tag/albinism
+  - generic: Topic
+  - list:
+    - link "Disability Rights":
+      - /url: /topic/disability-rights
+  - heading "Related Content" [level=2]
+  - text: Malawi
+  - figure:
+    - img "Out of concern for her safety, Patricia J., avoids informal or unregulated workplaces such as markets and roadside stalls. “I have lingering trauma, still carrying the fear that at any moment I can be attacked again. I can’t shake the thought, especially when I’m in a new place.”"
+    - link:
+      - /url: /news/2026/06/12/people-with-albinism-face-discrimination-danger
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: "|Commentary"
+  - link "People With Albinism Face Discrimination, Danger":
+    - /url: /news/2026/06/12/people-with-albinism-face-discrimination-danger
+  - link "Samer Muscati":
+    - /url: /about/people/samer-muscati
+  - generic: Deputy Director, Disability Rights Division
+  - link "Elizabeth Kamundia":
+    - /url: /about/people/elizabeth-kamundia
+  - generic: Director, Disability Rights Division
+  - generic: "Published in:"
+  - link "IPS Inter Press Service":
+    - /url: https://www.ipsnews.net/2026/06/people-with-albinism-face-discrimination-danger/
+  - text: Malawi
+  - figure:
+    - img "Lazarus K., 38, in Dowa, Malawi."
+    - link:
+      - /url: /news/2026/06/12/malawi-people-with-albinism-face-discrimination-barriers-to-work
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - generic: "|News Release"
+  - 'link "Malawi: People with Albinism Face Discrimination, Barriers to Work"':
+    - /url: /news/2026/06/12/malawi-people-with-albinism-face-discrimination-barriers-to-work
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

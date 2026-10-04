@@ -1,0 +1,829 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar
+      - link "简中":
+        - /url: /zh-hans
+      - link "繁中":
+        - /url: /zh-hant
+      - listitem: English
+      - link "Français":
+        - /url: /fr
+      - link "Deutsch":
+        - /url: /de
+      - link "日本語":
+        - /url: /ja
+      - link "Português":
+        - /url: /pt
+      - link "Русский":
+        - /url: /ru
+      - link "Español":
+        - /url: /es
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - heading "Sitemap" [level=1]
+  - heading "Front page" [level=2]
+  - link "Front page of Human Rights Watch":
+    - /url: /
+    - text: Front page of
+    - emphasis: Human Rights Watch
+  - link "RSS feed icon":
+    - /url: /rss/news
+    - img "RSS feed icon"
+  - heading "Main navigation" [level=2]
+  - list:
+    - text: Countries
+    - list:
+      - link "Africa":
+        - /url: /africa
+      - list:
+        - link "African Union":
+          - /url: /africa/african-union
+        - link "Angola":
+          - /url: /africa/angola
+        - link "Mauritius":
+          - /url: /africa/mauritius
+        - link "Ethiopia":
+          - /url: /africa/ethiopia
+        - link "Burkina Faso":
+          - /url: /africa/burkina-faso
+        - link "Burundi":
+          - /url: /africa/burundi
+        - link "Democratic Republic of Congo":
+          - /url: /africa/democratic-republic-congo
+        - link "Côte d'Ivoire":
+          - /url: /africa/cote-divoire
+        - link "Eritrea":
+          - /url: /africa/eritrea
+        - link "Eswatini (formerly Swaziland)":
+          - /url: /africa/eswatini
+        - link "Gambia":
+          - /url: /africa/gambia
+        - link "Ghana":
+          - /url: /africa/ghana
+        - link "Guinea":
+          - /url: /africa/guinea
+        - link "Cameroon":
+          - /url: /africa/cameroon
+        - link "Kenya":
+          - /url: /africa/kenya
+        - link "Liberia":
+          - /url: /africa/liberia
+        - link "Malawi":
+          - /url: /africa/malawi
+        - link "Mali":
+          - /url: /africa/mali
+        - link "Mozambique":
+          - /url: /africa/mozambique
+        - link "Niger":
+          - /url: /africa/niger
+        - link "Nigeria":
+          - /url: /africa/nigeria
+        - link "Rwanda":
+          - /url: /africa/rwanda
+        - link "Zambia":
+          - /url: /africa/zambia
+        - link "Senegal":
+          - /url: /africa/senegal
+        - link "Sierra Leone":
+          - /url: /africa/sierra-leone
+        - link "Zimbabwe":
+          - /url: /africa/zimbabwe
+        - link "Somalia":
+          - /url: /africa/somalia
+        - link "South Sudan":
+          - /url: /africa/south-sudan
+        - link "Sudan":
+          - /url: /africa/sudan
+        - link "South Africa":
+          - /url: /africa/south-africa
+        - link "Tanzania":
+          - /url: /africa/tanzania
+        - link "Chad":
+          - /url: /africa/chad
+        - link "Uganda":
+          - /url: /africa/uganda
+        - link "Central African Republic":
+          - /url: /africa/central-african-republic
+        - link "Equatorial Guinea":
+          - /url: /africa/equatorial-guinea
+      - link "Americas":
+        - /url: /americas
+      - list:
+        - link "Argentina":
+          - /url: /americas/argentina
+        - link "Bolivia":
+          - /url: /americas/bolivia
+        - link "Brazil":
+          - /url: /americas/brazil
+        - link "Canada":
+          - /url: /americas/canada
+        - link "Chile":
+          - /url: /americas/chile
+        - link "Colombia":
+          - /url: /americas/colombia
+        - link "Costa Rica":
+          - /url: /americas/costa-rica
+        - link "Cuba":
+          - /url: /americas/cuba
+        - link "Dominican Republic":
+          - /url: /americas/dominican-republic
+        - link "Ecuador":
+          - /url: /americas/ecuador
+        - link "El Salvador":
+          - /url: /americas/el-salvador
+        - link "Guatemala":
+          - /url: /americas/guatemala
+        - link "Haiti":
+          - /url: /americas/haiti
+        - link "Honduras":
+          - /url: /americas/honduras
+        - link "Jamaica":
+          - /url: /americas/jamaica
+        - link "Mexico":
+          - /url: /americas/mexico
+        - link "Nicaragua":
+          - /url: /americas/nicaragua
+        - link "Panama":
+          - /url: /americas/panama
+        - link "Paraguay":
+          - /url: /americas/paraguay
+        - link "Peru":
+          - /url: /americas/peru
+        - link "Uruguay":
+          - /url: /americas/uruguay
+        - link "Venezuela":
+          - /url: /americas/venezuela
+      - link "Asia":
+        - /url: /asia
+      - list:
+        - link "Afghanistan":
+          - /url: /asia/afghanistan
+        - link "Australia":
+          - /url: /asia/australia
+        - link "Bangladesh":
+          - /url: /asia/bangladesh
+        - link "Bhutan":
+          - /url: /asia/bhutan
+        - link "Brunei":
+          - /url: /asia/brunei
+        - link "Cambodia":
+          - /url: /asia/cambodia
+        - link "China and Tibet":
+          - /url: /asia/china-and-tibet
+        - link "Fiji":
+          - /url: /asia/fiji
+        - link "India":
+          - /url: /asia/india
+        - link "Indonesia":
+          - /url: /asia/indonesia
+        - link "Japan":
+          - /url: /asia/japan
+        - link "Laos":
+          - /url: /asia/laos
+        - link "Malaysia":
+          - /url: /asia/malaysia
+        - link "Maldives":
+          - /url: /asia/maldives
+        - link "Myanmar (Burma)":
+          - /url: /asia/myanmar-burma
+        - link "Nauru":
+          - /url: /asia/nauru
+        - link "Nepal":
+          - /url: /asia/nepal
+        - link "North Korea":
+          - /url: /asia/north-korea
+        - link "Pakistan":
+          - /url: /asia/pakistan
+        - link "Papua New Guinea":
+          - /url: /asia/papua-new-guinea
+        - link "Philippines":
+          - /url: /asia/philippines
+        - link "Singapore":
+          - /url: /asia/singapore
+        - link "South Korea":
+          - /url: /asia/south-korea
+        - link "Sri Lanka":
+          - /url: /asia/sri-lanka
+        - link "Taiwan":
+          - /url: /asia/taiwan
+        - link "Thailand":
+          - /url: /asia/thailand
+        - link "Timor-Leste":
+          - /url: /asia/timor-leste
+        - link "Vietnam":
+          - /url: /asia/vietnam
+      - link "Europe/Central Asia":
+        - /url: /europe/central-asia
+      - list:
+        - link "Albania":
+          - /url: /europe/central-asia/albania
+        - link "Armenia":
+          - /url: /europe/central-asia/armenia
+        - link "Azerbaijan":
+          - /url: /europe/central-asia/azerbaijan
+        - link "Belarus":
+          - /url: /europe/central-asia/belarus
+        - link "Belgium":
+          - /url: /europe/central-asia/belgium
+        - link "Bosnia and Herzegovina":
+          - /url: /europe/central-asia/bosnia-and-herzegovina
+        - link "Bulgaria":
+          - /url: /europe/central-asia/bulgaria
+        - link "Denmark":
+          - /url: /europe/central-asia/denmark
+        - link "Germany":
+          - /url: /europe/central-asia/germany
+        - link "European Union":
+          - /url: /europe/central-asia/european-union
+        - link "France":
+          - /url: /europe/central-asia/france
+        - link "Georgia":
+          - /url: /europe/central-asia/georgia
+        - link "Greece":
+          - /url: /europe/central-asia/greece
+        - link "United Kingdom":
+          - /url: /europe/central-asia/united-kingdom
+        - link "Ireland":
+          - /url: /europe/central-asia/ireland
+        - link "Italy":
+          - /url: /europe/central-asia/italy
+        - link "Kazakhstan":
+          - /url: /europe/central-asia/kazakhstan
+        - link "Kyrgyzstan":
+          - /url: /europe/central-asia/kyrgyzstan
+        - link "Croatia":
+          - /url: /europe/central-asia/croatia
+        - link "Latvia":
+          - /url: /europe/central-asia/latvia
+        - link "Lithuania":
+          - /url: /europe/central-asia/lithuania
+        - link "Netherlands":
+          - /url: /europe/central-asia/netherlands
+        - link "Norway":
+          - /url: /europe/central-asia/norway
+        - link "Poland":
+          - /url: /europe/central-asia/poland
+        - link "Portugal":
+          - /url: /europe/central-asia/portugal
+        - link "Romania":
+          - /url: /europe/central-asia/romania
+        - link "Russia":
+          - /url: /europe/central-asia/russia
+        - link "Sweden":
+          - /url: /europe/central-asia/sweden
+        - link "Switzerland":
+          - /url: /europe/central-asia/switzerland
+        - link "Serbia/Kosovo":
+          - /url: /europe/central-asia/serbia/kosovo
+        - link "Spain":
+          - /url: /europe/central-asia/spain
+        - link "Tajikistan":
+          - /url: /europe/central-asia/tajikistan
+        - link "Czech Republic":
+          - /url: /europe/central-asia/czech-republic
+        - link "Turkmenistan":
+          - /url: /europe/central-asia/turkmenistan
+        - link "Türkiye":
+          - /url: /europe/central-asia/turkey
+        - link "Ukraine":
+          - /url: /europe/central-asia/ukraine
+        - link "Hungary":
+          - /url: /europe/central-asia/hungary
+        - link "Uzbekistan":
+          - /url: /europe/central-asia/uzbekistan
+        - link "Holy See":
+          - /url: /europe/central-asia/holy-see
+      - link "Middle East/North Africa":
+        - /url: /middle-east/north-africa
+      - list:
+        - link "Egypt":
+          - /url: /middle-east/n-africa/egypt
+        - link "Algeria":
+          - /url: /middle-east/north-africa/algeria
+        - link "Bahrain":
+          - /url: /middle-east/north-africa/bahrain
+        - link "Iraq":
+          - /url: /middle-east/north-africa/iraq
+        - link "Iran":
+          - /url: /middle-east/north-africa/iran
+        - link "Israel/Palestine":
+          - /url: /middle-east/north-africa/israel/palestine
+        - link "Yemen":
+          - /url: /middle-east/n-africa/yemen
+        - link "Jordan":
+          - /url: /middle-east/n-africa/jordan
+        - link "Qatar":
+          - /url: /middle-east/north-africa/qatar
+        - link "Kuwait":
+          - /url: /middle-east/n-africa/kuwait
+        - link "Lebanon":
+          - /url: /middle-east/n-africa/lebanon
+        - link "Libya":
+          - /url: /middle-east/n-africa/libya
+        - link "Morocco/Western Sahara":
+          - /url: /middle-east/north-africa/morocco/western-sahara
+        - link "Mauritania":
+          - /url: /middle-east/north-africa/mauritania
+        - link "Oman":
+          - /url: /middle-east/n-africa/oman
+        - link "Saudi Arabia":
+          - /url: /middle-east/north-africa/saudi-arabia
+        - link "Syria":
+          - /url: /middle-east/n-africa/syria
+        - link "Tunisia":
+          - /url: /middle-east/north-africa/tunisia
+        - link "United Arab Emirates":
+          - /url: /middle-east/north-africa/united-arab-emirates
+      - link "United States":
+        - /url: /united-states
+      - list:
+        - link "Criminal Justice":
+          - /url: /united-states/criminal-justice
+        - link "Democracy":
+          - /url: /united-states/democracy
+        - link "Economic Justice":
+          - /url: /united-states/economic-justice
+        - link "Immigrants’ Rights and Border Policy":
+          - /url: /united-states/immigration
+        - link "Racial Justice":
+          - /url: /united-states/racial-justice
+        - link "US Foreign Policy":
+          - /url: /united-states/us-foreign-policy
+    - text: Topics
+    - list:
+      - link "Arms":
+        - /url: /topic/arms
+      - list:
+        - link "Cluster Munitions":
+          - /url: /topic/arms/cluster-munitions
+        - link "Killer Robots":
+          - /url: /topic/arms/killer-robots
+        - link "Landmines":
+          - /url: /topic/arms/landmines
+        - link "Explosive Weapons in Populated Areas":
+          - /url: /topic/arms/explosive-weapons-in-populated-areas
+        - link "Incendiary Weapons":
+          - /url: /topic/arms/incendiary-weapons
+      - link "Children's Rights":
+        - /url: /topic/childrens-rights
+      - list:
+        - link "Education":
+          - /url: /topic/childrens-rights/education
+        - link "Attacks on Education":
+          - /url: /topic/childrens-rights/attacks-on-education
+        - link "Children Separated from Families":
+          - /url: /topic/childrens-rights/children-separated-from-families
+        - link "Children and Armed Conflict":
+          - /url: /topic/childrens-rights/children-and-armed-conflict
+        - link "Child Labor":
+          - /url: /topic/childrens-rights/child-labor
+        - link "Youth Justice":
+          - /url: /topic/childrens-rights/youth-justice
+        - link "Migrant and Refugee Children":
+          - /url: /topic/childrens-rights/migrant-and-refugee-children
+        - link "Intersex Children":
+          - /url: /topic/childrens-rights/intersex-children
+      - link "Crisis and Conflict":
+        - /url: /topic/crisis-and-conflict
+      - link "Disability Rights":
+        - /url: /topic/disability-rights
+      - list:
+        - link "Shackling":
+          - /url: /topic/disability-rights/shackling
+      - link "Economic Justice and Rights":
+        - /url: /topic/economic-justice-and-rights
+      - list:
+        - link "Corporate Accountability":
+          - /url: /topic/economic-justice-and-rights/corporate-accountability
+        - link "Poverty and Inequality":
+          - /url: /topic/economic-justice-and-rights/poverty-and-inequality
+      - link "Environment and Human Rights":
+        - /url: /topic/environment
+      - list:
+        - link "Climate Change":
+          - /url: /topic/climate-change
+        - link "Deforestation":
+          - /url: /topic/environment-and-human-rights/deforestation
+        - link "Fossil Fuels":
+          - /url: /topic/environment/fossil-fuels
+      - link "Free Speech":
+        - /url: /topic/free-speech
+      - list:
+        - link "Press Freedom":
+          - /url: /topic/free-speech/press-freedom
+        - link "Religious Freedom":
+          - /url: /topic/free-speech/religious-freedom
+      - link "Health":
+        - /url: /topic/health
+      - list:
+        - link "Sexual and Reproductive Health":
+          - /url: /topic/health/sexual-and-reproductive-health
+        - link "Detention Centers":
+          - /url: /topic/health/detention-centers
+        - link "Disasters and Displaced Populations":
+          - /url: /topic/health/disasters-and-displaced-populations
+        - link "Environment and Health":
+          - /url: /topic/health/environment-and-health
+        - link "Health Care Access":
+          - /url: /topic/health/health-care-access
+        - link "HIV/AIDS and Tuberculosis":
+          - /url: /topic/health/hiv/aids-and-tuberculosis
+        - link "Palliative Care":
+          - /url: /topic/health/palliative-care
+        - link "Attacks on Health":
+          - /url: /topic/health/attacks-health
+      - link "LGBT Rights":
+        - /url: /topic/lgbt-rights
+      - link "Refugees and Migrants":
+        - /url: /topic/refugees-and-migrants
+      - list:
+        - link "Asylum Seekers":
+          - /url: /topic/refugees-and-migrants/asylum-seekers
+        - link "Internally Displaced People":
+          - /url: /topic/refugees-and-migrants/internally-displaced-people
+        - link "Exploitation, Forced Labor & Trafficking":
+          - /url: /topic/refugees-and-migrants/exploitation-forced-labor-trafficking
+      - link "Rights of Older People":
+        - /url: /topic/rights-older-people
+      - link "International Justice":
+        - /url: /topic/international-justice
+      - list:
+        - link "International Criminal Court":
+          - /url: /topic/international-justice/international-criminal-court
+        - link "Peace and Justice":
+          - /url: /topic/international-justice/peace-and-justice
+      - link "Sport and Human Rights":
+        - /url: /topic/sport-and-human-rights
+      - link "Technology and Rights":
+        - /url: /topic/technology-and-rights
+      - list:
+        - link "Digital Investigations Lab":
+          - /url: /topic/technology-and-rights/digital-investigations-lab
+      - link "Terrorism / Counterterrorism":
+        - /url: /topic/terrorism-counterterrorism
+      - list:
+        - link "CIA Activities":
+          - /url: /topic/terrorism/counterterrorism/cia-activities
+        - link "Detention without Trial":
+          - /url: /topic/terrorism-counterterrorism/detention-without-trial
+        - link "Edward Snowden":
+          - /url: /topic/terrorism-counterterrorism/edward-snowden
+        - link "Guantanamo":
+          - /url: /topic/terrorism-counterterrorism/guantanamo
+        - link "Guantanamo - Military Commissions":
+          - /url: /topic/terrorism-counterterrorism/guantanamo-military-commissions
+        - link "Targeted Killings and Drones":
+          - /url: /topic/terrorism-counterterrorism/targeted-killings-and-drones
+      - link "Torture":
+        - /url: /topic/torture
+      - link "United Nations":
+        - /url: /topic/united-nations
+      - list:
+        - link "Human Rights Council":
+          - /url: /topic/united-nations/human-rights-council
+      - link "Women's Rights":
+        - /url: /topic/womens-rights
+      - list:
+        - link "Forced Marriage":
+          - /url: /topic/womens-rights/forced-marriage
+        - link "Gender Based Violence":
+          - /url: /topic/womens-rights/gender-based-violence
+        - link "Domestic Workers":
+          - /url: /topic/womens-rights/domestic-workers
+        - link "Gender Equality":
+          - /url: /topic/womens-rights/gender-equality
+        - link "Reproductive Rights":
+          - /url: /topic/womens-rights/reproductive-rights
+        - link "Sexual Violence":
+          - /url: /topic/womens-rights/sexual-violence
+        - link "Labor Rights":
+          - /url: /topic/womens-rights/labor-rights
+        - link "Sex Work":
+          - /url: /topic/womens-rights/sex-work
+        - link "Women and Armed Conflict":
+          - /url: /topic/womens-rights/women-and-armed-conflict
+        - link "Women’s Health":
+          - /url: /topic/womens-rights/womens-health
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - text: Join Us
+    - list:
+      - link "Newsletters":
+        - /url: https://www.hrw.org/newsletters
+      - link "Our Committees":
+        - /url: /join-us/human-rights-watch-council
+      - link "Film Festival":
+        - /url: https://ff.hrw.org/news/human-rights-watch-end-its-celebrated-film-festival
+      - link "Legacies for Justice":
+        - /url: https://legacy.hrw.org/legacies-for-justice-society
+    - text: About
+    - list:
+      - link "About Us":
+        - /url: /about-us
+      - list:
+        - link "History":
+          - /url: /about/about-us/history
+      - link "Newsletters":
+        - /url: /newsletters
+      - link "Careers":
+        - /url: /careers
+      - link "People":
+        - /url: /about/people
+      - list:
+        - link "Board of Directors":
+          - /url: /about/people/board-directors
+        - link "Advisory Committees":
+          - /url: /about/people/advisory-committees
+      - link "Social Media":
+        - /url: /about/social-media
+      - link "Human Rights Education":
+        - /url: /students-and-educators
+      - link "Partners":
+        - /url: /about/partners
+      - list:
+        - link "Partner Resources":
+          - /url: /about/partner-resources
+      - link "Financials and Fundraising Policy":
+        - /url: /financials
+      - link "Accessibility":
+        - /url: /about/accessibility
+      - link "Contact":
+        - /url: /contact-us
+    - text: Give Now
+    - list:
+      - link "Make a One-time Gift":
+        - /url: https://bit.ly/3qP09tb
+      - link "Give Monthly":
+        - /url: https://bit.ly/3C4SbCq
+      - link "Gifts in Wills and Trusts":
+        - /url: https://www.hrw.org/give-now/legacy-giving
+      - link "Matching Gifts":
+        - /url: https://donate.hrw.org/page/194986/action/1
+      - link "Partners for Justice":
+        - /url: https://donate.hrw.org/page/85608/action/1?promo_id=1008
+      - link "Stock or Wire Transfer":
+        - /url: https://donate.hrw.org/page/14723/action/1
+      - link "Give from Your IRA":
+        - /url: /QCD
+  - heading "Topic / Sub-Topic" [level=2]
+  - list:
+    - link "Arms":
+      - /url: /topic/arms
+    - list:
+      - link "Cluster Munitions":
+        - /url: /topic/arms/cluster-munitions
+      - link "Killer Robots":
+        - /url: /topic/arms/killer-robots
+      - link "Landmines":
+        - /url: /topic/arms/landmines
+      - link "Explosive Weapons in Populated Areas":
+        - /url: /topic/arms/explosive-weapons-in-populated-areas
+      - link "Incendiary Weapons":
+        - /url: /topic/arms/incendiary-weapons
+    - link "Children's Rights":
+      - /url: /topic/childrens-rights
+    - list:
+      - link "Education":
+        - /url: /topic/childrens-rights/education
+      - link "Attacks on Education":
+        - /url: /topic/childrens-rights/attacks-on-education
+      - link "Children Separated from Families":
+        - /url: /topic/childrens-rights/children-separated-from-families
+      - link "Children and Armed Conflict":
+        - /url: /topic/childrens-rights/children-and-armed-conflict
+      - link "Child Labor":
+        - /url: /topic/childrens-rights/child-labor
+      - link "Youth Justice":
+        - /url: /topic/childrens-rights/youth-justice
+      - link "Migrant and Refugee Children":
+        - /url: /topic/childrens-rights/migrant-and-refugee-children
+      - link "Intersex Children":
+        - /url: /topic/childrens-rights/intersex-children
+    - link "Crisis and Conflict":
+      - /url: /topic/crisis-and-conflict
+    - link "Disability Rights":
+      - /url: /topic/disability-rights
+    - list:
+      - link "Shackling":
+        - /url: /topic/disability-rights/shackling
+    - link "Economic Justice and Rights":
+      - /url: /topic/economic-justice-and-rights
+    - list:
+      - link "Corporate Accountability":
+        - /url: /topic/economic-justice-and-rights/corporate-accountability
+      - link "Oil, Mining, and Natural Resources":
+        - /url: /topic/economic-justice-and-rights/oil-mining-and-natural-resources
+      - link "Poverty and Inequality":
+        - /url: /topic/economic-justice-and-rights/poverty-and-inequality
+      - link "World Bank, IMF":
+        - /url: /topic/economic-justice-and-rights/world-bank-imf
+    - link "Environment and Human Rights":
+      - /url: /topic/environment
+    - list:
+      - link "Climate Change":
+        - /url: /topic/climate-change
+      - link "Deforestation":
+        - /url: /topic/environment-and-human-rights/deforestation
+      - link "Fossil Fuels":
+        - /url: /topic/environment/fossil-fuels
+    - link "Free Speech":
+      - /url: /topic/free-speech
+    - list:
+      - link "Press Freedom":
+        - /url: /topic/free-speech/press-freedom
+      - link "Religious Freedom":
+        - /url: /topic/free-speech/religious-freedom
+    - link "Health":
+      - /url: /topic/health
+    - list:
+      - link "Sexual and Reproductive Health":
+        - /url: /topic/health/sexual-and-reproductive-health
+      - link "Detention Centers":
+        - /url: /topic/health/detention-centers
+      - link "Disasters and Displaced Populations":
+        - /url: /topic/health/disasters-and-displaced-populations
+      - link "Environment and Health":
+        - /url: /topic/health/environment-and-health
+      - link "Health Care Access":
+        - /url: /topic/health/health-care-access
+      - link "HIV/AIDS and Tuberculosis":
+        - /url: /topic/health/hiv/aids-and-tuberculosis
+      - link "Palliative Care":
+        - /url: /topic/health/palliative-care
+      - link "Attacks on Health":
+        - /url: /topic/health/attacks-health
+    - link "LGBT Rights":
+      - /url: /topic/lgbt-rights
+    - link "Refugees and Migrants":
+      - /url: /topic/refugees-and-migrants
+    - list:
+      - link "Asylum Seekers":
+        - /url: /topic/refugees-and-migrants/asylum-seekers
+      - link "Internally Displaced People":
+        - /url: /topic/refugees-and-migrants/internally-displaced-people
+      - link "Exploitation, Forced Labor & Trafficking":
+        - /url: /topic/refugees-and-migrants/exploitation-forced-labor-trafficking
+      - link "Migrants":
+        - /url: /topic/refugee-rights/migrants
+    - link "Rights of Older People":
+      - /url: /topic/rights-older-people
+    - link "International Justice":
+      - /url: /topic/international-justice
+    - list:
+      - link "Charles Taylor":
+        - /url: /topic/international-justice/charles-taylor
+      - link "International Criminal Court":
+        - /url: /topic/international-justice/international-criminal-court
+      - link "Joseph Kony - Lord's Resistance Army":
+        - /url: /topic/international-justice/joseph-kony-lra
+      - link "Peace and Justice":
+        - /url: /topic/international-justice/peace-and-justice
+      - link "Bosco Ntaganda":
+        - /url: /topic/international-justice/bosco-ntaganda
+      - link "Universal Jurisdiction":
+        - /url: /topic/international-justice/universal-jurisdiction
+    - link "Sport and Human Rights":
+      - /url: /topic/sport-and-human-rights
+    - link "Technology and Rights":
+      - /url: /topic/technology-and-rights
+    - list:
+      - link "Digital Investigations Lab":
+        - /url: /topic/technology-and-rights/digital-investigations-lab
+    - link "Terrorism / Counterterrorism":
+      - /url: /topic/terrorism-counterterrorism
+    - list:
+      - link "CIA Activities":
+        - /url: /topic/terrorism/counterterrorism/cia-activities
+      - link "Detention without Trial":
+        - /url: /topic/terrorism-counterterrorism/detention-without-trial
+      - link "Edward Snowden":
+        - /url: /topic/terrorism-counterterrorism/edward-snowden
+      - link "Guantanamo":
+        - /url: /topic/terrorism-counterterrorism/guantanamo
+      - link "Guantanamo - Military Commissions":
+        - /url: /topic/terrorism-counterterrorism/guantanamo-military-commissions
+      - link "Targeted Killings and Drones":
+        - /url: /topic/terrorism-counterterrorism/targeted-killings-and-drones
+    - link "Torture":
+      - /url: /topic/torture
+    - link "United Nations":
+      - /url: /topic/united-nations
+    - list:
+      - link "Human Rights Council":
+        - /url: /topic/united-nations/human-rights-council
+    - link "Women's Rights":
+      - /url: /topic/womens-rights
+    - list:
+      - link "Forced Marriage":
+        - /url: /topic/womens-rights/forced-marriage
+      - link "Gender Based Violence":
+        - /url: /topic/womens-rights/gender-based-violence
+      - link "Domestic Workers":
+        - /url: /topic/womens-rights/domestic-workers
+      - link "Gender Equality":
+        - /url: /topic/womens-rights/gender-equality
+      - link "Reproductive Rights":
+        - /url: /topic/womens-rights/reproductive-rights
+      - link "Sexual Violence":
+        - /url: /topic/womens-rights/sexual-violence
+      - link "Labor Rights":
+        - /url: /topic/womens-rights/labor-rights
+      - link "Sex Work":
+        - /url: /topic/womens-rights/sex-work
+      - link "Women and Armed Conflict":
+        - /url: /topic/womens-rights/women-and-armed-conflict
+      - link "Women’s Health":
+        - /url: /topic/womens-rights/womens-health
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

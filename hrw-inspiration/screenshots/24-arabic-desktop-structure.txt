@@ -1,0 +1,950 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - navigation "اللغات":
+    - list:
+      - listitem: العربية
+      - link "简中":
+        - /url: /zh-hans
+      - link "繁中":
+        - /url: /zh-hant
+      - link "English":
+        - /url: /
+      - link "Français":
+        - /url: /fr
+      - link "Deutsch":
+        - /url: /de
+      - link "日本語":
+        - /url: /ja
+      - link "Português":
+        - /url: /pt
+      - link "Русский":
+        - /url: /ru
+      - link "Español":
+        - /url: /es
+      - link "More languages":
+        - /url: /ar/languages?language=ar
+        - text: More
+        - generic: languages
+  - generic: ابحث
+  - textbox "ابحث"
+  - button "ابحث":
+  - link "تبرعوا الآن":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: تبرعوا الآن
+  - list:
+    - button "Click to expand البلدان":
+      - generic: البلدان
+    - button "Click to expand المواضيع":
+      - generic: المواضيع
+    - link "التقارير":
+      - /url: /ar/publications
+    - link "فيديو وصور":
+      - /url: /ar/video-photos
+    - link "التأثير":
+      - /url: /ar/node/378413
+    - button "Click to expand من نحن":
+      - generic: من نحن
+- main:
+  - link "Human Rights Watch":
+    - /url: /ar
+    - img "Human Rights Watch"
+  - heading [level=2]
+  - link "تبرعوا الآن":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: تبرعوا الآن
+  - link "مدرسة مدمّرة في قرية الغدفة، ريف إدلب، سوريا.":
+    - /url: /ar/news/2026/09/27/syria-reconstruction-deals-lack-critical-rights-framework
+    - img "مدرسة مدمّرة في قرية الغدفة، ريف إدلب، سوريا."
+  - generic: تقرير
+  - 'heading "سوريا: صفقات إعادة الإعمار تفتقر إلى إطار أساسي لحقوق الإنسان" [level=2]':
+    - 'link "سوريا: صفقات إعادة الإعمار تفتقر إلى إطار أساسي لحقوق الإنسان"':
+      - /url: /ar/news/2026/09/27/syria-reconstruction-deals-lack-critical-rights-framework
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "آخر الأخبار" [level=2]
+  - link "شاهد المزيد":
+    - /url: /ar/news
+    - text: شاهد المزيد
+  - region:
+    - tabpanel "1 of 8":
+      - 'link "صموئيل بيتر أوياي الإمارات: استمرار احتجاز كاتب صحفي منذ عام"':
+        - /url: /ar/news/2026/09/30/united-arab-emirates-a-year-on-critic-remains-in-detention
+        - img "صموئيل بيتر أوياي"
+        - 'heading "الإمارات: استمرار احتجاز كاتب صحفي منذ عام" [level=3]'
+    - tabpanel "2 of 8":
+      - link "Thurgood Marshall United States Federal Courthouse building in lower Manhattan, New York City. مجموعة خبراء تدعم الطعن في عقوبات ترامب ضد \"الجنائية الدولية\"":
+        - /url: /ar/news/2026/09/25/array-of-experts-back-lawsuit-challenging-trumps-icc-sanctions-regime
+        - img "Thurgood Marshall United States Federal Courthouse building in lower Manhattan, New York City."
+        - heading "مجموعة خبراء تدعم الطعن في عقوبات ترامب ضد \"الجنائية الدولية\"" [level=3]
+    - tabpanel "3 of 8":
+      - 'link "مقر الأمم المتحدة في نيويورك، ديسمبر/كانون الأول 2020. الأمم المتحدة: التزموا بحقوق الإنسان والعدالة في الجرائم الخطيرة"':
+        - /url: /ar/news/2026/09/21/un-commit-to-human-rights-justice-for-grave-crimes
+        - img "مقر الأمم المتحدة في نيويورك، ديسمبر/كانون الأول 2020."
+        - 'heading "الأمم المتحدة: التزموا بحقوق الإنسان والعدالة في الجرائم الخطيرة" [level=3]'
+    - tabpanel "4 of 8":
+      - 'link "متظاهرون متجمعون في 15 سبتمبر/أيلول 2026 أمام مبنى المحكمة في إسطنبول احتجاجًا على اعتقال نشطاء من مجتمع الميم-عين والمداهمات التي استهدفت جمعيات الدفاع عن حقوق المجتمع الميم-عين في مدن مختلفة في تركيا. كما اعتُقل أكثر من 100 متظاهر واحتجزوا لأكثر من 24 ساعة. تركيا: قمع حقوق مجتمع الميم-عين يضرب سيادة القانون"':
+        - /url: /ar/news/2026/09/18/turkiye-lgbt-rights-crackdown-strikes-at-rule-of-law
+        - img "متظاهرون متجمعون في 15 سبتمبر/أيلول 2026 أمام مبنى المحكمة في إسطنبول احتجاجًا على اعتقال نشطاء من مجتمع الميم-عين والمداهمات التي استهدفت جمعيات الدفاع عن حقوق المجتمع الميم-عين في مدن مختلفة في تركيا. كما اعتُقل أكثر من 100 متظاهر واحتجزوا لأكثر من 24 ساعة."
+        - 'heading "تركيا: قمع حقوق مجتمع الميم-عين يضرب سيادة القانون" [level=3]'
+    - tabpanel:
+      - link:
+        - /url: /ar/news/2026/09/16/von-der-leyens-failures-on-israel-must-end-starting-with-a-settlement-trade-ban
+        - heading [level=3]: على فون دير لاين إنهاء تقاعسها بشأن إسرائيل، بدءا بحظر التجارة مع المستوطنات
+    - tabpanel:
+      - link:
+        - /url: /ar/news/2026/09/15/yemen-new-attacks-by-houthi-include-likely-war-crimes
+        - heading [level=3]: "اليمن: هجمات الحوثيين الجديدة يُرجَّح شمولها جرائم حرب"
+    - tabpanel:
+      - link:
+        - /url: /ar/news/2026/09/10/iran-ongoing-unlawful-execution-campaign-against-protesters
+        - heading [level=3]: "إيران: استمرار حملة الإعدامات غير القانونية بحق متظاهرين"
+    - tabpanel:
+      - link:
+        - /url: /ar/news/2026/09/09/lebanon/israel-hezbollahs-use-of-cluster-munitions
+        - heading [level=3]: "لبنان/إسرائيل: استخدام \"حزب الله\" الذخائر العنقودية"
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+      - tab "Go to slide 7"
+      - tab "Go to slide 8"
+  - generic: الأكثر رواجا
+  - link "العراق":
+    - /url: /ar/alshrq-alawst-wshmal-afryqya/alraq
+    - text: العراق
+  - link "السعودية":
+    - /url: /ar/alshrq-alawst-wshmal-afryqya/alswdyt
+    - text: السعودية
+  - link "سوريا":
+    - /url: /ar/alshrq-alawst-wshmal-afryqya/swrya
+    - text: سوريا
+  - link "فيروس كورونا":
+    - /url: /ar/tag/coronavirus
+    - text: فيروس كورونا
+  - heading "كيف نعمل" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - list:
+    - link "تأثيرنا":
+      - /url: /impact
+  - generic: "80"
+  - generic: جنسية ممثلة
+  - generic: 100+
+  - generic: دولة حققنا في قضاياها
+  - generic: 14+ مليون
+  - generic: حجم جمهورنا العالمي
+  - generic: "0"
+  - generic: تمويل حكومي
+  - heading "تحت الضوء" [level=2]
+  - article:
+    - article:
+      - link "A white phosphorus munition airbursts over buildings in the town of Khiam in southern Lebanon during an Israeli bombardment on October 31, 2024.":
+        - /url: /ar/news/2026/09/09/white-phosphorus-recent-use-inhumane-effects-require-new-law
+        - img "A white phosphorus munition airbursts over buildings in the town of Khiam in southern Lebanon during an Israeli bombardment on October 31, 2024."
+      - generic: 9 سبتمبر/أيلول 2026 | بيان صحفي
+      - 'heading "الفوسفور الأبيض: استخداماته مؤخرا وآثاره اللاإنسانية تتطلب قانونا جديدا" [level=3]':
+        - 'link "الفوسفور الأبيض: استخداماته مؤخرا وآثاره اللاإنسانية تتطلب قانونا جديدا"':
+          - /url: /ar/news/2026/09/09/white-phosphorus-recent-use-inhumane-effects-require-new-law
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+  - article:
+    - article:
+      - link "Germany's Chancellor Friedrich Merz, UAE's President Sheikh Mohamed bin Zayed al-Nahyan shake hands.":
+        - /url: /ar/news/2026/09/07/germany-confront-uae-role-in-sudan-repression-at-home
+        - img "Germany's Chancellor Friedrich Merz, UAE's President Sheikh Mohamed bin Zayed al-Nahyan shake hands."
+      - generic: 7 سبتمبر/أيلول 2026 | بيان صحفي
+      - 'heading "ألمانيا: تصدّوا لدور الإمارات في السودان وقمعها في الداخل" [level=3]':
+        - 'link "ألمانيا: تصدّوا لدور الإمارات في السودان وقمعها في الداخل"':
+          - /url: /ar/news/2026/09/07/germany-confront-uae-role-in-sudan-repression-at-home
+  - article:
+    - article:
+      - link "201901europe_sweden_riksdag_flag":
+        - /url: /ar/news/2026/09/02/sweden-most-parties-back-stronger-action-on-israel
+        - img "201901europe_sweden_riksdag_flag"
+      - generic: 2 سبتمبر/أيلول 2026 | بيان صحفي
+      - 'heading "السويد: معظم الأحزاب تؤيد اتخاذ إجراءات أقوى بشأن إسرائيل" [level=3]':
+        - 'link "السويد: معظم الأحزاب تؤيد اتخاذ إجراءات أقوى بشأن إسرائيل"':
+          - /url: /ar/news/2026/09/02/sweden-most-parties-back-stronger-action-on-israel
+  - article:
+    - article:
+      - link "Tunisians hold up placards during a march organized by the Campaign Against the Criminalization of Civil Work to protest racism in Tunis, April 11, 2026":
+        - /url: /ar/news/2026/09/02/tunisia-civil-society-under-siege
+        - img "Tunisians hold up placards during a march organized by the Campaign Against the Criminalization of Civil Work to protest racism in Tunis, April 11, 2026"
+      - generic: 2 سبتمبر/أيلول 2026 | بيان صحفي
+      - 'heading "تونس: المجتمع المدني تحت الحصار" [level=3]':
+        - 'link "تونس: المجتمع المدني تحت الحصار"':
+          - /url: /ar/news/2026/09/02/tunisia-civil-society-under-siege
+  - article:
+    - article:
+      - link "A Uyghur man outside of the Id Kah Mosque in Kashgar city in northwestern China's Xinjiang region, July 13, 2023.":
+        - /url: /ar/news/2026/08/27/china-decade-of-impunity-for-crimes-against-uyghurs
+        - img "A Uyghur man outside of the Id Kah Mosque in Kashgar city in northwestern China's Xinjiang region, July 13, 2023."
+      - generic: 27 اغسطس/آب 2026 | بيان صحفي
+      - 'heading "الصين: عقدٌ من الإفلات من العقاب على الجرائم ضد الأويغور" [level=3]':
+        - 'link "الصين: عقدٌ من الإفلات من العقاب على الجرائم ضد الأويغور"':
+          - /url: /ar/news/2026/08/27/china-decade-of-impunity-for-crimes-against-uyghurs
+  - heading "التقارير" [level=2]
+  - link "مزيد من التقارير":
+    - /url: /ar/publications
+    - text: مزيد من التقارير
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - region:
+    - tabpanel "1 of 6":
+      - article:
+        - article:
+          - img "report cover in Arabic"
+          - 'link "\"حياة مع وقف التنفيذ\" قمع المجتمع المدني في تونس يوثق التقرير، الصادر في 42 صفحة، بعنوان \"حياة مع وقف التنفيذ: قمع المجتمع المدني في تونس\"، تصعيد السلطات التونسية قمع مجموعات المجتمع المدني المحلية والدولية والعاملين فيها وأعضائها والمنتسبين إليها، إذ تستخدم الملاحقات القضائية التعسفية، والاعتقالات التعسفية، والاحتجاز، والتحقيقات المالية والجنائية، والتعليق الجماعي، والتهديد بالحل سلاحا ضدها. 2 سبتمبر/أيلول 2026"':
+            - /url: /ar/report/2026/09/02/394117
+            - heading "\"حياة مع وقف التنفيذ\"" [level=3]
+            - generic: قمع المجتمع المدني في تونس
+            - generic: [Long prose omitted.]
+            - generic: 2 سبتمبر/أيلول 2026
+    - tabpanel "2 of 6":
+      - article:
+        - article:
+          - img "report cover in Arabic"
+          - 'link "”ضاعت كل أحلامي“ تهجير إسرائيل القسري للفلسطينيين في الضفة الغربية التقرير الصادر في 105 صفحات، بعنوان \"’ضاعت كل أحلامي‘: تهجير إسرائيل القسري للفلسطينيين في الضفة الغربية\"، يُقدم تفاصيل عن \"السور الحديدي\"، وهي عملية عسكرية إسرائيلية شملت مخيمات جنين وطولكرم ونور شمس للاجئين، بدأت في 21 يناير/كانون الثاني 2025، بعد أيام من إعلان وقف مؤقت لإطلاق النار في غزة. أصدرت القوات الإسرائيلية أوامر مفاجئة للمدنيين بمغادرة منازلهم، بسبل شملت استخدام مكبرات الصوت المثبتة على مسيّرات. قال شهود عيان إن الجنود تحركوا منهجيا في أنحاء المخيمات، واقتحموا المنازل، ونهبوا الممتلكات، واستجوبوا السكان، وأجبروا في النهاية جميع العائلات على الخروج. 20 نوفمبر/تشرين الثاني 2025"':
+            - /url: /ar/report/2025/11/20/392462
+            - heading "”ضاعت كل أحلامي“" [level=3]
+            - generic: تهجير إسرائيل القسري للفلسطينيين في الضفة الغربية
+            - generic: [Long prose omitted.]
+            - generic: 20 نوفمبر/تشرين الثاني 2025
+    - tabpanel "3 of 6":
+      - article:
+        - article:
+          - img "report cover in arabic"
+          - link "”أنت علوي؟“ الاستهداف القائم على الهوية خلال المرحلة الانتقالية في سوريا يوثق التقرير الصادر في51صفحة، بعنوان \"'أنت علوي؟' الاستهداف القائم على الهوية خلال المرحلة الانتقالية في سوريا\"، الانتهاكات الواسعة التي ارتكبتها القوات الحكومية، والجماعات المسلحة الموالية للحكومة، والمتطوعون المسلحون، بما يشمل الإعدامات التعسفية، والتدمير المتعمد للممتلكات، وإساءة معاملة المحتجزين. تُظهر النتائج أن هذه الجرائم وقعت في إطار عملية عسكرية منسقة مركزيا بإشراف وزارة الدفاع، التي واصل مسؤولوها تنسيق نشر القوات حتى بعد أن أصبحت عمليات القتل الجماعية معروفة للجمهور. 23 سبتمبر/أيلول 2025":
+            - /url: /ar/report/2025/09/23/392116
+            - heading "”أنت علوي؟“" [level=3]
+            - generic: الاستهداف القائم على الهوية خلال المرحلة الانتقالية في سوريا
+            - generic: [Long prose omitted.]
+            - generic: 23 سبتمبر/أيلول 2025
+    - tabpanel "4 of 6":
+      - article:
+        - article:
+          - img "report cover in Arabic"
+          - 'link "\"نتقرب إلى الله بتعذيب الصحفيين\" انتهاكات الأطراف المتحاربة المنهجية ضد الصحفيين وحرية الصحافة في اليمن يوثق التقرير الصادر في 51 صفحة، بعنوان \"''نتقرب إلى الله بتعذيب الصحفيين'': انتهاكات الأطراف المتحاربة المنهجية ضد الصحفيين وحرية الصحافة في اليمن\"، مجموعة واسعة من الانتهاكات التي ارتكبتها الأطراف المتحاربة ضد الصحفيين والمؤسسات الإعلامية، بما في ذلك الاستخدام الواسع النطاق للاحتجاز التعسفي والإخفاء القسري والتعذيب وغيره من ضروب المعاملة اللاإنسانية. كما ارتكبت السلطات التابعة لأطراف النزاع جميعها انتهاكات أوسع ضد حق اليمنيين في حرية التعبير وضد وسائل الإعلام، شملت الاستيلاء على مؤسسات إعلامية، وترهيب الإعلاميين ومضايقتهم وعرقلة حركتهم وعملهم. 11 سبتمبر/أيلول 2025"':
+            - /url: /ar/report/2025/09/11/392056
+            - heading "\"نتقرب إلى الله بتعذيب الصحفيين\"" [level=3]
+            - generic: انتهاكات الأطراف المتحاربة المنهجية ضد الصحفيين وحرية الصحافة في اليمن
+            - generic: [Long prose omitted.]
+            - generic: 11 سبتمبر/أيلول 2025
+    - tabpanel:
+      - article:
+        - article:
+          - link:
+            - /url: /ar/report/2025/06/02/391402
+            - heading [level=3]: ظُلم مُتأصّل
+            - generic: ضرورة الإصلاح الشامل للعدالة في ليبيا
+            - generic: [Long prose omitted.]
+            - generic: 2 يونيو/حزيران 2025
+    - tabpanel:
+      - article:
+        - article:
+          - link:
+            - /url: /ar/report/2025/04/16/390957
+            - heading [level=3]: ”كلنا متآمرون“
+            - generic: استخدام الاحتجاز التعسفي في تونس لسحق المعارضة
+            - generic: [Long prose omitted.]
+            - generic: 16 أبريل/نيسان 2025
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+  - heading "مقاطع الفيديو" [level=2]
+  - link "شاهد المزيد":
+    - /url: /ar/video-photos
+    - text: شاهد المزيد
+  - text: "التقرير العالمي 2026: الدفاع عن حقوق الإنسان تحدي العصر"
+  - 'button "world report collage Play التقرير العالمي 2026: الدفاع عن حقوق الإنسان تحدي العصر"':
+    - img "world report collage"
+    - generic: Play
+    - generic: "التقرير العالمي 2026: الدفاع عن حقوق الإنسان تحدي العصر"
+  - generic: [Long prose omitted.]
+  - heading "المزيد من الفيديوهات" [level=3]
+  - 'button "Play video التقرير العالمي 2026: الدفاع عن حقوق الإنسان تحدي العصر 04:29"':
+    - generic: Play video
+    - generic: "التقرير العالمي 2026: الدفاع عن حقوق الإنسان تحدي العصر"
+    - generic: 04:29
+  - button "Play video التراجع والمقاومة في الأوقات العصيبة 03:40":
+    - generic: Play video
+    - generic: التراجع والمقاومة في الأوقات العصيبة
+    - generic: 03:40
+  - 'button "Play video سوريا: يجب حماية مقبرة جماعية في دمشق والتحقيق بشأنها 05:34"':
+    - generic: Play video
+    - generic: "سوريا: يجب حماية مقبرة جماعية في دمشق والتحقيق بشأنها"
+    - generic: 05:34
+  - button "Play video العراقيون ذوو الإعاقة مستبعدون من الوظائف 04:16":
+    - generic: Play video
+    - generic: العراقيون ذوو الإعاقة مستبعدون من الوظائف
+    - generic: 04:16
+  - 'button "Play video شمال شرق سوريا: الضربات التركية تقطع المياه والكهرباء 06:13"':
+    - generic: Play video
+    - generic: "شمال شرق سوريا: الضربات التركية تقطع المياه والكهرباء"
+    - generic: 06:13
+  - heading "لقطات سريعة" [level=2]
+  - region:
+    - tabpanel "1 of 6":
+      - text: تصاعد القتال في إثيوبيا
+      - button "Play تصاعد القتال في إثيوبيا":
+        - generic: Play
+        - generic: تصاعد القتال في إثيوبيا
+    - tabpanel "2 of 6":
+      - text: غوغل إيرث تظهر الدمار الهائل في غزة
+      - button "Play غوغل إيرث تظهر الدمار الهائل في غزة":
+        - generic: Play
+        - generic: غوغل إيرث تظهر الدمار الهائل في غزة
+    - tabpanel "3 of 6":
+      - text: زارا لارسون تلغي حفل غراند بري أبو ظبي
+      - button "Play زارا لارسون تلغي حفل غراند بري أبو ظبي":
+        - generic: Play
+        - generic: زارا لارسون تلغي حفل غراند بري أبو ظبي
+    - tabpanel "4 of 6":
+      - text: "ذكرى قتل الشاب حسني: غياب العدالة في الجزائر"
+      - 'button "Play ذكرى قتل الشاب حسني: غياب العدالة في الجزائر"':
+        - generic: Play
+        - generic: "ذكرى قتل الشاب حسني: غياب العدالة في الجزائر"
+    - tabpanel:
+      - text: النازحون السورين يعودون إلى بلدات مدمرة
+      - button:
+        - generic: Play
+        - generic: النازحون السورين يعودون إلى بلدات مدمرة
+    - tabpanel:
+      - text: هجمات ترامب وشي على حقوق الإنسان
+      - button:
+        - generic: Play
+        - generic: هجمات ترامب وشي على حقوق الإنسان
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+  - link "رجل يحمل زهرة ورسالة \"الإنسانية للجميع\" بينما يحمي جنود مشاة البحرية الأمريكية والحرس الوطني مدخل مبنى فيدرالي خلال احتجاج \"لا ملوك\" الذي أعقب عمليات الهجرة الأمريكية، في لوس أنجلس، كاليفورنيا، في 4 يوليو/تموز 2025.":
+    - /url: /ar/world-report/2026
+    - img "رجل يحمل زهرة ورسالة \"الإنسانية للجميع\" بينما يحمي جنود مشاة البحرية الأمريكية والحرس الوطني مدخل مبنى فيدرالي خلال احتجاج \"لا ملوك\" الذي أعقب عمليات الهجرة الأمريكية، في لوس أنجلس، كاليفورنيا، في 4 يوليو/تموز 2025."
+  - generic: تحقيقات بارزة
+  - heading "التقرير العالمي 2026" [level=2]:
+    - link "التقرير العالمي 2026":
+      - /url: /ar/world-report/2026
+  - generic: مراجعتنا السنوية لحقوق الإنسان حول العالم
+  - heading "ابقوا على اطلاع" [level=2]
+  - heading "احصلوا على آخر المستجدات حول حقوق الإنسان وفرص التحرك." [level=3]
+  - generic: أدخل البريد الإلكتروني
+  - textbox "أدخل البريد الإلكتروني"
+  - button "الاشتراك"
+  - heading "تابعونا" [level=3]
+  - list:
+    - link "Bluesky":
+      - /url: https://bsky.app/profile/hrwarabic.bsky.social
+      - generic: Bluesky
+    - link "X":
+      - /url: https://x.com/hrw_ar
+      - generic: X
+    - link "Facebook":
+      - /url: http://www.facebook.com/pages/hywmn-rayts-wwtsh/103703293018609
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HRWArabic
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/hrw_ar
+      - generic: Instagram
+  - heading "نحو 5 عقود من التأثير" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - list:
+    - listitem: ساعدنا في وضع مجرمي الحرب الأقوياء خلف القضبان
+    - listitem: حمينا الأطفال الذين يعملون في حقول التبغ
+    - listitem: فزنا بجائزة نوبل للسلام عن عملنا في حظر الألغام الأرضية
+  - link "شاهد ما حققناه أيضا":
+    - /url: /impact
+    - text: شاهد ما حققناه أيضا
+  - region:
+    - list:
+      - article:
+        - link "The winner of the Nobel Peace Prize Jody Williams bows in front of Cambodian Tun Channereth, who holds the International Campaign to Ban Landmines diploma and medal, on her way to receive the Nobel Peace Prize in Oslo City Hall, December 10, 1997.":
+          - /url: /ar/news/2024/06/01/proud-record-tackling-scourge-landmines
+          - img "The winner of the Nobel Peace Prize Jody Williams bows in front of Cambodian Tun Channereth, who holds the International Campaign to Ban Landmines diploma and medal, on her way to receive the Nobel Peace Prize in Oslo City Hall, December 10, 1997."
+        - heading "سجل مُشرّف في معالجة آفة الألغام الأرضية" [level=3]:
+          - link "سجل مُشرّف في معالجة آفة الألغام الأرضية":
+            - /url: /ar/news/2024/06/01/proud-record-tackling-scourge-landmines
+      - article:
+        - link "201906wrd_ilo":
+          - /url: /ar/news/2019/07/31/interview-protecting-all-workers-everywhere
+          - img "201906wrd_ilo"
+        - 'heading "مقابلة: حماية كل العمال، في كل مكان" [level=3]':
+          - 'link "مقابلة: حماية كل العمال، في كل مكان"':
+            - /url: /ar/news/2019/07/31/interview-protecting-all-workers-everywhere
+      - article:
+        - link "صور سوريين اعتقلوا أو تم إخفاؤهم وضعتها \"عائلات من أجل الحرية\" كجزء من مظاهرة أمام المحكمة في كوبلنز، 2 يوليو/تموز 2020.":
+          - /url: /ar/feature/2022/01/06/seeking-justice-for-syria/how-an-alleged-intelligence-officer-was-put-on-trial-in-germany
+          - img "صور سوريين اعتقلوا أو تم إخفاؤهم وضعتها \"عائلات من أجل الحرية\" كجزء من مظاهرة أمام المحكمة في كوبلنز، 2 يوليو/تموز 2020."
+        - 'heading "ضابط مخابرات مزعوم في ألمانيا: تحقيق العدالة من أجل سوريا" [level=3]':
+          - 'link "ضابط مخابرات مزعوم في ألمانيا: تحقيق العدالة من أجل سوريا"':
+            - /url: /ar/feature/2022/01/06/seeking-justice-for-syria/how-an-alleged-intelligence-officer-was-put-on-trial-in-germany
+      - article:
+        - link "A boy drags a cart":
+          - /url: /ar/news/2024/04/04/pm-rowley-should-act-promptly-repatriations-vow
+          - img "A boy drags a cart"
+        - heading "على رئيس الوزراء رولي تنفيذ وعده بإعادة مواطنيه إلى ترينيداد فورا" [level=3]:
+          - link "على رئيس الوزراء رولي تنفيذ وعده بإعادة مواطنيه إلى ترينيداد فورا":
+            - /url: /ar/news/2024/04/04/pm-rowley-should-act-promptly-repatriations-vow
+      - article:
+        - link "A sculpture of African slaves by Ghanaian artist, Kwame Akoto-Bamfo, at the beginning of the National Memorial for Peace and Justice in Montgomery, Alabama.":
+          - /url: /ar/news/2021/04/29/pushing-forward-reparations-slavery-us
+          - img "A sculpture of African slaves by Ghanaian artist, Kwame Akoto-Bamfo, at the beginning of the National Memorial for Peace and Justice in Montgomery, Alabama."
+        - heading "ضغط من أجل تعويضات عن العبودية في الولايات المتحدة" [level=3]:
+          - link "ضغط من أجل تعويضات عن العبودية في الولايات المتحدة":
+            - /url: /ar/news/2021/04/29/pushing-forward-reparations-slavery-us
+      - article:
+        - link "عبد الكريم، روهينغي مسلم، يحمل أمّه، أليمة خاتون، إلى مخيم للاجئين بعد أن عبروا من بورما إلى بنغلاديش في 16 سبتمبر/أيلول 2017.":
+          - /url: /ar/news/2020/01/27/interview-landmark-world-court-order-protects-rohingya-genocide
+          - img "عبد الكريم، روهينغي مسلم، يحمل أمّه، أليمة خاتون، إلى مخيم للاجئين بعد أن عبروا من بورما إلى بنغلاديش في 16 سبتمبر/أيلول 2017."
+        - 'heading "مقابلة: قرار تاريخي من محكمة دولية يحمي الروهينغا" [level=3]':
+          - 'link "مقابلة: قرار تاريخي من محكمة دولية يحمي الروهينغا"':
+            - /url: /ar/news/2020/01/27/interview-landmark-world-court-order-protects-rohingya-genocide
+  - heading "حسب الإقليم" [level=2]
+  - region:
+    - tabpanel "1 of 6":
+      - heading "الشرق الأوسط وشمال أفريقيا" [level=3]:
+        - link "الشرق الأوسط وشمال أفريقيا":
+          - /url: /ar/middle-east/north-africa
+          - text: الشرق الأوسط وشمال أفريقيا
+      - list:
+        - 'link "Samuel Peter Oyay الإمارات: استمرار احتجاز كاتب صحفي منذ عام"':
+          - /url: /ar/news/2026/09/30/united-arab-emirates-a-year-on-critic-remains-in-detention
+          - img "Samuel Peter Oyay"
+          - 'heading "الإمارات: استمرار احتجاز كاتب صحفي منذ عام" [level=3]'
+        - generic: 30 سبتمبر/أيلول 2026
+        - 'link "سوريا: صفقات إعادة الإعمار تفتقر إلى إطار أساسي لحقوق الإنسان"':
+          - /url: /ar/news/2026/09/27/syria-reconstruction-deals-lack-critical-rights-framework
+          - 'heading "سوريا: صفقات إعادة الإعمار تفتقر إلى إطار أساسي لحقوق الإنسان" [level=3]'
+        - generic: 27 سبتمبر/أيلول 2026
+        - 'link "الأمم المتحدة: التزموا بحقوق الإنسان والعدالة في الجرائم الخطيرة"':
+          - /url: /ar/news/2026/09/21/un-commit-to-human-rights-justice-for-grave-crimes
+          - 'heading "الأمم المتحدة: التزموا بحقوق الإنسان والعدالة في الجرائم الخطيرة" [level=3]'
+        - generic: 21 سبتمبر/أيلول 2026
+    - tabpanel "2 of 6":
+      - heading "الولايات المتحدة الأمريكية" [level=3]:
+        - link "الولايات المتحدة الأمريكية":
+          - /url: /ar/alwlayat-almthdt-alamrykyt
+          - text: الولايات المتحدة الأمريكية
+      - list:
+        - link "Thurgood Marshall United States Federal Courthouse building in lower Manhattan, New York City. مجموعة خبراء تدعم الطعن في عقوبات ترامب ضد \"الجنائية الدولية\"":
+          - /url: /ar/news/2026/09/25/array-of-experts-back-lawsuit-challenging-trumps-icc-sanctions-regime
+          - img "Thurgood Marshall United States Federal Courthouse building in lower Manhattan, New York City."
+          - heading "مجموعة خبراء تدعم الطعن في عقوبات ترامب ضد \"الجنائية الدولية\"" [level=3]
+        - generic: 25 سبتمبر/أيلول 2026
+        - 'link "الأمم المتحدة: التزموا بحقوق الإنسان والعدالة في الجرائم الخطيرة"':
+          - /url: /ar/news/2026/09/21/un-commit-to-human-rights-justice-for-grave-crimes
+          - 'heading "الأمم المتحدة: التزموا بحقوق الإنسان والعدالة في الجرائم الخطيرة" [level=3]'
+        - generic: 21 سبتمبر/أيلول 2026
+        - link "عقوبات أمريكية على مسؤولَيْن آخرَيْن في \"الجنائية الدولية\"":
+          - /url: /ar/news/2026/08/18/us-sanctions-2-more-international-criminal-court-officials
+          - heading "عقوبات أمريكية على مسؤولَيْن آخرَيْن في \"الجنائية الدولية\"" [level=3]
+        - generic: 18 اغسطس/آب 2026
+    - tabpanel "3 of 6":
+      - heading "أوروبا وآسيا الوسطى" [level=3]:
+        - link "أوروبا وآسيا الوسطى":
+          - /url: /ar/awrwba-wasya-alwsty
+          - text: أوروبا وآسيا الوسطى
+      - list:
+        - 'link "Demonstrators assemble on September 15, 2026, outside the Istanbul courthouse to protest the arrests of LGBT activists and raids on LGBT rights associations in cities across Türkiye. More than 100 demonstrators were also arrested and detained for more than 24 hours. تركيا: قمع حقوق مجتمع الميم-عين يضرب سيادة القانون"':
+          - /url: /ar/news/2026/09/18/turkiye-lgbt-rights-crackdown-strikes-at-rule-of-law
+          - img "Demonstrators assemble on September 15, 2026, outside the Istanbul courthouse to protest the arrests of LGBT activists and raids on LGBT rights associations in cities across Türkiye. More than 100 demonstrators were also arrested and detained for more than 24 hours."
+          - 'heading "تركيا: قمع حقوق مجتمع الميم-عين يضرب سيادة القانون" [level=3]'
+        - generic: 18 سبتمبر/أيلول 2026
+        - 'link "تركيا: محكمة أوروبية تأمر بالإفراج عن الحقوقي عثمان كافالا"':
+          - /url: /ar/news/2026/08/25/turkiye-european-court-orders-rights-defenders-immediate-release
+          - 'heading "تركيا: محكمة أوروبية تأمر بالإفراج عن الحقوقي عثمان كافالا" [level=3]'
+        - generic: 25 اغسطس/آب 2026
+        - 'link "إسبانيا: أزمة إنسانية وحقوقية في سبتة"':
+          - /url: /ar/news/2026/08/21/spain-humanitarian-and-rights-crisis-in-ceuta
+          - 'heading "إسبانيا: أزمة إنسانية وحقوقية في سبتة" [level=3]'
+        - generic: 21 اغسطس/آب 2026
+    - tabpanel "4 of 6":
+      - heading "آسيا" [level=3]:
+        - link "آسيا":
+          - /url: /ar/asia
+          - text: آسيا
+      - list:
+        - 'link "A Uyghur man outside of the Id Kah Mosque in Kashgar city in northwestern China''s Xinjiang region, July 13, 2023. الصين: عقدٌ من الإفلات من العقاب على الجرائم ضد الأويغور"':
+          - /url: /ar/news/2026/08/27/china-decade-of-impunity-for-crimes-against-uyghurs
+          - img "A Uyghur man outside of the Id Kah Mosque in Kashgar city in northwestern China's Xinjiang region, July 13, 2023."
+          - 'heading "الصين: عقدٌ من الإفلات من العقاب على الجرائم ضد الأويغور" [level=3]'
+        - generic: 27 اغسطس/آب 2026
+        - 'link "أفغانستان: \"طالبان\" تُصعّد هجومها على الحقوق بعد 5 سنوات من السيطرة"':
+          - /url: /ar/news/2026/08/03/afghanistan-taliban-assault-on-rights-deepens-5-years-on
+          - 'heading "أفغانستان: \"طالبان\" تُصعّد هجومها على الحقوق بعد 5 سنوات من السيطرة" [level=3]'
+        - generic: 3 اغسطس/آب 2026
+        - 'link "الهند: استهداف غير قانوني للأقليات الدينية والمنتقدين"':
+          - /url: /ar/news/2026/02/04/india-religious-minorities-critics-unlawfully-targeted
+          - 'heading "الهند: استهداف غير قانوني للأقليات الدينية والمنتقدين" [level=3]'
+        - generic: 4 فبراير/شباط 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/africa
+          - text: أفريقيا
+      - list:
+        - link:
+          - /url: /ar/news/2026/07/29/saudi-arabia-new-executions-of-ethiopian-migrants
+          - heading [level=3]: "السعودية: إعدامات جديدة بحق مهاجرين إثيوبيين"
+        - generic: 29 يوليو/تموز 2026
+        - link:
+          - /url: /ar/news/2026/07/07/egypt-refugees-asylum-seekers-arrested-deported
+          - heading [level=3]: "مصر: اعتقال لاجئين وطالبي لجوء وترحيلهم"
+        - generic: 7 يوليو/تموز 2026
+        - link:
+          - /url: /ar/news/2026/06/22/robust-global-action-is-key-to-curbing-sudan-atrocities
+          - heading [level=3]: كبح الفظائع في السودان يتطلب تحركا عالميا حاسما
+        - generic: 22 يونيو/حزيران 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/amryka-alshmalyt/amryka-aljnwbyt
+          - text: أمريكا الشمالية/أمريكا الجنوبية
+      - list:
+        - link:
+          - /url: /ar/news/2025/12/02/an-opportunity-to-address-mining-abuses-globally
+          - heading [level=3]: فرصة لمعالجة انتهاكات التعدين عالميا
+        - generic: 2 ديسمبر/كانون الأول 2025
+        - link:
+          - /url: /ar/news/2024/04/04/pm-rowley-should-act-promptly-repatriations-vow
+          - heading [level=3]: على رئيس الوزراء رولي تنفيذ وعده بإعادة مواطنيه إلى ترينيداد فورا
+        - generic: 4 أبريل/نيسان 2024
+        - link:
+          - /url: /ar/news/2024/03/07/womens-voices-have-power-drive-change
+          - heading [level=3]: صوت المرأة قادر على التغيير
+        - generic: 7 مارس/آذار 2024
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+  - heading "المواضيع" [level=2]
+  - region:
+    - tabpanel "1 of 18":
+      - heading "حرية التعبير" [level=3]:
+        - link "حرية التعبير":
+          - /url: /ar/topic/hryt-altbyr
+          - text: حرية التعبير
+      - list:
+        - 'link "Samuel Peter Oyay الإمارات: استمرار احتجاز كاتب صحفي منذ عام"':
+          - /url: /ar/news/2026/09/30/united-arab-emirates-a-year-on-critic-remains-in-detention
+          - img "Samuel Peter Oyay"
+          - 'heading "الإمارات: استمرار احتجاز كاتب صحفي منذ عام" [level=3]'
+        - generic: 30 سبتمبر/أيلول 2026
+        - 'link "تونس: المجتمع المدني تحت الحصار"':
+          - /url: /ar/news/2026/09/02/tunisia-civil-society-under-siege
+          - 'heading "تونس: المجتمع المدني تحت الحصار" [level=3]'
+        - generic: 2 سبتمبر/أيلول 2026
+        - link "الجرائم ضد الصحفيين في اليمن ينبغي ألا تبقى بلا عقاب":
+          - /url: /ar/news/2026/07/26/end-impunity-for-crimes-against-journalists-in-yemen
+          - heading "الجرائم ضد الصحفيين في اليمن ينبغي ألا تبقى بلا عقاب" [level=3]
+        - generic: 26 يوليو/تموز 2026
+    - tabpanel "2 of 18":
+      - heading "العدالة الدولية" [level=3]:
+        - link "العدالة الدولية":
+          - /url: /ar/topic/aldalt-aldwlyt
+          - text: العدالة الدولية
+      - list:
+        - link "Thurgood Marshall United States Federal Courthouse building in lower Manhattan, New York City. مجموعة خبراء تدعم الطعن في عقوبات ترامب ضد \"الجنائية الدولية\"":
+          - /url: /ar/news/2026/09/25/array-of-experts-back-lawsuit-challenging-trumps-icc-sanctions-regime
+          - img "Thurgood Marshall United States Federal Courthouse building in lower Manhattan, New York City."
+          - heading "مجموعة خبراء تدعم الطعن في عقوبات ترامب ضد \"الجنائية الدولية\"" [level=3]
+        - generic: 25 سبتمبر/أيلول 2026
+        - 'link "الفوسفور الأبيض: استخداماته مؤخرا وآثاره اللاإنسانية تتطلب قانونا جديدا"':
+          - /url: /ar/news/2026/09/09/white-phosphorus-recent-use-inhumane-effects-require-new-law
+          - 'heading "الفوسفور الأبيض: استخداماته مؤخرا وآثاره اللاإنسانية تتطلب قانونا جديدا" [level=3]'
+        - generic: 9 سبتمبر/أيلول 2026
+        - 'link "أسئلة وأجوبة: المحاكمات الأولى والمستقبلية في سوريا بشأن جرائم عهد الأسد"':
+          - /url: /ar/news/2026/08/23/questions-answers-syrias-first-and-future-trials-for-assad-era-crimes
+          - 'heading "أسئلة وأجوبة: المحاكمات الأولى والمستقبلية في سوريا بشأن جرائم عهد الأسد" [level=3]'
+        - generic: 23 اغسطس/آب 2026
+    - tabpanel "3 of 18":
+      - heading "الأمم المتحدة" [level=3]:
+        - link "الأمم المتحدة":
+          - /url: /ar/topic/alamm-almthdt
+          - text: الأمم المتحدة
+      - list:
+        - 'link "United Nations headquarters in New York City, December 2020. الأمم المتحدة: التزموا بحقوق الإنسان والعدالة في الجرائم الخطيرة"':
+          - /url: /ar/news/2026/09/21/un-commit-to-human-rights-justice-for-grave-crimes
+          - img "United Nations headquarters in New York City, December 2020."
+          - 'heading "الأمم المتحدة: التزموا بحقوق الإنسان والعدالة في الجرائم الخطيرة" [level=3]'
+        - generic: 21 سبتمبر/أيلول 2026
+        - 'link "الأمم المتحدة: أبقوا على القوات الدولية في لبنان لحماية المدنيين"':
+          - /url: /ar/news/2026/08/13/un-keep-international-force-in-lebanon-to-protect-civilians
+          - 'heading "الأمم المتحدة: أبقوا على القوات الدولية في لبنان لحماية المدنيين" [level=3]'
+        - generic: 13 اغسطس/آب 2026
+        - link "لا غنى عن \"الأونروا\" في غزة":
+          - /url: /ar/news/2026/07/10/unrwa-is-irreplaceable-in-gaza
+          - heading "لا غنى عن \"الأونروا\" في غزة" [level=3]
+        - generic: 10 يوليو/تموز 2026
+    - tabpanel "4 of 18":
+      - heading "الأسلحة" [level=3]:
+        - link "الأسلحة":
+          - /url: /ar/topic/alaslht
+          - text: الأسلحة
+      - list:
+        - 'link "Israelis look at the border with Lebanon from a position in the northern village of Metula on March 5, 2026, after Hezbollah launched rockets at Israel during the ongoing conflict. لبنان/إسرائيل: استخدام \"حزب الله\" الذخائر العنقودية"':
+          - /url: /ar/news/2026/09/09/lebanon/israel-hezbollahs-use-of-cluster-munitions
+          - img "Israelis look at the border with Lebanon from a position in the northern village of Metula on March 5, 2026, after Hezbollah launched rockets at Israel during the ongoing conflict."
+          - 'heading "لبنان/إسرائيل: استخدام \"حزب الله\" الذخائر العنقودية" [level=3]'
+        - generic: 9 سبتمبر/أيلول 2026
+        - 'link "الفوسفور الأبيض: استخداماته مؤخرا وآثاره اللاإنسانية تتطلب قانونا جديدا"':
+          - /url: /ar/news/2026/09/09/white-phosphorus-recent-use-inhumane-effects-require-new-law
+          - 'heading "الفوسفور الأبيض: استخداماته مؤخرا وآثاره اللاإنسانية تتطلب قانونا جديدا" [level=3]'
+        - generic: 9 سبتمبر/أيلول 2026
+        - link "تركيا تسعى إلى نقل ذخائر عنقودية أمريكية إلى أوكرانيا":
+          - /url: /ar/news/2026/08/11/turkiye-seeks-to-transfer-us-cluster-munitions-to-ukraine
+          - heading "تركيا تسعى إلى نقل ذخائر عنقودية أمريكية إلى أوكرانيا" [level=3]
+        - generic: 11 اغسطس/آب 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/crisis-and-conflict
+          - text: الأزمات والنزاعات
+      - list:
+        - link:
+          - /url: /ar/news/2026/09/09/lebanon/israel-hezbollahs-use-of-cluster-munitions
+          - heading [level=3]: "لبنان/إسرائيل: استخدام \"حزب الله\" الذخائر العنقودية"
+        - generic: 9 سبتمبر/أيلول 2026
+        - link:
+          - /url: /ar/news/2026/09/09/white-phosphorus-recent-use-inhumane-effects-require-new-law
+          - heading [level=3]: "الفوسفور الأبيض: استخداماته مؤخرا وآثاره اللاإنسانية تتطلب قانونا جديدا"
+        - generic: 9 سبتمبر/أيلول 2026
+        - link:
+          - /url: /ar/news/2026/09/07/germany-confront-uae-role-in-sudan-repression-at-home
+          - heading [level=3]: "ألمانيا: تصدّوا لدور الإمارات في السودان وقمعها في الداخل"
+        - generic: 7 سبتمبر/أيلول 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/hqwq-altfl
+          - text: حقوق الطفل
+      - list:
+        - link:
+          - /url: /ar/news/2026/08/25/turkiye-long-prison-terms-for-children-accused-of-crime
+          - heading [level=3]: "تركيا: أحكام سجن طويلة بحق أطفال متهمين بارتكاب جرائم"
+        - generic: 25 اغسطس/آب 2026
+        - link:
+          - /url: /ar/news/2026/08/05/west-bank-israel-delaying-palestinian-ambulances-risks-lives
+          - heading [level=3]: "الضفة الغربية: تأخير سيارات الإسعاف الفلسطينية من قبل إسرائيل يُهدد الأرواح"
+        - generic: 5 اغسطس/آب 2026
+        - link:
+          - /url: /ar/news/2026/04/10/israeli-pressure-silences-a-key-group-defending-palestinian-children
+          - heading [level=3]: ضغوط إسرائيل تُسكت منظمة أساسية تدافع عن الأطفال الفلسطينيين
+        - generic: 10 أبريل/نيسان 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/allajywn
+          - text: اللاجئون والمهاجرون
+      - list:
+        - link:
+          - /url: /ar/news/2026/08/21/spain-humanitarian-and-rights-crisis-in-ceuta
+          - heading [level=3]: "إسبانيا: أزمة إنسانية وحقوقية في سبتة"
+        - generic: 21 اغسطس/آب 2026
+        - link:
+          - /url: /ar/news/2026/08/04/rapid-returns-follow-migrant-crossings-to-ceuta
+          - heading [level=3]: إعادات سريعة عقب عبور مهاجرين إلى سبتة
+        - generic: 4 اغسطس/آب 2026
+        - link:
+          - /url: /ar/news/2026/07/31/israeli-defense-ministry-plan-suggests-potential-war-crimes
+          - heading [level=3]: خطة وزارة الدفاع الإسرائيلية تحمل جرائم حرب محتملة
+        - generic: 31 يوليو/تموز 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/alsht
+          - text: الصحة
+      - list:
+        - link:
+          - /url: /ar/news/2026/08/18/iraq-man-dies-in-police-drug-unit-custody
+          - heading [level=3]: "العراق: وفاة رجل في عهدة شرطة مكافحة المخدرات"
+        - generic: 18 اغسطس/آب 2026
+        - link:
+          - /url: /ar/news/2026/07/06/egypt-prosecutes-a-doctor-for-alleging-obstetric-violence
+          - heading [level=3]: مصر تحاكم طبيبة لتحدثها عن مزاعم عنف توليدي
+        - generic: 6 يوليو/تموز 2026
+        - link:
+          - /url: /ar/news/2026/01/07/egypt-declining-funding-undermines-education-health-care
+          - heading [level=3]: "مصر: تراجع التمويل يقوّض التعليم والرعاية الصحية"
+        - generic: 7 يناير/كانون الثاني 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/hqwq-almrat
+          - text: حقوق المرأة
+      - list:
+        - link:
+          - /url: /ar/news/2026/08/05/west-bank-israel-delaying-palestinian-ambulances-risks-lives
+          - heading [level=3]: "الضفة الغربية: تأخير سيارات الإسعاف الفلسطينية من قبل إسرائيل يُهدد الأرواح"
+        - generic: 5 اغسطس/آب 2026
+        - link:
+          - /url: /ar/news/2026/07/06/egypt-prosecutes-a-doctor-for-alleging-obstetric-violence
+          - heading [level=3]: مصر تحاكم طبيبة لتحدثها عن مزاعم عنف توليدي
+        - generic: 6 يوليو/تموز 2026
+        - link:
+          - /url: /ar/news/2026/03/12/iraq-prominent-womens-rights-activist-assassinated
+          - heading [level=3]: "العراق: اغتيال ناشطة بارزة في حقوق المرأة"
+        - generic: 12 مارس/آذار 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/sport-and-human-rights
+          - text: الرياضة وحقوق الإنسان
+      - list:
+        - link:
+          - /url: /ar/news/2026/07/10/fifa-should-tackle-racism-and-discrimination-on-and-off-the-pitch
+          - heading [level=3]: على "الفيفا" مكافحة العنصرية والتمييز داخل الملاعب وخارجها
+        - generic: 10 يوليو/تموز 2026
+        - link:
+          - /url: /ar/news/2026/06/29/at-seattle-world-cup-fifa-lets-rainbow-flags-fly
+          - heading [level=3]: "\"الفيفا\" تسمح برفع أعلام قوس قزح في كأس العالم في سياتل"
+        - generic: 29 يونيو/حزيران 2026
+        - link:
+          - /url: /ar/news/2025/10/29/are-european-football-clubs-sportswashing-libyan-abuses
+          - heading [level=3]: هل أندية كرة القدم الأوروبية ضالعة في الغسيل الرياضي للانتهاكات الليبية؟
+        - generic: 29 أكتوبر/تشرين الأول 2025
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/qsm-aldalt-walhqwq-alaqtsadyt
+          - text: العدالة والحقوق الاقتصادية
+      - list:
+        - link:
+          - /url: /ar/news/2026/07/01/banning-eu-trade-with-israeli-settlements-is-not-an-option-its-an-obligation
+          - heading [level=3]: حظر التجارة مع المستوطنات الإسرائيلية من طرف الاتحاد الأوروبي ليس "خيارا". إنه التزام قانوني.
+        - generic: 1 يوليو/تموز 2026
+        - link:
+          - /url: /ar/news/2026/05/13/ilo-labor-treaty-should-protect-all-gig-workers
+          - heading [level=3]: معاهدة "منظمة العمل الدولية" ينبغي أن تحمي جميع العاملين في الوظائف المؤقتة
+        - generic: 13 مايو/أيار 2026
+        - link:
+          - /url: /ar/news/2026/03/24/iran-deliberate-attacks-on-civilian-ships-apparent-war-crimes
+          - heading [level=3]: "إيران: الهجمات المتعمدة على السفن المدنية جرائم حرب مفترضة"
+        - generic: 24 مارس/آذار 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/lgbt-rights
+          - text: حقوق المثليين/ات، مزدوجي/ات التوجه الجنسي، وعابري/ات النوع الاجتماعي
+      - list:
+        - link:
+          - /url: /ar/news/2026/06/29/at-seattle-world-cup-fifa-lets-rainbow-flags-fly
+          - heading [level=3]: "\"الفيفا\" تسمح برفع أعلام قوس قزح في كأس العالم في سياتل"
+        - generic: 29 يونيو/حزيران 2026
+        - link:
+          - /url: /ar/news/2026/06/15/abusive-anti-lgbt-proposals-resurface-in-turkiye
+          - heading [level=3]: مقترحات تنتهك حقوق مجتمع الميم-عين تعود إلى الواجهة في تركيا
+        - generic: 15 يونيو/حزيران 2026
+        - link:
+          - /url: /ar/news/2026/04/28/2026-world-cup-tournament-will-kick-off-in-climate-of-fear
+          - heading [level=3]: "\"كأس العالم 2026\": البطولة ستنطلق في جو من الخوف"
+        - generic: 28 أبريل/نيسان 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/altknwlwjya-walhqwq
+          - text: التكنولوجيا والحقوق
+      - list:
+        - link:
+          - /url: /ar/news/2026/06/18/bulgaria-licensed-surveillance-exports-to-rights-violators
+          - heading [level=3]: بلغاريا تسمح بتصدير أجهزة مراقبة إلى منتهكي حقوق الإنسان
+        - generic: 18 يونيو/حزيران 2026
+        - link:
+          - /url: /ar/news/2026/06/11/gulf-states-repression-of-migrant-workers-during-conflict
+          - heading [level=3]: "دول الخليج: قمع العمال الوافدين خلال النزاع"
+        - generic: 11 يونيو/حزيران 2026
+        - link:
+          - /url: /ar/news/2026/03/06/iran-internet-shutdown-violates-rights-escalates-risks-to-civilians
+          - heading [level=3]: "إيران: قطع الإنترنت ينتهك الحقوق ويزيد المخاطر على المدنيين"
+        - generic: 6 مارس/آذار 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/hqwq-alashkhas-dhwy-alaaqt
+          - text: حقوق الأشخاص ذوي الإعاقة
+      - list:
+        - link:
+          - /url: /ar/news/2026/06/16/syrian-government-pledges-protection-for-children-with-disabilities
+          - heading [level=3]: الحكومة السورية تتعهد بحماية الأطفال ذوي الإعاقة
+        - generic: 16 يونيو/حزيران 2026
+        - link:
+          - /url: /ar/news/2026/06/01/egypt-barriers-to-work-for-people-with-disabilities
+          - heading [level=3]: "مصر: العوائق تحول دون عمل الأشخاص ذوي الإعاقة"
+        - generic: 1 يونيو/حزيران 2026
+        - link:
+          - /url: /ar/news/2026/02/24/sudan-people-with-disabilities-targeted-in-north-darfur
+          - heading [level=3]: "السودان: استهداف ذوي الإعاقة في شمال دارفور"
+        - generic: 24 فبراير/شباط 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/albyyt
+          - text: البيئة
+      - list:
+        - link:
+          - /url: /ar/news/2026/04/14/iran-israels-oil-depot-strikes-endanger-environment-health
+          - heading [level=3]: "إيران: القصف الإسرائيلي على مستودعات النفط يهدد البيئة والصحة"
+        - generic: 13 أبريل/نيسان 2026
+        - link:
+          - /url: /ar/news/2025/12/02/an-opportunity-to-address-mining-abuses-globally
+          - heading [level=3]: فرصة لمعالجة انتهاكات التعدين عالميا
+        - generic: 2 ديسمبر/كانون الأول 2025
+        - link:
+          - /url: /ar/news/2025/07/29/iraq-damage-to-kurdistan-region-oil-fields-puts-rights-at-risk
+          - heading [level=3]: "العراق: الأضرار التي لحقت بحقول النفط في إقليم كردستان تُهدد الحقوق"
+        - generic: 29 يوليو/تموز 2025
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/torture
+          - text: التعذيب
+      - list:
+        - link:
+          - /url: /ar/news/2026/04/13/bahrain-sayed-mohamed-almosawi-dies-in-custody
+          - heading [level=3]: "البحرين: وفاة السيد محمد الموسوي أثناء الاحتجاز"
+        - generic: 13 أبريل/نيسان 2026
+        - link:
+          - /url: /ar/news/2025/11/26/uae-political-prisoner-dead-after-alleged-ill-treatment-torture
+          - heading [level=3]: "الإمارات: وفاة سجين سياسي إثر سوء معاملة وتعذيب مزعومَيْن"
+        - generic: 26 نوفمبر/تشرين الثاني 2025
+        - link:
+          - /url: /ar/news/2025/08/14/iran-detainees-ill-treated-and-disappeared-after-israeli-evin-prison-attack
+          - heading [level=3]: "إيران: سوء معاملة محتجزين وإخفاؤهم بعد هجوم إسرائيل على سجن إيفين"
+        - generic: 14 اغسطس/آب 2025
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /ar/topic/terrorism-counterterrorism
+          - text: مكافحة الإرهاب
+      - list:
+        - link:
+          - /url: /ar/news/2026/02/19/trinidadian-nationals-face-escalating-abuse-in-syrian-camp
+          - heading [level=3]: مواطنون ترينيداديون يواجهون انتهاكات متصاعدة في مخيم سوري
+        - generic: 19 فبراير/شباط 2026
+        - link:
+          - /url: /ar/news/2024/11/14/us-jury-awards-42-million-3-iraqis-abused-abu-ghraib-prison
+          - heading [level=3]: لجنة محلفين أمريكية تمنح 42 مليون دولار لـ 3 عراقيين ضحايا أبو غريب
+        - generic: 14 نوفمبر/تشرين الثاني 2024
+        - link:
+          - /url: /ar/news/2024/06/26/yemen-houthis-disappear-dozens-un-civil-society-staff
+          - heading [level=3]: "اليمن: الحوثيون يخفون عشرات موظفي \"الأمم المتحدة\" والمجتمع المدني"
+        - generic: 26 يونيو/حزيران 2024
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/rights-older-people
+          - text: Rights of Older People
+      - list:
+        - link:
+          - /url: /ar/news/2025/06/17/saudi-arabia-prisoner-70-dies-after-medical-neglect
+          - heading [level=3]: "السعودية: وفاة سجين عمره 70 عاما إثر الإهمال الطبي"
+        - generic: 17 يونيو/حزيران 2025
+        - link:
+          - /url: /ar/news/2023/11/14/older-people-not-spared-hostilities-israel/palestine
+          - heading [level=3]: الأعمال العدائية في إسرائيل/فلسطين لم تستثنِ كبار السن
+        - generic: 14 نوفمبر/تشرين الثاني 2023
+        - link:
+          - /url: /ar/news/2022/05/09/ensure-people-disabilities-can-vote-lebanon-elections
+          - heading [level=3]: اضمنوا قدرة الأشخاص ذوي الإعاقة على التصويت في انتخابات لبنان
+        - generic: 9 مايو/أيار 2022
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+      - tab "Go to slide 7"
+      - tab "Go to slide 8"
+      - tab "Go to slide 9"
+      - tab "Go to slide 10"
+      - tab "Go to slide 11"
+      - tab "Go to slide 12"
+      - tab "Go to slide 13"
+      - tab "Go to slide 14"
+      - tab "Go to slide 15"
+      - tab "Go to slide 16"
+      - tab "Go to slide 17"
+      - tab "Go to slide 18"
+  - img "Children and women run among a cloud of dust at the village of El Gel, in Ethiopia’s Somali region, on January 12, 2023. The last five rainy seasons since the end of 2020 have failed, triggering the worst drought in four decades in Ethiopia, Somalia and Kenya."
+  - heading "الدفاع عن الحقوق. ضمان العدالة." [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "تبرع شهرياً":
+    - /url: https://donate.hrw.org/page/113621/donate/1?ea.tracking.id=EP2022S1pgbanner3&promo_id=1007&transaction.recurrpay=Y
+  - link "تبرع لمرة واحدة":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgbanner3&promo_id=1002&transaction.recurrpay=N
+- contentinfo:
+  - text: احصلوا على تحديثات حقوق الإنسان حول العالم
+  - textbox "احصلوا على تحديثات حقوق الإنسان حول العالم":
+    - /placeholder: أدخل البريد الإلكتروني
+  - button "تسجيل"
+  - heading "ابقوا على اتصال" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrwarabic.bsky.social
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw_ar
+      - generic: X
+    - link "Facebook":
+      - /url: http://www.facebook.com/pages/hywmn-rayts-wwtsh/103703293018609
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HRWArabic
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/hrw_ar
+      - generic: Instagram
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "خريطة الموقع":
+        - /url: /ar/sitemap
+      - link "Text Version":
+        - /url: //text.hrw.org/ar
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/ar
+    - img "Human Rights Watch"

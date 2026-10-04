@@ -1,0 +1,195 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - button "English"
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+  - button "Open the main menu":
+    - generic: Open the main menu
+  - generic: Trending
+  - link "Trump Administration and Human Rights":
+    - /url: /tag/trump-administration-and-human-rights
+    - text: Trump Administration and Human Rights
+  - link "Russia-Ukraine War":
+    - /url: /tag/russia-ukraine-war
+    - text: Russia-Ukraine War
+  - link "Israel/Palestine":
+    - /url: /middle-east/north-africa/israel/palestine
+    - text: Israel/Palestine
+  - link "International Criminal Court":
+    - /url: /topic/international-justice/international-criminal-court
+    - text: International Criminal Court
+  - link "Crisis in the Middle East":
+    - /url: /tag/crisis-in-the-middle-east
+    - text: Crisis in the Middle East
+- main:
+  - time
+  - navigation "Available In":
+    - generic: Available In
+    - list:
+      - listitem: English
+      - link "العربية":
+        - /url: /ar/mn-nhn
+      - link "简体中文":
+        - /url: /zh-hans/guanyuwomen
+      - link "Français":
+        - /url: /fr/a-propos-de-human-rights-watch
+      - link "Deutsch":
+        - /url: /de/about/about-us
+      - link "日本語":
+        - /url: /ja/hrwnitsuite
+      - link "한국어":
+        - /url: /ko/about/about-us
+      - link "Português":
+        - /url: /pt/sobre-a-human-rights-watch
+      - link "Русский":
+        - /url: /ru/o-nas
+      - link "Español":
+        - /url: /es/sobre-nosotros
+  - heading "About Us" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Who We Are" [level=3]
+  - generic: [Long prose omitted.]
+  - list:
+    - link:
+      - /url: "#1754762579"
+  - heading "What We Do" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - list:
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Russia-Ukraine War":
+      - /url: /tag/russia-ukraine-war
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Israel-Palestine":
+      - /url: /middle-east/north-africa/israel/palestine
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Taliban Rule in Afghanistan":
+      - /url: /asia/afghanistan
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Conflict in Ethiopia’s Tigray Region":
+      - /url: /tag/tigray-conflict
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Climate Crisis and Rights":
+      - /url: https://www.hrw.org/topic/environment
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Racial Discrimination in the US":
+      - /url: https://www.hrw.org/united-states/racial-discrimination
+  - heading "Our Story" [level=3]
+  - figure "— Ken Roth Former Executive Director":
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - text: —
+    - generic: Ken Roth
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "What We Have Achieved" [level=3]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - list:
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Canadian Provinces Abolish Immigration Detention":
+      - /url: https://www.hrw.org/news/2023/06/16/another-canadian-province-end-immigration-detention-jails
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Japan’s Diet Passes Pro-LGBT Law":
+      - /url: https://www.hrw.org/news/2023/07/12/japan-passes-law-promote-understanding-lgbt-people
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Addressing Racist Policing in Brazil":
+      - /url: https://www.hrw.org/news/2023/04/20/brazil-invites-experts-help-promote-racial-equality-policing
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Victory for People with Disabilities in Mexico":
+      - /url: https://www.hrw.org/news/2023/07/11/interview-victory-people-disabilities-and-older-persons-mexico
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Congo Warlord Gets 30 Years":
+      - /url: /news/2019/11/07/congo-warlord-gets-30-years
+    - figure:
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+    - link "Protecting Children’s Online Data":
+      - /url: https://www.hrw.org/news/2023/02/14/some-governments-companies-take-steps-protect-children
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "What can you do? Stand with us and defend human rights." [level=3]
+  - link "TAKE ACTION":
+    - /url: https://www.hrw.org/join-us/take-action
+  - link "Stay informed":
+    - /url: http://action.hrw.org/ea-action/action?ea.client.id=1908&ea.campaign.id=32180&ea.tracking.id=supportus&_ga=2.13882743.1155194111.1523886633-727287638.1460073721
+  - link "Give now":
+    - /url: https://donate.hrw.org/page/33342/donate/1?promo_id=1000&utm_expid=.YdTXpv9eQQC1YUV2GI53og.1&utm_referrer=https%3A%2F%2Fwww.hrw.org%2F
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

@@ -1,0 +1,338 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar
+      - link "简中":
+        - /url: /zh-hans
+      - link "繁中":
+        - /url: /zh-hant
+      - listitem: English
+      - link "Français":
+        - /url: /fr/impact
+      - link "Deutsch":
+        - /url: /de
+      - link "日本語":
+        - /url: /ja
+      - link "Português":
+        - /url: /pt
+      - link "Русский":
+        - /url: /ru
+      - link "Español":
+        - /url: /es
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - time
+  - navigation "Available In":
+    - generic: Available In
+    - list:
+      - listitem: English
+      - link "Français":
+        - /url: /fr/impact
+  - heading "Impact" [level=1]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "BROWSE ALL IMPACT ›" [level=5]:
+    - link "BROWSE ALL IMPACT ›":
+      - /url: "#all-impact"
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - list:
+    - figure:
+      - link:
+        - /url: https://www.hrw.org/news/2024/03/21/canada-all-10-provinces-end-immigration-detention-jails
+    - link "Canadian Provinces Abolish Immigration Detention":
+      - /url: https://www.hrw.org/news/2024/03/21/canada-all-10-provinces-end-immigration-detention-jails
+    - figure:
+      - link:
+        - /url: https://www.hrw.org/news/2023/07/12/japan-passes-law-promote-understanding-lgbt-people
+    - link "Japan’s Diet Passes Pro-LGBT Law":
+      - /url: https://www.hrw.org/news/2023/07/12/japan-passes-law-promote-understanding-lgbt-people
+    - figure:
+      - link:
+        - /url: https://www.hrw.org/news/2023/04/20/brazil-invites-experts-help-promote-racial-equality-policing
+    - link "Addressing Racist Policing in Brazil":
+      - /url: https://www.hrw.org/news/2023/04/20/brazil-invites-experts-help-promote-racial-equality-policing
+    - figure:
+      - link:
+        - /url: https://www.hrw.org/news/2023/07/11/interview-victory-people-disabilities-and-older-persons-mexico
+    - link "Victory for People with Disabilities in Mexico":
+      - /url: https://www.hrw.org/news/2023/07/11/interview-victory-people-disabilities-and-older-persons-mexico
+    - figure:
+      - link:
+        - /url: /news/2019/11/07/congo-warlord-gets-30-years
+    - link "Congo Warlord Gets 30 Years":
+      - /url: /news/2019/11/07/congo-warlord-gets-30-years
+    - figure:
+      - link:
+        - /url: https://www.hrw.org/news/2023/02/14/some-governments-companies-take-steps-protect-children
+    - link "Protecting Children’s Online Data":
+      - /url: https://www.hrw.org/news/2023/02/14/some-governments-companies-take-steps-protect-children
+  - heading "How do we bring about change?" [level=3]:
+    - strong: How do we bring about change?
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - list:
+    - figure:
+      - link:
+        - /url: "/topic/arms/landmines "
+    - link "Global landmine ban":
+      - /url: /topic/arms/landmines
+    - figure:
+      - link:
+        - /url: https://www.hrw.org/news/2020/01/27/interview-landmark-world-court-order-protects-rohingya-genocide
+    - link "A Path to Justice for Myanmar’s Rohingya Muslims":
+      - /url: https://www.hrw.org/news/2020/01/27/interview-landmark-world-court-order-protects-rohingya-genocide
+    - figure:
+      - link:
+        - /url: https://www.hrw.org/news/2019/05/28/increasing-pressure-venezuelas-government
+    - link "Increasing Pressure on Venezuela’s government":
+      - /url: https://www.hrw.org/news/2019/05/28/increasing-pressure-venezuelas-government
+    - figure:
+      - link:
+        - /url: "https://www.hrw.org/news/2018/05/29/rising-global-support-safe-schools "
+    - link "Protecting Schools in Wartime":
+      - /url: "https://www.hrw.org/news/2018/05/29/rising-global-support-safe-schools "
+    - figure:
+      - link:
+        - /url: https://www.hrw.org/tag/hissene-habre
+    - link "Dictator Gets Life in Prison":
+      - /url: https://www.hrw.org/tag/hissene-habre
+    - figure:
+      - link:
+        - /url: "https://www.hrw.org/news/2011/06/23/victory-domestic-workers "
+    - link "Protecting Domestic Workers Worldwide":
+      - /url: https://www.hrw.org/news/2011/06/23/victory-domestic-workers
+  - heading "All impact" [level=3]
+  - list:
+    - article:
+      - generic: August 7, 2026
+      - heading "Liberia Ends Primary School Registration Fees" [level=3]:
+        - link "Liberia Ends Primary School Registration Fees":
+          - /url: /news/2026/08/07/liberia-ends-primary-school-registration-fees
+      - generic: [Long prose omitted.]
+      - img "Students standing at their desks in a classroom"
+      - link:
+        - /url: /news/2026/08/07/liberia-ends-primary-school-registration-fees
+    - article:
+      - generic: July 20, 2026
+      - 'heading "Sarawak: Defending Indigenous Land from The Bulldozers" [level=3]':
+        - 'link "Sarawak: Defending Indigenous Land from The Bulldozers"':
+          - /url: /news/2026/07/20/sarawak-defending-indigenous-land-from-the-bulldozers
+      - generic: On paper, the land around the Indigenous Rumah Jeffery community was covered by company concessions. For the Iban families who live there, it was home.
+      - img "An Iban woman gathers an edible plant, paku, in Rumah Jeffery’s ancestral territory"
+      - link:
+        - /url: /news/2026/07/20/sarawak-defending-indigenous-land-from-the-bulldozers
+    - article:
+      - generic: June 24, 2026
+      - heading "Malawi’s New National Action Plan on Albinism" [level=3]:
+        - link "Malawi’s New National Action Plan on Albinism":
+          - /url: /news/2026/06/24/malawis-new-national-action-plan-on-albinism
+      - generic: [Long prose omitted.]
+      - img "Maureen Kamatu, 28, has been self-employed at a mobile money cash-transfer booth in Lilongwe, Malawi."
+      - link:
+        - /url: /news/2026/06/24/malawis-new-national-action-plan-on-albinism
+    - article:
+      - generic: June 15, 2026
+      - 'heading "Brazil: Courts Protect Land Rights in the Amazon" [level=3]':
+        - 'link "Brazil: Courts Protect Land Rights in the Amazon"':
+          - /url: /news/2026/06/15/brazil-courts-protect-land-rights-in-the-amazon
+      - generic: [Long prose omitted.]
+      - img "Cattle graze on land recently burned and deforested by cattle farmers near Novo Progresso, Para state, Brazil, on August 23, 2020."
+      - link:
+        - /url: /news/2026/06/15/brazil-courts-protect-land-rights-in-the-amazon
+    - article:
+      - generic: June 12, 2026
+      - heading "ILO Adopts Landmark Treaty on Gig Work" [level=3]:
+        - link "ILO Adopts Landmark Treaty on Gig Work":
+          - /url: /news/2026/06/12/ilo-adopts-landmark-treaty-on-gig-work
+      - generic: [Long prose omitted.]
+      - img "Delegates of the Standard-Setting Committee on Decent Work in the Platform Economy"
+      - link:
+        - /url: /news/2026/06/12/ilo-adopts-landmark-treaty-on-gig-work
+    - article:
+      - generic: November 20, 2025
+      - 'heading "Dominican Republic: Court Ends Security Forces Gay Sex Ban" [level=3]':
+        - 'link "Dominican Republic: Court Ends Security Forces Gay Sex Ban"':
+          - /url: /news/2025/11/20/dominican-republic-court-ends-security-forces-gay-sex-ban
+      - generic: [Long prose omitted.]
+      - img "Officers of the Dominican Republic's armed forces take part in a parade to celebrate the country's independence in Santo Domingo on February 27, 2012."
+      - link:
+        - /url: /news/2025/11/20/dominican-republic-court-ends-security-forces-gay-sex-ban
+    - article:
+      - generic: September 17, 2025
+      - heading "Brazil Passes Landmark Law to Protect Children Online" [level=3]:
+        - link "Brazil Passes Landmark Law to Protect Children Online":
+          - /url: /news/2025/09/17/brazil-passes-landmark-law-to-protect-children-online
+      - generic: Brazilian President Luiz Inácio Lula da Silva on September 17, 2025 signed the country’s first law to protect children’s rights online.
+      - img "The Brazilian Senate in Brasilia, February 1, 2021."
+      - link:
+        - /url: /news/2025/09/17/brazil-passes-landmark-law-to-protect-children-online
+    - article:
+      - generic: August 27, 2025
+      - heading "Brazil One Step Away from Protecting Children Online" [level=3]:
+        - link "Brazil One Step Away from Protecting Children Online":
+          - /url: /news/2025/08/27/brazil-one-step-away-from-protecting-children-online
+      - generic: [Long prose omitted.]
+      - img "The Brazilian Senate in Brasilia, February 1, 2021."
+      - link:
+        - /url: /news/2025/08/27/brazil-one-step-away-from-protecting-children-online
+    - article:
+      - generic: June 25, 2025
+      - heading "New Global Coalition Urges Rights-Based Climate Relocation Policies" [level=3]:
+        - link "New Global Coalition Urges Rights-Based Climate Relocation Policies":
+          - /url: /news/2025/06/25/new-global-coalition-urges-rights-based-climate-relocation-policies
+      - generic: [Long prose omitted.]
+      - img "The Coalition on Dignified Climate-related Planned Relocation, New York City, June 19, 2025."
+      - link:
+        - /url: /news/2025/06/25/new-global-coalition-urges-rights-based-climate-relocation-policies
+    - article:
+      - generic: June 13, 2025
+      - heading "Japan Acts to Protect Athletes from Abuse" [level=3]:
+        - link "Japan Acts to Protect Athletes from Abuse":
+          - /url: /news/2025/06/13/japan-acts-to-protect-athletes-from-abuse
+      - generic: [Long prose omitted.]
+      - img "Collage of sports photos"
+      - link:
+        - /url: /news/2025/06/13/japan-acts-to-protect-athletes-from-abuse
+  - navigation "Pagination":
+    - heading "Pagination" [level=4]
+    - list:
+      - link "Current page 1":
+        - /url: "?page=0"
+        - generic: Current page
+        - text: "1"
+      - link "Page 2":
+        - /url: "?page=1"
+        - generic: Page
+        - text: "2"
+      - link "Page 3":
+        - /url: "?page=2"
+        - generic: Page
+        - text: "3"
+      - link "Page 4":
+        - /url: "?page=3"
+        - generic: Page
+        - text: "4"
+      - link "Page 5":
+        - /url: "?page=4"
+        - generic: Page
+        - text: "5"
+      - link "Page 6":
+        - /url: "?page=5"
+        - generic: Page
+        - text: "6"
+      - link "Page 7":
+        - /url: "?page=6"
+        - generic: Page
+        - text: "7"
+      - link "Page 8":
+        - /url: "?page=7"
+        - generic: Page
+        - text: "8"
+      - link "Page 9":
+        - /url: "?page=8"
+        - generic: Page
+        - text: "9"
+      - text: …
+      - link "Next page":
+        - /url: "?page=1"
+        - generic: Next page
+        - text: ››
+      - link "Last page":
+        - /url: "?page=85"
+        - generic: Last page
+        - text: Last »
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

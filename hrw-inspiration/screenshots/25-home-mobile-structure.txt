@@ -1,0 +1,925 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - button "English"
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+  - button "Open the main menu":
+    - generic: Open the main menu
+  - generic: Trending
+  - link "Trump Administration and Human Rights":
+    - /url: /tag/trump-administration-and-human-rights
+    - text: Trump Administration and Human Rights
+  - link "Russia-Ukraine War":
+    - /url: /tag/russia-ukraine-war
+    - text: Russia-Ukraine War
+  - link "Israel/Palestine":
+    - /url: /middle-east/north-africa/israel/palestine
+    - text: Israel/Palestine
+  - link "International Criminal Court":
+    - /url: /topic/international-justice/international-criminal-court
+    - text: International Criminal Court
+  - link "Crisis in the Middle East":
+    - /url: /tag/crisis-in-the-middle-east
+    - text: Crisis in the Middle East
+- main:
+  - link "Activists hold signs with the names of some of the 222 former prisoners released and expelled by the Nicaraguan government, as they await their arrival at Dulles International Airport, Virginia, United States, February 9, 2023.":
+    - /url: /news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation
+    - img "Activists hold signs with the names of some of the 222 former prisoners released and expelled by the Nicaraguan government, as they await their arrival at Dulles International Airport, Virginia, United States, February 9, 2023."
+  - generic: News Release
+  - 'heading "US: Victims of Nicaraguan Government Risk Deportation" [level=2]':
+    - 'link "US: Victims of Nicaraguan Government Risk Deportation"':
+      - /url: /news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Latest News" [level=2]
+  - link "More news":
+    - /url: /news
+    - text: More news
+  - region:
+    - list:
+      - 'link "Greece: Rights Defenders on Trial"':
+        - /url: /news/2026/10/03/greece-rights-defenders-on-trial
+        - 'heading "Greece: Rights Defenders on Trial" [level=3]'
+      - link "Hong Kong Silences Remembrance of Police Abuses":
+        - /url: /news/2026/10/02/hong-kong-silences-remembrance-of-police-abuses
+        - heading "Hong Kong Silences Remembrance of Police Abuses" [level=3]
+      - 'link "Egypt: Authorities Arrest Entire Investigative Newsroom"':
+        - /url: /news/2026/10/02/egypt-authorities-arrest-entire-investigative-newsroom
+        - 'heading "Egypt: Authorities Arrest Entire Investigative Newsroom" [level=3]'
+      - link "US ICE Detains Son of Slain Philippine Journalist":
+        - /url: /news/2026/10/02/us-ice-detains-son-of-slain-philippine-journalist
+        - heading "US ICE Detains Son of Slain Philippine Journalist" [level=3]
+      - 'link "US: Rights Concerns for Maritime Operations Near Ecuador"':
+        - /url: /news/2026/10/02/us-rights-concerns-for-maritime-operations-near-ecuador
+        - 'heading "US: Rights Concerns for Maritime Operations Near Ecuador" [level=3]'
+      - link "South Korea Should Center Rights in North Korea Policy":
+        - /url: /news/2026/10/01/south-korea-should-center-rights-in-north-korea-policy
+        - heading "South Korea Should Center Rights in North Korea Policy" [level=3]
+      - link "A Long Road to Justice in the Central African Republic":
+        - /url: /news/2026/10/01/a-long-road-to-justice-in-the-central-african-republic
+        - heading "A Long Road to Justice in the Central African Republic" [level=3]
+      - link "The Taliban Aren’t United. Accountability Can Exploit the Gaps.":
+        - /url: /news/2026/10/01/the-taliban-arent-united-accountability-can-exploit-the-gaps
+        - heading "The Taliban Aren’t United. Accountability Can Exploit the Gaps." [level=3]
+  - heading "How We Work" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - list:
+    - link "Learn more":
+      - /url: /about/about-us
+  - generic: "80"
+  - generic: nationalities represented
+  - generic: 100+
+  - generic: countries worked on
+  - generic: 14+ million
+  - generic: global audience members
+  - generic: Zero
+  - generic: government funding
+  - heading "Spotlight" [level=2]
+  - article:
+    - article:
+      - link "Port Louis, Mauritius":
+        - /url: /news/2026/10/01/mauritius-rights-body-calls-for-marriage-equality
+        - img "Port Louis, Mauritius"
+      - generic: October 1, 2026 | Dispatches
+      - heading "Mauritius Rights Body Calls for Marriage Equality" [level=3]:
+        - link "Mauritius Rights Body Calls for Marriage Equality":
+          - /url: /news/2026/10/01/mauritius-rights-body-calls-for-marriage-equality
+      - paragraph: [Narrative prose omitted; consult visual capture.]
+  - article:
+    - article:
+      - link "Protesters hold a placard that reads \"Care Not Cuts\"":
+        - /url: /news/2026/10/01/us-nebraskans-losing-coverage-as-medicaid-changes
+        - img "Protesters hold a placard that reads \"Care Not Cuts\""
+      - generic: October 1, 2026 | Report
+      - 'heading "US: Nebraskans Losing Coverage as Medicaid Changes" [level=3]':
+        - 'link "US: Nebraskans Losing Coverage as Medicaid Changes"':
+          - /url: /news/2026/10/01/us-nebraskans-losing-coverage-as-medicaid-changes
+  - article:
+    - article:
+      - link "North Mara Gold Mine in Tarime district, northwest Tanzania.":
+        - /url: /news/2026/10/01/uk-trial-challenges-gold-industrys-responsible-gold-certification
+        - img "North Mara Gold Mine in Tarime district, northwest Tanzania."
+      - generic: October 1, 2026 | Dispatches
+      - heading "UK Trial Challenges Gold Industry’s ‘Responsible Gold’ Certification" [level=3]:
+        - link "UK Trial Challenges Gold Industry’s ‘Responsible Gold’ Certification":
+          - /url: /news/2026/10/01/uk-trial-challenges-gold-industrys-responsible-gold-certification
+  - article:
+    - article:
+      - link "A man stands inside a glass defendants cage in a courtroom":
+        - /url: /news/2026/10/01/uzbekistan-guarantee-karakalpak-lawyers-safety
+        - img "A man stands inside a glass defendants cage in a courtroom"
+      - generic: October 1, 2026 | News Release
+      - 'heading "Uzbekistan: Guarantee Karakalpak Lawyer’s Safety" [level=3]':
+        - 'link "Uzbekistan: Guarantee Karakalpak Lawyer’s Safety"':
+          - /url: /news/2026/10/01/uzbekistan-guarantee-karakalpak-lawyers-safety
+  - article:
+    - article:
+      - link "Samuel Peter Oyay":
+        - /url: /news/2026/09/30/united-arab-emirates-a-year-on-critic-remains-in-detention
+        - img "Samuel Peter Oyay"
+      - generic: September 30, 2026 | News Release
+      - 'heading "United Arab Emirates: A Year On, Critic Remains in Detention" [level=3]':
+        - 'link "United Arab Emirates: A Year On, Critic Remains in Detention"':
+          - /url: /news/2026/09/30/united-arab-emirates-a-year-on-critic-remains-in-detention
+  - heading "Reports" [level=2]
+  - link "See more":
+    - /url: /publications
+    - text: See more
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - region:
+    - tabpanel "1 of 6":
+      - article:
+        - article:
+          - img "report cover in English"
+          - 'link "Uncontrolled Burn The Inhumane Effects of White Phosphorus Munitions and the Need for Stronger Law The 45-page report, “Uncontrolled Burn: The Inhumane Effects of White Phosphorus Munitions and the Need for Stronger Law,” documents 23 verified incidents of Israeli use in southern Lebanon between March and May 2026. The report also details the horrific harm the munitions have caused in armed conflicts in recent years. White phosphorus munitions, which produce fire when their payload is exposed to oxygen, are not currently regulated by a specific treaty. September 9, 2026"':
+            - /url: /report/2026/09/09/uncontrolled-burn/the-inhumane-effects-of-white-phosphorus-munitions-and-the-need
+            - heading "Uncontrolled Burn" [level=3]
+            - generic: The Inhumane Effects of White Phosphorus Munitions and the Need for Stronger Law
+            - generic: [Long prose omitted.]
+            - generic: September 9, 2026
+    - tabpanel:
+      - article:
+        - article:
+          - link:
+            - /url: /report/2026/09/08/too-old-and-a-woman/systemic-age-and-gender-discrimination-against-women-at-work
+            - heading [level=3]: Too Old and A Woman
+            - generic: Systemic Age and Gender Discrimination Against Women at Work in South Korea
+            - generic: [Long prose omitted.]
+            - generic: September 8, 2026
+    - tabpanel:
+      - article:
+        - article:
+          - link:
+            - /url: /report/2026/09/02/we-are-living-on-borrowed-time/repression-of-civil-society-in-tunisia
+            - heading [level=3]: “We Are Living on Borrowed Time”
+            - generic: Repression of Civil Society in Tunisia
+            - generic: [Long prose omitted.]
+            - generic: September 2, 2026
+    - tabpanel:
+      - article:
+        - article:
+          - link:
+            - /url: /report/2026/09/01/not-genuine-with-justice/sri-lankas-lack-of-will-to-prosecute-past-abuses
+            - heading [level=3]: “Not Genuine with Justice”
+            - generic: Sri Lanka’s Lack of Will to Prosecute Past Abuses
+            - generic: [Long prose omitted.]
+            - generic: September 1, 2026
+    - tabpanel:
+      - article:
+        - article:
+          - link:
+            - /url: /report/2026/08/24/i-thought-id-never-see-my-mom-again/recruitment-and-use-of-children-by-colombian
+            - heading [level=3]: “I Thought I’d Never See My Mom Again”
+            - generic: Recruitment and Use of Children by Colombian Armed Groups
+            - generic: [Long prose omitted.]
+            - generic: August 24, 2026
+    - tabpanel:
+      - article:
+        - article:
+          - link:
+            - /url: /report/2026/08/13/remedies-abandoned/us-civil-rights-enforcement-under-the-trump-administration
+            - heading [level=3]: Remedies Abandoned
+            - generic: US Civil Rights Enforcement Under the Trump Administration
+            - generic: [Long prose omitted.]
+            - generic: August 13, 2026
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+  - heading "Videos" [level=2]
+  - link "Watch more":
+    - /url: /video-photos
+    - text: Watch more
+  - text: Violence and Discrimination Against People with Albinism in Malawi
+  - button "A musician with albinism sits holding a guitar Play Violence and Discrimination Against People with Albinism in Malawi":
+    - img "A musician with albinism sits holding a guitar"
+    - generic: Play
+    - generic: Violence and Discrimination Against People with Albinism in Malawi
+  - generic "Read a text description of this video"
+  - generic: [Long prose omitted.]
+  - heading "More videos" [level=3]
+  - button "Play video Violence and Discrimination Against People with Albinism in Malawi 10:05":
+    - generic: Play video
+    - generic: Violence and Discrimination Against People with Albinism in Malawi
+    - generic: 10:05
+  - 'button "Play video DR Congo: Thousands Forcibly Recruited and Detained 04:50"':
+    - generic: Play video
+    - generic: "DR Congo: Thousands Forcibly Recruited and Detained"
+    - generic: 04:50
+  - button "Play video European Union Fails to Control Surveillance Exports 01:44":
+    - generic: Play video
+    - generic: European Union Fails to Control Surveillance Exports
+    - generic: 01:44
+  - 'button "Play video None Can Run Away: War crimes and crimes against humanity in Burkina Faso 04:47"':
+    - generic: Play video
+    - generic: "None Can Run Away: War crimes and crimes against humanity in Burkina Faso"
+    - generic: 04:47
+  - heading "Quick Takes" [level=2]
+  - region:
+    - tabpanel "1 of 6":
+      - text: "Sudan: Colombians Linked to Atrocities Trained in UAE Bases"
+      - 'button "Play Sudan: Colombians Linked to Atrocities Trained in UAE Bases"':
+        - generic: Play
+        - generic: "Sudan: Colombians Linked to Atrocities Trained in UAE Bases"
+    - tabpanel:
+      - text: "Ethiopia: Tigray region sees increased airstrikes"
+      - button:
+        - generic: Play
+        - generic: "Ethiopia: Tigray region sees increased airstrikes"
+    - tabpanel:
+      - text: New Google Earth maps show Gaza destruction.
+      - button:
+        - generic: Play
+        - generic: New Google Earth maps show Gaza destruction.
+    - tabpanel:
+      - text: What Happened to Cheb Hasni and 100,000 Others in Algeria's Civil War?
+      - button:
+        - generic: Play
+        - generic: What Happened to Cheb Hasni and 100,000 Others in Algeria's Civil War?
+    - tabpanel:
+      - text: "Syria: Reconstruction Under Difficult Conditions"
+      - button:
+        - generic: Play
+        - generic: "Syria: Reconstruction Under Difficult Conditions"
+    - tabpanel:
+      - text: Zara Larsson Cancels Abu Dhabi Grand Prix Appearance. Why?
+      - button:
+        - generic: Play
+        - generic: Zara Larsson Cancels Abu Dhabi Grand Prix Appearance. Why?
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+  - link "A farmer walks amidst rubble":
+    - /url: /report/2026/07/21/a-dangerous-partnership/abuses-unanswered-questions-and-us-ecuador-security
+    - img "A farmer walks amidst rubble"
+  - generic: Featured Investigation
+  - heading "A Dangerous Partnership" [level=2]:
+    - link "A Dangerous Partnership":
+      - /url: /report/2026/07/21/a-dangerous-partnership/abuses-unanswered-questions-and-us-ecuador-security
+  - generic: Abuses, Unanswered Questions, and US-Ecuador Security Cooperation
+  - heading "Stay informed" [level=2]
+  - heading "Get updates on human rights around the world." [level=3]
+  - link "Privacy Policy":
+    - /url: /privacy-policy
+  - generic: Your email address
+  - textbox "Your email address"
+  - button "Subscribe"
+  - heading "Follow us" [level=3]
+  - list:
+    - link "Bluesky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: Bluesky
+    - link "X":
+      - /url: https://x.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+    - link "Threads Threads":
+      - /url: https://www.threads.net/@humanrightswatch
+      - generic: Threads
+      - img "Threads"
+  - img "Smoke from a building in the center of Beirut, Lebanon, which has been hit by the IDF after an evacuation order, on March 12, 2026."
+  - link:
+    - /url: https://www.hrw.org/tag/crisis-in-the-middle-east
+  - heading "Crisis in the Middle East" [level=3]:
+    - link "Crisis in the Middle East":
+      - /url: https://www.hrw.org/tag/crisis-in-the-middle-east
+      - generic: Crisis in the Middle East
+  - link "Read Our Latest":
+    - /url: https://www.hrw.org/tag/crisis-in-the-middle-east
+    - text: Read Our Latest
+  - heading "Nearly 5 Decades of Impact" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - list:
+    - listitem: Helped put powerful war criminals behind bars
+    - listitem: Protected children laboring in tobacco fields
+    - listitem: Won a Nobel Peace Prize for our work banning landmines
+  - link "See what else we've achieved":
+    - /url: /impact
+    - text: See what else we've achieved
+  - region:
+    - tabpanel "1 of 6":
+      - article:
+        - link "The winner of the Nobel Peace Prize Jody Williams bows in front of Cambodian Tun Channereth, who holds the International Campaign to Ban Landmines diploma and medal, on her way to receive the Nobel Peace Prize in Oslo City Hall, December 10, 1997.":
+          - /url: /news/2024/06/01/proud-record-tackling-scourge-landmines
+          - img "The winner of the Nobel Peace Prize Jody Williams bows in front of Cambodian Tun Channereth, who holds the International Campaign to Ban Landmines diploma and medal, on her way to receive the Nobel Peace Prize in Oslo City Hall, December 10, 1997."
+        - heading "A Proud Record Tackling the Scourge of Landmines" [level=3]:
+          - link "A Proud Record Tackling the Scourge of Landmines":
+            - /url: /news/2024/06/01/proud-record-tackling-scourge-landmines
+    - tabpanel:
+      - article:
+        - link:
+          - /url: /news/2024/03/21/canada-all-10-provinces-end-immigration-detention-jails
+        - heading [level=3]:
+          - link:
+            - /url: /news/2024/03/21/canada-all-10-provinces-end-immigration-detention-jails
+            - text: "Canada: All 10 Provinces To End Immigration Detention in Jails"
+    - tabpanel:
+      - article:
+        - link:
+          - /url: /news/2023/02/14/some-governments-companies-take-steps-protect-children
+        - heading [level=3]:
+          - link:
+            - /url: /news/2023/02/14/some-governments-companies-take-steps-protect-children
+            - text: Some Governments, Companies Take Steps to Protect Children
+    - tabpanel:
+      - article:
+        - link:
+          - /url: /news/2023/07/11/interview-victory-people-disabilities-and-older-persons-mexico
+        - heading [level=3]:
+          - link:
+            - /url: /news/2023/07/11/interview-victory-people-disabilities-and-older-persons-mexico
+            - text: "Interview: Victory for People with Disabilities and Older Persons in Mexico"
+    - tabpanel:
+      - article:
+        - link:
+          - /url: /news/2016/05/30/chads-ex-dictator-convicted-atrocities
+        - heading [level=3]:
+          - link:
+            - /url: /news/2016/05/30/chads-ex-dictator-convicted-atrocities
+            - text: Chad’s Ex-Dictator Convicted of Atrocities
+    - tabpanel:
+      - article:
+        - link:
+          - /url: /news/2023/07/12/japan-passes-law-promote-understanding-lgbt-people
+        - heading [level=3]:
+          - link:
+            - /url: /news/2023/07/12/japan-passes-law-promote-understanding-lgbt-people
+            - text: Japan Passes Law to ‘Promote Understanding’ of LGBT People
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+  - heading "Regions" [level=2]
+  - region:
+    - tabpanel "1 of 6":
+      - heading "Europe/Central Asia" [level=3]:
+        - link "Europe/Central Asia":
+          - /url: /europe/central-asia
+          - text: Europe/Central Asia
+      - list:
+        - 'link "Left: Panayote Dimitras. Right: Tommy Olsen. © 2019 EIN Secretariat – Agnes Ciccarone Greece: Rights Defenders on Trial"':
+          - /url: /news/2026/10/03/greece-rights-defenders-on-trial
+          - 'img "Left: Panayote Dimitras. Right: Tommy Olsen. © 2019 EIN Secretariat – Agnes Ciccarone"'
+          - 'heading "Greece: Rights Defenders on Trial" [level=3]'
+        - generic: October 3, 2026
+        - 'link "Uzbekistan: Guarantee Karakalpak Lawyer’s Safety"':
+          - /url: /news/2026/10/01/uzbekistan-guarantee-karakalpak-lawyers-safety
+          - 'heading "Uzbekistan: Guarantee Karakalpak Lawyer’s Safety" [level=3]'
+        - generic: October 1, 2026
+        - link "Russia Crackdown on Bypassing Online Censorship":
+          - /url: /news/2026/09/24/russia-crackdown-on-bypassing-online-censorship
+          - heading "Russia Crackdown on Bypassing Online Censorship" [level=3]
+        - generic: September 24, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /asia
+          - text: Asia
+      - list:
+        - link:
+          - /url: /news/2026/10/02/hong-kong-silences-remembrance-of-police-abuses
+          - heading [level=3]: Hong Kong Silences Remembrance of Police Abuses
+        - generic: October 2, 2026
+        - link:
+          - /url: /news/2026/10/02/us-ice-detains-son-of-slain-philippine-journalist
+          - heading [level=3]: US ICE Detains Son of Slain Philippine Journalist
+        - generic: October 2, 2026
+        - link:
+          - /url: /news/2026/10/01/south-korea-should-center-rights-in-north-korea-policy
+          - heading [level=3]: South Korea Should Center Rights in North Korea Policy
+        - generic: October 1, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /middle-east/north-africa
+          - text: Middle East/North Africa
+      - list:
+        - link:
+          - /url: /news/2026/10/02/egypt-authorities-arrest-entire-investigative-newsroom
+          - heading [level=3]: "Egypt: Authorities Arrest Entire Investigative Newsroom"
+        - generic: October 2, 2026
+        - link:
+          - /url: /news/2026/09/30/united-arab-emirates-a-year-on-critic-remains-in-detention
+          - heading [level=3]: "United Arab Emirates: A Year On, Critic Remains in Detention"
+        - generic: September 30, 2026
+        - link:
+          - /url: /news/2026/09/27/syria-reconstruction-deals-lack-critical-rights-framework
+          - heading [level=3]: "Syria: Reconstruction Deals Lack Critical Rights Framework"
+        - generic: September 27, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /united-states
+          - text: United States
+      - list:
+        - link:
+          - /url: /news/2026/10/02/us-ice-detains-son-of-slain-philippine-journalist
+          - heading [level=3]: US ICE Detains Son of Slain Philippine Journalist
+        - generic: October 2, 2026
+        - link:
+          - /url: /news/2026/10/02/us-rights-concerns-for-maritime-operations-near-ecuador
+          - heading [level=3]: "US: Rights Concerns for Maritime Operations Near Ecuador"
+        - generic: October 2, 2026
+        - link:
+          - /url: /news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation
+          - heading [level=3]: "US: Victims of Nicaraguan Government Risk Deportation"
+        - generic: October 2, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /americas
+          - text: Americas
+      - list:
+        - link:
+          - /url: /news/2026/10/02/us-rights-concerns-for-maritime-operations-near-ecuador
+          - heading [level=3]: "US: Rights Concerns for Maritime Operations Near Ecuador"
+        - generic: October 2, 2026
+        - link:
+          - /url: /news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation
+          - heading [level=3]: "US: Victims of Nicaraguan Government Risk Deportation"
+        - generic: October 2, 2026
+        - link:
+          - /url: /news/2026/09/21/us-deportations-to-haiti-endanger-lives
+          - heading [level=3]: "US: Deportations to Haiti Endanger Lives"
+        - generic: September 21, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /africa
+          - text: Africa
+      - list:
+        - link:
+          - /url: /news/2026/10/01/a-long-road-to-justice-in-the-central-african-republic
+          - heading [level=3]: A Long Road to Justice in the Central African Republic
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/10/01/mauritius-rights-body-calls-for-marriage-equality
+          - heading [level=3]: Mauritius Rights Body Calls for Marriage Equality
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/10/01/uk-trial-challenges-gold-industrys-responsible-gold-certification
+          - heading [level=3]: UK Trial Challenges Gold Industry’s ‘Responsible Gold’ Certification
+        - generic: October 1, 2026
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+  - heading "Topics" [level=2]
+  - region:
+    - tabpanel "1 of 18":
+      - heading "Free Speech" [level=3]:
+        - link "Free Speech":
+          - /url: /topic/free-speech
+          - text: Free Speech
+      - list:
+        - 'link "collage of 6 headshots Egypt: Authorities Arrest Entire Investigative Newsroom"':
+          - /url: /news/2026/10/02/egypt-authorities-arrest-entire-investigative-newsroom
+          - img "collage of 6 headshots"
+          - 'heading "Egypt: Authorities Arrest Entire Investigative Newsroom" [level=3]'
+        - generic: October 2, 2026
+        - 'link "United Arab Emirates: A Year On, Critic Remains in Detention"':
+          - /url: /news/2026/09/30/united-arab-emirates-a-year-on-critic-remains-in-detention
+          - 'heading "United Arab Emirates: A Year On, Critic Remains in Detention" [level=3]'
+        - generic: September 30, 2026
+        - 'link "Canada: Press Vietnam’s Leader on Rights"':
+          - /url: /news/2026/09/23/canada-press-vietnams-leader-on-rights
+          - 'heading "Canada: Press Vietnam’s Leader on Rights" [level=3]'
+        - generic: September 23, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/united-nations
+          - text: United Nations
+      - list:
+        - link:
+          - /url: /news/2026/10/01/south-korea-should-center-rights-in-north-korea-policy
+          - heading [level=3]: South Korea Should Center Rights in North Korea Policy
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/09/25/niger-rejects-key-rights-recommendations-at-un-review
+          - heading [level=3]: Niger Rejects Key Rights Recommendations at UN Review
+        - generic: September 25, 2026
+        - link:
+          - /url: /news/2026/09/21/un-commit-to-human-rights-justice-for-grave-crimes
+          - heading [level=3]: "UN: Commit to Human Rights, Justice for Grave Crimes"
+        - generic: September 21, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/arms
+          - text: Arms
+      - list:
+        - link:
+          - /url: /news/2026/10/01/south-korea-should-center-rights-in-north-korea-policy
+          - heading [level=3]: South Korea Should Center Rights in North Korea Policy
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/09/09/lebanon/israel-hezbollahs-use-of-cluster-munitions
+          - heading [level=3]: "Lebanon/Israel: Hezbollah’s Use of Cluster Munitions"
+        - generic: September 9, 2026
+        - link:
+          - /url: /news/2026/09/09/white-phosphorus-recent-use-inhumane-effects-require-new-law
+          - heading [level=3]: "White Phosphorus: Recent Use, Inhumane Effects Require New Law"
+        - generic: September 9, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/international-justice
+          - text: International Justice
+      - list:
+        - link:
+          - /url: /news/2026/10/01/a-long-road-to-justice-in-the-central-african-republic
+          - heading [level=3]: A Long Road to Justice in the Central African Republic
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/10/01/the-taliban-arent-united-accountability-can-exploit-the-gaps
+          - heading [level=3]: The Taliban Aren’t United. Accountability Can Exploit the Gaps.
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/09/25/array-of-experts-back-lawsuit-challenging-trumps-icc-sanctions-regime
+          - heading [level=3]: Array of Experts Back Lawsuit Challenging Trump’s ICC Sanctions Regime
+        - generic: September 25, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/lgbt-rights
+          - text: LGBT Rights
+      - list:
+        - link:
+          - /url: /news/2026/10/01/mauritius-rights-body-calls-for-marriage-equality
+          - heading [level=3]: Mauritius Rights Body Calls for Marriage Equality
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/09/16/reforms-to-hungarys-anti-lgbt-laws-welcome-but-more-to-do
+          - heading [level=3]: Reforms to Hungary's Anti-LGBT Laws Welcome, but More to Do
+        - generic: September 16, 2026
+        - link:
+          - /url: /news/2026/08/27/ecuador-new-adoption-law-entrenches-bias
+          - heading [level=3]: "Ecuador: New Adoption Law Entrenches Bias"
+        - generic: August 27, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/economic-justice-and-rights
+          - text: Economic Justice and Rights
+      - list:
+        - link:
+          - /url: /news/2026/10/01/us-nebraskans-losing-coverage-as-medicaid-changes
+          - heading [level=3]: "US: Nebraskans Losing Coverage as Medicaid Changes"
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/10/01/uk-trial-challenges-gold-industrys-responsible-gold-certification
+          - heading [level=3]: UK Trial Challenges Gold Industry’s ‘Responsible Gold’ Certification
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/09/14/eu-forced-labor-guidance-a-positive-step-but-more-needed
+          - heading [level=3]: EU Forced Labor Guidance a Positive Step, But More Needed
+        - generic: September 14, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/health
+          - text: Health
+      - list:
+        - link:
+          - /url: /news/2026/10/01/us-nebraskans-losing-coverage-as-medicaid-changes
+          - heading [level=3]: "US: Nebraskans Losing Coverage as Medicaid Changes"
+        - generic: October 1, 2026
+        - link:
+          - /url: /news/2026/08/18/iraq-man-dies-in-police-drug-unit-custody
+          - heading [level=3]: "Iraq: Man Dies in Police Drug Unit Custody"
+        - generic: August 18, 2026
+        - link:
+          - /url: /news/2026/07/16/us-communities-face-broken-promises-on-air-pollution-monitoring
+          - heading [level=3]: US Communities Face Broken Promises on Air Pollution Monitoring
+        - generic: July 16, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/childrens-rights
+          - text: Children's Rights
+      - list:
+        - link:
+          - /url: /news/2026/09/28/children-in-anguish-as-us-immigration-arrests-surge
+          - heading [level=3]: Children in Anguish as US Immigration Arrests Surge
+        - generic: September 28, 2026
+        - link:
+          - /url: /news/2026/09/22/un-talks-on-free-education-advance-as-states-weigh-next-steps
+          - heading [level=3]: UN Talks on Free Education Advance as States Weigh Next Steps
+        - generic: September 22, 2026
+        - link:
+          - /url: /news/2026/09/09/a-growing-global-push-for-free-education-for-every-child
+          - heading [level=3]: A Growing Global Push for Free Education for Every Child
+        - generic: September 9, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/refugees-and-migrants
+          - text: Refugees and Migrants
+      - list:
+        - link:
+          - /url: /news/2026/09/28/children-in-anguish-as-us-immigration-arrests-surge
+          - heading [level=3]: Children in Anguish as US Immigration Arrests Surge
+        - generic: September 28, 2026
+        - link:
+          - /url: /news/2026/09/21/us-deportations-to-haiti-endanger-lives
+          - heading [level=3]: "US: Deportations to Haiti Endanger Lives"
+        - generic: September 21, 2026
+        - link:
+          - /url: /news/2026/09/09/pakistan-moves-to-expel-afghan-medical-students
+          - heading [level=3]: Pakistan Moves to Expel Afghan Medical Students
+        - generic: September 9, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/rights-older-people
+          - text: Rights of Older People
+      - list:
+        - link:
+          - /url: /news/2026/09/23/south-koreas-systemic-gender-and-age-discrimination
+          - heading [level=3]: South Korea’s Systemic Gender and Age Discrimination
+        - generic: September 23, 2026
+        - link:
+          - /url: /news/2026/09/08/south-korea-systemic-gender-age-discrimination-at-work
+          - heading [level=3]: "South Korea: Systemic Gender, Age Discrimination at Work"
+        - generic: September 8, 2026
+        - link:
+          - /url: /news/2026/07/06/hungary-new-governments-first-step-on-pensioner-poverty
+          - heading [level=3]: "Hungary: New Government’s First Step on Pensioner Poverty"
+        - generic: July 6, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/womens-rights
+          - text: Women's Rights
+      - list:
+        - link:
+          - /url: /news/2026/09/23/south-koreas-systemic-gender-and-age-discrimination
+          - heading [level=3]: South Korea’s Systemic Gender and Age Discrimination
+        - generic: September 23, 2026
+        - link:
+          - /url: /news/2026/09/23/trumps-latest-media-attacks-again-hit-women-journalists
+          - heading [level=3]: Trump’s Latest Media Attacks Again Hit Women Journalists
+        - generic: September 23, 2026
+        - link:
+          - /url: /news/2026/09/22/myanmar-women-political-prisoners-tortured-ill-treated
+          - heading [level=3]: "Myanmar: Women Political Prisoners Tortured, Ill-treated"
+        - generic: September 22, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/torture
+          - text: Torture
+      - list:
+        - link:
+          - /url: /news/2026/09/22/myanmar-women-political-prisoners-tortured-ill-treated
+          - heading [level=3]: "Myanmar: Women Political Prisoners Tortured, Ill-treated"
+        - generic: September 22, 2026
+        - link:
+          - /url: /news/2026/08/20/mali-russias-africa-corps-massacres-villagers
+          - heading [level=3]: "Mali: Russia’s ‘Africa Corps’ Massacres Villagers"
+        - generic: August 20, 2026
+        - link:
+          - /url: /news/2026/08/12/pakistan-investigate-deaths-of-woman-girl-in-police-custody
+          - heading [level=3]: "Pakistan: Investigate Deaths of Woman, Girl in Police Custody"
+        - generic: August 12, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/disability-rights
+          - text: Disability Rights
+      - list:
+        - link:
+          - /url: /news/2026/09/18/qa-canadas-human-rights-obligations-and-the-care-economy
+          - heading [level=3]: "Q&A: Canada’s Human Rights Obligations and the “Care Economy”"
+        - generic: September 18, 2026
+        - link:
+          - /url: /news/2026/08/03/an-armenian-case-study-in-why-regaining-legal-capacity-alone-is-not-enough
+          - heading [level=3]: An Armenian case study in why regaining legal capacity alone is not enough
+        - generic: August 3, 2026
+        - link:
+          - /url: /news/2026/06/24/malawis-new-national-action-plan-on-albinism
+          - heading [level=3]: Malawi’s New National Action Plan on Albinism
+        - generic: June 24, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/environment
+          - text: Environment and Human Rights
+      - list:
+        - link:
+          - /url: /news/2026/09/17/us-revokes-limits-on-power-plants-climate-pollution
+          - heading [level=3]: US Revokes Limits on Power Plants’ Climate Pollution
+        - generic: September 17, 2026
+        - link:
+          - /url: /news/2026/08/31/bringing-the-climate-frontlines-to-the-red-carpet
+          - heading [level=3]: Bringing the Climate Frontlines to the Red Carpet
+        - generic: August 31, 2026
+        - link:
+          - /url: /news/2026/08/21/governments-should-protect-environmental-defenders-from-violence-and-repression
+          - heading [level=3]: Governments Should Protect Environmental Defenders from Violence and Repression
+        - generic: August 21, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/terrorism-counterterrorism
+          - text: Terrorism / Counterterrorism
+      - list:
+        - link:
+          - /url: /news/2026/09/11/pakistan-anti-terrorism-bill-threatens-fair-trials
+          - heading [level=3]: "Pakistan: Anti-Terrorism Bill Threatens Fair Trials"
+        - generic: September 11, 2026
+        - link:
+          - /url: /news/2026/07/22/nigeria-boko-haram-trials-ineffective-flawed
+          - heading [level=3]: "Nigeria: Boko Haram Trials Ineffective, Flawed"
+        - generic: July 22, 2026
+        - link:
+          - /url: /news/2026/02/19/trinidadian-nationals-face-escalating-abuse-in-syrian-camp
+          - heading [level=3]: Trinidadian Nationals Face Escalating Abuse in Syrian Camp
+        - generic: February 19, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/crisis-and-conflict
+          - text: Crisis and Conflict
+      - list:
+        - link:
+          - /url: /news/2026/09/09/lebanon/israel-hezbollahs-use-of-cluster-munitions
+          - heading [level=3]: "Lebanon/Israel: Hezbollah’s Use of Cluster Munitions"
+        - generic: September 9, 2026
+        - link:
+          - /url: /news/2026/09/09/white-phosphorus-recent-use-inhumane-effects-require-new-law
+          - heading [level=3]: "White Phosphorus: Recent Use, Inhumane Effects Require New Law"
+        - generic: September 9, 2026
+        - link:
+          - /url: /news/2026/09/08/cluster-munitions-ban-treaty-under-pressure
+          - heading [level=3]: "Cluster Munitions: Ban Treaty Under Pressure"
+        - generic: September 8, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/technology-and-rights
+          - text: Technology and Rights
+      - list:
+        - link:
+          - /url: /news/2026/08/19/taxing-tech-in-age-of-ai-could-fund-human-rights
+          - heading [level=3]: Taxing Tech in Age of AI Could Fund Human Rights
+        - generic: August 19, 2026
+        - link:
+          - /url: /news/2026/08/06/technology-expands-ices-capacity-for-abuse
+          - heading [level=3]: Technology Expands ICE’s Capacity for Abuse
+        - generic: August 6, 2026
+        - link:
+          - /url: /news/2026/07/30/australia-school-photos-scraped-for-ai-fueled-image-misuse
+          - heading [level=3]: Australia School Photos Scraped for AI-Fueled Image Misuse
+        - generic: July 30, 2026
+    - tabpanel:
+      - heading [level=3]:
+        - link:
+          - /url: /topic/sport-and-human-rights
+          - text: Sport and Human Rights
+      - list:
+        - link:
+          - /url: /news/2026/08/07/safe-sport-day-japan-should-lead-the-way-on-athletes-rights
+          - heading [level=3]: "Safe Sport Day: Japan Should Lead the Way on Athletes’ Rights"
+        - generic: August 7, 2026
+        - link:
+          - /url: /news/2026/08/06/japans-winning-sports-tradition-shouldnt-include-abuse
+          - heading [level=3]: Japan’s winning sports tradition shouldn’t include abuse
+        - generic: August 6, 2026
+        - link:
+          - /url: /news/2026/07/24/when-you-watch-the-tour-de-france-think-sudan-war
+          - heading [level=3]: When You Watch the Tour de France, Think Sudan War
+        - generic: July 24, 2026
+    - button "Go to last slide":
+      - generic: Previous
+    - button "Next slide":
+      - generic: Next
+    - tablist "Select a slide to show":
+      - tab "Go to slide 1" [selected]
+      - tab "Go to slide 2"
+      - tab "Go to slide 3"
+      - tab "Go to slide 4"
+      - tab "Go to slide 5"
+      - tab "Go to slide 6"
+      - tab "Go to slide 7"
+      - tab "Go to slide 8"
+      - tab "Go to slide 9"
+      - tab "Go to slide 10"
+      - tab "Go to slide 11"
+      - tab "Go to slide 12"
+      - tab "Go to slide 13"
+      - tab "Go to slide 14"
+      - tab "Go to slide 15"
+      - tab "Go to slide 16"
+      - tab "Go to slide 17"
+      - tab "Go to slide 18"
+  - img "Children and women run among a cloud of dust at the village of El Gel, in Ethiopia’s Somali region, on January 12, 2023. The last five rainy seasons since the end of 2020 have failed, triggering the worst drought in four decades in Ethiopia, Somalia and Kenya."
+  - heading "Defend Rights. Secure Justice." [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Give monthly":
+    - /url: https://donate.hrw.org/page/113621/donate/1?ea.tracking.id=EP2022S1pgbanner3&promo_id=1007&transaction.recurrpay=Y
+  - link "Make a one-time gift":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgbanner3&promo_id=1002&transaction.recurrpay=N
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

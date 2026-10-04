@@ -1,0 +1,439 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar/countries
+      - link "简中":
+        - /url: /zh-hans/countries
+      - link "繁中":
+        - /url: /zh-hant/countries
+      - listitem: English
+      - link "Français":
+        - /url: /fr/countries
+      - link "Deutsch":
+        - /url: /de/countries
+      - link "日本語":
+        - /url: /ja/countries
+      - link "Português":
+        - /url: /pt/countries
+      - link "Русский":
+        - /url: /ru/countries
+      - link "Español":
+        - /url: /es/countries
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - heading "Countries" [level=1]
+  - heading [level=3]
+  - heading "Africa" [level=2]:
+    - link "Africa":
+      - /url: /africa
+  - link "Angola":
+    - /url: /africa/angola
+  - link "Burkina Faso":
+    - /url: /africa/burkina-faso
+  - link "Burundi":
+    - /url: /africa/burundi
+  - link "Cameroon":
+    - /url: /africa/cameroon
+  - link "Central African Republic":
+    - /url: /africa/central-african-republic
+  - link "Chad":
+    - /url: /africa/chad
+  - link "Côte d'Ivoire":
+    - /url: /africa/cote-divoire
+  - link "Democratic Republic of Congo":
+    - /url: /africa/democratic-republic-congo
+  - link "Equatorial Guinea":
+    - /url: /africa/equatorial-guinea
+  - link "Eritrea":
+    - /url: /africa/eritrea
+  - link "Ethiopia":
+    - /url: /africa/ethiopia
+  - link "Gambia":
+    - /url: /africa/gambia
+  - link "Ghana":
+    - /url: /africa/ghana
+  - link "Guinea":
+    - /url: /africa/guinea
+  - link "Kenya":
+    - /url: /africa/kenya
+  - link "Liberia":
+    - /url: /africa/liberia
+  - link "Malawi":
+    - /url: /africa/malawi
+  - link "Mali":
+    - /url: /africa/mali
+  - link "Mozambique":
+    - /url: /africa/mozambique
+  - link "Niger":
+    - /url: /africa/niger
+  - link "Nigeria":
+    - /url: /africa/nigeria
+  - link "Rwanda":
+    - /url: /africa/rwanda
+  - link "Senegal":
+    - /url: /africa/senegal
+  - link "Sierra Leone":
+    - /url: /africa/sierra-leone
+  - link "Somalia":
+    - /url: /africa/somalia
+  - link "South Africa":
+    - /url: /africa/south-africa
+  - link "South Sudan":
+    - /url: /africa/south-sudan
+  - link "Sudan":
+    - /url: /africa/sudan
+  - link "Eswatini (formerly Swaziland)":
+    - /url: /africa/eswatini
+  - link "Tanzania":
+    - /url: /africa/tanzania
+  - link "Uganda":
+    - /url: /africa/uganda
+  - link "Zambia":
+    - /url: /africa/zambia
+  - link "Zimbabwe":
+    - /url: /africa/zimbabwe
+  - link "Mauritius":
+    - /url: /africa/mauritius
+  - link "African Union":
+    - /url: /africa/african-union
+  - heading [level=3]
+  - heading "Americas" [level=2]:
+    - link "Americas":
+      - /url: /americas
+  - link "Argentina":
+    - /url: /americas/argentina
+  - link "Bolivia":
+    - /url: /americas/bolivia
+  - link "Brazil":
+    - /url: /americas/brazil
+  - link "Canada":
+    - /url: /americas/canada
+  - link "Chile":
+    - /url: /americas/chile
+  - link "Colombia":
+    - /url: /americas/colombia
+  - link "Costa Rica":
+    - /url: /americas/costa-rica
+  - link "Cuba":
+    - /url: /americas/cuba
+  - link "Dominican Republic":
+    - /url: /americas/dominican-republic
+  - link "Ecuador":
+    - /url: /americas/ecuador
+  - link "El Salvador":
+    - /url: /americas/el-salvador
+  - link "Guatemala":
+    - /url: /americas/guatemala
+  - link "Haiti":
+    - /url: /americas/haiti
+  - link "Honduras":
+    - /url: /americas/honduras
+  - link "Jamaica":
+    - /url: /americas/jamaica
+  - link "Mexico":
+    - /url: /americas/mexico
+  - link "Nicaragua":
+    - /url: /americas/nicaragua
+  - link "Panama":
+    - /url: /americas/panama
+  - link "Paraguay":
+    - /url: /americas/paraguay
+  - link "Peru":
+    - /url: /americas/peru
+  - link "Uruguay":
+    - /url: /americas/uruguay
+  - link "Venezuela":
+    - /url: /americas/venezuela
+  - heading [level=3]
+  - heading "Asia" [level=2]:
+    - link "Asia":
+      - /url: /asia
+  - link "Afghanistan":
+    - /url: /asia/afghanistan
+  - link "Australia":
+    - /url: /asia/australia
+  - link "Bangladesh":
+    - /url: /asia/bangladesh
+  - link "Bhutan":
+    - /url: /asia/bhutan
+  - link "Brunei":
+    - /url: /asia/brunei
+  - link "Myanmar (Burma)":
+    - /url: /asia/myanmar-burma
+  - link "Cambodia":
+    - /url: /asia/cambodia
+  - link "China and Tibet":
+    - /url: /asia/china-and-tibet
+  - link "Timor-Leste":
+    - /url: /asia/timor-leste
+  - link "Fiji":
+    - /url: /asia/fiji
+  - link "India":
+    - /url: /asia/india
+  - link "Indonesia":
+    - /url: /asia/indonesia
+  - link "Japan":
+    - /url: /asia/japan
+  - link "Laos":
+    - /url: /asia/laos
+  - link "Malaysia":
+    - /url: /asia/malaysia
+  - link "Maldives":
+    - /url: /asia/maldives
+  - link "Nauru":
+    - /url: /asia/nauru
+  - link "Nepal":
+    - /url: /asia/nepal
+  - link "North Korea":
+    - /url: /asia/north-korea
+  - link "Pakistan":
+    - /url: /asia/pakistan
+  - link "Papua New Guinea":
+    - /url: /asia/papua-new-guinea
+  - link "Philippines":
+    - /url: /asia/philippines
+  - link "Singapore":
+    - /url: /asia/singapore
+  - link "South Korea":
+    - /url: /asia/south-korea
+  - link "Sri Lanka":
+    - /url: /asia/sri-lanka
+  - link "Taiwan":
+    - /url: /asia/taiwan
+  - link "Thailand":
+    - /url: /asia/thailand
+  - link "Vietnam":
+    - /url: /asia/vietnam
+  - heading [level=3]
+  - heading "Europe/Central Asia" [level=2]:
+    - link "Europe/Central Asia":
+      - /url: /europe/central-asia
+  - link "Albania":
+    - /url: /europe/central-asia/albania
+  - link "Armenia":
+    - /url: /europe/central-asia/armenia
+  - link "Azerbaijan":
+    - /url: /europe/central-asia/azerbaijan
+  - link "Belarus":
+    - /url: /europe/central-asia/belarus
+  - link "Belgium":
+    - /url: /europe/central-asia/belgium
+  - link "Bosnia and Herzegovina":
+    - /url: /europe/central-asia/bosnia-and-herzegovina
+  - link "Bulgaria":
+    - /url: /europe/central-asia/bulgaria
+  - link "Croatia":
+    - /url: /europe/central-asia/croatia
+  - link "Czech Republic":
+    - /url: /europe/central-asia/czech-republic
+  - link "Denmark":
+    - /url: /europe/central-asia/denmark
+  - link "European Union":
+    - /url: /europe/central-asia/european-union
+  - link "France":
+    - /url: /europe/central-asia/france
+  - link "Georgia":
+    - /url: /europe/central-asia/georgia
+  - link "Germany":
+    - /url: /europe/central-asia/germany
+  - link "Greece":
+    - /url: /europe/central-asia/greece
+  - link "Holy See":
+    - /url: /europe/central-asia/holy-see
+  - link "Hungary":
+    - /url: /europe/central-asia/hungary
+  - link "Ireland":
+    - /url: /europe/central-asia/ireland
+  - link "Italy":
+    - /url: /europe/central-asia/italy
+  - link "Kazakhstan":
+    - /url: /europe/central-asia/kazakhstan
+  - link "Kyrgyzstan":
+    - /url: /europe/central-asia/kyrgyzstan
+  - link "Latvia":
+    - /url: /europe/central-asia/latvia
+  - link "Lithuania":
+    - /url: /europe/central-asia/lithuania
+  - link "Netherlands":
+    - /url: /europe/central-asia/netherlands
+  - link "Norway":
+    - /url: /europe/central-asia/norway
+  - link "Poland":
+    - /url: /europe/central-asia/poland
+  - link "Portugal":
+    - /url: /europe/central-asia/portugal
+  - link "Romania":
+    - /url: /europe/central-asia/romania
+  - link "Russia":
+    - /url: /europe/central-asia/russia
+  - link "Serbia/Kosovo":
+    - /url: /europe/central-asia/serbia/kosovo
+  - link "Spain":
+    - /url: /europe/central-asia/spain
+  - link "Sweden":
+    - /url: /europe/central-asia/sweden
+  - link "Switzerland":
+    - /url: /europe/central-asia/switzerland
+  - link "Tajikistan":
+    - /url: /europe/central-asia/tajikistan
+  - link "Türkiye":
+    - /url: /europe/central-asia/turkey
+  - link "Turkmenistan":
+    - /url: /europe/central-asia/turkmenistan
+  - link "Ukraine":
+    - /url: /europe/central-asia/ukraine
+  - link "United Kingdom":
+    - /url: /europe/central-asia/united-kingdom
+  - link "Uzbekistan":
+    - /url: /europe/central-asia/uzbekistan
+  - heading [level=3]
+  - heading "Middle East/North Africa" [level=2]:
+    - link "Middle East/North Africa":
+      - /url: /middle-east/north-africa
+  - link "Mauritania":
+    - /url: /middle-east/north-africa/mauritania
+  - link "Algeria":
+    - /url: /middle-east/north-africa/algeria
+  - link "Bahrain":
+    - /url: /middle-east/north-africa/bahrain
+  - link "Egypt":
+    - /url: /middle-east/n-africa/egypt
+  - link "Iran":
+    - /url: /middle-east/north-africa/iran
+  - link "Iraq":
+    - /url: /middle-east/north-africa/iraq
+  - link "Israel/Palestine":
+    - /url: /middle-east/north-africa/israel/palestine
+  - link "Jordan":
+    - /url: /middle-east/n-africa/jordan
+  - link "Kuwait":
+    - /url: /middle-east/n-africa/kuwait
+  - link "Lebanon":
+    - /url: /middle-east/n-africa/lebanon
+  - link "Libya":
+    - /url: /middle-east/n-africa/libya
+  - link "Morocco/Western Sahara":
+    - /url: /middle-east/north-africa/morocco/western-sahara
+  - link "Oman":
+    - /url: /middle-east/n-africa/oman
+  - link "Qatar":
+    - /url: /middle-east/north-africa/qatar
+  - link "Saudi Arabia":
+    - /url: /middle-east/north-africa/saudi-arabia
+  - link "Syria":
+    - /url: /middle-east/n-africa/syria
+  - link "Tunisia":
+    - /url: /middle-east/north-africa/tunisia
+  - link "United Arab Emirates":
+    - /url: /middle-east/north-africa/united-arab-emirates
+  - link "Yemen":
+    - /url: /middle-east/n-africa/yemen
+  - heading [level=3]
+  - heading "United States" [level=2]:
+    - link "United States":
+      - /url: /united-states
+  - link "US Foreign Policy":
+    - /url: /united-states/us-foreign-policy
+  - link "Immigrants’ Rights and Border Policy":
+    - /url: /united-states/immigration
+  - link "Criminal Justice":
+    - /url: /united-states/criminal-justice
+  - link "Economic Justice":
+    - /url: /united-states/economic-justice
+  - link "Racial Justice":
+    - /url: /united-states/racial-justice
+  - link "Democracy":
+    - /url: /united-states/democracy
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

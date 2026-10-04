@@ -1,0 +1,290 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - button "English"
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+  - button "Open the main menu":
+    - generic: Open the main menu
+  - generic: Trending
+  - link "Trump Administration and Human Rights":
+    - /url: /tag/trump-administration-and-human-rights
+    - text: Trump Administration and Human Rights
+  - link "Russia-Ukraine War":
+    - /url: /tag/russia-ukraine-war
+    - text: Russia-Ukraine War
+  - link "Israel/Palestine":
+    - /url: /middle-east/north-africa/israel/palestine
+    - text: Israel/Palestine
+  - link "International Criminal Court":
+    - /url: /topic/international-justice/international-criminal-court
+    - text: International Criminal Court
+  - link "Crisis in the Middle East":
+    - /url: /tag/crisis-in-the-middle-east
+    - text: Crisis in the Middle East
+- main:
+  - img "European Commission Invites Taliban Delegation For Migration Talks"
+  - button "Click to play video":
+  - iframe
+  - generic: August 13, 2026
+  - heading "European Commission Invites Taliban Delegation For Migration Talks" [level=3]:
+    - link "European Commission Invites Taliban Delegation For Migration Talks":
+      - /url: /video-photos/video/2026/08/13/european-commission-invites-taliban-delegation-for-migration-talks
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - heading "Stay up-to-date and get alerts on latest videos" [level=3]
+  - link "Subscribe":
+    - /url: https://www.youtube.com/user/HumanRightsWatch
+    - generic: Subscribe
+  - list:
+    - text: Malawi
+    - figure:
+      - img "A musician with albinism sits holding a guitar"
+      - link:
+        - /url: /video-photos/video/2026/06/12/violence-and-discrimination-against-people-with-albinism-in-malawi
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|Video"
+    - link "Violence and Discrimination Against People with Albinism in Malawi":
+      - /url: /video-photos/video/2026/06/12/violence-and-discrimination-against-people-with-albinism-in-malawi
+    - figure:
+      - img "People being transported in the DRC"
+      - link:
+        - /url: /video-photos/video/2026/06/10/dr-congo-thousands-forcibly-recruited-and-detained
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|Video"
+    - 'link "DR Congo: Thousands Forcibly Recruited and Detained"':
+      - /url: /video-photos/video/2026/06/10/dr-congo-thousands-forcibly-recruited-and-detained
+    - text: Middle East/North Africa
+    - figure:
+      - 'img "Iran: Politically Motivated Executions"'
+      - link:
+        - /url: /video-photos/video/2026/05/18/iran-politically-motivated-executions
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: "|Video"
+    - 'link "Iran: Politically Motivated Executions"':
+      - /url: /video-photos/video/2026/05/18/iran-politically-motivated-executions
+  - heading "Search" [level=2]
+  - generic: Keyword
+  - textbox "Keyword"
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - button "Country":
+    - generic: Country
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - button "Topic":
+    - generic: Topic
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - button "Media Type":
+    - generic: Media Type
+  - button "Apply"
+  - list:
+    - article:
+      - generic: September 28, 2026 | Audio
+      - heading "The Inhumanity of the Algorithms" [level=3]:
+        - link "The Inhumanity of the Algorithms":
+          - /url: /video-photos/audio/2026/09/28/the-inhumanity-of-the-algorithms
+      - generic: [Long prose omitted.]
+      - img "Delivery worker rides bicycle through rainy conditions."
+      - img "audio content"
+      - link:
+        - /url: /video-photos/audio/2026/09/28/the-inhumanity-of-the-algorithms
+    - article:
+      - generic: September 18, 2026 | Interactive
+      - heading "Free Vietnam’s Political Prisoners" [level=3]:
+        - link "Free Vietnam’s Political Prisoners":
+          - /url: /video-photos/interactive/2026/09/18/free-vietnams-political-prisoners
+      - generic: [Long prose omitted.]
+      - img "Political prisoners in Vietnam"
+      - img "interactive content"
+      - link:
+        - /url: /video-photos/interactive/2026/09/18/free-vietnams-political-prisoners
+    - article:
+      - generic: August 13, 2026 | Video
+      - heading "European Commission Invites Taliban Delegation For Migration Talks" [level=3]:
+        - link "European Commission Invites Taliban Delegation For Migration Talks":
+          - /url: /video-photos/video/2026/08/13/european-commission-invites-taliban-delegation-for-migration-talks
+      - generic: Fereshta Abbasi explains why the European Commission inviting Taliban for a meeting on migration talks sends the wrong message at the wrong time.
+      - img "European Commission Invites Taliban Delegation For Migration Talks"
+      - img "video content"
+      - link:
+        - /url: /video-photos/video/2026/08/13/european-commission-invites-taliban-delegation-for-migration-talks
+    - article:
+      - generic: June 12, 2026 | Video
+      - heading "Violence and Discrimination Against People with Albinism in Malawi" [level=3]:
+        - link "Violence and Discrimination Against People with Albinism in Malawi":
+          - /url: /video-photos/video/2026/06/12/violence-and-discrimination-against-people-with-albinism-in-malawi
+      - generic: Stigma, Insecurity, Lack of Accommodations Undermine Rights
+      - img "A musician with albinism sits holding a guitar"
+      - img "video content"
+      - link:
+        - /url: /video-photos/video/2026/06/12/violence-and-discrimination-against-people-with-albinism-in-malawi
+    - article:
+      - generic: June 10, 2026 | Video
+      - 'heading "DR Congo: Thousands Forcibly Recruited and Detained" [level=3]':
+        - 'link "DR Congo: Thousands Forcibly Recruited and Detained"':
+          - /url: /video-photos/video/2026/06/10/dr-congo-thousands-forcibly-recruited-and-detained
+      - generic: Arbitrary Detention, Killings, and Forced Recruitment by the M23 and Rwanda Defence Forces
+      - img "People being transported in the DRC"
+      - img "video content"
+      - link:
+        - /url: /video-photos/video/2026/06/10/dr-congo-thousands-forcibly-recruited-and-detained
+    - article:
+      - generic: May 25, 2026 | Audio
+      - 'heading "Recap: Sportswashing Explained" [level=3]':
+        - 'link "Recap: Sportswashing Explained"':
+          - /url: /video-photos/audio/2026/05/25/recap-sportswashing-explained
+      - generic: [Long prose omitted.]
+      - img "Rights & Wrongs logo over Olympic rings, reading \"Sportswashing Explained\"."
+      - img "audio content"
+      - link:
+        - /url: /video-photos/audio/2026/05/25/recap-sportswashing-explained
+    - article:
+      - generic: May 18, 2026 | Video
+      - 'heading "Iran: Politically Motivated Executions" [level=3]':
+        - 'link "Iran: Politically Motivated Executions"':
+          - /url: /video-photos/video/2026/05/18/iran-politically-motivated-executions
+      - generic: [Long prose omitted.]
+      - 'img "Iran: Politically Motivated Executions"'
+      - img "video content"
+      - link:
+        - /url: /video-photos/video/2026/05/18/iran-politically-motivated-executions
+    - article:
+      - generic: May 12, 2026 | Video
+      - heading "European Union Fails to Control Surveillance Exports" [level=3]:
+        - link "European Union Fails to Control Surveillance Exports":
+          - /url: /video-photos/video/2026/05/12/european-union-fails-to-control-surveillance-exports
+      - generic: [Long prose omitted.]
+      - img "European Union Fails to Control Surveillance Exports"
+      - img "video content"
+      - link:
+        - /url: /video-photos/video/2026/05/12/european-union-fails-to-control-surveillance-exports
+    - article:
+      - generic: May 11, 2026 | Audio
+      - heading "The Past is Never Over" [level=3]:
+        - link "The Past is Never Over":
+          - /url: /video-photos/audio/2026/05/11/the-past-is-never-over
+      - generic: [Long prose omitted.]
+      - img "\"The Great Unrooting\" text over two figures carrying bags."
+      - img "audio content"
+      - link:
+        - /url: /video-photos/audio/2026/05/11/the-past-is-never-over
+    - article:
+      - generic: April 27, 2026 | Audio
+      - heading "What's Social Media Got To Do With It?" [level=3]:
+        - link "What's Social Media Got To Do With It?":
+          - /url: /video-photos/audio/2026/04/27/whats-social-media-got-to-do-with-it
+      - generic: [Long prose omitted.]
+      - img "\"The Great Unrooting\" text over two figures carrying bags."
+      - img "audio content"
+      - link:
+        - /url: /video-photos/audio/2026/04/27/whats-social-media-got-to-do-with-it
+  - navigation "Pagination":
+    - heading "Pagination" [level=4]
+    - list:
+      - link "Current page 1":
+        - /url: "?page=0"
+        - generic: Current page
+        - text: "1"
+      - link "Page 2":
+        - /url: "?page=1"
+        - generic: Page
+        - text: "2"
+      - link "Page 3":
+        - /url: "?page=2"
+        - generic: Page
+        - text: "3"
+      - link "Page 4":
+        - /url: "?page=3"
+        - generic: Page
+        - text: "4"
+      - link "Page 5":
+        - /url: "?page=4"
+        - generic: Page
+        - text: "5"
+      - link "Page 6":
+        - /url: "?page=5"
+        - generic: Page
+        - text: "6"
+      - link "Page 7":
+        - /url: "?page=6"
+        - generic: Page
+        - text: "7"
+      - link "Page 8":
+        - /url: "?page=7"
+        - generic: Page
+        - text: "8"
+      - link "Page 9":
+        - /url: "?page=8"
+        - generic: Page
+        - text: "9"
+      - text: …
+      - link "Next page":
+        - /url: "?page=1"
+        - generic: Next page
+        - text: ››
+      - link "Last page":
+        - /url: "?page=138"
+        - generic: Last page
+        - text: Last »
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

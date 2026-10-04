@@ -1,0 +1,326 @@
+- banner:
+  - link:
+    - /url: "#hrw-cookie-dialog"
+    - text: Skip to cookie privacy notice
+  - link "Skip to main content":
+    - /url: "#main-content"
+  - link:
+    - /url: /
+  - navigation "Languages":
+    - list:
+      - link "العربية":
+        - /url: /ar
+      - link "简中":
+        - /url: /zh-hans
+      - link "繁中":
+        - /url: /zh-hant
+      - listitem: English
+      - link "Français":
+        - /url: /fr
+      - link "Deutsch":
+        - /url: /de
+      - link "日本語":
+        - /url: /ja
+      - link "Português":
+        - /url: /pt
+      - link "Русский":
+        - /url: /ru
+      - link "Español":
+        - /url: /es
+      - link "More languages":
+        - /url: /languages?language=en
+        - text: More
+        - generic: languages
+  - generic: Search
+  - textbox "Search"
+  - button "Search":
+  - link "Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgdonate&promo_id=1000
+    - generic: Donate Now
+  - list:
+    - button "Click to expand Countries":
+      - generic: Countries
+    - button "Click to expand Topics":
+      - generic: Topics
+    - link "Reports":
+      - /url: /publications
+    - link "Video & Photos":
+      - /url: /video-photos
+    - link "Impact":
+      - /url: /impact
+    - button "Click to expand Join Us":
+      - generic: Join Us
+    - button "Click to expand About":
+      - generic: About
+    - button "Click to expand Give Now":
+      - generic: Give Now
+- main:
+  - heading "Accessibility" [level=1]
+  - heading "Our Work with Disability Rights" [level=2]
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - article:
+    - generic: July 8, 2025 | Report
+    - heading "Punished For Getting Older" [level=3]:
+      - link "Punished For Getting Older":
+        - /url: /report/2025/07/08/punished-for-getting-older/south-koreas-age-based-policies-and-older-workers
+    - generic: South Korea’s Age-based Policies and Older Workers’ Rights
+    - heading "Accessible Version" [level=4]
+    - link "document content Download the easy-to-read version of this report":
+      - /url: /sites/default/files/media_2025/08/southkorea0725%20ETR_0.pdf
+      - img "document content"
+      - generic: Download the easy-to-read version of this report
+    - img "Older people look at a recruitment bulletin board at a job fair"
+    - link:
+      - /url: /report/2025/07/08/punished-for-getting-older/south-koreas-age-based-policies-and-older-workers
+  - article:
+    - generic: December 3, 2024 | Report
+    - heading "“It Felt Like Everything in Life Stopped”" [level=3]:
+      - link "“It Felt Like Everything in Life Stopped”":
+        - /url: /report/2024/12/03/it-felt-like-everything-in-life-stopped/legal-capacity-rights-violations-against
+    - generic: Legal Capacity Rights Violations Against People with Disabilities in Canada’s Immigration Detention System
+    - heading "Accessible Version" [level=4]
+    - link "document content Download the easy-to-read version of this report":
+      - /url: /sites/default/files/media_2024/11/English_Canada%20Immigration%20Detention%20people%20with%20disabilities%20ETR.pdf
+      - img "document content"
+      - generic: Download the easy-to-read version of this report
+    - img "Illustration of a pupil looking at a red brick wall"
+    - link:
+      - /url: /report/2024/12/03/it-felt-like-everything-in-life-stopped/legal-capacity-rights-violations-against
+  - article:
+    - generic: September 30, 2024 | Report
+    - heading "“They Destroyed What Was Inside Us”" [level=3]:
+      - link "“They Destroyed What Was Inside Us”":
+        - /url: /report/2024/09/30/they-destroyed-what-was-inside-us/children-disabilities-amid-israels-attacks-gaza
+    - generic: Children with Disabilities Amid Israel’s Attacks on Gaza
+    - heading "Accessible Version" [level=4]
+    - link "document content Download the easy-to-read version of this report":
+      - /url: /sites/default/files/media_2024/09/Children%20with%20Disabilities%20in%20Gaza%20ETR.pdf
+      - img "document content"
+      - generic: Download the easy-to-read version of this report
+    - img "A woman holds her young son in her lap"
+    - link:
+      - /url: /report/2024/09/30/they-destroyed-what-was-inside-us/children-disabilities-amid-israels-attacks-gaza
+  - article:
+    - generic: September 25, 2024 | Report
+    - heading "“I, Too, Wish to Enjoy the Summer”" [level=3]:
+      - link "“I, Too, Wish to Enjoy the Summer”":
+        - /url: /report/2024/09/25/i-too-wish-enjoy-summer/gaps-support-systems-people-disabilities-uruguay
+    - generic: Gaps in Support Systems for People with Disabilities in Uruguay
+    - heading "Accessible Version" [level=4]
+    - link "document content Download the easy-to-read version of this report in English":
+      - /url: /sites/default/files/media_2024/09/Uruguay%20ETR%20ENG.pdf
+      - img "document content"
+      - generic: Download the easy-to-read version of this report in English
+    - img "Disability rights activists sit around a table for a meeting"
+    - link:
+      - /url: /report/2024/09/25/i-too-wish-enjoy-summer/gaps-support-systems-people-disabilities-uruguay
+  - article:
+    - generic: December 14, 2023 | Report
+    - heading "Abused by Relatives, Ignored by the State" [level=3]:
+      - link "Abused by Relatives, Ignored by the State":
+        - /url: /report/2023/12/14/abused-by-relatives-ignored-by-the-state/domestic-violence-against-and-neglect-of
+    - generic: Domestic Violence Against and Neglect of Women and Girls with Disabilities in Kyrgyzstan
+    - heading "Accessible Version" [level=4]
+    - link "document content To view the easy-to-read version of this report, click here":
+      - /url: /sites/default/files/media_2023/12/HRW%20Abused%20by%20relatives%20ignored%20by%20the%20state_ETR%20ENG.pdf
+      - img "document content"
+      - generic: To view the easy-to-read version of this report, click here
+    - img "202312eca_kyrgyzstan_drd_aisha"
+    - link:
+      - /url: /report/2023/12/14/abused-by-relatives-ignored-by-the-state/domestic-violence-against-and-neglect-of
+  - article:
+    - generic: November 15, 2023 | Report
+    - heading "Mental Health Crisis Support Rooted in Community and Human Rights" [level=3]:
+      - link "Mental Health Crisis Support Rooted in Community and Human Rights":
+        - /url: /report/2023/11/15/mental-health-crisis-support-rooted-community-and-human-rights/case-study
+    - generic: A Case Study
+    - heading "Accessible Version" [level=4]
+    - link "document content Download the easy-to-read version of this report":
+      - /url: /sites/default/files/media_2024/01/Gerstein%20case%20study%20-%20Easy%20To%20Read%20version%20%28Jan%2018%29.pdf
+      - img "document content"
+      - generic: Download the easy-to-read version of this report
+    - img "202311canada_drd_gerstein_mobilecrisisteam"
+    - link:
+      - /url: /report/2023/11/15/mental-health-crisis-support-rooted-community-and-human-rights/case-study
+  - article:
+    - generic: June 27, 2023 | Report
+    - heading "“This Government is Failing Me Too”" [level=3]:
+      - link "“This Government is Failing Me Too”":
+        - /url: /report/2023/06/27/government-failing-me-too/south-africa-compounds-legacy-apartheid-older-people
+    - generic: South Africa Compounds Legacy of Apartheid for Older People
+    - heading "Accessible Version" [level=4]
+    - link "document content To view the easy-to-read version of the report, please click here":
+      - /url: /sites/default/files/media_2023/06/2023_SouthAfrica_OlderPeople_ETR.pdf
+      - img "document content"
+      - generic: To view the easy-to-read version of the report, please click here
+    - img "Nozala Ndoyana, 84, in front of her home"
+    - link:
+      - /url: /report/2023/06/27/government-failing-me-too/south-africa-compounds-legacy-apartheid-older-people
+  - article:
+    - generic: September 8, 2022 | Report
+    - heading "“It Was Really Hard to Protect Myself”" [level=3]:
+      - link "“It Was Really Hard to Protect Myself”":
+        - /url: /report/2022/09/08/it-was-really-hard-protect-myself/impact-armed-conflict-syria-children
+    - generic: Impact of the Armed Conflict in Syria on Children with Disabilities
+    - heading "Accessible Version" [level=4]
+    - link "document content To read the easy-to-read version of the report, please click here.":
+      - /url: /sites/default/files/media_2022/09/Easy-to-read%20English%20FINAL.pdf
+      - img "document content"
+      - generic: To read the easy-to-read version of the report, please click here.
+    - img "A girl stands in front of a window, looking at the camera"
+    - link:
+      - /url: /report/2022/09/08/it-was-really-hard-protect-myself/impact-armed-conflict-syria-children
+  - article:
+    - generic: July 14, 2022 | Report
+    - heading "“We Can’t Live Like This”" [level=3]:
+      - link "“We Can’t Live Like This”":
+        - /url: /report/2022/07/14/we-cant-live/spains-failure-protect-rights-amid-rising-pandemic-linked-poverty
+    - generic: Spain’s Failure to Protect Rights Amid Rising Pandemic-Linked Poverty
+    - heading "Accessible Version" [level=4]
+    - link "document content Download the Easy-to-Read version of the report":
+      - /url: /sites/default/files/media_2024/04/spain0722_food_queues_ETR_V6.pdf
+      - img "document content"
+      - generic: Download the Easy-to-Read version of the report
+    - img "People wait in a line"
+    - link:
+      - /url: /report/2022/07/14/we-cant-live/spains-failure-protect-rights-amid-rising-pandemic-linked-poverty
+  - article:
+    - generic: May 25, 2022 | Report
+    - heading "“How Dare They Peep into My Private Life?”" [level=3]:
+      - link "“How Dare They Peep into My Private Life?”":
+        - /url: /report/2022/05/25/how-dare-they-peep-my-private-life/childrens-rights-violations-governments
+    - generic: Children’s Rights Violations by Governments that Endorsed Online Learning During the Covid-19 Pandemic
+    - heading "Accessible Version" [level=4]
+    - link "document content Download the Easy-to-Read version of the report":
+      - /url: /sites/default/files/media_2022/10/HRW%20EdTech%20ETR%20v5%20HH.pdf
+      - img "document content"
+      - generic: Download the Easy-to-Read version of the report
+    - img "ed tech"
+    - link:
+      - /url: /report/2022/05/25/how-dare-they-peep-my-private-life/childrens-rights-violations-governments
+  - navigation "Pagination":
+    - heading "Pagination" [level=4]
+    - list:
+      - link "Current page 1":
+        - /url: "?page=0"
+        - generic: Current page
+        - text: "1"
+      - link "Page 2":
+        - /url: "?page=1"
+        - generic: Page
+        - text: "2"
+      - link "Page 3":
+        - /url: "?page=2"
+        - generic: Page
+        - text: "3"
+      - link "Page 4":
+        - /url: "?page=3"
+        - generic: Page
+        - text: "4"
+      - link "Page 5":
+        - /url: "?page=4"
+        - generic: Page
+        - text: "5"
+      - link "Page 6":
+        - /url: "?page=5"
+        - generic: Page
+        - text: "6"
+      - link "Page 7":
+        - /url: "?page=6"
+        - generic: Page
+        - text: "7"
+      - link "Page 8":
+        - /url: "?page=7"
+        - generic: Page
+        - text: "8"
+      - link "Next page":
+        - /url: "?page=1"
+        - generic: Next page
+        - text: Next ›
+      - link "Last page":
+        - /url: "?page=7"
+        - generic: Last page
+        - text: Last »
+  - navigation "Main navigation":
+    - heading "Main navigation" [level=2]
+    - heading "About" [level=2]
+    - list:
+      - link "About Us":
+        - /url: /about-us
+      - link "Newsletters":
+        - /url: /newsletters
+      - link "Careers":
+        - /url: /careers
+      - link "People":
+        - /url: /about/people
+      - link "Social Media":
+        - /url: /about/social-media
+      - link "Human Rights Education":
+        - /url: /students-and-educators
+      - link "Partners":
+        - /url: /about/partners
+      - link "Financials and Fundraising Policy":
+        - /url: /financials
+      - link "Accessibility":
+        - /url: /about/accessibility
+      - link "Contact":
+        - /url: /contact-us
+  - link "Protecting Rights, Saving Lives Human Rights Watch defends the rights of people in close to 100 countries worldwide, spotlighting abuses and bringing perpetrators to justice Donate Now":
+    - /url: https://donate.hrw.org/page/107245/donate/1?ea.tracking.id=EP2022EVpgfooter&promo_id=1005
+    - heading "Protecting Rights, Saving Lives" [level=3]
+    - paragraph: [Narrative prose omitted; consult visual capture.]
+    - generic: Donate Now
+- contentinfo:
+  - text: Get Updates On Rights Issues Worldwide
+  - textbox "Get Updates On Rights Issues Worldwide":
+    - /placeholder: Enter an email address
+  - button "Sign Up"
+  - heading "Connect With Us" [level=2]
+  - list:
+    - link "BlueSky":
+      - /url: https://bsky.app/profile/hrw.org
+      - generic: BlueSky
+    - link "X":
+      - /url: https://twitter.com/hrw
+      - generic: X
+    - link "Facebook":
+      - /url: https://www.facebook.com/HumanRightsWatch
+      - generic: Facebook
+    - link "YouTube":
+      - /url: https://www.youtube.com/user/HumanRightsWatch
+      - generic: YouTube
+    - link "Instagram":
+      - /url: https://www.instagram.com/humanrightswatch/
+      - generic: Instagram
+    - link "LinkedIn":
+      - /url: https://www.linkedin.com/company/human-rights-watch/
+      - generic: LinkedIn
+    - link "TikTok":
+      - /url: https://www.tiktok.com/@humanrightswatch
+      - generic: TikTok
+  - navigation "Footer menu":
+    - heading "Footer menu" [level=2]
+    - list:
+      - link "Contact Us":
+        - /url: /contact-us
+      - link "Corrections":
+        - /url: /corrections
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+      - link "Permissions":
+        - /url: /permissions
+      - link "Site Map":
+        - /url: /sitemap
+      - link "Child Safeguarding":
+        - /url: /child-safeguarding-human-rights-watch
+      - link "Text Version":
+        - /url: //text.hrw.org/
+  - generic: © 2026 Human Rights Watch
+  - strong: Human Rights Watch
+  - text: "| 350 Fifth Avenue, 34th Floor | New York, NY 10118-3299 USA |"
+  - strong: t
+  - text: 1.212.290.4700
+  - paragraph: [Narrative prose omitted; consult visual capture.]
+  - link "Human Rights Watch":
+    - /url: https://www.hrw.org/
+    - img "Human Rights Watch"

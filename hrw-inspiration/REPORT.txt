@@ -1,0 +1,510 @@
+HUMAN RIGHTS WATCH — WEBSITE DESIGN REFERENCE PACK
+Research date: 4 October 2026
+Source: https://www.hrw.org/
+
+COVERAGE AND IMPORTANT LIMITS
+500 HTML URL requests retrieved successfully (497 distinct final URLs after redirects) in a navigation-first crawl; 10,711 unique URLs discovered; 39 page/viewport captures; 5 expanded navigation states; 83 JPEG files. This is a broad design reference, NOT an exhaustive archive or a screenshot of every URL. 7,061 eligible URLs remained queued at the 500-request cap. Discovered URLs include external destinations and query variants; they are not all HRW content pages. The complete size of the archive remains unknown. No percentage of full-site coverage is claimed.
+
+Public crawl rules were saved and respected. Search routes, specified media-detail routes, certain downloads and PDFs, and account/admin paths were excluded. Query-string variants were inventoried but not recursively crawled. Donation, text-only, film-festival, legacy, social, and other subdomains/external services were mapped as links but not crawled. The machine sitemap endpoint returned 404; the human-readable sitemap was reviewed. Screenshots cover selected distinct layouts, not every country, article, locale, or historical edition. Browser captures extend beyond the exact 500 crawler URLs; the manifest lists them separately.
+
+Desktop captures used a 1440×1000 viewport override; mobile captures used 390×844. Stored measurements may show 1424/375 CSS pixels because scrollbar and capture backend dimensions differ. Captures preserve the actual rendered site. Cookie/banner state and date-dependent content may differ between captures. Full-page screenshots flatten a scroll experience: sticky elements, in-view animations, nested scroll panels, carousels, video, and lazy-loaded assets may not appear as they do during interaction. Images were encouraged to load by scrolling, but some remain unloaded or hidden; loaded-image counts are provided. Declared CSS fonts are not a guarantee that licensed web fonts were successfully loaded. Forms were not submitted, donations were not made, and playback/search behavior was not tested.
+
+HOW TO GIVE THIS TO ANOTHER AI
+Upload the ZIP, or start with REPORT.txt, AI-HANDOFF.txt, screenshot-manifest.json, and design-measurements.json. If the AI cannot read ZIPs, unzip first. Use the screenshot gallery in REPORT.html to select relevant images. Long screenshots should be inspected using the provided overlapping slices rather than a severely downscaled whole image. All observations have a source URL. Template classifications for unscreenshoted pages are explicitly inferred. Read filenames in screenshot-manifest.json rather than guessing image names.
+
+DESIGN SYSTEM — OBSERVED
+The site uses an editorial, evidence-oriented visual language. White backgrounds, dark gray text, documentary photography, blue navigation/link emphasis, and orange donation calls to action dominate. Containers are generally rectangular; hierarchy comes from scale, spacing, separators, and different image proportions rather than heavily rounded or elevated cards. Dense archives coexist with spacious feature headers.
+Measured colors: link/action blue rgb(0,113,206), #0071CE; donation orange rgb(246,105,28), #F6691C; standard text rgb(68,68,68), #444444. Other measured samples include #666666, #202020, white, and transparent backgrounds. The JSON stores exact per-element values rather than a claim that these are the only colors used sitewide.
+Sans serif declared stack: ff-meta-web-pro, Helvetica Neue, Helvetica, Arial, sans-serif. Long-reading serif declared stack: freight-text-pro, Georgia, Cambria, Times New Roman, Times, serif. Use licensed equivalents or suitable open alternatives for a new product. The reference does not include font binaries.
+Type sizes vary by template. Standard desktop hub/article/about titles often measure 64px, weight 500, line-height 80px. Directory/archive titles may be 40px with 60px line-height. Homepage lead title: 40px/50px, weight 700. News-strip card titles: 16px/20px, weight 700. Section titles often measure 24px/36px, while selected narrative sections use 36px. Annual-report hero: 73.6px/73.6px, weight 700 in the sampled viewport. Mobile hub titles can be 32px/40px; article/about/newsletter titles in the captured pages are 24px/30px. Do not apply a single heading rule to all templates.
+Layout examples: standard desktop organizational title blocks begin around x=128 and span approximately 1169 CSS pixels; geographic hubs use wider blocks around x=72 and 1280px width. Homepage content has roughly 20px outer gutters with a wide image and a headline panel about 448px wide. The lead story is intentionally asymmetric. Mobile organizational content commonly starts near x=24 and spans roughly 327 CSS pixels in the capture. Treat these as measured viewport examples, not universal max-width constants or breakpoint definitions.
+
+GLOBAL NAVIGATION AND INFORMATION ARCHITECTURE
+Desktop: logo anchored across a dark utility/language/search row and a white primary-navigation row; orange donation action in the utility row. Country and topic buttons open grouped mega-menus. Other groups expose organization, joining, and giving paths. This lets visitors enter by location, issue, content format, organizational trust, or participation.
+Mobile: compact logo, language selector, donation action, and menu button. The expanded menu is a dialog with search, category buttons, direct section links, and close control. Country navigation expands into geographic groupings. Language choice is a separate dialog. Screenshots and accessible structures document the open states.
+Trending/campaign links create shortcuts to ongoing stories. Footer patterns combine subscription, social links, contact, corrections, privacy, permissions, sitemap, safeguarding, and text-only access. Organizational address/registration details reinforce trust. A prominent donation band often appears before the footer, but the special research templates can have different shells.
+The content graph is multi-dimensional: one article may relate to a country, region, topic, campaign, report, and language edition. News and research are distinct content families. Annual reports add editions and chapters. People and organizational policies are separate records. Avoid creating duplicate article copies just to populate multiple categories.
+
+INTERACTION AND RESPONSIVENESS
+Observed interactive patterns include expandable mega-menus, mobile navigation/language dialogs, carousel arrows and slide tabs, video poster/play buttons, text-description controls, newsletter selection fields, search/filter controls, print/share actions, and report chapter/download controls. Most were observed rather than comprehensively exercised. Open navigation states were captured; forms were kept unsubmitted.
+Desktop uses horizontal story strips, multiple columns, overlaid lead text, and wide feature media. Mobile reorders and stacks these, keeps the donation action visible in the compact header, and uses long vertical sequences. Arabic requires direction-aware behavior. Only two viewport sizes were sampled, so exact breakpoints and tablet behavior are not verified.
+
+CONTENT MODEL FOR AN INSPIRED SITE — PROPOSED, NOT EXTRACTED
+Story: title, subtitle, slug, type, date/time, author, summary, body blocks, lead image, caption/credit, locale, translation relationships, country/region/topic/campaign tags, related records.
+Research report: story fields plus report cover, executive summary, methodology, recommendations, chapters, notes, downloads and editions.
+Hub: taxonomy identifier, introduction, featured records, latest items, research items, related taxonomies and optional campaign promotion.
+Annual publication: year/edition, hero, overview essay, countries/chapters, languages and files.
+Person: name, role, biography, portrait and affiliations.
+Impact story: problem, action, evidence of result, date and partner relationships.
+Media: poster, video provider/source, duration, description/transcript, caption languages and related records.
+Organization/policy page: editable narrative blocks, contacts, documents, dates, and call to action.
+Newsletter: publication choices, fields, consent text and success/error states.
+
+IMPLEMENTATION GUIDANCE FOR THE RECEIVING AI — PROPOSED
+Start with a shared design system, header/footer, story card, report card, metadata row, image-with-credit block, taxonomy navigation, filters, long-reading body, related-content list, donation band, and newsletter block. Compose distinct page templates instead of forcing every page into one layout. Use realistic titles long enough to test wrapping. Build desktop and mobile composition explicitly; do not simply shrink the desktop screen. Keep interactive controls keyboard-accessible and preserve focus/expanded state. Use logical CSS properties for RTL. Treat loading, empty, error, expanded, and validation states as explicit product behavior.
+Use original organization identity, copy, and permitted images. Borrow hierarchy, taxonomy, component rhythm, and publication structure. Do not treat the reference as permission to reuse HRW marks, photos, articles, or licensed fonts. This pack contains observed references and research data, not the original CMS, backend, complete source repository, or a ready-to-deploy clone.
+
+RECOMMENDED DESIGN PRIORITIES
+1. Clear editorial lead and scanning hierarchy.
+2. Reusable country/topic/campaign hubs with accurate relationships.
+3. Readable long-form news and chapter-based research.
+4. Distinct evidence and impact pathways.
+5. Multilingual navigation and RTL if required.
+6. Measured typography, controlled blue/orange emphasis, and consistent credits/metadata.
+7. Participation actions placed at meaningful points in the reading flow.
+8. Search and filters implemented and tested independently from this visual reference.
+
+PAGE FAMILY NOTES
+HOME
+An editorial front page with a large documentary photograph and overlapping white headline panel on desktop. Latest stories appear in a horizontal image-led strip. The following sequence combines mission explanation and metrics, a lead-plus-supporting Spotlight grid, report-cover carousel, video feature and playlist, short videos, featured investigation, newsletter and social block, crisis promotion, impact stories, regional/topic feeds, and donation/footer modules. The hierarchy alternates urgency, evidence, institutional credibility, and participation. Mobile moves the lead image above its text; the latest-news list becomes a compact headline list. Preserve strong headline hierarchy and editorial asymmetry rather than reducing the whole page to equal cards.
+
+COUNTRIES
+A geographic directory. Country and regional links are grouped rather than mixed with chronological news. Sparse imagery makes the page behave as an orientation tool. Its design value is the taxonomy: a visitor can begin with a location even without knowing a story title. A smaller organization should use only the geographic groupings it can maintain.
+
+COUNTRY
+A geographic landing page with a prominent title, contextual introduction, regional navigation, recent developments, and research links. The introductory text supplies a durable overview while the feed supplies recency. Large desktop titles provide an anchor above denser content. Mobile retains the overview but rearranges narrower lists. Use one reusable hub component with a context field and tagged content relationships.
+
+REGION
+A regional hub applies the country-page visual language to a broader scope. It adds geographic exploration and aggregates articles and reports across countries. The distinction is content scope, not an entirely different visual brand. For implementation, use the same hub shell and change taxonomy relationships.
+
+TOPIC
+An issue landing page combines a large title, explanatory context, feature content, and tagged articles/reports. Topic discovery is independent of geography, allowing the same story to appear in multiple relevant hubs. Treat these as cross-cutting taxonomies rather than separate content copies. The desktop page uses generous title space and multiple content columns; mobile stacks content into a long reading sequence.
+
+NEWS
+The news archive prioritizes retrieval. Dated story entries, content-type labels, thumbnails, navigation through results, and filtering controls support both browsing and research. The visual language is restrained: headings and separators carry structure rather than decorative containers. Index pages should show scannable metadata and keep summaries shorter than full stories. The crawl did not run filter submissions or validate search relevance.
+
+ARTICLE
+The standard news article places publication metadata and available languages before a very large title and explanatory subtitle. Social/print tools and a credited lead image precede a narrower reading area. Long paragraphs use a serif reading face, contrasting with the sans serif UI and headlines. Related links and support modules continue after the story. The measured desktop title is 64px with an 80px line-height; the captured mobile article title is 24px with a 30px line-height. This is a template-specific value, not a universal mobile scale.
+
+REPORTS
+The research archive is more publication-oriented than the news archive. A featured report, annual-report promotion, keyword/year/country/topic controls, and a list of report entries lead users into deeper work. Report covers distinguish publications from news thumbnails. Long title-plus-subtitle pairs need flexible card height. On mobile the results become a tall stacked sequence. Search controls were inspected, not submitted.
+
+RESEARCH
+The long research report uses a special immersive treatment rather than the ordinary news header. A photographic hero, large report title, subtitle, date, share/print tools, chapter navigation, downloads, and an extended body organize substantial material. Summary, recommendations, methodology, research chapters, and notes provide multiple entry points. The captured desktop report is approximately 45,000 CSS pixels tall and the mobile version about 55,000. A screenshot is a visual record, not a replacement for navigable chapters. The source offers a text-only alternative. Downloads were recorded as links; PDFs blocked by crawl rules were not downloaded.
+
+WORLD
+The annual World Report is a dedicated experience with a large photographic masthead, year-based identity, overview/essay, language access, and country exploration. Its title is measured at 73.6px in the captured desktop viewport, illustrating a display scale distinct from ordinary articles. The full page is very long. Treat annual collections as a curated publication object with chapters and editions, not as ordinary category archives.
+
+MEDIA
+The media archive makes thumbnails and play actions the primary browsing affordances. Prominent media, short contextual text, dated items, and navigation through results make it visually denser than policy pages. The video detail page adds an editorial title and video feature. Players and poster images were inspected; playback, captions, and streaming behavior were not functionally tested. Do not assume a black player in a screenshot means the video is broken.
+
+IMPACT
+The impact page frames work around outcomes and uses a mission introduction, highlighted achievements, story collections, a process explanation, and participation opportunities. This is a useful distinction from ordinary reporting: the user sees the result of the organization’s work as well as the problem. Maintain separate evidence fields for the problem, intervention, result, and date when adapting this pattern.
+
+ABOUT
+The About page uses an institutional narrative: identity, work, history, achievements, and involvement. Colored sections and documentary imagery break up the explanatory prose. Large desktop titles and a mix of text/image blocks create a calmer rhythm than the news feed. Mobile stacks those blocks. This page should establish competence, scope, and independence using real evidence rather than invented statistics.
+
+NEWSLETTER
+A focused participation page begins with a clear heading and short benefit explanation. Publication choices precede name, email, and country fields, with privacy/consent language near submission. The capture includes the form’s unsubmitted state only. The reusable pattern is a preference-based subscription form with a low-friction path and clear communication expectations.
+
+SITEMAP
+The human-readable sitemap is a long text directory, emphasizing semantic groupings and link labels. It provides a useful independent check of the information architecture. It is not a machine-readable enumeration of every article. The usual /sitemap.xml endpoint returned 404 during this research.
+
+CAMPAIGN
+The tag/campaign hub collects content around a timely theme. It borrows the hub visual language while its editorial scope is narrower than a country or topic. Title, introduction, featured content, and related developments sustain an ongoing story. Model campaign membership explicitly; a campaign may cross several countries and topics.
+
+CONTACT
+The contact directory is a long, structured text page with office and organizational contact groupings. Its visual purpose is dependable retrieval rather than promotion. Clear headings and link treatment are more valuable here than large decorative cards. The long mobile page reinforces the value of in-page anchors or office filters when adapting the pattern.
+
+FINANCIALS
+The financial page supplies institutional transparency through explanatory text and links to annual or financial material. It follows the standard organizational shell. Use descriptive download labels, edition dates, and concise descriptions. File availability and the contents of financial documents were not audited.
+
+BOARD
+The people directory combines repeated portraits with names, roles, and affiliations. Repetition carries the design: consistent image treatment and clear identity fields make a large roster scannable. The captured page loaded all 48 recorded images. Portrait and biography rights are not transferred by this reference pack.
+
+CAREERS
+The careers page is a recruitment landing page using introductory material, imagery, and paths to opportunities. It extends the institutional shell with recruiting content. External applicant workflows were not opened or submitted. An adaptation should maintain a clear route from mission context to currently available roles.
+
+HISTORY
+The history page uses an extended chronological narrative within the organizational design system. A dedicated history page supports the About page without overloading it. Where chronology matters, use dated subsections and selective archival images rather than a single undifferentiated text wall.
+
+ACCESSIBILITY
+The accessibility page presents support and inclusive access information within a readable policy layout. The site also exposes skip links, menu button states, and video text-description controls in its accessible structure. These are observed affordances, not evidence that the complete site passed an accessibility audit.
+
+CORRECTIONS
+The corrections page makes editorial accountability discoverable through clear policy text and contact information. Its restrained text layout reinforces institutional trust. This pattern is valuable for any research or journalism product because a corrections process complements published evidence.
+
+ARABIC
+The Arabic edition is a separately populated localized homepage with right-to-left document direction. It shares the broader component system but does not simply translate every English feature in place. Adaptation requires a locale-aware content model, logical CSS properties, direction-aware navigation/icons, and typography tested with real Arabic text. The captured computed CSS family is evidence of the declared font stack; it does not prove which fallback rendered every Arabic glyph.
+
+CAPTURED PAGE DETAILS
+01-home-desktop
+Source: https://www.hrw.org/
+Title: Human Rights Watch | Defending Human Rights Worldwide
+Viewport: 1440×1000; height: 9146; direction: ltr
+Images: 48/67 recorded loaded at capture time.
+Template: home
+An editorial front page with a large documentary photograph and overlapping white headline panel on desktop. Latest stories appear in a horizontal image-led strip. The following sequence combines mission explanation and metrics, a lead-plus-supporting Spotlight grid, report-cover carousel, video feature and playlist, short videos, featured investigation, newsletter and social block, crisis promotion, impact stories, regional/topic feeds, and donation/footer modules. The hierarchy alternates urgency, evidence, institutional credibility, and participation. Mobile moves the lead image above its text; the latest-news list becomes a compact headline list. Preserve strong headline hierarchy and editorial asymmetry rather than reducing the whole page to equal cards.
+Screenshots: 01-home-desktop-full.jpg and 01-home-desktop-viewport.jpg
+
+02-countries-desktop
+Source: https://www.hrw.org/countries
+Title: Countries | Human Rights Watch
+Viewport: 1440×1000; height: 2910; direction: ltr
+Measured H1: 40px, weight 400, line-height 60px, color rgb(68, 68, 68)
+Images: 0/0 recorded loaded at capture time.
+Template: countries
+A geographic directory. Country and regional links are grouped rather than mixed with chronological news. Sparse imagery makes the page behave as an orientation tool. Its design value is the taxonomy: a visitor can begin with a location even without knowing a story title. A smaller organization should use only the geographic groupings it can maintain.
+Screenshots: 02-countries-desktop-full.jpg and 02-countries-desktop-viewport.jpg
+
+03-country-iraq-desktop
+Source: https://www.hrw.org/middle-east/north-africa/iraq
+Title: Iraq | Country Page | World | Human Rights Watch
+Viewport: 1440×1000; height: 4449; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 19/25 recorded loaded at capture time.
+Template: country
+A geographic landing page with a prominent title, contextual introduction, regional navigation, recent developments, and research links. The introductory text supplies a durable overview while the feed supplies recency. Large desktop titles provide an anchor above denser content. Mobile retains the overview but rearranges narrower lists. Use one reusable hub component with a context field and tagged content relationships.
+Screenshots: 03-country-iraq-desktop-full.jpg and 03-country-iraq-desktop-viewport.jpg
+
+04-region-desktop
+Source: https://www.hrw.org/middle-east/north-africa
+Title: Middle East/North Africa | Country Page | World | Human Rights Watch
+Viewport: 1440×1000; height: 4179; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 26/33 recorded loaded at capture time.
+Template: region
+A regional hub applies the country-page visual language to a broader scope. It adds geographic exploration and aggregates articles and reports across countries. The distinction is content scope, not an entirely different visual brand. For implementation, use the same hub shell and change taxonomy relationships.
+Screenshots: 04-region-desktop-full.jpg and 04-region-desktop-viewport.jpg
+
+05-topic-desktop
+Source: https://www.hrw.org/topic/womens-rights
+Title: Women's Rights | Human Rights Watch
+Viewport: 1440×1000; height: 4738; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 31/34 recorded loaded at capture time.
+Template: topic
+An issue landing page combines a large title, explanatory context, feature content, and tagged articles/reports. Topic discovery is independent of geography, allowing the same story to appear in multiple relevant hubs. Treat these as cross-cutting taxonomies rather than separate content copies. The desktop page uses generous title space and multiple content columns; mobile stacks content into a long reading sequence.
+Screenshots: 05-topic-desktop-full.jpg and 05-topic-desktop-viewport.jpg
+
+06-news-index-desktop
+Source: https://www.hrw.org/news
+Title: News | Human Rights Watch
+Viewport: 1440×1000; height: 2929; direction: ltr
+Images: 14/14 recorded loaded at capture time.
+Template: news
+The news archive prioritizes retrieval. Dated story entries, content-type labels, thumbnails, navigation through results, and filtering controls support both browsing and research. The visual language is restrained: headings and separators carry structure rather than decorative containers. Index pages should show scannable metadata and keep summaries shorter than full stories. The crawl did not run filter submissions or validate search relevance.
+Screenshots: 06-news-index-desktop-full.jpg and 06-news-index-desktop-viewport.jpg
+
+07-news-article-desktop
+Source: https://www.hrw.org/news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation
+Title: US: Victims of Nicaraguan Government Risk Deportation | Human Rights Watch
+Viewport: 1440×1000; height: 5902; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 10/12 recorded loaded at capture time.
+Template: article
+The standard news article places publication metadata and available languages before a very large title and explanatory subtitle. Social/print tools and a credited lead image precede a narrower reading area. Long paragraphs use a serif reading face, contrasting with the sans serif UI and headlines. Related links and support modules continue after the story. The measured desktop title is 64px with an 80px line-height; the captured mobile article title is 24px with a 30px line-height. This is a template-specific value, not a universal mobile scale.
+Screenshots: 07-news-article-desktop-full.jpg and 07-news-article-desktop-viewport.jpg
+
+08-reports-index-desktop
+Source: https://www.hrw.org/publications
+Title: Reports | Human Rights Watch
+Viewport: 1440×1000; height: 5617; direction: ltr
+Measured H1: 40px, weight 400, line-height 60px, color rgb(68, 68, 68)
+Images: 18/19 recorded loaded at capture time.
+Template: reports
+The research archive is more publication-oriented than the news archive. A featured report, annual-report promotion, keyword/year/country/topic controls, and a list of report entries lead users into deeper work. Report covers distinguish publications from news thumbnails. Long title-plus-subtitle pairs need flexible card height. On mobile the results become a tall stacked sequence. Search controls were inspected, not submitted.
+Screenshots: 08-reports-index-desktop-full.jpg and 08-reports-index-desktop-viewport.jpg
+
+09-research-report-desktop
+Source: https://www.hrw.org/report/2026/09/09/uncontrolled-burn/the-inhumane-effects-of-white-phosphorus-munitions-and-the-need
+Title: Uncontrolled Burn: The Inhumane Effects of White Phosphorus Munitions and the Need for Stronger Law | HRW
+Viewport: 1440×1000; height: 44977; direction: ltr
+Measured H1: 64px, weight 700, line-height 64px, color rgb(255, 255, 255)
+Images: 4/6 recorded loaded at capture time.
+Template: research
+The long research report uses a special immersive treatment rather than the ordinary news header. A photographic hero, large report title, subtitle, date, share/print tools, chapter navigation, downloads, and an extended body organize substantial material. Summary, recommendations, methodology, research chapters, and notes provide multiple entry points. The captured desktop report is approximately 45,000 CSS pixels tall and the mobile version about 55,000. A screenshot is a visual record, not a replacement for navigable chapters. The source offers a text-only alternative. Downloads were recorded as links; PDFs blocked by crawl rules were not downloaded.
+Screenshots: 09-research-report-desktop-full.jpg and 09-research-report-desktop-viewport.jpg
+
+10-world-report-desktop
+Source: https://www.hrw.org/world-report/2026
+Title: World Report 2026 | Human Rights Watch
+Viewport: 1440×1000; height: 36586; direction: ltr
+Measured H1: 73.6px, weight 700, line-height 73.6px, color rgb(255, 255, 255)
+Images: 23/23 recorded loaded at capture time.
+Template: world
+The annual World Report is a dedicated experience with a large photographic masthead, year-based identity, overview/essay, language access, and country exploration. Its title is measured at 73.6px in the captured desktop viewport, illustrating a display scale distinct from ordinary articles. The full page is very long. Treat annual collections as a curated publication object with chapters and editions, not as ordinary category archives.
+Screenshots: 10-world-report-desktop-full.jpg and 10-world-report-desktop-viewport.jpg
+
+11-media-index-desktop
+Source: https://www.hrw.org/video-photos
+Title: Video & Photos | Human Rights Watch
+Viewport: 1440×1000; height: 3601; direction: ltr
+Images: 14/14 recorded loaded at capture time.
+Template: media
+The media archive makes thumbnails and play actions the primary browsing affordances. Prominent media, short contextual text, dated items, and navigation through results make it visually denser than policy pages. The video detail page adds an editorial title and video feature. Players and poster images were inspected; playback, captions, and streaming behavior were not functionally tested. Do not assume a black player in a screenshot means the video is broken.
+Screenshots: 11-media-index-desktop-full.jpg and 11-media-index-desktop-viewport.jpg
+
+12-impact-desktop
+Source: https://www.hrw.org/impact
+Title: Impact | Human Rights Watch
+Viewport: 1440×1000; height: 5318; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 16/22 recorded loaded at capture time.
+Template: impact
+The impact page frames work around outcomes and uses a mission introduction, highlighted achievements, story collections, a process explanation, and participation opportunities. This is a useful distinction from ordinary reporting: the user sees the result of the organization’s work as well as the problem. Maintain separate evidence fields for the problem, intervention, result, and date when adapting this pattern.
+Screenshots: 12-impact-desktop-full.jpg and 12-impact-desktop-viewport.jpg
+
+13-about-desktop
+Source: https://www.hrw.org/about-us
+Title: About Us | Human Rights Watch
+Viewport: 1440×1000; height: 4986; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 15/15 recorded loaded at capture time.
+Template: about
+The About page uses an institutional narrative: identity, work, history, achievements, and involvement. Colored sections and documentary imagery break up the explanatory prose. Large desktop titles and a mix of text/image blocks create a calmer rhythm than the news feed. Mobile stacks those blocks. This page should establish competence, scope, and independence using real evidence rather than invented statistics.
+Screenshots: 13-about-desktop-full.jpg and 13-about-desktop-viewport.jpg
+
+14-newsletters-desktop
+Source: https://www.hrw.org/newsletters
+Title: Newsletters | Human Rights Watch
+Viewport: 1440×1000; height: 1685; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 2/2 recorded loaded at capture time.
+Template: newsletter
+A focused participation page begins with a clear heading and short benefit explanation. Publication choices precede name, email, and country fields, with privacy/consent language near submission. The capture includes the form’s unsubmitted state only. The reusable pattern is a preference-based subscription form with a low-friction path and clear communication expectations.
+Screenshots: 14-newsletters-desktop-full.jpg and 14-newsletters-desktop-viewport.jpg
+
+15-sitemap-desktop
+Source: https://www.hrw.org/sitemap
+Title: Sitemap | Human Rights Watch
+Viewport: 1440×1000; height: 15707; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 1/1 recorded loaded at capture time.
+Template: sitemap
+The human-readable sitemap is a long text directory, emphasizing semantic groupings and link labels. It provides a useful independent check of the information architecture. It is not a machine-readable enumeration of every article. The usual /sitemap.xml endpoint returned 404 during this research.
+Screenshots: 15-sitemap-desktop-full.jpg and 15-sitemap-desktop-viewport.jpg
+
+16-campaign-tag-desktop
+Source: https://www.hrw.org/tag/crisis-in-the-middle-east
+Title: Crisis in the Middle East | Human Rights Watch
+Viewport: 1440×1000; height: 4462; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 13/22 recorded loaded at capture time.
+Template: campaign
+The tag/campaign hub collects content around a timely theme. It borrows the hub visual language while its editorial scope is narrower than a country or topic. Title, introduction, featured content, and related developments sustain an ongoing story. Model campaign membership explicitly; a campaign may cross several countries and topics.
+Screenshots: 16-campaign-tag-desktop-full.jpg and 16-campaign-tag-desktop-viewport.jpg
+
+17-contact-desktop
+Source: https://www.hrw.org/contact-us
+Title: Contact Us | Human Rights Watch
+Viewport: 1440×1000; height: 10351; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 0/0 recorded loaded at capture time.
+Template: contact
+The contact directory is a long, structured text page with office and organizational contact groupings. Its visual purpose is dependable retrieval rather than promotion. Clear headings and link treatment are more valuable here than large decorative cards. The long mobile page reinforces the value of in-page anchors or office filters when adapting the pattern.
+Screenshots: 17-contact-desktop-full.jpg and 17-contact-desktop-viewport.jpg
+
+18-financials-desktop
+Source: https://www.hrw.org/financials
+Title: Financials | Human Rights Watch
+Viewport: 1440×1000; height: 3557; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 1/3 recorded loaded at capture time.
+Template: financials
+The financial page supplies institutional transparency through explanatory text and links to annual or financial material. It follows the standard organizational shell. Use descriptive download labels, edition dates, and concise descriptions. File availability and the contents of financial documents were not audited.
+Screenshots: 18-financials-desktop-full.jpg and 18-financials-desktop-viewport.jpg
+
+19-board-desktop
+Source: https://www.hrw.org/about/people/board-directors
+Title: Board of Directors | Human Rights Watch
+Viewport: 1440×1000; height: 7849; direction: ltr
+Images: 48/48 recorded loaded at capture time.
+Template: board
+The people directory combines repeated portraits with names, roles, and affiliations. Repetition carries the design: consistent image treatment and clear identity fields make a large roster scannable. The captured page loaded all 48 recorded images. Portrait and biography rights are not transferred by this reference pack.
+Screenshots: 19-board-desktop-full.jpg and 19-board-desktop-viewport.jpg
+
+20-careers-desktop
+Source: https://www.hrw.org/careers
+Title: Careers | Human Rights Watch
+Viewport: 1440×1000; height: 2557; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(255, 255, 255)
+Images: 3/5 recorded loaded at capture time.
+Template: careers
+The careers page is a recruitment landing page using introductory material, imagery, and paths to opportunities. It extends the institutional shell with recruiting content. External applicant workflows were not opened or submitted. An adaptation should maintain a clear route from mission context to currently available roles.
+Screenshots: 20-careers-desktop-full.jpg and 20-careers-desktop-viewport.jpg
+
+21-history-desktop
+Source: https://www.hrw.org/about/about-us/history
+Title: History | Human Rights Watch
+Viewport: 1440×1000; height: 3748; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 4/4 recorded loaded at capture time.
+Template: history
+The history page uses an extended chronological narrative within the organizational design system. A dedicated history page supports the About page without overloading it. Where chronology matters, use dated subsections and selective archival images rather than a single undifferentiated text wall.
+Screenshots: 21-history-desktop-full.jpg and 21-history-desktop-viewport.jpg
+
+22-accessibility-desktop
+Source: https://www.hrw.org/about/accessibility
+Title: Accessibility | Human Rights Watch
+Viewport: 1440×1000; height: 3507; direction: ltr
+Measured H1: 48px, weight 500, line-height 60px, color rgb(68, 68, 68)
+Images: 10/10 recorded loaded at capture time.
+Template: accessibility
+The accessibility page presents support and inclusive access information within a readable policy layout. The site also exposes skip links, menu button states, and video text-description controls in its accessible structure. These are observed affordances, not evidence that the complete site passed an accessibility audit.
+Screenshots: 22-accessibility-desktop-full.jpg and 22-accessibility-desktop-viewport.jpg
+
+23-corrections-desktop
+Source: https://www.hrw.org/corrections
+Title: Corrections | Human Rights Watch
+Viewport: 1440×1000; height: 2778; direction: ltr
+Measured H1: 40px, weight 400, line-height 60px, color rgb(68, 68, 68)
+Images: 0/0 recorded loaded at capture time.
+Template: corrections
+The corrections page makes editorial accountability discoverable through clear policy text and contact information. Its restrained text layout reinforces institutional trust. This pattern is valuable for any research or journalism product because a corrections process complements published evidence.
+Screenshots: 23-corrections-desktop-full.jpg and 23-corrections-desktop-viewport.jpg
+
+24-arabic-desktop
+Source: https://www.hrw.org/ar
+Title: Human Rights Watch | الدفاع عن حقوق الناس في أنحاء العالم
+Viewport: 1440×1000; height: 8518; direction: rtl
+Images: 47/68 recorded loaded at capture time.
+Template: arabic
+The Arabic edition is a separately populated localized homepage with right-to-left document direction. It shares the broader component system but does not simply translate every English feature in place. Adaptation requires a locale-aware content model, logical CSS properties, direction-aware navigation/icons, and typography tested with real Arabic text. The captured computed CSS family is evidence of the declared font stack; it does not prove which fallback rendered every Arabic glyph.
+Screenshots: 24-arabic-desktop-full.jpg and 24-arabic-desktop-viewport.jpg
+
+25-home-mobile
+Source: https://www.hrw.org/
+Title: Human Rights Watch | Defending Human Rights Worldwide
+Viewport: 390×844; height: 10006; direction: ltr
+Images: 35/67 recorded loaded at capture time.
+Template: home
+An editorial front page with a large documentary photograph and overlapping white headline panel on desktop. Latest stories appear in a horizontal image-led strip. The following sequence combines mission explanation and metrics, a lead-plus-supporting Spotlight grid, report-cover carousel, video feature and playlist, short videos, featured investigation, newsletter and social block, crisis promotion, impact stories, regional/topic feeds, and donation/footer modules. The hierarchy alternates urgency, evidence, institutional credibility, and participation. Mobile moves the lead image above its text; the latest-news list becomes a compact headline list. Preserve strong headline hierarchy and editorial asymmetry rather than reducing the whole page to equal cards.
+Screenshots: 25-home-mobile-full.jpg and 25-home-mobile-viewport.jpg
+
+26-country-mobile
+Source: https://www.hrw.org/middle-east/north-africa/iraq
+Title: Iraq | Country Page | World | Human Rights Watch
+Viewport: 390×844; height: 6866; direction: ltr
+Measured H1: 32px, weight 500, line-height 40px, color rgb(68, 68, 68)
+Images: 8/25 recorded loaded at capture time.
+Template: country
+A geographic landing page with a prominent title, contextual introduction, regional navigation, recent developments, and research links. The introductory text supplies a durable overview while the feed supplies recency. Large desktop titles provide an anchor above denser content. Mobile retains the overview but rearranges narrower lists. Use one reusable hub component with a context field and tagged content relationships.
+Screenshots: 26-country-mobile-full.jpg and 26-country-mobile-viewport.jpg
+
+27-topic-mobile
+Source: https://www.hrw.org/topic/womens-rights
+Title: Women's Rights | Human Rights Watch
+Viewport: 390×844; height: 8463; direction: ltr
+Measured H1: 32px, weight 500, line-height 40px, color rgb(68, 68, 68)
+Images: 12/34 recorded loaded at capture time.
+Template: topic
+An issue landing page combines a large title, explanatory context, feature content, and tagged articles/reports. Topic discovery is independent of geography, allowing the same story to appear in multiple relevant hubs. Treat these as cross-cutting taxonomies rather than separate content copies. The desktop page uses generous title space and multiple content columns; mobile stacks content into a long reading sequence.
+Screenshots: 27-topic-mobile-full.jpg and 27-topic-mobile-viewport.jpg
+
+28-news-mobile
+Source: https://www.hrw.org/news
+Title: News | Human Rights Watch
+Viewport: 390×844; height: 5022; direction: ltr
+Images: 12/14 recorded loaded at capture time.
+Template: news
+The news archive prioritizes retrieval. Dated story entries, content-type labels, thumbnails, navigation through results, and filtering controls support both browsing and research. The visual language is restrained: headings and separators carry structure rather than decorative containers. Index pages should show scannable metadata and keep summaries shorter than full stories. The crawl did not run filter submissions or validate search relevance.
+Screenshots: 28-news-mobile-full.jpg and 28-news-mobile-viewport.jpg
+
+29-article-mobile
+Source: https://www.hrw.org/news/2026/10/02/us-victims-of-nicaraguan-government-risk-deportation
+Title: US: Victims of Nicaraguan Government Risk Deportation | Human Rights Watch
+Viewport: 390×844; height: 8015; direction: ltr
+Measured H1: 24px, weight 500, line-height 30px, color rgb(68, 68, 68)
+Images: 7/12 recorded loaded at capture time.
+Template: article
+The standard news article places publication metadata and available languages before a very large title and explanatory subtitle. Social/print tools and a credited lead image precede a narrower reading area. Long paragraphs use a serif reading face, contrasting with the sans serif UI and headlines. Related links and support modules continue after the story. The measured desktop title is 64px with an 80px line-height; the captured mobile article title is 24px with a 30px line-height. This is a template-specific value, not a universal mobile scale.
+Screenshots: 29-article-mobile-full.jpg and 29-article-mobile-viewport.jpg
+
+30-reports-mobile
+Source: https://www.hrw.org/publications
+Title: Reports | Human Rights Watch
+Viewport: 390×844; height: 16866; direction: ltr
+Measured H1: 40px, weight 400, line-height 60px, color rgb(68, 68, 68)
+Images: 18/19 recorded loaded at capture time.
+Template: reports
+The research archive is more publication-oriented than the news archive. A featured report, annual-report promotion, keyword/year/country/topic controls, and a list of report entries lead users into deeper work. Report covers distinguish publications from news thumbnails. Long title-plus-subtitle pairs need flexible card height. On mobile the results become a tall stacked sequence. Search controls were inspected, not submitted.
+Screenshots: 30-reports-mobile-full.jpg and 30-reports-mobile-viewport.jpg
+
+31-newsletters-mobile
+Source: https://www.hrw.org/newsletters
+Title: Newsletters | Human Rights Watch
+Viewport: 390×844; height: 2331; direction: ltr
+Measured H1: 24px, weight 500, line-height 30px, color rgb(68, 68, 68)
+Images: 2/2 recorded loaded at capture time.
+Template: newsletter
+A focused participation page begins with a clear heading and short benefit explanation. Publication choices precede name, email, and country fields, with privacy/consent language near submission. The capture includes the form’s unsubmitted state only. The reusable pattern is a preference-based subscription form with a low-friction path and clear communication expectations.
+Screenshots: 31-newsletters-mobile-full.jpg and 31-newsletters-mobile-viewport.jpg
+
+32-arabic-mobile
+Source: https://www.hrw.org/ar
+Title: Human Rights Watch | الدفاع عن حقوق الناس في أنحاء العالم
+Viewport: 390×844; height: 8575; direction: rtl
+Images: 34/68 recorded loaded at capture time.
+Template: arabic
+The Arabic edition is a separately populated localized homepage with right-to-left document direction. It shares the broader component system but does not simply translate every English feature in place. Adaptation requires a locale-aware content model, logical CSS properties, direction-aware navigation/icons, and typography tested with real Arabic text. The captured computed CSS family is evidence of the declared font stack; it does not prove which fallback rendered every Arabic glyph.
+Screenshots: 32-arabic-mobile-full.jpg and 32-arabic-mobile-viewport.jpg
+
+38-video-detail-desktop
+Source: https://www.hrw.org/video-photos/video/2026/06/12/violence-and-discrimination-against-people-with-albinism-in-malawi
+Title: Violence and Discrimination Against People with Albinism in Malawi | Human Rights Watch
+Viewport: 1440×1000; height: 2626; direction: ltr
+Measured H1: 64px, weight 500, line-height 80px, color rgb(68, 68, 68)
+Images: 5/5 recorded loaded at capture time.
+Template: media
+The media archive makes thumbnails and play actions the primary browsing affordances. Prominent media, short contextual text, dated items, and navigation through results make it visually denser than policy pages. The video detail page adds an editorial title and video feature. Players and poster images were inspected; playback, captions, and streaming behavior were not functionally tested. Do not assume a black player in a screenshot means the video is broken.
+Screenshots: 38-video-detail-desktop-full.jpg and 38-video-detail-desktop-viewport.jpg
+
+39-impact-mobile
+Source: https://www.hrw.org/impact
+Title: Impact | Human Rights Watch
+Viewport: 390×844; height: 10663; direction: ltr
+Measured H1: 24px, weight 500, line-height 30px, color rgb(68, 68, 68)
+Images: 22/22 recorded loaded at capture time.
+Template: impact
+The impact page frames work around outcomes and uses a mission introduction, highlighted achievements, story collections, a process explanation, and participation opportunities. This is a useful distinction from ordinary reporting: the user sees the result of the organization’s work as well as the problem. Maintain separate evidence fields for the problem, intervention, result, and date when adapting this pattern.
+Screenshots: 39-impact-mobile-full.jpg and 39-impact-mobile-viewport.jpg
+
+40-about-mobile
+Source: https://www.hrw.org/about-us
+Title: About Us | Human Rights Watch
+Viewport: 390×844; height: 8614; direction: ltr
+Measured H1: 24px, weight 500, line-height 30px, color rgb(68, 68, 68)
+Images: 15/15 recorded loaded at capture time.
+Template: about
+The About page uses an institutional narrative: identity, work, history, achievements, and involvement. Colored sections and documentary imagery break up the explanatory prose. Large desktop titles and a mix of text/image blocks create a calmer rhythm than the news feed. Mobile stacks those blocks. This page should establish competence, scope, and independence using real evidence rather than invented statistics.
+Screenshots: 40-about-mobile-full.jpg and 40-about-mobile-viewport.jpg
+
+41-research-report-mobile
+Source: https://www.hrw.org/report/2026/09/09/uncontrolled-burn/the-inhumane-effects-of-white-phosphorus-munitions-and-the-need
+Title: Uncontrolled Burn: The Inhumane Effects of White Phosphorus Munitions and the Need for Stronger Law | HRW
+Viewport: 390×844; height: 54975; direction: ltr
+Measured H1: 24px, weight 700, line-height 24px, color rgb(0, 0, 0)
+Images: 3/6 recorded loaded at capture time.
+Template: research
+The long research report uses a special immersive treatment rather than the ordinary news header. A photographic hero, large report title, subtitle, date, share/print tools, chapter navigation, downloads, and an extended body organize substantial material. Summary, recommendations, methodology, research chapters, and notes provide multiple entry points. The captured desktop report is approximately 45,000 CSS pixels tall and the mobile version about 55,000. A screenshot is a visual record, not a replacement for navigable chapters. The source offers a text-only alternative. Downloads were recorded as links; PDFs blocked by crawl rules were not downloaded.
+Screenshots: 41-research-report-mobile-full.jpg and 41-research-report-mobile-viewport.jpg
+
+42-media-mobile
+Source: https://www.hrw.org/video-photos
+Title: Video & Photos | Human Rights Watch
+Viewport: 390×844; height: 8160; direction: ltr
+Images: 14/14 recorded loaded at capture time.
+Template: media
+The media archive makes thumbnails and play actions the primary browsing affordances. Prominent media, short contextual text, dated items, and navigation through results make it visually denser than policy pages. The video detail page adds an editorial title and video feature. Players and poster images were inspected; playback, captions, and streaming behavior were not functionally tested. Do not assume a black player in a screenshot means the video is broken.
+Screenshots: 42-media-mobile-full.jpg and 42-media-mobile-viewport.jpg
+
+43-contact-mobile
+Source: https://www.hrw.org/contact-us
+Title: Contact Us | Human Rights Watch
+Viewport: 390×844; height: 10449; direction: ltr
+Measured H1: 24px, weight 500, line-height 30px, color rgb(68, 68, 68)
+Images: 0/0 recorded loaded at capture time.
+Template: contact
+The contact directory is a long, structured text page with office and organizational contact groupings. Its visual purpose is dependable retrieval rather than promotion. Clear headings and link treatment are more valuable here than large decorative cards. The long mobile page reinforces the value of in-page anchors or office filters when adapting the pattern.
+Screenshots: 43-contact-mobile-full.jpg and 43-contact-mobile-viewport.jpg
+
+44-campaign-mobile
+Source: https://www.hrw.org/tag/crisis-in-the-middle-east
+Title: Crisis in the Middle East | Human Rights Watch
+Viewport: 390×844; height: 6682; direction: ltr
+Measured H1: 32px, weight 500, line-height 40px, color rgb(68, 68, 68)
+Images: 20/22 recorded loaded at capture time.
+Template: campaign
+The tag/campaign hub collects content around a timely theme. It borrows the hub visual language while its editorial scope is narrower than a country or topic. Title, introduction, featured content, and related developments sustain an ongoing story. Model campaign membership explicitly; a campaign may cross several countries and topics.
+Screenshots: 44-campaign-mobile-full.jpg and 44-campaign-mobile-viewport.jpg
