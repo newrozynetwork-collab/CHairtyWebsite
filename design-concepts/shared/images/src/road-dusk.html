@@ -239,12 +239,12 @@ function limb(c, pts) {
       if (covRoad > 0) {
         const pat = clamp((NB.fbm(X / 1.4, Z / 5, 3) - 0.28) / 0.05);
         const track = Math.exp(-Math.pow((ax - 0.95) / 0.32, 2));
-        let a = mix(ASPH, PATCH, pat * 0.8);
+        let a = mix(ASPH, PATCH, pat * 0.35);
         const grit = 1 + 0.1 * ND.n2(X / 0.05, Z / 0.09) * clamp(0.004 / fp) + 0.05 * NA.n2(X / 0.5, Z / 2);
         a = scl(a, grit * (1 + 0.08 * track));
         const my = YH - dyp * 0.75 - 4;
         const sk = skyBase(x, my);
-        const rf = clamp(fres * (0.55 + 0.25 * track - 0.25 * pat));
+        const rf = clamp(Math.pow(fres, 1.35) * (0.6 + 0.2 * track - 0.2 * pat));
         const rr2 = a[0] + (sk[0] - a[0]) * rf, gg2 = a[1] + (sk[1] - a[1]) * rf, bb2 = a[2] + (sk[2] - a[2]) * rf;
         r += (rr2 - r) * covRoad; g += (gg2 - g) * covRoad; b += (bb2 - b) * covRoad;
       }
@@ -355,21 +355,24 @@ function limb(c, pts) {
     bz([0.79, 4.5], [0.82, 4.72], [0.86, 5.0]);
     bz([0.9, 5.25], [0.99, 5.7], [0.9, 5.9]);
     bz([0.78, 6.12], [0.45, 6.24], [0.22, 6.32]);
-    c.closePath();
+    c.closePath(); c.fill(); c.beginPath();
     // neck, head, hair gathered at the nape
     { const p = P(-0.2, 6.62); c.rect(p[0], p[1], 0.4 * hh, 0.36 * hh); }
-    { const p = P(0, 6.98); c.moveTo(p[0] + 0.41 * hh, p[1]); c.ellipse(p[0], p[1], 0.41 * hh, 0.52 * hh, 0, 0, Math.PI * 2); }
-    { const p = P(0.02, 6.55); c.moveTo(p[0] + 0.24 * hh, p[1]); c.ellipse(p[0], p[1], 0.24 * hh, 0.2 * hh, 0, 0, Math.PI * 2); }
+    { const p = P(0, 6.98); c.moveTo(p[0] + 0.37 * hh, p[1]); c.ellipse(p[0], p[1], 0.37 * hh, 0.51 * hh, 0, 0, Math.PI * 2); }
+    { const p = P(0.01, 6.5); c.moveTo(p[0] + 0.27 * hh, p[1]); c.ellipse(p[0], p[1], 0.27 * hh, 0.26 * hh, 0, 0, Math.PI * 2); }
+    c.fill(); c.beginPath();
     // arms (sleeves taper to the wrist)
     const L = pts => pts.map(([u, v, w]) => { const p = P(u, v); return [p[0], p[1], w * hh]; });
-    limb(c, L([[-0.8, 5.78, 0.44], [-0.97, 4.62, 0.37], [-1.05, 3.66, 0.27]]));
-    limb(c, L([[0.8, 5.78, 0.44], [1.09, 4.62, 0.37], [1.38, 3.66, 0.27]]));
+    limb(c, L([[-0.8, 5.78, 0.44], [-0.97, 4.62, 0.37], [-1.05, 3.66, 0.27]])); c.fill(); c.beginPath();
+    limb(c, L([[0.8, 5.78, 0.44], [1.09, 4.62, 0.37], [1.38, 3.66, 0.27]])); c.fill(); c.beginPath();
     { const p = P(-1.06, 3.44); c.moveTo(p[0] + 0.15 * hh, p[1]); c.ellipse(p[0], p[1], 0.15 * hh, 0.22 * hh, 0.05, 0, Math.PI * 2); }
     { const p = P(1.46, 3.47); c.moveTo(p[0] + 0.16 * hh, p[1]); c.ellipse(p[0], p[1], 0.16 * hh, 0.2 * hh, -0.4, 0, Math.PI * 2); }
     // legs: left planted, right trailing with the heel lifted
-    limb(c, L([[-0.33, 2.3, 0.5], [-0.31, 1.6, 0.44], [-0.29, 0.9, 0.33], [-0.28, 0.36, 0.23]]));
+    c.fill(); c.beginPath();
+    limb(c, L([[-0.33, 2.3, 0.5], [-0.31, 1.6, 0.44], [-0.29, 0.9, 0.33], [-0.28, 0.36, 0.23]])); c.fill(); c.beginPath();
     { const p = P(-0.28, 0.16); c.moveTo(p[0] + 0.19 * hh, p[1]); c.ellipse(p[0], p[1], 0.19 * hh, 0.17 * hh, 0, 0, Math.PI * 2); }
-    limb(c, L([[0.33, 2.3, 0.5], [0.33, 1.65, 0.43], [0.35, 1.08, 0.34], [0.36, 0.64, 0.23]]));
+    c.fill(); c.beginPath();
+    limb(c, L([[0.33, 2.3, 0.5], [0.33, 1.65, 0.43], [0.35, 1.08, 0.34], [0.36, 0.64, 0.23]])); c.fill(); c.beginPath();
     { const p = P(0.36, 0.32); c.moveTo(p[0] + 0.16 * hh, p[1]); c.ellipse(p[0], p[1], 0.16 * hh, 0.3 * hh, 0.04, 0, Math.PI * 2); }
     c.fill();
     // holdall hanging from the left hand
@@ -403,20 +406,23 @@ function limb(c, pts) {
     bz([0.64, 2.55], [0.6, 2.75], [0.6, 2.95]);
     bz([0.62, 3.2], [0.7, 3.5], [0.63, 3.72]);
     bz([0.56, 3.88], [0.36, 3.95], [0.18, 3.98]);
-    c.closePath();
-    { const p = P(-0.17, 4.18); c.rect(p[0], p[1], 0.34 * ch, 0.26 * ch); }
-    { const p = P(0, 4.5); c.moveTo(p[0] + 0.43 * ch, p[1]); c.ellipse(p[0], p[1], 0.43 * ch, 0.5 * ch, 0, 0, Math.PI * 2); }
+    c.closePath(); c.fill(); c.beginPath();
+    { const p = P(-0.17, 4.18); c.rect(p[0], p[1], 0.34 * ch, 0.26 * ch); } c.fill(); c.beginPath();
+    { const p = P(0, 4.5); c.moveTo(p[0] + 0.4 * ch, p[1]); c.ellipse(p[0], p[1], 0.4 * ch, 0.5 * ch, 0, 0, Math.PI * 2); } c.fill(); c.beginPath();
     // backpack
-    { const tl = P(-0.55, 3.86), br = P(0.55, 2.72); const rr = 0.22 * ch; c.moveTo(tl[0] + rr, tl[1]); c.arcTo(br[0], tl[1], br[0], br[1], rr); c.arcTo(br[0], br[1], tl[0], br[1], rr); c.arcTo(tl[0], br[1], tl[0], tl[1], rr); c.arcTo(tl[0], tl[1], br[0], tl[1], rr); c.closePath(); }
+    { const tl = P(-0.55, 3.86), br = P(0.55, 2.72); const rr = 0.22 * ch; c.moveTo(tl[0] + rr, tl[1]); c.arcTo(br[0], tl[1], br[0], br[1], rr); c.arcTo(br[0], br[1], tl[0], br[1], rr); c.arcTo(tl[0], br[1], tl[0], tl[1], rr); c.arcTo(tl[0], tl[1], br[0], tl[1], rr); c.closePath(); } c.fill(); c.beginPath();
     // arms
-    limb(c, L([[-0.6, 3.66, 0.36], [-1.32, 3.5, 0.3], [-2.05, 3.82, 0.25]]));
+    limb(c, L([[-0.6, 3.66, 0.36], [-1.32, 3.5, 0.3], [-2.05, 3.82, 0.25]])); c.fill(); c.beginPath();
     { const p = P(-2.18, 3.86); c.moveTo(p[0] + 0.16 * ch, p[1]); c.ellipse(p[0], p[1], 0.16 * ch, 0.19 * ch, 0.6, 0, Math.PI * 2); }
-    limb(c, L([[0.6, 3.66, 0.36], [0.74, 3.0, 0.3], [0.79, 2.42, 0.25]]));
+    c.fill(); c.beginPath();
+    limb(c, L([[0.6, 3.66, 0.36], [0.74, 3.0, 0.3], [0.79, 2.42, 0.25]])); c.fill(); c.beginPath();
     { const p = P(0.8, 2.25); c.moveTo(p[0] + 0.14 * ch, p[1]); c.ellipse(p[0], p[1], 0.14 * ch, 0.19 * ch, 0, 0, Math.PI * 2); }
     // legs: right planted, left trailing
-    limb(c, L([[0.27, 2.4, 0.46], [0.26, 1.45, 0.38], [0.25, 0.4, 0.28]]));
+    c.fill(); c.beginPath();
+    limb(c, L([[0.27, 2.4, 0.46], [0.26, 1.45, 0.38], [0.25, 0.4, 0.28]])); c.fill(); c.beginPath();
     { const p = P(0.25, 0.17); c.moveTo(p[0] + 0.2 * ch, p[1]); c.ellipse(p[0], p[1], 0.2 * ch, 0.18 * ch, 0, 0, Math.PI * 2); }
-    limb(c, L([[-0.27, 2.4, 0.46], [-0.28, 1.55, 0.38], [-0.3, 0.75, 0.28]]));
+    c.fill(); c.beginPath();
+    limb(c, L([[-0.27, 2.4, 0.46], [-0.28, 1.55, 0.38], [-0.3, 0.75, 0.28]])); c.fill(); c.beginPath();
     { const p = P(-0.3, 0.48); c.moveTo(p[0] + 0.18 * ch, p[1]); c.ellipse(p[0], p[1], 0.18 * ch, 0.32 * ch, 0, 0, Math.PI * 2); }
     c.fill();
   }
@@ -427,7 +433,7 @@ function limb(c, pts) {
   ctx.save(); ctx.filter = 'blur(3px)'; ctx.drawImage(shd.canvas, 0, 0); ctx.restore();
   // light wrap from the bright horizon and road sheen, then a touch of softness
   const bgCopy = mk(); bgCopy.drawImage(ctx.canvas, 0, 0);
-  lightWrap(fig, bgCopy, { rad: 2.5, str: 0.6, x0: Math.round(ax0 - 200), y0: Math.round(gy0 - 360), w: 520, h: 420 });
+  lightWrap(fig, bgCopy, { rad: 1.4, str: 0.32, x0: Math.round(ax0 - 200), y0: Math.round(gy0 - 360), w: 520, h: 420 });
   ctx.save(); ctx.filter = 'blur(0.7px)'; ctx.drawImage(fig.canvas, 0, 0); ctx.restore();
   await tick();
 

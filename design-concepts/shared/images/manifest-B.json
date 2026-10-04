@@ -1,0 +1,47 @@
+[
+  {
+    "file": "valley-dawn.jpg",
+    "title": "Valley at dawn",
+    "alt": "A wide mountain valley at dawn, mist lying between layered ridges, a river catching the light and a small village of low houses.",
+    "focal": { "x": 0.55, "y": 0.6 },
+    "calmArea": "top",
+    "palette": ["#333831", "#666962", "#787c7f", "#898b8f", "#a09f9f"],
+    "credit": "Original illustration created for this proposal"
+  },
+  {
+    "file": "road-dusk.jpg",
+    "title": "The road at dusk",
+    "alt": "An adult and a small child, seen from behind, walk hand in hand along a long rural road at dusk, carrying a bag and a backpack, with power poles and a wide evening sky.",
+    "focal": { "x": 0.49, "y": 0.68 },
+    "calmArea": "upper-left",
+    "palette": ["#2d2e32", "#373b4b", "#443f39", "#5b5a68", "#90828d"],
+    "credit": "Original illustration created for this proposal"
+  },
+  {
+    "file": "school-morning.jpg",
+    "title": "Walking to school",
+    "alt": "Children with backpacks, seen from behind as silhouettes, walk along a dirt path toward a small painted school building in low morning sun, a large tree at the left.",
+    "focal": { "x": 0.5, "y": 0.6 },
+    "calmArea": "upper-right",
+    "palette": ["#3f3d32", "#686a55", "#8a8259", "#a7a698", "#c6c7c1"],
+    "credit": "Original illustration created for this proposal"
+  },
+  {
+    "file": "heat-roofs.jpg",
+    "title": "Metal roofs in the heat",
+    "alt": "An elevated view over the dense corrugated-metal roofs of an informal settlement, with water tanks on the roofs, under a white, hazy sky with the sun burning upper right.",
+    "focal": { "x": 0.52, "y": 0.62 },
+    "calmArea": "top",
+    "palette": ["#6c5d54", "#8b847c", "#a9998d", "#c6c2bc", "#dfddd8"],
+    "credit": "Original illustration created for this proposal"
+  },
+  {
+    "file": "legal-clinic.jpg",
+    "title": "A legal clinic under a tree",
+    "alt": "A folding table with stacks of papers, a clipboard, a rubber stamp and a thermos in dappled shade under a large tree; two people sit on plastic chairs at a distance, backs turned, looking out over sunlit fields.",
+    "focal": { "x": 0.56, "y": 0.68 },
+    "calmArea": "upper-right",
+    "palette": ["#1f1d19", "#27281f", "#323328", "#686855", "#b2af98"],
+    "credit": "Original illustration created for this proposal"
+  }
+]

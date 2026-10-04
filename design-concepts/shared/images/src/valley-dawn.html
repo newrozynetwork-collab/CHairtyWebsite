@@ -102,6 +102,16 @@ function finish(ctx, { grain = 0.03, vig = 0.2, seed = 99, lift = 0.012, contras
   ctx.putImageData(id, 0, 0);
 }
 
+// Smooth closed curve through points (uniform Catmull-Rom converted to Bezier segments).
+function smoothClosed(c, P, k = 1) {
+  const n = P.length; c.moveTo(P[0][0], P[0][1]);
+  for (let i = 0; i < n; i++) {
+    const p0 = P[(i - 1 + n) % n], p1 = P[i], p2 = P[(i + 1) % n], p3 = P[(i + 2) % n];
+    c.bezierCurveTo(p1[0] + (p2[0] - p0[0]) / 6 * k, p1[1] + (p2[1] - p0[1]) / 6 * k, p2[0] - (p3[0] - p1[0]) / 6 * k, p2[1] - (p3[1] - p1[1]) / 6 * k, p2[0], p2[1]);
+  }
+  c.closePath();
+}
+
 // Rim / light-wrap for a silhouette drawn on its own transparent layer.
 // Inside the shape near the edge, blend toward `col` (strength by edge proximity and an optional directional bias).
 function rimWrap(layer, { col = [255, 220, 170], width = 3, str = 0.8, dirx = 0, diry = -1, dirw = 0.6, x0 = 0, y0 = 0, w = W, h = H } = {}) {
@@ -436,44 +446,79 @@ function rimWrap(layer, { col = [255, 220, 170], width = 3, str = 0.8, dirx = 0,
   }
   ctx.save(); ctx.filter = 'blur(1.2px)'; ctx.drawImage(smokeL.canvas, 0, 0); ctx.restore();
 
-  // ---------- foreground canopy (we look out over tree tops) ----------
-  const fgL = mk();
-  const crowns = [];
-  { let x = -80; setSeed(9090);
-    while (x < W + 80) {
-      const t = x / W;
-      const base = H * (0.835 + 0.06 * Math.exp(-Math.pow((t - 0.5) / 0.15, 2)) - 0.10 * Math.exp(-Math.pow(t / 0.13, 2)) - 0.065 * Math.exp(-Math.pow((t - 1) / 0.12, 2))) + 22 * NA.n2(t * 7, 1.1);
-      const r = rnd(42, 86) * (1 - 0.3 * Math.exp(-Math.pow((t - 0.5) / 0.18, 2)));
-      const conifer = R() < 0.22;
-      crowns.push({ x, y: base + r * 0.35, r, conifer });
-      x += r * rnd(0.75, 1.25);
-    } }
-  fgL.fillStyle = '#1c2420';
-  fgL.beginPath();
-  for (const c of crowns) {
-    if (c.conifer) {
-      const hgt = c.r * 2.4; fgL.moveTo(c.x - c.r * 0.75, c.y + c.r * 0.6);
-      for (let k = 0; k <= 10; k++) { const tt = k / 10; const yy = c.y + c.r * 0.6 - hgt * tt; const ww = c.r * 0.75 * (1 - tt) * (0.8 + 0.25 * (k % 2)); fgL.lineTo(c.x - ww, yy); }
-      for (let k = 10; k >= 0; k--) { const tt = k / 10; const yy = c.y + c.r * 0.6 - hgt * tt; const ww = c.r * 0.75 * (1 - tt) * (0.8 + 0.25 * ((k + 1) % 2)); fgL.lineTo(c.x + ww, yy); }
-      fgL.closePath();
-    } else {
-      fgL.moveTo(c.x + c.r, c.y); fgL.arc(c.x, c.y, c.r, 0, Math.PI * 2);
-      const nb = 9 + Math.floor(c.r / 8);
-      for (let k = 0; k < nb; k++) { const a = -Math.PI * rnd(0.05, 0.95); const rr = c.r * rnd(0.22, 0.38); const px = c.x + Math.cos(a) * c.r * 0.86, py = c.y + Math.sin(a) * c.r * 0.86; fgL.moveTo(px + rr, py); fgL.arc(px, py, rr, 0, Math.PI * 2); }
+  // ---------- foreground: a dark wooded hillside below us, lit only by the dawn sky ----------
+  // The sun is still behind the far ridges, so the near slope is in soft shade. The canopy runs from the
+  // crest down to the bottom edge in rows of crowns that grow larger (nearer) and darker; each crown takes
+  // a little cool skylight on top, a faint warm sheen toward the sun, and a cool haze near the crest.
+  {
+    setSeed(9090);
+    const env = t => H * (0.905 - 0.19 * Math.exp(-Math.pow(t / 0.21, 2)) - 0.155 * Math.exp(-Math.pow((t - 1) / 0.19, 2)));
+    const slope = new Float32Array(W + 1); for (let x = 0; x <= W; x++) slope[x] = env(x / W) + 12 * NA.fbm(x / 320, 7.7, 3);
+    const SL = x => slope[clamp(Math.round(x), 0, W)];
+    const HAZE = x => mix(fogc[clamp(Math.round(x), 0, W)], [104, 116, 112], 0.45);
+    const ROWF = [0, 0.2, 0.42, 0.66, 0.92];
+    const crowns = [];
+    for (let row = 0; row < ROWF.length; row++) {
+      let x = -120 + rnd(0, 60);
+      while (x < W + 120) {
+        const t = x / W; const side = 1 - Math.exp(-Math.pow((t - 0.5) / 0.23, 2));
+        let r = rnd(20, 40) * (0.72 + 0.7 * side) * (1 + 0.55 * row);
+        if (R() < 0.12) r *= 1.35;
+        const conifer = row < 2 && R() < 0.08;
+        const rx = conifer ? r * 0.45 : r, h = conifer ? r * rnd(1.5, 1.9) : r * rnd(0.55, 0.95);
+        const base = SL(x) + (H + 80 - SL(x)) * ROWF[row] + rnd(-0.15, 0.15) * r;
+        crowns.push({ x, rx, ry: conifer ? h * 0.62 : rx * rnd(0.62, 0.78), top: base - h, conifer, row, k: rnd(0.84, 1.12), layer: row * 10 + R() * 6 });
+        x += r * (row === 0 && R() < 0.1 ? rnd(1.3, 1.8) : rnd(0.5, 0.9));
+      }
+    }
+    crowns.sort((a, b) => a.layer - b.layer);
+    const BIN = 48, bins = []; for (let i = 0; i <= Math.ceil(W / BIN); i++) bins.push([]);
+    crowns.forEach((c, i) => { for (let b = Math.max(0, Math.floor((c.x - c.rx * 1.3) / BIN)); b <= Math.min(bins.length - 1, Math.floor((c.x + c.rx * 1.3) / BIN)); b++) bins[b].push(i); });
+    const yMin = Math.floor(Math.min(...crowns.map(c => c.top))) - 10;
+    const L = mk(); const id = L.createImageData(W, H); const d = id.data;
+    for (let y = Math.max(0, yMin); y < H; y++) {
+      for (let x = 0; x < W; x++) {
+        const sb = SL(x) + 10;
+        let a = clamp(y - sb + 0.5), col = [0, 0, 0];
+        const depthY = clamp((y - SL(x)) / Math.max(60, H - SL(x)));
+        if (a > 0) col = scl(mix([30, 38, 33], [17, 22, 19], depthY), 0.9 + 0.2 * NA.fbm(x / 14, y / 10, 3));
+        for (const ci of bins[Math.floor(x / BIN)]) {
+          const c = crowns[ci];
+          const cy = c.top + c.ry;
+          let ux = (x - c.x) / c.rx, uy = (y - cy) / c.ry;
+          if (c.conifer) { const up = clamp(-uy); ux /= Math.max(0.08, 1 - 0.8 * up * up); }
+          const q = Math.sqrt(ux * ux + uy * uy);
+          if (q > 1.4) continue;
+          const rag = 0.12 * NC.n2(x / 8, y / 7) + 0.08 * NC.n2(x / 3.2, y / 3) + 0.06 * NB.n2(x / 1.6, y / 1.6);
+          const f = (q - 1 - rag) * Math.min(c.rx, c.ry);
+          const cv = clamp(0.5 - f); if (cv <= 0) continue;
+          const lit = clamp(0.48 - 0.62 * uy + 0.1 * ux * (x < SUN.x ? 1 : -1));
+          const sunSide = Math.exp(-Math.pow((x - SUN.x) / (0.25 * W), 2));
+          const cs = c.rx * 0.2 + 2.5;
+          const n0 = NA.fbm(x / cs, y / (cs * 0.85), 3), nUp = NA.fbm(x / cs, (y - 1.8) / (cs * 0.85), 3);
+          const clump = clamp((n0 - nUp) * 7 + 0.5);
+          const dark = 1 - 0.07 * c.row;
+          let cc = scl([25, 33, 29], c.k * dark * (0.76 + 0.38 * clump + 0.16 * n0));
+          const topCol = mix([78, 94, 88], [112, 112, 96], sunSide * 0.5);
+          cc = mix(cc, topCol, lit * lit * (0.5 - 0.06 * c.row));
+          col = a > 0 ? mix(col, cc, cv) : cc; a = Math.max(a, cv);
+        }
+        if (a <= 0) continue;
+        // cool haze near the crest, fading down the slope
+        col = mix(col, HAZE(x), 0.2 * Math.exp(-depthY * 5));
+        const i = (y * W + x) * 4; d[i] = col[0]; d[i + 1] = col[1]; d[i + 2] = col[2]; d[i + 3] = 255 * a;
+      }
+      if ((y & 63) === 0) await tick();
+    }
+    L.putImageData(id, 0, 0);
+    ctx.save(); ctx.filter = 'blur(0.8px)'; ctx.drawImage(L.canvas, 0, 0); ctx.restore();
+    for (let i = 0; i < 10; i++) {
+      const mx = rnd(-100, W + 100), my = SL(mx) - rnd(10, 60), rw = rnd(220, 480), rh = rnd(14, 30);
+      const fc = fogc[clamp(Math.round(mx), 0, W)];
+      const g = ctx.createRadialGradient(mx, my, 0, mx, my, rw); g.addColorStop(0, rgba(fc, 0.08)); g.addColorStop(1, rgba(fc, 0));
+      ctx.save(); ctx.translate(mx, my); ctx.scale(1, rh / rw); ctx.translate(-mx, -my); ctx.fillStyle = g; ctx.fillRect(mx - rw, my - rw, rw * 2, rw * 2); ctx.restore();
     }
   }
-  fgL.rect(-10, H * 0.9, W + 20, H * 0.2);
-  fgL.fill('nonzero');
-  // crown texture: soft lighter tops, darker undersides
-  fgL.save(); fgL.globalCompositeOperation = 'source-atop';
-  for (const c of crowns) {
-    const g = fgL.createRadialGradient(c.x + c.r * 0.2, c.y - c.r * 0.55, 0, c.x, c.y - c.r * 0.2, c.r * 1.3);
-    g.addColorStop(0, 'rgba(70,82,70,0.55)'); g.addColorStop(1, 'rgba(70,82,70,0)');
-    fgL.fillStyle = g; fgL.fillRect(c.x - c.r * 1.5, c.y - c.r * 2.6, c.r * 3, c.r * 3.4);
-  }
-  fgL.restore();
-  rimWrap(fgL, { col: [236, 214, 178], width: 4, str: 0.75, dirx: 0.35, diry: -0.94, dirw: 0.7, x0: 0, y0: Math.floor(H * 0.55), w: W, h: H - Math.floor(H * 0.55) });
-  ctx.save(); ctx.filter = 'blur(1.6px)'; ctx.drawImage(fgL.canvas, 0, 0); ctx.restore();
   await tick();
 
   // ---------- light: god rays, veil, bloom ----------

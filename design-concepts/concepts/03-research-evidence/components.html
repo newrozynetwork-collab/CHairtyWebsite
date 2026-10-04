@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI components · Research &amp; Evidence</title>
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { background: #FFFFFF; padding: 24px; }
+  #components { display: inline-flex; align-items: center; gap: 12px; padding: 16px 9px; background: #FFFFFF; }
+  #components .btn { height: 44px; padding: 0 14px; font-size: 15px; gap: 8px; }
+  #components .btn .i { width: 16px; height: 16px; }
+  #components .link { font-size: 15px; }
+  #components .chip { padding: 0 10px 0 11px; gap: 8px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v11M6.5 10l5.5 5.5L17.5 10M5 20h14"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"/></symbol>
+</svg>
+<div id="components">
+  <a class="btn btn--primary" href="#">Read the report <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <a class="btn btn--secondary" href="#"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>Download PDF</a>
+  <a class="link" href="#">Our methodology</a>
+  <span class="chip is-on"><span class="k">Type</span>Reports <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></span>
+</div>
+</body>
+</html>

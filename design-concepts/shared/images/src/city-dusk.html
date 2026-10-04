@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>city-dusk — original illustration</title>
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block}</style>
+</head><body><canvas id="c" width="2400" height="1600"></canvas>
+<script>
+/* city-dusk — original illustration created for this proposal (documentary-illustration series).
+   Self-contained and deterministic: all randomness comes from a seeded PRNG. */
+"use strict";
+// ---------------------------------------------------------------- kit
+const W = 2400, H = 1600;
+const cvs = document.getElementById('c');
+const ctx = cvs.getContext('2d', { willReadFrequently: true });
+
+// seeded PRNG (mulberry32)
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function makeRand(seed) {
+  const r = mulberry32(seed);
+  const f = () => r();
+  f.range = (a, b) => a + (b - a) * r();
+  f.int = (a, b) => Math.floor(a + (b - a + 1) * r());
+  f.gauss = () => { let u = 0; while (u === 0) u = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * r()); };
+  f.pick = arr => arr[Math.floor(r() * arr.length)];
+  return f;
+}
+// 2D value noise in [0,1] and fBm
+function makeNoise(seed) {
+  const r = mulberry32(seed), P = new Uint16Array(512), G = new Float32Array(256);
+  for (let i = 0; i < 256; i++) { P[i] = i; G[i] = r(); }
+  for (let i = 255; i > 0; i--) { const j = Math.floor(r() * (i + 1)); const t = P[i]; P[i] = P[j]; P[j] = t; }
+  for (let i = 0; i < 256; i++) P[i + 256] = P[i];
+  return function (x, y) {
+    const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+    const X = xi & 255, Y = yi & 255;
+    const a = G[P[P[X] + Y]], b = G[P[P[X + 1] + Y]], c = G[P[P[X] + Y + 1]], d = G[P[P[X + 1] + Y + 1]];
+    const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  };
+}
+function fbm(n, x, y, oct = 5, lac = 2.0, gain = 0.5) {
+  let s = 0, a = 0.5, f = 1, norm = 0;
+  for (let i = 0; i < oct; i++) { s += a * n(x * f + i * 17.3, y * f - i * 9.1); norm += a; a *= gain; f *= lac; }
+  return s / norm;
+}
+const clamp = (v, a = 0, b = 1) => (v < a ? a : v > b ? b : v);
+const lerp = (a, b, t) => a + (b - a) * t;
+const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const hexRGB = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+const rgba = (c, a = 1) => `rgba(${Math.round(c[0])},${Math.round(c[1])},${Math.round(c[2])},${a})`;
+const mixc = (c1, c2, t) => [lerp(c1[0], c2[0], t), lerp(c1[1], c2[1], t), lerp(c1[2], c2[2], t)];
+// vectors
+const v3 = {
+  add: (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]],
+  sub: (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]],
+  mul: (a, s) => [a[0] * s, a[1] * s, a[2] * s],
+  dot: (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+  cross: (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]],
+  len: a => Math.hypot(a[0], a[1], a[2]),
+  norm: a => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; },
+  lerp: (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t],
+};
+// linear light -> display (soft filmic shoulder + sRGB-ish gamma)
+const toneMap = (x, exposure = 1) => Math.pow(1 - Math.exp(-Math.max(0, x) * exposure), 1 / 2.2);
+const toneRGB = (c, exposure = 1) => [toneMap(c[0], exposure) * 255, toneMap(c[1], exposure) * 255, toneMap(c[2], exposure) * 255];
+// layers
+function newLayer(w = W, h = H) { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
+function blurCopy(src, px, scale = 1) {
+  // blurred copy of a canvas; scale<1 blurs at reduced resolution (fast, for big radii)
+  const sw = Math.max(1, Math.round(src.width * scale)), sh = Math.max(1, Math.round(src.height * scale));
+  const a = newLayer(sw, sh), ac = a.getContext('2d');
+  ac.filter = `blur(${px * scale}px)`; ac.drawImage(src, 0, 0, sw, sh); ac.filter = 'none';
+  if (scale === 1) return a;
+  const b = newLayer(src.width, src.height), bc = b.getContext('2d');
+  bc.imageSmoothingEnabled = true; bc.imageSmoothingQuality = 'high'; bc.drawImage(a, 0, 0, src.width, src.height);
+  return b;
+}
+function convexHull(pts) {
+  const p = pts.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lo = [], up = [];
+  for (const q of p) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], q) <= 0) lo.pop(); lo.push(q); }
+  for (let i = p.length - 1; i >= 0; i--) { const q = p[i]; while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], q) <= 0) up.pop(); up.push(q); }
+  up.pop(); lo.pop(); return lo.concat(up);
+}
+function poly(c, pts) { c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for (let i = 1; i < pts.length; i++) c.lineTo(pts[i][0], pts[i][1]); c.closePath(); }
+// bloom: bright-pass at quarter res, multi-radius blur, screen back
+function addBloom(target, { threshold = 0.75, knee = 0.15, radii = [8, 24, 64], weights = [0.5, 0.35, 0.25], strength = 0.5, tint = [255, 240, 220] } = {}) {
+  const s = 0.25, sw = W * s, sh = H * s;
+  const small = newLayer(sw, sh), sc = small.getContext('2d', { willReadFrequently: true });
+  sc.drawImage(target.canvas, 0, 0, sw, sh);
+  const id = sc.getImageData(0, 0, sw, sh), d = id.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const l = (0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2]) / 255;
+    const k = smooth(threshold - knee, threshold + knee, l) * (l - threshold * 0.5);
+    d[i] = d[i] * k * tint[0] / 255; d[i + 1] = d[i + 1] * k * tint[1] / 255; d[i + 2] = d[i + 2] * k * tint[2] / 255;
+  }
+  sc.putImageData(id, 0, 0);
+  target.save(); target.globalCompositeOperation = 'screen'; target.imageSmoothingQuality = 'high';
+  radii.forEach((r, i) => { const b = blurCopy(small, r * s); target.globalAlpha = clamp(strength * weights[i]); target.drawImage(b, 0, 0, W, H); });
+  target.restore();
+}
+// final pass: optional grade, vignette, two-scale luminance film grain
+function finish(target, { grain = 0.03, seed = 1, vignette = 0.3, vcx = 0.5, vcy = 0.5, vr0 = 0.35, vr1 = 0.95, grade = null } = {}) {
+  const id = target.getImageData(0, 0, W, H), d = id.data, r = mulberry32(seed);
+  // coarse grain field (half res, bilinear) for clumpy film structure
+  const cw = W / 2 + 2, ch = H / 2 + 2, coarse = new Float32Array(cw * ch);
+  for (let i = 0; i < coarse.length; i++) coarse[i] = (r() + r() + r() - 1.5) * 2;
+  const diag = Math.hypot(W, H) / 2;
+  for (let y = 0; y < H; y++) {
+    const gy = y / 2, y0 = Math.floor(gy), fy = gy - y0;
+    for (let x = 0; x < W; x++) {
+      const i = (y * W + x) * 4;
+      let R = d[i] / 255, G = d[i + 1] / 255, B = d[i + 2] / 255;
+      if (grade) { const o = grade(R, G, B, x, y); R = o[0]; G = o[1]; B = o[2]; }
+      if (vignette) {
+        const dx = (x - vcx * W) / (W / 2), dy = (y - vcy * H) / (H / 2);
+        const dd = Math.sqrt(dx * dx * 0.8 + dy * dy * 1.0) / 1.25;
+        const v = 1 - vignette * smooth(vr0, vr1, dd);
+        R *= v; G *= v; B *= v;
+      }
+      const gx = x / 2, x0 = Math.floor(gx), fx = gx - x0, j = y0 * cw + x0;
+      const c = (coarse[j] * (1 - fx) + coarse[j + 1] * fx) * (1 - fy) + (coarse[j + cw] * (1 - fx) + coarse[j + cw + 1] * fx) * fy;
+      const L = 0.2126 * R + 0.7152 * G + 0.0722 * B;
+      const n = ((r() + r() + r() - 1.5) * 2 * 0.65 + c * 0.75) * grain * (0.45 + 2.2 * L * (1 - L));
+      d[i] = clamp(R + n) * 255; d[i + 1] = clamp(G + n) * 255; d[i + 2] = clamp(B + n) * 255;
+    }
+  }
+  target.putImageData(id, 0, 0);
+}
+// piecewise-linear colour ramp: stops = [[t,[r,g,b]],...]
+function ramp(stops, t) {
+  if (t <= stops[0][0]) return stops[0][1].slice();
+  for (let i = 1; i < stops.length; i++) if (t <= stops[i][0]) {
+    const a = stops[i - 1], b = stops[i], u = (t - a[0]) / (b[0] - a[0]);
+    return mixc(a[1], b[1], u);
+  }
+  return stops[stops.length - 1][1].slice();
+}
+const v2norm = a => { const l = Math.hypot(a[0], a[1]) || 1; return [a[0] / l, a[1] / l]; };
+// ---------------------------------------------------------------- scene
+// ===================== CITY AT DUSK =====================
+// Blue hour from a rooftop ~46 m above the street. Calm sky, afterglow low on the left (west),
+// a floodlit generic civic hall on a plaza in the middle distance, a cluster of plain towers behind it.
+const rand = makeRand(52731);
+const nA = makeNoise(1301), nB = makeNoise(1302), nC = makeNoise(1303);
+function hash2(a, b) {
+  let h = Math.imul((a * 2654435761) | 0, 0x27d4eb2d) ^ Math.imul((b * 40503) | 0, 0x165667b1);
+  h = Math.imul(h ^ (h >>> 15), 0x85ebca6b); h ^= h >>> 13; h = Math.imul(h, 0xc2b2ae35); h ^= h >>> 16;
+  return (h >>> 0) / 4294967296;
+}
+const add3 = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+const mul3 = (a, s) => [a[0] * s, a[1] * s, a[2] * s];
+
+const CAM_H = 46, F = 2700, CX = 1200, CY = 905;
+const proj = (x, y, z) => [CX + F * x / z, CY - F * (y - CAM_H) / z];
+
+// ---------- 1. sky ----------
+const SKY = [[0.00, [25, 35, 57]], [0.26, [36, 51, 82]], [0.50, [58, 77, 110]], [0.70, [95, 109, 137]], [0.84, [141, 141, 156]], [0.94, [186, 165, 158]], [1.00, [212, 180, 156]]];
+function skyRGB(X, Y) {
+  const t = clamp(Y / CY);
+  let c = ramp(SKY, t);
+  const dx = (X - 430) / 1500, dy = Math.max(0, CY - Y) / 400;
+  const g = Math.exp(-dx * dx) * Math.exp(-dy * 1.5);
+  c = mixc(c, [236, 176, 130], 0.48 * g);
+  const e = smooth(0.5, 1.0, X / W) * smooth(0.45, 1.0, t) * 0.14;   // eastern side cooler
+  return mixc(c, [112, 122, 150], e);
+}
+{
+  const img = ctx.createImageData(W, H), d = img.data;
+  for (let Y = 0; Y < H; Y++) {
+    for (let X = 0; X < W; X++) {
+      const i = (Y * W + X) * 4;
+      let c;
+      if (Y <= CY) c = skyRGB(X, Y);
+      else c = mixc(skyRGB(X, CY - 20), [44, 46, 58], smooth(CY, CY + 240, Y));
+      const n = (rand() - 0.5) * 1.8;
+      d[i] = c[0] + n; d[i + 1] = c[1] + n; d[i + 2] = c[2] + n; d[i + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+}
+// thin stratus low in the sky, lit from below near the afterglow
+{
+  const cl = newLayer(), c2 = cl.getContext('2d');
+  for (let k = 0; k < 34; k++) {
+    const y = rand.range(700, 870), x = rand.range(-300, W + 300), w = rand.range(160, 620), h = rand.range(3, 10);
+    const glow = Math.exp(-Math.pow((x - 430) / 1200, 2));
+    const col = mixc([132, 128, 150], [236, 168, 138], glow);
+    c2.fillStyle = rgba(col, rand.range(0.10, 0.26) * (0.5 + 0.5 * glow));
+    c2.beginPath(); c2.ellipse(x, y, w, h, rand.range(-0.01, 0.01), 0, Math.PI * 2); c2.fill();
+  }
+  ctx.drawImage(blurCopy(cl, 5), 0, 0);
+}
+
+// ---------- 2. city model ----------
+const HZ = []; for (let X = 0; X <= W + 8; X += 8) HZ.push(mul3(skyRGB(X, CY - 50), 0.86));
+const hazeAt = X => HZ[clamp(Math.round(X / 8), 0, HZ.length - 1)];
+const hazeK = d => 1 - Math.exp(-d / 2900);
+const GLOW = v2norm([-0.82, 0.57]);
+function vertLight(nx, nz) {
+  const k = Math.max(0, nx * GLOW[0] + nz * GLOW[1]);
+  return [0.20 + 0.44 * k * k, 0.24 + 0.32 * k * k, 0.34 + 0.20 * k * k];
+}
+const ROOF_L = [0.40, 0.45, 0.57];
+const ALB = [[0.60, 0.59, 0.57], [0.56, 0.42, 0.34], [0.68, 0.62, 0.53], [0.72, 0.70, 0.66], [0.38, 0.38, 0.40], [0.50, 0.47, 0.43]];
+const RES = { type: 'res', fh: 3.1, bay: 3.7, ww: 0.42, wh: 0.5, lit: 0.40, warm: 0.94, ground: 3.5 };
+const RES2 = { type: 'res', fh: 3.3, bay: 4.4, ww: 0.55, wh: 0.55, lit: 0.34, warm: 0.88, ground: 4.0 };
+const OFFICE = { type: 'office', fh: 3.8, bay: 3.0, ww: 0.78, wh: 0.55, lit: 0.48, warm: 0.40, ground: 5.0 };
+const GLASS = { type: 'glass', fh: 3.9, bay: 1.9, ww: 0.9, wh: 0.74, lit: 0.42, warm: 0.30, ground: 6.0 };
+const WARM = [[255, 212, 152], [255, 198, 130], [255, 226, 184], [246, 202, 142], [255, 188, 116]];
+const COOL = [[226, 234, 246], [242, 240, 230], [212, 224, 240], [236, 232, 214]];
+
+const TH = 0.21, cT = Math.cos(TH), sT = Math.sin(TH);
+const toW = (u, v) => [cT * u + sT * v, -sT * u + cT * v];
+const boxes = [], items = [];
+let BID = 0;
+function mkBox(pts, y0, y1, st) { const b = Object.assign({ pts, y0, y1, id: ++BID }, st); boxes.push(b); return b; }
+const lotPts = (u0, u1, v0, v1) => [toW(u0, v0), toW(u1, v0), toW(u1, v1), toW(u0, v1)];
+const inView = (x, z, m = 140) => z > 120 && Math.abs(x) < z * (CX + 60) / F + m;
+// reserved plaza + civic hall zone (world x/z)
+const CIVIC = { x0: -128, x1: 118, z0: 205, z1: 505 };
+const hitsCivic = pts => {
+  const xs = pts.map(p => p[0]), zs = pts.map(p => p[1]);
+  return Math.max(...xs) > CIVIC.x0 && Math.min(...xs) < CIVIC.x1 && Math.max(...zs) > CIVIC.z0 && Math.min(...zs) < CIVIC.z1;
+};
+const Pu = 118, Pv = 92, ST = 18;
+function boost(x, z) {
+  const d1 = Math.hypot((x - 330) / 420, (z - 2150) / 520), d2 = Math.hypot((x + 830) / 360, (z - 2950) / 480);
+  return [Math.exp(-d1 * d1), Math.exp(-d2 * d2)];
+}
+for (let iv = 1; iv <= 72; iv++) {
+  for (let iu = -64; iu <= 64; iu++) {
+    const U0 = iu * Pu + ST / 2, U1 = (iu + 1) * Pu - ST / 2, V0 = iv * Pv + ST / 2, V1 = (iv + 1) * Pv - ST / 2;
+    const cc = toW((U0 + U1) / 2, (V0 + V1) / 2);
+    if (!inView(cc[0], cc[1])) continue;
+    const r = makeRand(iu * 7919 + iv * 104729 + 17);
+    // street glow segments (front edge and left edge of the block)
+    items.push({ kind: 'street', p0: toW(iu * Pu, iv * Pv), p1: toW((iu + 1) * Pu, iv * Pv) });
+    items.push({ kind: 'street', p0: toW(iu * Pu, iv * Pv), p1: toW(iu * Pu, (iv + 1) * Pv) });
+    // lots
+    const nU = 1 + Math.floor(r() * 3), nV = r() < 0.55 ? 1 : 2;
+    const cutsU = [U0]; for (let k = 1; k < nU; k++) cutsU.push(lerp(U0, U1, k / nU + r.range(-0.08, 0.08))); cutsU.push(U1);
+    const cutsV = [V0]; if (nV === 2) cutsV.push(lerp(V0, V1, r.range(0.4, 0.6))); cutsV.push(V1);
+    for (let a = 0; a < nU; a++) for (let b = 0; b < nV; b++) {
+      const u0 = cutsU[a] + 0.6, u1 = cutsU[a + 1] - 0.6, v0 = cutsV[b] + 0.6, v1 = cutsV[b + 1] - 0.6;
+      const pts = lotPts(u0, u1, v0, v1);
+      if (hitsCivic(pts)) continue;
+      const c = toW((u0 + u1) / 2, (v0 + v1) / 2);
+      const d = Math.hypot(c[0], c[1]);
+      const [b1, b2] = boost(c[0], c[1]);
+      let h = 9 + 22 * Math.pow(r(), 1.5);
+      if (d > 3800) h *= 0.8;
+      const tower = r() < 0.75 * Math.max(b1, b2 * 0.85);
+      const alb = ALB[Math.floor(r() * ALB.length)].map(v => v * r.range(0.9, 1.08));
+      if (tower) {
+        const th = 50 + (b1 > b2 ? 190 : 105) * Math.pow(r(), 1.25) * Math.max(b1, b2);
+        const pod = 12 + 10 * r();
+        mkBox(pts, 0, pod, { alb, ws: r() < 0.5 ? OFFICE : RES2 });
+        const su = (u1 - u0) * r.range(0.12, 0.22), sv = (v1 - v0) * r.range(0.12, 0.22);
+        const tw = lotPts(u0 + su, u1 - su, v0 + sv, v1 - sv);
+        const glass = r() < 0.6;
+        const talb = glass ? [0.30, 0.34, 0.40] : alb;
+        const t1 = mkBox(tw, pod, th, { alb: talb, ws: glass ? GLASS : OFFICE, tower: true });
+        if (r() < 0.45 && th > 110) {     // a setback crown
+          const s2u = (u1 - u0) * r.range(0.26, 0.34), s2v = (v1 - v0) * r.range(0.26, 0.34);
+          t1.y1 = th * r.range(0.78, 0.86);
+          mkBox(lotPts(u0 + s2u, u1 - s2u, v0 + s2v, v1 - s2v), t1.y1, th, { alb: talb, ws: glass ? GLASS : OFFICE, tower: true, crown: r() < 0.5 });
+        } else if (r() < 0.4) t1.crown = true;
+      } else {
+        h += b1 * (6 + 30 * r()) + b2 * (4 + 20 * r());
+        const ws = h > 34 ? (r() < 0.6 ? OFFICE : RES2) : (r() < 0.7 ? RES : (r() < 0.6 ? RES2 : OFFICE));
+        mkBox(pts, 0, h, { alb, ws });
+        // rooftop clutter on the nearer, lower buildings
+        if (d < 1400 && h < CAM_H - 4) {
+          const nb = r.int(0, 2);
+          for (let k = 0; k < nb; k++) {
+            const bu = lerp(u0 + 3, u1 - 9, r()), bv = lerp(v0 + 3, v1 - 8, r()), bw = r.range(3, 7), bd = r.range(3, 6);
+            mkBox(lotPts(bu, bu + bw, bv, bv + bd), h, h + r.range(1.6, 3.6), { alb: ALB[0].map(v => v * 0.9), ws: null });
+          }
+        }
+      }
+    }
+  }
+}
+// ---------- civic hall (frontal, floodlit) + modern public building ----------
+const HALL = { x0: -78, x1: 70, z0: 420, z1: 470, h: 26, px0: -24, px1: 16, pz: 412, ph: 33 };
+items.push({ kind: 'hall', d: 446 });
+items.push({ kind: 'plaza', d: 300 });
+{
+  // a glazed public building to the right of the hall, on the grid
+  const u = 205 * cT - 640 * sT, v = 205 * sT + 640 * cT;   // grid coords of world (205, 640)
+  const pts = lotPts(u - 36, u + 36, v - 22, v + 22);
+  mkBox(pts, 0, 21, { alb: [0.34, 0.37, 0.42], ws: { type: 'atrium', fh: 7, bay: 4.5, ww: 0.94, wh: 0.86, lit: 0.9, warm: 0.65, ground: 0.6 } });
+  mkBox(lotPts(u - 38, u + 38, v - 24, v + 24), 21, 22.2, { alb: [0.62, 0.62, 0.62], ws: null });
+}
+for (const b of boxes) {
+  const cx = (b.pts[0][0] + b.pts[1][0] + b.pts[2][0] + b.pts[3][0]) / 4, cz = (b.pts[0][1] + b.pts[1][1] + b.pts[2][1] + b.pts[3][1]) / 4;
+  items.push({ kind: 'box', b, d: Math.hypot(cx, cz) - b.y0 * 0.02 });
+}
+for (const it of items) if (it.kind === 'street') {
+  const mx = (it.p0[0] + it.p1[0]) / 2, mz = (it.p0[1] + it.p1[1]) / 2;
+  it.d = Math.hypot(mx, mz) + 0.4;
+}
+items.sort((a, b) => b.d - a.d);
+
+// ---------- 3. drawing helpers ----------
+function winCol(h, warm) { const pal = h < warm ? WARM : COOL; return pal[Math.floor(hash2(h * 1e7, 77) * pal.length)]; }
+function drawWindows(b, a, c, nx, nz, d, fi, base) {
+  const s = b.ws; if (!s) return;
+  const L = Math.hypot(c[0] - a[0], c[1] - a[1]);
+  const nBay = Math.max(1, Math.round(L / s.bay)), bay = L / nBay;
+  const yS = b.y0 + (b.y0 === 0 ? s.ground : 0.7);
+  const nFl = Math.max(0, Math.floor((b.y1 - yS - 0.6) / s.fh));
+  if (!nFl) return;
+  const zc = Math.max(1, (a[1] + c[1]) / 2);
+  const wpx = F * s.ww * bay / zc, hpx = F * s.wh * s.fh / zc;
+  const hk = hazeK(d), fade = 1 - hk * 0.72;
+  const lod = wpx < 1.6 || hpx < 1.4;
+  const skyRef = mixc([70, 86, 116], hazeAt(proj(a[0], 0, a[1])[0]), hk);
+  for (let f = 0; f < nFl; f++) {
+    const fl = hash2(b.id * 7 + fi, f * 31 + 1);
+    const y0 = yS + f * s.fh + (1 - s.wh) * s.fh * 0.45, y1 = y0 + s.wh * s.fh;
+    for (let k = 0; k < nBay; k++) {
+      const h = hash2(b.id * 131 + fi * 17 + k, f * 977 + 3);
+      let lit;
+      if (s.type === 'office' || s.type === 'glass') lit = fl < s.lit ? h < 0.86 : h < 0.05;
+      else lit = h < s.lit;
+      const t0 = (k + (1 - s.ww) / 2) / nBay, t1 = (k + (1 + s.ww) / 2) / nBay;
+      const xa = lerp(a[0], c[0], t0), za = lerp(a[1], c[1], t0), xb = lerp(a[0], c[0], t1), zb = lerp(a[1], c[1], t1);
+      if (lod) {
+        if (!lit) continue;
+        const p = proj((xa + xb) / 2, (y0 + y1) / 2, (za + zb) / 2);
+        const col = mixc(winCol(h, s.warm), hazeAt(p[0]), hk * 0.55);
+        ctx.fillStyle = rgba(col, (0.30 + 0.55 * hash2(h * 1e7, 9)) * fade);
+        ctx.fillRect(p[0] - 0.5, p[1] - 0.5, Math.max(1, wpx), Math.max(1, hpx));
+        continue;
+      }
+      const q = [proj(xa, y0, za), proj(xb, y0, zb), proj(xb, y1, zb), proj(xa, y1, za)];
+      if (lit) {
+        const br = 0.62 + 0.38 * hash2(h * 1e7, 13);
+        const col = mixc(winCol(h, s.warm).map(v => v * br), hazeAt(q[0][0]), hk * 0.55);
+        ctx.fillStyle = rgba(col, 0.95 * fade + 0.05);
+      } else {
+        ctx.fillStyle = rgba(mixc(mul3(base, 0.72), skyRef, s.type === 'glass' ? 0.42 : 0.22));
+      }
+      poly(ctx, q); ctx.fill();
+    }
+  }
+}
+function drawBox(b, d) {
+  const P = b.pts;
+  const cx = (P[0][0] + P[1][0] + P[2][0] + P[3][0]) / 4, cz = (P[0][1] + P[1][1] + P[2][1] + P[3][1]) / 4;
+  const hk = hazeK(d);
+  for (let i = 0; i < 4; i++) {
+    const a = P[i], c = P[(i + 1) % 4];
+    let nx = c[1] - a[1], nz = a[0] - c[0];
+    const mx = (a[0] + c[0]) / 2, mz = (a[1] + c[1]) / 2;
+    if (nx * (mx - cx) + nz * (mz - cz) < 0) { nx = -nx; nz = -nz; }
+    const nl = Math.hypot(nx, nz); nx /= nl; nz /= nl;
+    if (-(nx * mx + nz * mz) <= 0) continue;
+    const q = [proj(a[0], b.y0, a[1]), proj(c[0], b.y0, c[1]), proj(c[0], b.y1, c[1]), proj(a[0], b.y1, a[1])];
+    const Xm = (q[0][0] + q[1][0]) / 2;
+    const L = vertLight(nx, nz);
+    let base = [b.alb[0] * L[0] * 255, b.alb[1] * L[1] * 255, b.alb[2] * L[2] * 255];
+    if (b.ws && b.ws.type === 'glass') {            // curtain wall: reflects the sky, more so facing the glow
+      const k = Math.max(0, nx * GLOW[0] + nz * GLOW[1]);
+      base = mixc(base, mixc([66, 80, 108], [196, 150, 132], k * k), 0.55);
+    }
+    base = mixc(base, hazeAt(Xm), hk);
+    const yb = (q[0][1] + q[1][1]) / 2, yt = (q[2][1] + q[3][1]) / 2;
+    const g = ctx.createLinearGradient(0, yb, 0, Math.min(yt, yb - 0.5));
+    const up = b.y0 === 0 ? (1 - hk) : 0, hgt = b.y1 - b.y0;
+    g.addColorStop(0, rgba(add3(base, [80 * up * b.alb[0], 50 * up * b.alb[1], 22 * up * b.alb[2]])));
+    g.addColorStop(clamp(12 / hgt, 0.01, 0.9), rgba(base));
+    g.addColorStop(1, rgba(mixc(base, [150, 160, 182], 0.05)));
+    ctx.fillStyle = g; poly(ctx, q); ctx.fill();
+    drawWindows(b, a, c, nx, nz, d, i, base);
+    if (b.crown) {   // lit crown band on some towers
+      const y0 = b.y1 - 4.5, y1 = b.y1 - 1.2;
+      const qq = [proj(a[0], y0, a[1]), proj(c[0], y0, c[1]), proj(c[0], y1, c[1]), proj(a[0], y1, a[1])];
+      ctx.fillStyle = rgba(mixc([236, 228, 210], hazeAt(Xm), hk * 0.6), 0.75); poly(ctx, qq); ctx.fill();
+    }
+  }
+  if (b.y1 < CAM_H - 0.3) {
+    const r4 = P.map(p => proj(p[0], b.y1, p[1]));
+    const col = mixc([b.alb[0] * ROOF_L[0] * 220, b.alb[1] * ROOF_L[1] * 220, b.alb[2] * ROOF_L[2] * 220], hazeAt(r4[0][0]), hk);
+    ctx.fillStyle = rgba(col); poly(ctx, r4); ctx.fill();
+    if (d < 2200) { ctx.strokeStyle = rgba(mixc(col, [190, 196, 210], 0.22), 0.7); ctx.lineWidth = Math.max(0.5, F * 0.35 / d); ctx.stroke(); }
+  }
+  if (b.tower && b.y1 > 120 && !b.redDone) {   // aviation warning lights
+    for (const k of [0, 2]) {
+      const p = proj(P[k][0], b.y1 + 1, P[k][1]);
+      const gg = ctx.createRadialGradient(p[0], p[1], 0, p[0], p[1], 7);
+      gg.addColorStop(0, 'rgba(255,120,96,0.95)'); gg.addColorStop(0.3, 'rgba(230,70,60,0.45)'); gg.addColorStop(1, 'rgba(200,40,40,0)');
+      ctx.fillStyle = gg; ctx.fillRect(p[0] - 8, p[1] - 8, 16, 16);
+    }
+  }
+}
+function glowBlob(x, y, r, col, a) {
+  const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+  g.addColorStop(0, rgba(col, a)); g.addColorStop(0.35, rgba(col, a * 0.45)); g.addColorStop(1, rgba(col, 0));
+  ctx.fillStyle = g; ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+}
+function drawStreet(it) {
+  const { p0, p1, d } = it;
+  const len = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
+  const n = d > 3500 ? 1 : Math.max(2, Math.round(len / 34));
+  const hk = hazeK(d);
+  ctx.save(); ctx.globalCompositeOperation = 'screen';
+  for (let k = 0; k < n; k++) {
+    const t = (k + 0.5) / n, x = lerp(p0[0], p1[0], t), z = lerp(p0[1], p1[1], t);
+    if (z < 90) continue;
+    const p = proj(x, 2.5, z), r = Math.max(3, F * 15 / z);
+    const col = mixc([255, 172, 96], hazeAt(p[0]), hk * 0.5);
+    glowBlob(p[0], p[1], r, col, 0.16 * (1 - hk * 0.6));
+    if (d < 2600) {   // the lamp itself
+      const lp = proj(x + 6, 8.5, z), lr = Math.max(1.2, F * 0.9 / z);
+      glowBlob(lp[0], lp[1], lr * 3, [255, 210, 150], 0.55 * (1 - hk));
+    }
+  }
+  ctx.restore();
+}
+
+// ---------- 4. the civic hall ----------
+function drawHall() {
+  const H0 = HALL;
+  const S = (x, y, z) => proj(x, y, z);
+  const fl = (x0, x1, y0, y1, z, col) => { const a = S(x0, y1, z), b = S(x1, y0, z); ctx.fillStyle = col; ctx.fillRect(a[0], a[1], b[0] - a[0], b[1] - a[1]); };
+  // roof (seen from above), then side return on the left (faces the glow), then facade
+  const roof = [S(H0.x0, H0.h, H0.z0), S(H0.x1, H0.h, H0.z0), S(H0.x1, H0.h, H0.z1), S(H0.x0, H0.h, H0.z1)];
+  ctx.fillStyle = 'rgb(58,62,74)'; poly(ctx, roof); ctx.fill();
+  // rooftop plant room, set back
+  {
+    const r2 = [S(-40, H0.h, 446), S(30, H0.h, 446), S(30, H0.h + 3.2, 446), S(-40, H0.h + 3.2, 446)];
+    ctx.fillStyle = 'rgb(52,56,68)'; poly(ctx, r2); ctx.fill();
+    const r3 = [S(-40, H0.h + 3.2, 446), S(30, H0.h + 3.2, 446), S(30, H0.h + 3.2, 462), S(-40, H0.h + 3.2, 462)];
+    ctx.fillStyle = 'rgb(70,75,88)'; poly(ctx, r3); ctx.fill();
+  }
+  // left return of the main block, visible since the hall is left of the axis? (x0<0 -> its left face faces away; skip)
+  // main facade with floodlight gradient
+  const fa = S(H0.x0, H0.h, H0.z0), fb = S(H0.x1, 0, H0.z0);
+  const g = ctx.createLinearGradient(0, fb[1], 0, fa[1]);
+  g.addColorStop(0, 'rgb(224,190,150)'); g.addColorStop(0.18, 'rgb(170,140,112)'); g.addColorStop(0.65, 'rgb(104,92,86)'); g.addColorStop(1, 'rgb(96,90,92)');
+  ctx.fillStyle = g; ctx.fillRect(fa[0], fa[1], fb[0] - fa[0], fb[1] - fa[1]);
+  // tall windows between piers (2 storeys), warm interior
+  for (let x = H0.x0 + 3.0; x < H0.x1 - 4; x += 4.6) {
+    if (x > H0.px0 - 3 && x < H0.px1 + 1) continue;
+    const lit = hash2(Math.round(x * 10), 5) < 0.78;
+    const wc = lit ? 'rgb(255,214,160)' : 'rgb(70,64,66)';
+    fl(x + 0.9, x + 3.0, 3.2, 10.6, H0.z0 - 0.05, wc);
+    const lit2 = hash2(Math.round(x * 10), 9) < 0.62;
+    fl(x + 0.9, x + 3.0, 13.2, 19.4, H0.z0 - 0.05, lit2 ? 'rgb(250,206,150)' : 'rgb(74,68,70)');
+    // shadow line under the lintel
+    fl(x + 0.9, x + 3.0, 10.6, 11.0, H0.z0 - 0.06, 'rgba(60,40,30,0.5)');
+  }
+  // cornice + base course
+  fl(H0.x0, H0.x1, H0.h - 2.4, H0.h, H0.z0 - 0.3, 'rgba(150,136,128,1)');
+  fl(H0.x0, H0.x1, H0.h - 2.6, H0.h - 2.3, H0.z0 - 0.35, 'rgba(70,60,58,0.8)');
+  fl(H0.x0, H0.x1, 0, 1.4, H0.z0 - 0.2, 'rgba(236,206,166,1)');
+  // central pavilion: projecting, taller, with a deep colonnade
+  const pz = H0.pz;
+  const pr = [S(H0.px0, H0.ph, pz), S(H0.px1, H0.ph, pz), S(H0.px1, H0.ph, H0.z0 + 8), S(H0.px0, H0.ph, H0.z0 + 8)];
+  ctx.fillStyle = 'rgb(66,70,82)'; poly(ctx, pr); ctx.fill();
+  const pa = S(H0.px0, H0.ph, pz), pb = S(H0.px1, 0, pz);
+  const g2 = ctx.createLinearGradient(0, pb[1], 0, pa[1]);
+  g2.addColorStop(0, 'rgb(236,204,160)'); g2.addColorStop(0.25, 'rgb(182,152,122)'); g2.addColorStop(0.7, 'rgb(118,104,96)'); g2.addColorStop(1, 'rgb(110,102,100)');
+  ctx.fillStyle = g2; ctx.fillRect(pa[0], pa[1], pb[0] - pa[0], pb[1] - pa[1]);
+  // portico recess (dark, warm doors glowing within)
+  const ra = S(H0.px0 + 2, 23.5, pz - 0.05), rb = S(H0.px1 - 2, 1.6, pz - 0.05);
+  const g3 = ctx.createLinearGradient(0, rb[1], 0, ra[1]);
+  g3.addColorStop(0, 'rgb(120,86,62)'); g3.addColorStop(0.5, 'rgb(62,50,46)'); g3.addColorStop(1, 'rgb(40,36,38)');
+  ctx.fillStyle = g3; ctx.fillRect(ra[0], ra[1], rb[0] - ra[0], rb[1] - ra[1]);
+  for (let k = 0; k < 3; k++) {   // three tall doors
+    const x = lerp(H0.px0 + 6, H0.px1 - 9, k / 2);
+    fl(x, x + 3.0, 1.6, 7.2, pz - 0.06, 'rgb(255,206,148)');
+    fl(x - 0.4, x + 3.4, 9.5, 15.5, pz - 0.06, 'rgba(240,190,140,0.75)');
+  }
+  // columns (uplit), in front of the recess
+  for (let k = 0; k < 6; k++) {
+    const x = lerp(H0.px0 + 2.2, H0.px1 - 3.6, k / 5);
+    const ca = S(x, 23.5, pz - 1.2), cb = S(x + 1.4, 1.6, pz - 1.2);
+    const gc = ctx.createLinearGradient(0, cb[1], 0, ca[1]);
+    gc.addColorStop(0, 'rgb(255,226,186)'); gc.addColorStop(0.35, 'rgb(214,182,146)'); gc.addColorStop(1, 'rgb(142,126,114)');
+    ctx.fillStyle = gc; ctx.fillRect(ca[0], ca[1], cb[0] - ca[0], cb[1] - ca[1]);
+    ctx.fillStyle = 'rgba(40,30,26,0.35)'; ctx.fillRect(cb[0], ca[1], 2, cb[1] - ca[1]);   // shade side
+  }
+  // entablature + plain attic band (no lettering)
+  fl(H0.px0, H0.px1, 23.5, 26.5, pz - 1.3, 'rgb(170,150,132)');
+  fl(H0.px0, H0.px1, 26.5, H0.ph, pz - 0.2, 'rgb(124,112,106)');
+  fl(H0.px0, H0.px1, H0.ph - 1.2, H0.ph, pz - 0.5, 'rgb(150,138,130)');
+  // steps
+  for (let k = 0; k < 5; k++) {
+    const z = pz - 2 - k * 1.0;
+    const a = S(H0.px0 - 2 - k * 0.6, 1.6 - k * 0.32, z), b = S(H0.px1 + 2 + k * 0.6, 1.28 - k * 0.32, z);
+    ctx.fillStyle = k % 2 ? 'rgb(214,186,152)' : 'rgb(188,160,130)';
+    ctx.fillRect(a[0], a[1], b[0] - a[0], Math.max(1.5, b[1] - a[1]));
+  }
+  // floodlight pools at the foot of the facade
+  ctx.save(); ctx.globalCompositeOperation = 'screen';
+  for (let x = H0.x0 + 5; x < H0.x1; x += 9.2) {
+    const p = S(x, 1.0, H0.z0 - 1.5);
+    glowBlob(p[0], p[1], 22, [255, 200, 140], 0.22);
+  }
+  ctx.restore();
+}
+// ---------- 5. plaza: paving, trees, lamps ----------
+function drawPlaza() {
+  const S = proj;
+  const zf = 232, zb = HALL.pz - 1;
+  const pts = [S(CIVIC.x0, 0, zf), S(CIVIC.x1, 0, zf), S(CIVIC.x1, 0, zb), S(CIVIC.x0, 0, zb)];
+  const g = ctx.createLinearGradient(0, pts[0][1], 0, pts[2][1]);
+  g.addColorStop(0, 'rgb(58,58,66)'); g.addColorStop(0.7, 'rgb(84,76,74)'); g.addColorStop(1, 'rgb(128,106,90)');
+  ctx.fillStyle = g; poly(ctx, pts); ctx.fill();
+  // paving joints, faint
+  ctx.strokeStyle = 'rgba(30,30,38,0.25)'; ctx.lineWidth = 1;
+  for (let x = CIVIC.x0; x <= CIVIC.x1; x += 6) { const a = S(x, 0, zf), b = S(x, 0, zb); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+  // lamp pools on the paving
+  ctx.save(); ctx.globalCompositeOperation = 'screen';
+  const lamps = [];
+  for (let z = 252; z < 405; z += 19) for (const x of [-46, -14, 6, 38]) lamps.push([x + (z % 2) * 0.0, z]);
+  for (const [x, z] of lamps) {
+    const p = S(x, 0, z), rx = F * 7 / z, ry = rx * (46 / z);
+    ctx.save(); ctx.translate(p[0], p[1]); ctx.scale(1, Math.max(0.12, ry / rx));
+    glowBlob(0, 0, rx, [255, 196, 132], 0.28); ctx.restore();
+  }
+  ctx.restore();
+  // trees along both sides (rounded canopies, lit from below by the lamps)
+  const trees = [];
+  for (let z = 262; z < 400; z += 21) { trees.push([-92 + (z % 3), z]); trees.push([86 - (z % 3), z]); }
+  trees.sort((a, b) => b[1] - a[1]);
+  for (const [x, z] of trees) {
+    const base = S(x, 0, z), top = S(x, 9.5, z), r = F * 4.2 / z;
+    ctx.strokeStyle = 'rgba(30,28,30,0.9)'; ctx.lineWidth = Math.max(1, F * 0.35 / z);
+    ctx.beginPath(); ctx.moveTo(base[0], base[1]); ctx.lineTo(top[0], top[1] + r * 0.6); ctx.stroke();
+    const tr = makeRand(Math.round(x * 31 + z * 7));
+    for (let k = 0; k < 9; k++) {
+      const ox = tr.range(-0.7, 0.7) * r, oy = tr.range(-0.5, 0.4) * r, rr = r * tr.range(0.45, 0.7);
+      const gg = ctx.createRadialGradient(top[0] + ox, top[1] + oy + rr * 0.5, rr * 0.1, top[0] + ox, top[1] + oy, rr);
+      gg.addColorStop(0, 'rgba(120,104,72,0.95)'); gg.addColorStop(0.55, 'rgba(46,52,48,0.95)'); gg.addColorStop(1, 'rgba(34,40,42,0.0)');
+      ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(top[0] + ox, top[1] + oy, rr, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // lamp heads
+  ctx.save(); ctx.globalCompositeOperation = 'screen';
+  for (const [x, z] of lamps) { const p = S(x, 4.2, z); glowBlob(p[0], p[1], F * 0.5 / z * 3, [255, 226, 180], 0.8); }
+  ctx.restore();
+  // the street in front of the plaza: warm road surface and a few car lights
+  const rz0 = 212, rz1 = 230;
+  const road = [S(-400, 0, rz0), S(400, 0, rz0), S(400, 0, rz1), S(-400, 0, rz1)];
+  ctx.fillStyle = 'rgb(46,44,50)'; poly(ctx, road); ctx.fill();
+  ctx.save(); ctx.globalCompositeOperation = 'screen';
+  const cr = makeRand(991);
+  for (let k = 0; k < 9; k++) {
+    const x = cr.range(-120, 120), lane = cr() < 0.5;
+    const z = lane ? 216 : 225, p = S(x, 0.7, z);
+    const col = lane ? [255, 236, 210] : [255, 70, 50];
+    glowBlob(p[0], p[1], 9, col, 0.7); glowBlob(p[0] + (lane ? -11 : 11), p[1], 9, col, 0.7);
+  }
+  for (let x = -110; x <= 110; x += 26) { const p = S(x, 8, rz0 - 1); glowBlob(p[0], p[1], 16, [255, 214, 160], 0.65); }
+  ctx.restore();
+}
+
+// ---------- 6. render all, back to front ----------
+for (const it of items) {
+  if (it.kind === 'box') drawBox(it.b, it.d);
+  else if (it.kind === 'street') drawStreet(it);
+  else if (it.kind === 'hall') drawHall();
+  else if (it.kind === 'plaza') drawPlaza();
+}
+// city glow in the low haze along the horizon
+{
+  const g = ctx.createLinearGradient(0, CY - 120, 0, CY + 60);
+  g.addColorStop(0, 'rgba(255,190,140,0)'); g.addColorStop(0.75, 'rgba(255,186,132,0.10)'); g.addColorStop(1, 'rgba(255,186,132,0.0)');
+  ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = g; ctx.fillRect(0, CY - 120, W, 180); ctx.restore();
+}
+
+// ---------- 7. foreground parapet ----------
+{
+  const pl = newLayer(), pc = pl.getContext('2d');
+  const yL = 1478, yR = 1496;
+  pc.fillStyle = 'rgb(28,29,36)';
+  pc.beginPath(); pc.moveTo(0, yL + 16); pc.lineTo(W, yR + 16); pc.lineTo(W, H); pc.lineTo(0, H); pc.closePath(); pc.fill();
+  const cg = pc.createLinearGradient(0, yL, 0, yL + 18);
+  cg.addColorStop(0, 'rgb(104,110,128)'); cg.addColorStop(0.5, 'rgb(76,80,96)'); cg.addColorStop(1, 'rgb(46,47,58)');
+  pc.fillStyle = cg;
+  pc.beginPath(); pc.moveTo(0, yL); pc.lineTo(W, yR); pc.lineTo(W, yR + 17); pc.lineTo(0, yL + 17); pc.closePath(); pc.fill();
+  // concrete texture
+  const id = pc.getImageData(0, yL - 2, W, H - yL + 2), d = id.data;
+  for (let y = 0; y < H - yL + 2; y++) for (let x = 0; x < W; x++) {
+    const i = (y * W + x) * 4; if (!d[i + 3]) continue;
+    const m = 0.88 + 0.2 * fbm(nC, x * 0.02, y * 0.05, 3) + 0.05 * nB(x * 0.4, y * 0.4);
+    d[i] *= m; d[i + 1] *= m; d[i + 2] *= m;
+  }
+  pc.putImageData(id, 0, yL - 2);
+  ctx.drawImage(blurCopy(pl, 1.6), 0, 0);
+}
+
+// ---------- 8. bloom + finish ----------
+addBloom(ctx, { threshold: 0.66, knee: 0.14, radii: [4, 14, 48], weights: [0.5, 0.4, 0.3], strength: 0.75, tint: [255, 226, 196] });
+finish(ctx, {
+  grain: 0.03, seed: 31, vignette: 0.26, vcx: 0.5, vcy: 0.56, vr0: 0.35, vr1: 1.05,
+  grade: (r, g, b) => {
+    const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    const s = 0.9; r = l + (r - l) * s; g = l + (g - l) * s; b = l + (b - l) * s;
+    return [r, g, b];
+  },
+});
+window.__done = true;
+</script></body></html>

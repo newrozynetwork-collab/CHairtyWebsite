@@ -1,0 +1,67 @@
+{
+ "number": 10,
+ "slug": "10-digital-documentary",
+ "name": "Digital Documentary",
+ "tagline": "Investigations that open like films and read in daylight.",
+ "idea": "The homepage behaves like the opening of a documentary: a full-bleed film frame, a title card and a timeline that doubles as chapter navigation. Dark, graded imagery carries the emotion; every long read moves onto a light bone page for easy reading.",
+ "fit": "Your strongest material is testimony and long investigations. Supporters can enter through a four-minute film, while journalists and researchers get a calm, accessible reading page with findings and downloads.",
+ "informedBy": [
+  "Immersive report pages with a photo hero, chapters and downloads.",
+  "Video features with a poster frame and a clear play control.",
+  "A serif reading face for long text, sans-serif for the interface."
+ ],
+ "distinct": "The only film-led concept: a chapter timeline, timecodes, letterboxed frames and graded imagery on near-black, balanced by light bone reading pages.",
+ "palette": [
+  {
+   "name": "Night",
+   "hex": "#0D0F12",
+   "role": "Background"
+  },
+  {
+   "name": "Charcoal",
+   "hex": "#1A1D22",
+   "role": "Panels and cards"
+  },
+  {
+   "name": "Bone",
+   "hex": "#EDE7DD",
+   "role": "Text on dark, reading pages"
+  },
+  {
+   "name": "Amber",
+   "hex": "#F2A93B",
+   "role": "Accent, chapters, figures"
+  },
+  {
+   "name": "Ember",
+   "hex": "#C8442F",
+   "role": "Donate"
+  },
+  {
+   "name": "Smoke",
+   "hex": "#9AA0A8",
+   "role": "Secondary text"
+  }
+ ],
+ "fonts": {
+  "heading": {
+   "family": "Barlow Condensed",
+   "weights": "500, 600, 700"
+  },
+  "body": {
+   "family": "Source Serif 4",
+   "weights": "400, 400 italic"
+  },
+  "accent": {
+   "family": "Barlow",
+   "weights": "500, 600 (interface)"
+  }
+ },
+ "buttons": "Square uppercase buttons (ember Donate, bone primary, outlined secondary), an amber play control and amber-underlined links.",
+ "imageDirection": "Letterboxed, cinematic crops with a warm-dark grade, film grain and scrims behind text; captions on key frames; people only in silhouette.",
+ "navigation": "Slim transparent bar over the film frame with Watch and ember Donate; a sticky Watch bar on mobile.",
+ "visualCharacter": "Cinematic and dark, with calm bone reading pages",
+ "contentEmphasis": "Flagship investigations, short films, chaptered storytelling",
+ "bestFor": "Organisations with strong photography and video that want investigations to feel urgent and immersive.",
+ "tradeoffs": "Needs good imagery and regular short films; dark pages feel heavier and suit flagship stories more than routine news."
+}

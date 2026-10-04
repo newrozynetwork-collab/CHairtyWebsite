@@ -1,0 +1,34 @@
+{
+  "number": 4,
+  "slug": "04-bold-advocacy",
+  "name": "Bold Advocacy",
+  "tagline": "Campaign posters for the web: urgent, legible, unmistakable",
+  "idea": "A campaign-first site built like a protest poster. Huge condensed headlines, black-and-yellow duotone imagery and thick rules give every page urgency, while the petition, donation and newsletter actions sit right beside the evidence that makes them necessary.",
+  "fit": "Daybreak needs readers to act, not just read. Putting the open letter straight after the lead story, and keeping Donate one tap away on every screen, turns attention into signatures, gifts and sign-ups.",
+  "informedBy": [
+    "Actions at meaningful moments: petition after the story, donation band before the footer",
+    "A dated, typed latest list that scans by number, type and topic",
+    "On mobile, Donate stays visible and the lead image sits above the headline"
+  ],
+  "distinct": "The only concept that leads with action: poster-scale type, a petition band with a signature counter, and a sticky Add your name and Donate bar on mobile. No other direction is this direct.",
+  "palette": [
+    {"name": "Black", "hex": "#0B0B0B", "role": "Text, header and footer"},
+    {"name": "White", "hex": "#FFFFFF", "role": "Page background"},
+    {"name": "Signal yellow", "hex": "#FFE14D", "role": "Primary action and highlights"},
+    {"name": "Alarm red", "hex": "#D92B1C", "role": "Urgent actions and numbering"},
+    {"name": "Concrete", "hex": "#E9E6E1", "role": "Quiet section background"},
+    {"name": "Graphite", "hex": "#4A4744", "role": "Secondary text"}
+  ],
+  "fonts": {
+    "heading": {"family": "Anton", "weights": "400"},
+    "body": {"family": "Archivo", "weights": "400, 500, 700, 800"},
+    "accent": {"family": "", "weights": ""}
+  },
+  "buttons": "Hard-edged blocks in condensed capitals: yellow for Donate, red for urgent actions, outlines for secondary; links carry a thick underline.",
+  "imageDirection": "High-contrast black-and-yellow duotones for lead stories, red duotones for related content, halftone dots on report covers. Hard rectangular crops, always captioned and credited as sample illustrations.",
+  "navigation": "Thick black bar, condensed capitals, big yellow Donate block; mobile adds a menu button and a sticky action bar.",
+  "visualCharacter": "Loud, high-contrast campaign posters in black, yellow and red",
+  "contentEmphasis": "Campaigns and actions first, backed by stories and evidence",
+  "bestFor": "An organisation that wants to mobilise supporters fast: petitions, appeals and rapid-response campaigns",
+  "tradeoffs": "The loud register can feel less neutral to researchers and policymakers; it needs strong, regularly updated campaigns and disciplined image treatment."
+}

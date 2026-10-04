@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daybreak Rights Network · Research &amp; Evidence (design concept 03)</title>
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="home">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="duo-teal" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.035 0.30 0.93"/>
+        <feFuncG type="table" tableValues="0.19 0.47 0.96"/>
+        <feFuncB type="table" tableValues="0.22 0.48 0.95"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v11M6.5 10l5.5 5.5L17.5 10M5 20h14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M10 8.2v7.6l6-3.8z" fill="currentColor"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.5 7h17M3.5 12h17M3.5 17h17"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="1"/><path d="M3.5 10h17M8.5 3v4M15.5 3v4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.3"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3h7.5l4 4v14h-11.5z"/><path d="M14 3v4h4M9.5 12h5M9.5 15.5h5"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24"><path d="M8 5v14M4.5 15.5 8 19l3.5-3.5M16 19V5M12.5 8.5 16 5l3.5 3.5"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+  <symbol id="i-s1" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/></symbol>
+  <symbol id="i-s2" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/></symbol>
+  <symbol id="i-s3" viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></symbol>
+  <symbol id="i-s4" viewBox="0 0 24 24"><path d="M6 15c2-4 4-4 6 0s4 4 6 0"/></symbol>
+</svg>
+
+<header class="site-header" data-section="header">
+  <div class="wrap hdr-top">
+    <a class="brand" href="#" aria-label="Daybreak Rights Network, home">
+      <svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" fill="none" stroke="#1E2630" stroke-width="2"/><path d="M9.5 21.5a7.5 7.5 0 0 1 15 0z" fill="#0F6E6E"/><path d="M5 21.5h24" stroke="#1E2630" stroke-width="2"/><path d="M5 26.5h7" stroke="#F2B33D" stroke-width="2.5"/></svg>
+      <span class="brand-name">Daybreak <span class="rn">Rights Network</span></span>
+    </a>
+    <form class="search" role="search" action="#">
+      <label><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><span class="sr-only">Search</span><input type="search" placeholder="Search research, data and stories"></label>
+      <span class="scope">All content <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></span>
+      <button type="submit">Search</button>
+    </form>
+    <div class="hdr-actions">
+      <a class="btn btn--outline" href="#">Donate</a>
+      <button class="menu-btn" type="button" aria-label="Open menu"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
+    </div>
+  </div>
+  <nav class="wrap hdr-nav" aria-label="Primary">
+    <ul>
+      <li><a href="#">Our Work</a></li>
+      <li><a href="#">Where We Work</a></li>
+      <li><a href="#">Research</a></li>
+      <li><a href="#">News &amp; Stories</a></li>
+      <li><a href="#">Impact</a></li>
+      <li><a href="#">Get Involved</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <div class="util">
+      <a href="#"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Newsletter</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+  <div class="mobile-search">
+    <form class="search" role="search" action="#">
+      <label><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><span class="sr-only">Search</span><input type="search" placeholder="Search research, data and stories"></label>
+      <button type="submit" aria-label="Search"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </form>
+  </div>
+</header>
+
+<main>
+  <!-- HERO: lead investigation + featured report -->
+  <div class="hero">
+    <div class="wrap grid hero-grid">
+      <article class="lead" data-section="hero">
+        <div class="lead-top">
+          <p class="kicker">Feature · Detention &amp; Justice</p>
+        </div>
+        <h1><a href="#" style="text-decoration:none">The Long Wait: Families of the Missing Are Still Searching for Answers</a></h1>
+        <div class="lead-body">
+          <div class="lead-text">
+            <p class="dek">Over fourteen months, our researchers recorded the testimony of families whose relatives disappeared after detention. Their request to the authorities is simple: <span class="hl">tell us where they are.</span></p>
+            <p class="byline">By <b>Lena Ortiz</b>, Senior Researcher · <span style="white-space:nowrap">3 October 2026 · 12 min read</span></p>
+            <div class="ctas">
+              <a class="btn btn--primary" href="#">Read the feature <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--ghost" href="#"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Watch the short film (4 min)</a>
+            </div>
+          </div>
+          <figure class="lead-fig">
+            <div class="duo"><img src="../../shared/images/empty-chair.jpg" alt="A simple wooden chair and small side table beside a tall window, morning light falling across the floor."><a class="poster" href="#"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Watch the short film (4 min)</a></div>
+            <figcaption>A chair kept for a relative who has not come home. <span class="credit">Illustration: Daybreak (sample)</span></figcaption>
+          </figure>
+        </div>
+        <div class="findings">
+          <div class="findings-head">
+            <h2>Key findings</h2>
+            <span class="sample">Sample figures</span>
+          </div>
+          <div class="finding"><span class="num">64</span><span class="lbl">families interviewed</span></div>
+          <div class="finding"><span class="num">37</span><span class="lbl">written requests with no reply</span></div>
+          <div class="finding"><span class="num">11</span><span class="lbl">detention sites named by witnesses</span></div>
+        </div>
+      </article>
+
+      <aside class="report-panel" data-section="report" aria-labelledby="rep-title">
+        <div class="panel-top"><p class="kicker">New report</p><span class="meta">Children’s Rights</span></div>
+        <div class="record">
+          <div class="cover">
+            <span class="cover-bar"></span>
+            <div class="cover-body">
+              <span class="cover-org">Daybreak</span>
+              <span class="cover-title">Unequal Ground</span>
+            </div>
+            <div class="duo"><img src="../../shared/images/school-tent.jpg" alt=""></div>
+            <span class="cover-foot"><span>Report</span><i></i></span>
+          </div>
+          <dl>
+            <div><dt>Type</dt><dd>Report</dd></div>
+            <div><dt>Published</dt><dd>September 2026</dd></div>
+            <div><dt>Length</dt><dd>84 pages</dd></div>
+            <div><dt>File</dt><dd>PDF, 2.4 MB</dd></div>
+          </dl>
+        </div>
+        <h2 id="rep-title">Unequal Ground: Education for Displaced Children</h2>
+        <p class="summary">Based on interviews with 212 families, teachers and officials, this report examines why displaced children are left out of school and sets out twelve practical recommendations.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="#">Read the report <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--secondary" href="#"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>Download PDF (2.4 MB)</a>
+          <a class="link" href="#">Executive summary <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- RESEARCH LIBRARY (signature) -->
+  <section class="library" data-section="library" aria-labelledby="lib-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-no">02</span>
+        <h2 id="lib-title">Research library</h2>
+        <div class="aside"><a class="link" href="#">Browse all research <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+      </div>
+      <div class="toolbar" role="group" aria-label="Filter the research library">
+        <span class="tb-filter"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg>Filter by keyword</span>
+        <span class="tb-label">Filter</span>
+        <button class="chip" type="button"><span class="k">Topic</span>All <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <button class="chip" type="button"><span class="k">Region</span>All <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <button class="chip is-on" type="button"><span class="k">Type</span>Reports <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <button class="chip" type="button"><span class="k">Year</span>2026 <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <div class="tb-right"><span class="sort"><svg class="i" aria-hidden="true" style="width:15px;height:15px"><use href="#i-sort"/></svg>Sort: <b>Newest first</b></span></div>
+      </div>
+      <table class="lib">
+        <thead>
+          <tr>
+            <th class="c-pub" scope="col">Publication</th>
+            <th class="c-topic" scope="col">Topic</th>
+            <th class="c-type" scope="col">Type</th>
+            <th class="c-date" scope="col">Published <svg class="i" aria-hidden="true"><use href="#i-chev"/></svg></th>
+            <th class="c-dl" scope="col">File</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="pub"><span class="mini"><i></i><b></b><b></b><span class="duo"><img src="../../shared/images/school-tent.jpg" alt=""></span></span><a class="pub-title" href="#">Unequal Ground<span class="colon">:</span> <span class="sub">Education for Displaced Children</span></a><span class="m-meta">Report · September 2026</span><span class="is-new">New</span></div></td>
+            <td class="topic">Children’s Rights</td>
+            <td><span class="tag">Report</span></td>
+            <td class="date">September 2026</td>
+            <td class="c-dl"><a class="dl" href="#" aria-label="Download PDF"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>PDF</a></td>
+          </tr>
+          <tr>
+            <td><div class="pub"><span class="mini"><i></i><b></b><b></b><span class="duo"><img src="../../shared/images/road-dusk.jpg" alt=""></span></span><a class="pub-title" href="#">No Safe Harbour<span class="colon">:</span> <span class="sub">Detention Conditions for People Seeking Asylum</span></a><span class="m-meta">Report · June 2026</span></div></td>
+            <td class="topic">Refugees &amp; Migration</td>
+            <td><span class="tag">Report</span></td>
+            <td class="date">June 2026</td>
+            <td class="c-dl"><a class="dl" href="#" aria-label="Download PDF"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>PDF</a></td>
+          </tr>
+          <tr>
+            <td><div class="pub"><span class="mini"><i></i><b></b><b></b><span class="duo"><img src="../../shared/images/press-mics.jpg" alt=""></span></span><a class="pub-title" href="#">Silenced Voices<span class="colon">:</span> <span class="sub">Restrictions on Independent Media</span></a><span class="m-meta">Report · April 2026</span></div></td>
+            <td class="topic">Free Expression</td>
+            <td><span class="tag">Report</span></td>
+            <td class="date">April 2026</td>
+            <td class="c-dl"><a class="dl" href="#" aria-label="Download PDF"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>PDF</a></td>
+          </tr>
+          <tr>
+            <td><div class="pub"><span class="mini"><i></i><b></b><b></b><span class="duo"><img src="../../shared/images/heat-roofs.jpg" alt=""></span></span><a class="pub-title" href="#">Heat and Housing<span class="colon">:</span> <span class="sub">Climate Risk in Informal Settlements</span></a><span class="m-meta">Report · February 2026</span></div></td>
+            <td class="topic">Climate &amp; Environment</td>
+            <td><span class="tag">Report</span></td>
+            <td class="date">February 2026</td>
+            <td class="c-dl"><a class="dl" href="#" aria-label="Download PDF"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>PDF</a></td>
+          </tr>
+          <tr>
+            <td><div class="pub"><span class="mini mini--annual"><i></i><b></b><b></b><span class="duo"><img src="../../shared/images/valley-dawn.jpg" alt=""></span></span><a class="pub-title" href="#">Annual Review 2025</a><span class="m-meta">Annual review · January 2026</span></div></td>
+            <td class="topic none">All topics</td>
+            <td><span class="tag">Annual review</span></td>
+            <td class="date">January 2026</td>
+            <td class="c-dl"><a class="dl" href="#" aria-label="Download PDF"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>PDF</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DATA IN FOCUS + LATEST -->
+  <div class="band band--fog">
+    <div class="wrap grid">
+      <section class="data" data-section="data" aria-labelledby="data-title">
+        <div class="sec-head">
+          <span class="sec-no">03</span>
+          <h2 id="data-title">Data in focus</h2>
+        </div>
+        <figure class="figure-card">
+          <div class="fc-top">
+            <p class="kicker">Research brief · 30 Sep 2026</p>
+            <span class="sample">Sample data for illustration</span>
+          </div>
+          <h3>New Data Shows Heat Waves Hit Informal Settlements Hardest</h3>
+          <p class="fc-dek">Temperatures under metal roofs ran up to 9°C above official readings.</p>
+          <div class="fc-controls">
+            <div class="legend" aria-hidden="true">
+              <span><i style="background:#0F6E6E"></i>Under metal roofs</span>
+              <span><i style="background:#8A96A3"></i>Official reading</span>
+            </div>
+            <div class="seg" aria-label="View"><span class="on">Chart</span><span>Table</span><span>Data (CSV)</span></div>
+          </div>
+          <svg class="chart" viewBox="0 0 727 224" role="img" aria-labelledby="chart-t chart-d">
+            <title id="chart-t">Temperature under metal roofs compared with the official reading, by time of day (sample data)</title>
+            <desc id="chart-d">Sample data. 06:00 official 26, roofs 27; 09:00 official 30, roofs 34; 12:00 official 34, roofs 41; 15:00 official 36, roofs 45; 18:00 official 33, roofs 40; 21:00 official 29, roofs 32 degrees Celsius. The largest gap, 9 degrees, is at 15:00.</desc>
+            <rect x="396.4" y="30" width="130.0" height="164" fill="#FDF4DF"/>
+            <g stroke="#E3E8ED" stroke-width="1" shape-rendering="crispEdges"><path d="M44 161.7H727M44 128.9H727M44 96.1H727M44 63.3H727M44 30.5H727"/></g>
+            <path d="M44 194.5H727" stroke="#8A96A3" stroke-width="1" shape-rendering="crispEdges"/>
+            <g font-size="13" fill="#5B6673" text-anchor="end"><text x="34" y="198.5">0</text><text x="34" y="165.7">10</text><text x="34" y="132.9">20</text><text x="34" y="100.1">30</text><text x="34" y="67.3">40</text><text x="34" y="34.5">50</text></g>
+            <text x="34" y="14" font-size="13" fill="#5B6673" text-anchor="end">°C</text>
+            <g fill="#8A96A3"><path d="M75.9 194V112.7q0-4 4-4h16q4 0 4 4V194z"/><path d="M189.8 194V99.6q0-4 4-4h16q4 0 4 4V194z"/><path d="M303.6 194V86.5q0-4 4-4h16q4 0 4 4V194z"/><path d="M417.4 194V79.9q0-4 4-4h16q4 0 4 4V194z"/><path d="M531.3 194V89.8q0-4 4-4h16q4 0 4 4V194z"/><path d="M645.1 194V102.9q0-4 4-4h16q4 0 4 4V194z"/></g>
+            <g fill="#0F6E6E"><path d="M101.9 194V109.4q0-4 4-4h16q4 0 4 4V194z"/><path d="M215.8 194V86.5q0-4 4-4h16q4 0 4 4V194z"/><path d="M329.6 194V63.5q0-4 4-4h16q4 0 4 4V194z"/><path d="M443.4 194V50.4q0-4 4-4h16q4 0 4 4V194z"/><path d="M557.3 194V66.8q0-4 4-4h16q4 0 4 4V194z"/><path d="M671.1 194V93.0q0-4 4-4h16q4 0 4 4V194z"/></g>
+            <path d="M472.4 46.4h7v29.5h-7" stroke="#1E2630" stroke-width="1.25" fill="none"/>
+            <text x="485.4" y="66.2" font-size="15" font-weight="500" fill="#1E2630">+9°C</text>
+            <g font-size="13" fill="#1E2630" text-anchor="middle"><text x="455.4" y="39.4">45</text><text x="429.4" y="68.9">36</text></g>
+            <g font-size="13" fill="#4A5562" text-anchor="middle"><text x="100.9" y="216">06:00</text><text x="214.8" y="216">09:00</text><text x="328.6" y="216">12:00</text><text x="442.4" y="216">15:00</text><text x="556.3" y="216">18:00</text><text x="670.1" y="216">21:00</text></g>
+          </svg>
+          <svg class="chart chart--m" viewBox="0 0 326 214" role="img" aria-labelledby="chart-tm">
+          <title id="chart-tm">Temperature under metal roofs compared with the official reading, by time of day (sample data). Largest gap: 9 degrees at 15:00.</title>
+          <rect x="0" y="2" width="11" height="11" rx="1" fill="#0F6E6E"/><text x="18" y="12" font-size="13" fill="#333D49" font-family="IBM Plex Sans">Under metal roofs</text>
+          <rect x="168" y="2" width="11" height="11" rx="1" fill="#8A96A3"/><text x="186" y="12" font-size="13" fill="#333D49" font-family="IBM Plex Sans">Official reading</text>
+          <rect x="180.0" y="30" width="43.7" height="160" fill="#FDF4DF"/>
+          <g stroke="#E3E8ED" stroke-width="1" shape-rendering="crispEdges"><path d="M28 164.9H326M28 139.3H326M28 113.7H326M28 88.1H326M28 62.5H326"/></g>
+          <path d="M28 190.5H326" stroke="#8A96A3" stroke-width="1" shape-rendering="crispEdges"/>
+          <g font-size="13" fill="#5B6673" text-anchor="end"><text x="22" y="194.5">0</text><text x="22" y="130.5">25</text><text x="22" y="66.5">50</text></g>
+          <text x="22" y="52.0" font-size="13" fill="#5B6673" text-anchor="end">°C</text>
+          <g fill="#8A96A3"><path d="M36.8 190V126.4q0-3 3-3h9q3 0 3 3V190z"/><path d="M86.5 190V116.2q0-3 3-3h9q3 0 3 3V190z"/><path d="M136.2 190V106.0q0-3 3-3h9q3 0 3 3V190z"/><path d="M185.8 190V100.8q0-3 3-3h9q3 0 3 3V190z"/><path d="M235.5 190V108.5q0-3 3-3h9q3 0 3 3V190z"/><path d="M285.2 190V118.8q0-3 3-3h9q3 0 3 3V190z"/></g>
+          <g fill="#0F6E6E"><path d="M53.8 190V123.9q0-3 3-3h9q3 0 3 3V190z"/><path d="M103.5 190V106.0q0-3 3-3h9q3 0 3 3V190z"/><path d="M153.2 190V88.0q0-3 3-3h9q3 0 3 3V190z"/><path d="M202.8 190V77.8q0-3 3-3h9q3 0 3 3V190z"/><path d="M252.5 190V90.6q0-3 3-3h9q3 0 3 3V190z"/><path d="M302.2 190V111.1q0-3 3-3h9q3 0 3 3V190z"/></g>
+          <text x="201.8" y="66.8" font-size="14" font-weight="500" fill="#1E2630" text-anchor="middle">+9°C</text>
+          <g font-size="13" fill="#4A5562" text-anchor="middle"><text x="52.8" y="208">06:00</text><text x="102.5" y="208">09:00</text><text x="152.2" y="208">12:00</text><text x="201.8" y="208">15:00</text><text x="251.5" y="208">18:00</text><text x="301.2" y="208">21:00</text></g>
+          </svg>
+          <figcaption class="fc-foot">
+            <p><b>Fig. 1</b> <span class="long">Temperature under metal roofs compared with the official reading, by time of day, in °C. </span>Sample data for illustration.</p>
+            <a class="link" href="#">Read the research brief <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="latest" data-section="latest" aria-labelledby="latest-title">
+        <div class="sec-head">
+          <span class="sec-no">04</span>
+          <h2 id="latest-title">Latest</h2>
+          <div class="aside"><a class="link" href="#">All news &amp; stories <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </div>
+        <ol class="news">
+          <li>
+            <div class="meta-row"><time datetime="2026-10-02">2 Oct 2026</time><span class="type">News</span><span class="topic">Children’s Rights</span></div>
+            <h3><a href="#">Displaced Children Are Missing a Third School Year in a Row</a></h3>
+          </li>
+          <li>
+            <div class="meta-row"><time datetime="2026-09-30">30 Sep 2026</time><span class="type">Research brief</span><span class="topic">Climate &amp; Environment</span></div>
+            <h3><a href="#">New Data Shows Heat Waves Hit Informal Settlements Hardest</a> <span class="xref">Fig. 1</span></h3>
+          </li>
+          <li>
+            <div class="meta-row"><time datetime="2026-09-28">28 Sep 2026</time><span class="type">Statement</span><span class="topic">Free Expression</span></div>
+            <h3><a href="#">Journalists Detained for Covering Protests Must Be Released</a></h3>
+          </li>
+          <li>
+            <div class="meta-row"><time datetime="2026-09-25">25 Sep 2026</time><span class="type">Story</span><span class="topic">Women’s Rights</span></div>
+            <h3><a href="#">How Mobile Legal Clinics Are Helping Women Claim Land Rights</a></h3>
+          </li>
+        </ol>
+        <div class="more">
+          <a class="link" href="#">More stories <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- WHAT CHANGED + HOW WE WORK -->
+  <div class="band">
+    <div class="wrap grid">
+      <section class="impact" data-section="impact" aria-labelledby="impact-title">
+        <div class="sec-head">
+          <span class="sec-no">05</span>
+          <h2 id="impact-title">What changed in 2025</h2>
+          <div class="aside"><span class="sample">Sample figures for illustration</span></div>
+        </div>
+        <table class="itable">
+          <thead><tr><th scope="col">Area</th><th scope="col">Figure</th><th scope="col">Measure</th><th scope="col" style="text-align:right">Year</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="grp" rowspan="2">Evidence</th><td class="fig">42</td><td class="what">research publications</td><td class="yr">2025</td></tr>
+            <tr><td class="fig">1,350</td><td class="what">testimonies documented</td><td class="yr">2025</td></tr>
+            <tr><th scope="row" class="grp">Change</th><td class="fig">9</td><td class="what">policy changes supported</td><td class="yr">2025</td></tr>
+            <tr><th scope="row" class="grp">Support</th><td class="fig">27,000</td><td class="what">supporters in 60 countries</td><td class="yr">2025</td></tr>
+          </tbody>
+        </table>
+        <div class="case">
+          <div class="duo"><img src="../../shared/images/school-morning.jpg" alt="Children with backpacks, seen as silhouettes, walking along a dirt path towards a small school building in morning light."></div>
+          <div>
+            <p class="label">From evidence to change</p>
+            <p class="txt">After our 2025 report on school access, a regional education authority opened <span class="hl">1,400 new school places</span> for displaced children.</p>
+            <a class="link" href="#">How we measure impact <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="method" data-section="trust" aria-labelledby="method-title">
+        <div class="sec-head">
+          <span class="sec-no">06</span>
+          <h2 id="method-title">How we work</h2>
+        </div>
+        <ol class="steps">
+          <li><span class="n">01</span><h3>Evidence first</h3><p>Every finding is checked against multiple sources before we publish.</p></li>
+          <li><span class="n">02</span><h3>Independent</h3><p>We set our own research agenda and publish what we find.</p></li>
+          <li><span class="n">03</span><h3>Accountable</h3><p>We publish our methods, our finances and our corrections.</p></li>
+        </ol>
+        <ul class="doclinks">
+          <li><a href="#"><svg class="i" aria-hidden="true"><use href="#i-doc"/></svg>Our methodology</a></li>
+          <li><a href="#"><svg class="i" aria-hidden="true"><use href="#i-doc"/></svg>Funding &amp; finances</a></li>
+          <li><a href="#"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>Annual accounts 2025 (PDF)</a></li>
+          <li><a href="#"><svg class="i" aria-hidden="true"><use href="#i-doc"/></svg>Corrections policy</a></li>
+          <li><a href="#"><svg class="i" aria-hidden="true"><use href="#i-doc"/></svg>Safeguarding</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <!-- GET INVOLVED -->
+  <section class="act" data-section="act" aria-labelledby="act-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-no">07</span>
+        <h2 id="act-title">Get involved</h2>
+      </div>
+      <div class="act-grid">
+        <div class="card card--news">
+          <p class="label">Research digest</p>
+          <h3>The Daybreak Briefing</h3>
+          <p class="txt">One email every Friday: our latest research, stories and ways to act.</p>
+          <form class="field" action="#">
+            <label for="nl-email">Email address</label>
+            <div class="field-row"><input id="nl-email" type="email" placeholder="name@example.com"><button class="btn btn--primary" type="submit">Subscribe</button></div>
+          </form>
+          <p class="fine">We’ll never share your email. Unsubscribe anytime.</p>
+        </div>
+        <div class="card card--give">
+          <p class="label">Donate</p>
+          <h3>Support our work</h3>
+          <p class="txt">Your gift funds independent research and on-the-ground support.</p>
+          <div class="give-row">
+            <div class="freq" role="group" aria-label="Frequency"><span class="on">Monthly</span><span>One-off</span></div>
+            <div class="amounts" role="group" aria-label="Amount"><span>£10</span><span class="on">£25</span><span>£50</span><span>Other</span></div>
+          </div>
+          <a class="btn btn--primary btn--block" href="#">Give monthly <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" data-section="footer">
+  <div class="wrap grid ft-top">
+    <div class="ft-brand">
+      <a class="brand" href="#" aria-label="Daybreak Rights Network, home"><svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" fill="none" stroke="#DCE2E8" stroke-width="2"/><path d="M9.5 21.5a7.5 7.5 0 0 1 15 0z" fill="#5FB3AE"/><path d="M5 21.5h24" stroke="#DCE2E8" stroke-width="2"/><path d="M5 26.5h7" stroke="#F2B33D" stroke-width="2.5"/></svg><span class="brand-name">Daybreak Rights Network</span></a>
+      <p class="descr">Independent research and action for human rights</p>
+      <p class="mission">Daybreak Rights Network documents human rights conditions, stands with affected communities, and campaigns for accountability and lasting change.</p>
+    </div>
+    <nav class="ft-col" aria-label="Our Work"><h3>Our Work</h3><ul><li><a href="#">Topics</a></li><li><a href="#">Where We Work</a></li><li><a href="#">Research &amp; Reports</a></li><li><a href="#">News &amp; Stories</a></li><li><a href="#">Impact</a></li></ul></nav>
+    <nav class="ft-col" aria-label="Get Involved"><h3>Get Involved</h3><ul><li><a href="#">Campaigns</a></li><li><a href="#">Volunteer</a></li><li><a href="#">Events</a></li><li><a href="#">Newsletter</a></li><li><a href="#">Donate</a></li></ul></nav>
+    <nav class="ft-col" aria-label="About"><h3>About</h3><ul><li><a href="#">Mission</a></li><li><a href="#">Team</a></li><li><a href="#">Funding &amp; transparency</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></nav>
+    <nav class="ft-col" aria-label="Policies"><h3>Policies</h3><ul><li><a href="#">Privacy</a></li><li><a href="#">Cookies</a></li><li><a href="#">Safeguarding</a></li><li><a href="#">Accessibility</a></li><li><a href="#">Corrections</a></li></ul></nav>
+  </div>
+  <nav class="wrap ft-m" aria-label="Footer">
+    <a href="#">Our Work</a><a href="#">Get Involved</a><a href="#">About</a><a href="#">Policies</a>
+  </nav>
+  <div class="wrap ft-bottom">
+    <p class="contact"><a href="#">hello@daybreak.example</a><span class="sep"> · </span><span class="press">Press: <a href="#">press@daybreak.example</a></span></p>
+    <div class="social" aria-label="Social channels">
+      <a href="#" aria-label="Social channel 1"><svg class="i" aria-hidden="true"><use href="#i-s1"/></svg></a>
+      <a href="#" aria-label="Social channel 2"><svg class="i" aria-hidden="true"><use href="#i-s2"/></svg></a>
+      <a href="#" aria-label="Social channel 3"><svg class="i" aria-hidden="true"><use href="#i-s3"/></svg></a>
+      <a href="#" aria-label="Social channel 4"><svg class="i" aria-hidden="true"><use href="#i-s4"/></svg></a>
+    </div>
+    <p class="legal">Daybreak Rights Network (provisional name). Registered charity number to be confirmed. © 2026</p>
+  </div>
+</footer>
+</body>
+</html>

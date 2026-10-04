@@ -1,0 +1,92 @@
+[
+ {
+  "file": "empty-chair.jpg",
+  "title": "A chair by the window",
+  "alt": "A simple wooden chair and a small side table with a picture frame, seen from behind, beside a tall window; morning light falls across the wooden floor.",
+  "focal": {
+   "x": 0.66,
+   "y": 0.6
+  },
+  "calmArea": "upper-left",
+  "palette": [
+   "#4d443b",
+   "#6b635a",
+   "#918a7d",
+   "#bbaf9a",
+   "#efe4d1"
+  ],
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "window-silhouette.jpg",
+  "title": "Holding a photograph",
+  "alt": "Silhouette of a woman in profile at a window with a sheer curtain, head bowed, holding a small picture frame against her chest.",
+  "focal": {
+   "x": 0.6,
+   "y": 0.48
+  },
+  "calmArea": "left",
+  "palette": [
+   "#2c2825",
+   "#48423c",
+   "#969085",
+   "#c0baae",
+   "#e5ddd1"
+  ],
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "vigil-candles.jpg",
+  "title": "Candles on the steps",
+  "alt": "Dozens of candles in glass jars glowing on stone steps at night, with people standing out of focus behind them.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.64
+  },
+  "calmArea": "top",
+  "palette": [
+   "#111014",
+   "#3b2e25",
+   "#765c42",
+   "#ad8a62",
+   "#e0c091"
+  ],
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "community-table.jpg",
+  "title": "A shared table",
+  "alt": "A long table set with cups and a teapot under string lights in a courtyard at early evening, with people seated at the far end.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.56
+  },
+  "calmArea": "top",
+  "palette": [
+   "#362f29",
+   "#4a4645",
+   "#625e5b",
+   "#948476",
+   "#dfd0b5"
+  ],
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "city-dusk.jpg",
+  "title": "City at blue hour",
+  "alt": "A city skyline at blue hour seen from a rooftop, with lit windows, a floodlit civic building on a plaza and a calm evening sky.",
+  "focal": {
+   "x": 0.52,
+   "y": 0.64
+  },
+  "calmArea": "top",
+  "palette": [
+   "#1e2230",
+   "#3b3e49",
+   "#5a5960",
+   "#7f787c",
+   "#bca697"
+  ],
+  "credit": "Original illustration created for this proposal"
+ }
+]

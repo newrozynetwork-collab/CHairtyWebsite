@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components · Concept 08 · Community &amp; Participation</title>
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { margin: 0; padding: 24px; background: #FFF8EC; }
+  #components {
+    display: inline-flex; align-items: center; gap: 14px;
+    width: max-content; max-width: 640px; padding: 22px 22px; border-radius: 0;
+    background: var(--cream);
+  }
+  #components .btn { height: 50px; }
+  #components .btn--outline { background: var(--paper); color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); padding: 0 20px; }
+  #components .text-link { font-size: 17px; }
+  #components .action-chip { height: 46px; }
+</style>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.2s-7.6-4.5-7.6-10.1A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.6 2.5c0 5.6-7.6 10.1-7.6 10.1z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13.5M13 6.5l5.5 5.5-5.5 5.5"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8.4" r="3.2"/><path d="M3.2 19.6c0-3.5 2.6-6 5.8-6s5.8 2.5 5.8 6"/><circle cx="16.9" cy="9.4" r="2.6"/><path d="M15.6 13.7c.4-.1.9-.2 1.4-.2 2.6 0 4.6 2.2 4.6 5.1"/></symbol>
+  </defs>
+</svg>
+<div id="components">
+  <a class="btn btn--sun" href="#"><svg class="ic"><use href="#i-heart"/></svg>Donate</a>
+  <a class="btn btn--outline" href="#">Find a role</a>
+  <a class="text-link" href="#">Read the feature<svg class="ic"><use href="#i-arrow"/></svg></a>
+  <span class="action-chip"><span class="action-chip__ic is-coral"><svg class="ic"><use href="#i-people"/></svg></span>Join</span>
+</div>
+</body>
+</html>

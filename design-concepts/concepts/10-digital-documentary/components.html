@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components · Digital Documentary</title>
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { padding: 40px; background: var(--night); }
+  #components {
+    width: 640px; height: 132px; box-sizing: border-box; padding: 0 22px;
+    display: flex; align-items: center; gap: 18px;
+    background: var(--night); position: relative; overflow: hidden;
+  }
+  #components::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--amber) 0 27%, rgba(237, 231, 221, .2) 27%); }
+  #components .btn { height: 50px; padding: 0 22px; }
+  #components .btn-ghost { padding: 0 18px 0 8px; gap: 10px; }
+  #components .btn-ghost .ring { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--amber); color: var(--night); }
+  #components .btn-ghost .ring .ico { width: 12px; height: 12px; margin-left: 2px; }
+  #components .link { white-space: nowrap; }
+  #components .chip { height: 34px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<svg class="svg-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M6.5 3.8v16.4L20 12z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+</svg>
+<div id="components">
+  <a class="btn btn-ember" href="#">Donate</a>
+  <a class="btn btn-ghost" href="#"><span class="ring"><svg class="ico ico-fill"><use href="#i-play"/></svg></span>Watch</a>
+  <a class="link" href="#">More stories <svg class="ico"><use href="#i-arrow"/></svg></a>
+  <span class="chip">Detention &amp; Justice</span>
+</div>
+</body>
+</html>

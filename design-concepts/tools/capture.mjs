@@ -91,7 +91,7 @@ function pageQA() {
   out.fonts.sort((a, b) => b.chars - a.chars);
   // placeholder / leftover text
   const body = document.body.innerText;
-  out.placeholderHits = [...new Set((body.match(/lorem|ipsum|\bTODO\b|\bTBD\b|\bFIXME\b|placeholder text|xxx+|\[insert|undefined|NaN/gi) || []).map(s => s.toLowerCase()))];
+  out.placeholderHits = [...new Set([...(body.match(/\blorem\b|\bipsum\b|\bTODO\b|\bTBD\b|\bFIXME\b|placeholder text|\bx{3,}\b|\[insert/gi) || []), ...(body.match(/\bundefined\b|\bNaN\b|\[object Object\]/g) || [])].map(s => s.toLowerCase()))];
   // contrast check on solid backgrounds
   const parse = c => { const m = c.match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(/[ ,/]+/).filter(Boolean).map(Number); return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; };
   const lum = ({ r, g, b }) => { const f = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };

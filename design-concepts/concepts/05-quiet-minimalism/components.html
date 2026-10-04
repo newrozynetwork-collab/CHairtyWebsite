@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components · Quiet Minimalism</title>
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { background: var(--bone); }
+  #components { display: inline-flex; align-items: center; gap: 20px; padding: 22px 20px; background: var(--bone); }
+  #components .btn { padding: 0 22px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 22 10"><path d="M0 5h20.6M16.6 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+</svg>
+<div id="components">
+  <a class="btn btn-primary" href="#">Give monthly</a>
+  <a class="btn btn-secondary" href="#">Subscribe</a>
+  <a class="link" href="#">All research<svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <a class="tag" href="#">Detention &amp; Justice</a>
+</div>
+</body>
+</html>

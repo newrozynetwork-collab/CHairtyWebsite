@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daybreak Rights Network (provisional name) · Home</title>
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-home">
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.2s-7.6-4.5-7.6-10.1A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.6 2.5c0 5.6-7.6 10.1-7.6 10.1z"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8.4" r="3.2"/><path d="M3.2 19.6c0-3.5 2.6-6 5.8-6s5.8 2.5 5.8 6"/><circle cx="16.9" cy="9.4" r="2.6"/><path d="M15.6 13.7c.4-.1.9-.2 1.4-.2 2.6 0 4.6 2.2 4.6 5.1"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="3.2"/><path d="M3.5 10.2h17M8 3.5v4M16 3.5v4M8 14.4h2.2M13.8 14.4H16M8 17.4h2.2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 7.1c-2.4-1.7-5.4-2-8.5-1.2v12.4c3.1-.8 6.1-.5 8.5 1.2 2.4-1.7 5.4-2 8.5-1.2V5.9C17.4 5.1 14.4 5.4 12 7.1z"/><path d="M12 7.1v12.4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.3"/><path d="M15.3 15.3l5.2 5.2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13.5M13 6.5l5.5 5.5-5.5 5.5"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M7 9.8l5 5 5-5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8.6 5.9v12.2c0 .7.8 1.1 1.4.7l9.6-6.1a.8.8 0 0 0 0-1.4L10 5.2c-.6-.4-1.4 0-1.4.7z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.6V12l3 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="3"/><path d="M4.2 7.6l7.8 5.8 7.8-5.8"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.4 17.4h9.1a3 3 0 0 0 3-3V7.5a3 3 0 0 0-3-3h-9a3 3 0 0 0-3 3v12.4z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v10.6M7.6 10.4l4.4 4.4 4.4-4.4M5 19.5h14"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5.5v13M5.5 12h13"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5.5 12h13"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.2M12 7.9v.1"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.8l8-6.3 8 6.3V19a1.5 1.5 0 0 1-1.5 1.5H15v-5.4H9v5.4H5.5A1.5 1.5 0 0 1 4 19z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5.5 12.6l4 4 9-9.2"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.5 5.2 3.5 8.5s-1.2 6.1-3.5 8.5c-2.3-2.4-3.5-5.2-3.5-8.5s1.2-6.1 3.5-8.5z"/></symbol>
+    <symbol id="i-translate" viewBox="0 0 24 24"><path d="M4 4.5h9a1.5 1.5 0 0 1 1.5 1.5v5.2a1.5 1.5 0 0 1-1.5 1.5H8.6L5.5 15v-2.3H4a1.5 1.5 0 0 1-1.5-1.5V6A1.5 1.5 0 0 1 4 4.5z"/><path d="M17.6 9.4H20a1.5 1.5 0 0 1 1.5 1.5v5.2A1.5 1.5 0 0 1 20 17.6h-1.5v2.3l-3.1-2.3H11a1.5 1.5 0 0 1-1.5-1.5v-1"/></symbol>
+    <symbol id="i-research" viewBox="0 0 24 24"><path d="M12.6 20.5H6.5A1.5 1.5 0 0 1 5 19V5a1.5 1.5 0 0 1 1.5-1.5h6.9L18 8.1v2.4"/><path d="M13 3.6v4.6h4.8"/><circle cx="15.6" cy="15.6" r="3"/><path d="M17.8 17.8l2.4 2.4"/></symbol>
+    <symbol id="i-organise" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16.5" rx="2.6"/><path d="M9.2 4.5v-.6c0-.8.6-1.4 1.4-1.4h2.8c.8 0 1.4.6 1.4 1.4v.6M8.7 13.2l2.4 2.4 4.3-4.8"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="12" cy="6.8" rx="7" ry="2.8"/><path d="M5 6.8v5c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-5M5 11.8v5c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-5"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3.5" y="6.8" width="17" height="12.7" rx="3"/><circle cx="12" cy="13.1" r="3.3"/><path d="M8.6 6.8l1.2-2.2h4.4l1.2 2.2"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="3.2"/><path d="M10.4 9.6v4.8l4-2.4z"/></symbol>
+    <symbol id="i-rss" viewBox="0 0 24 24"><path d="M5.5 5.5a13 13 0 0 1 13 13M5.5 11a7.5 7.5 0 0 1 7.5 7.5"/><path d="M6.2 17.8v.1"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 14.6V4M7.6 8.2L12 3.8l4.4 4.4M5 12.6v5.9A2 2 0 0 0 7 20.5h10a2 2 0 0 0 2-2v-5.9"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10.2 13.8a4 4 0 0 0 5.6 0l3-3a4 4 0 0 0-5.6-5.6l-1 1"/><path d="M13.8 10.2a4 4 0 0 0-5.6 0l-3 3a4 4 0 0 0 5.6 5.6l1-1"/></symbol>
+    <!-- tile icons, 32 grid -->
+    <symbol id="t-give" viewBox="0 0 32 32"><path d="M26.5 16a10.5 10.5 0 1 1-3.1-7.4"/><path d="M23.4 3.7v4.9h-4.9"/><path d="M16 21.6s-5-3-5-6.7a2.8 2.8 0 0 1 5-1.7 2.8 2.8 0 0 1 5 1.7c0 3.7-5 6.7-5 6.7z" fill="#FF6B57"/></symbol>
+    <symbol id="t-sign" viewBox="0 0 32 32"><path d="M21.4 4.9a2.3 2.3 0 0 1 3.3 0l1.4 1.4a2.3 2.3 0 0 1 0 3.3L11.3 24.4l-6.1 1.5 1.5-6.1z" fill="#FFC93C"/><path d="M19.2 7.1l4.7 4.7"/><path d="M15.6 27.4c1.5-1.3 2.8-1.3 3.6 0 .8 1.3 2.1 1.3 3.5 0 1.3-1.2 2.6-1.2 4.1 0"/></symbol>
+    <symbol id="t-volunteer" viewBox="0 0 32 32"><circle cx="12" cy="11" r="4.2"/><path d="M4.4 26.5c0-4.6 3.4-7.9 7.6-7.9s7.6 3.3 7.6 7.9"/><circle cx="22.6" cy="12.6" r="3.4" fill="#2E8B57"/><path d="M20.6 18.9c.6-.2 1.3-.3 2-.3 3.4 0 6 2.8 6 6.6"/></symbol>
+    <symbol id="t-attend" viewBox="0 0 32 32"><rect x="4.5" y="7" width="23" height="20.5" rx="4.2"/><path d="M4.5 13h23M10.5 4v5.5M21.5 4v5.5"/><rect x="9.6" y="17" width="5.6" height="5.6" rx="1.4" fill="#FF6B57"/></symbol>
+    <symbol id="t-learn" viewBox="0 0 32 32"><path d="M16 9.6c-3.2-2.3-7.2-2.7-11.3-1.6v16.4c4.1-1.1 8.1-.7 11.3 1.6 3.2-2.3 7.2-2.7 11.3-1.6V8c-4.1-1.1-8.1-.7-11.3 1.6z"/><path d="M16 9.6v16.4"/></symbol>
+    <!-- organic shapes -->
+    <symbol id="blob-a" viewBox="0 0 200 200"><path d="M159.6 46.4c16.6 18.9 24 45.8 17.7 70.2-6.3 24.4-26.3 46.3-50.7 57.3-24.4 11-53.2 11.1-75.4-1.3C29 160.2 13.4 135.3 11.5 109.6 9.6 83.9 21.4 57.4 40.7 39.3 60 21.2 86.8 11.5 111.1 14.4c24.3 2.9 31.9 13.1 48.5 32z"/></symbol>
+    <symbol id="blob-b" viewBox="0 0 200 200"><path d="M151.4 33.6c21.4 15.5 34.7 42.7 33.2 69.3-1.5 26.6-17.8 52.6-40.7 67.2-22.9 14.6-52.4 17.8-77.1 8.1-24.7-9.7-44.6-32.3-51.7-57.6-7.1-25.3-1.4-53.3 14.4-73.3C45.3 27.3 71.2 15.3 96.7 14.1c25.5-1.2 33.3 4 54.7 19.5z"/></symbol>
+    <symbol id="swash" viewBox="0 0 300 26" preserveAspectRatio="none"><path d="M4.6 14.2C63 7.4 146 4.6 295.4 7.6c2.6.1 3.2 4.1.6 4.6-117.4 4.3-203 6.4-288.6 9.9-3.6.1-6.4-7.2-2.8-7.9z"/></symbol>
+  </defs>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page">
+
+<header class="site-header" data-section="header">
+  <div class="wrap header-top">
+    <a class="brand" href="index.html" aria-label="Daybreak Rights Network, home">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="15" fill="#1D2B3A"/><path d="M13.5 29.5a10.5 10.5 0 0 1 21 0z" fill="#FFC93C"/><path d="M10 29.5h28" stroke="#FFF8EC" stroke-width="2.6" stroke-linecap="round"/><path d="M16 35h16" stroke="#FFF8EC" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <span class="brand-text">
+        <span class="brand-name">Daybreak <span class="brand-name-rest">Rights Network</span></span>
+        <span class="brand-desc">Independent research and action for human rights</span>
+      </span>
+    </a>
+    <nav class="action-chips" aria-label="Ways to take part">
+      <a class="action-chip" href="#give"><span class="action-chip__ic is-sun"><svg class="ic"><use href="#i-heart"/></svg></span>Give</a>
+      <a class="action-chip" href="#join"><span class="action-chip__ic is-coral"><svg class="ic"><use href="#i-people"/></svg></span>Join</a>
+      <a class="action-chip" href="#attend"><span class="action-chip__ic is-sky"><svg class="ic"><use href="#i-calendar"/></svg></span>Attend</a>
+      <a class="action-chip" href="#learn"><span class="action-chip__ic is-leaf"><svg class="ic"><use href="#i-book"/></svg></span>Learn</a>
+    </nav>
+    <a class="btn btn--sun btn--donate" href="#give"><svg class="ic"><use href="#i-heart"/></svg>Donate</a>
+    <button class="menu-btn" type="button" aria-label="Open menu"><svg class="ic"><use href="#i-menu"/></svg><span>Menu</span></button>
+  </div>
+  <div class="wrap">
+    <nav class="nav-bar" aria-label="Main">
+      <ul class="nav-list">
+        <li><a href="#">Our Work<svg class="ic ic--chev"><use href="#i-chev"/></svg></a></li>
+        <li><a href="#">Where We Work<svg class="ic ic--chev"><use href="#i-chev"/></svg></a></li>
+        <li><a href="#">Research</a></li>
+        <li><a href="#">News &amp; Stories</a></li>
+        <li><a href="#">Impact</a></li>
+        <li><a href="#">Get Involved<svg class="ic ic--chev"><use href="#i-chev"/></svg></a></li>
+        <li><a href="#">About<svg class="ic ic--chev"><use href="#i-chev"/></svg></a></li>
+      </ul>
+      <ul class="nav-util">
+        <li><a href="#newsletter"><svg class="ic"><use href="#i-mail"/></svg>Newsletter</a></li>
+        <li><a href="#"><svg class="ic"><use href="#i-chat"/></svg>Contact</a></li>
+        <li><a class="nav-search" href="#" aria-label="Search"><svg class="ic"><use href="#i-search"/></svg><span>Search</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" data-section="hero" aria-labelledby="hero-title">
+    <svg class="hero-blob hero-blob--b" aria-hidden="true"><use href="#blob-b"/></svg>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow--leaf"><span class="eyebrow__dot"></span>Get involved</p>
+        <h1 id="hero-title">Stand with families who are <span class="swash">still waiting<svg aria-hidden="true"><use href="#swash"/></svg></span></h1>
+        <p class="hero-lede">Daybreak Rights Network documents human rights conditions, stands with affected communities, and campaigns for accountability and lasting change.</p>
+        <div class="supporters">
+          <span class="avatars" aria-hidden="true">
+            <span class="av av--coral"><svg viewBox="0 0 40 40"><circle cx="20" cy="16" r="6.5"/><path d="M7 40c0-8 5.8-13 13-13s13 5 13 13"/></svg></span>
+            <span class="av av--sky"><svg viewBox="0 0 40 40"><circle cx="20" cy="16" r="6.5"/><path d="M7 40c0-8 5.8-13 13-13s13 5 13 13"/></svg></span>
+            <span class="av av--sun"><svg viewBox="0 0 40 40"><circle cx="20" cy="16" r="6.5"/><path d="M7 40c0-8 5.8-13 13-13s13 5 13 13"/></svg></span>
+            <span class="av av--leaf av--extra"><svg viewBox="0 0 40 40"><circle cx="20" cy="16" r="6.5"/><path d="M7 40c0-8 5.8-13 13-13s13 5 13 13"/></svg></span>
+          </span>
+          <p class="supporters__text"><strong>27,000 supporters in 60 countries</strong><span class="sample-note">Sample figure</span></p>
+        </div>
+      </div>
+      <ul class="tiles" aria-label="Four ways to take part">
+        <li><a class="tile tile--give" href="#give">
+          <span class="tile__icon"><svg class="ic ic--tile"><use href="#t-give"/></svg></span>
+          <span class="tile__go"><svg class="ic"><use href="#i-arrow"/></svg></span>
+          <span class="tile__body"><span class="tile__title">Give monthly</span><span class="amounts" aria-label="Suggested amounts"><span>£10</span><span class="is-picked">£25</span><span>£50</span><span>Other</span></span></span>
+        </a></li>
+        <li><a class="tile tile--sign" href="#join">
+          <span class="tile__icon"><svg class="ic ic--tile"><use href="#t-sign"/></svg></span>
+          <span class="tile__go"><svg class="ic"><use href="#i-arrow"/></svg></span>
+          <span class="tile__body"><span class="tile__title">Add your name</span><span class="tile__text"><strong>Every Child in Class</strong><br>18,240 signatures <span class="sample-inline">· sample</span></span></span>
+        </a></li>
+        <li><a class="tile tile--volunteer" href="#join">
+          <span class="tile__icon"><svg class="ic ic--tile"><use href="#t-volunteer"/></svg></span>
+          <span class="tile__go"><svg class="ic"><use href="#i-arrow"/></svg></span>
+          <span class="tile__body"><span class="tile__title">Volunteer</span><span class="tile__text">Translate, research, organise or fundraise.</span></span>
+        </a></li>
+        <li><a class="tile tile--attend" href="#attend">
+          <span class="tile__icon"><svg class="ic ic--tile"><use href="#t-attend"/></svg></span>
+          <span class="tile__go"><svg class="ic"><use href="#i-arrow"/></svg></span>
+          <span class="tile__body"><span class="tile__title">Attend the briefing</span><span class="tile__text">Education in Displacement<br>12 November 2026</span></span>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="feature" data-section="feature" aria-labelledby="why-title">
+    <div class="wrap">
+      <article class="why-card">
+        <figure class="why-media">
+          <img class="img-warm" src="../../shared/images/empty-chair.jpg" alt="A simple wooden chair and small side table beside a tall window, morning light falling across the floor." style="object-position:66% 60%">
+          <figcaption class="cap-chip">A chair kept for a relative who has not come home. <span>Illustration: Daybreak (sample)</span></figcaption>
+          <a class="watch-pill" href="#"><span class="play-dot"><svg class="ic"><use href="#i-play"/></svg></span>Watch the short film (4 min)</a>
+        </figure>
+        <p class="cap-chip why-cap-m" aria-hidden="true">A chair kept for a relative who has not come home. <span>Illustration: Daybreak (sample)</span></p>
+        <div class="why-body">
+          <p class="why-meta"><span class="label label--coral">Why it matters</span><span class="kicker">Feature · Detention &amp; Justice</span></p>
+          <h2 id="why-title" class="why-title">The Long Wait: Families of the Missing Are Still Searching for Answers</h2>
+          <p class="why-dek">Over fourteen months, our researchers recorded the testimony of families whose relatives disappeared after detention. Their request to the authorities is simple: tell us where they are.</p>
+          <p class="byline"><span class="byline__av" aria-hidden="true">LO</span><span>By Lena Ortiz, Senior Researcher<span class="byline__sep"> · </span><span class="byline__meta">3 October 2026 · 12 min read</span></span></p>
+          <div class="btn-row">
+            <a class="btn btn--navy" href="story.html">Read the feature<svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost btn--watch" href="#"><span class="play-dot"><svg class="ic"><use href="#i-play"/></svg></span>Watch the short film (4 min)</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="wrap duo">
+    <section class="mini-card mini-card--event" id="attend" data-section="event" aria-labelledby="event-title">
+      <div class="mini-media">
+        <img src="../../shared/images/city-dusk.jpg" alt="A city skyline at blue hour seen from a rooftop, windows lit, a calm sky above." style="object-position:50% 65%">
+        <span class="date-badge" aria-hidden="true"><span class="date-badge__d">12</span><span class="date-badge__m">Nov</span></span>
+      </div>
+      <div class="mini-body">
+        <div class="mini-top"><p class="eyebrow eyebrow--sky"><span class="eyebrow__dot"></span>Public briefing</p><a class="btn btn--navy btn--sm" href="#">Register</a></div>
+        <h3 id="event-title" class="mini-title">Education in Displacement</h3>
+        <ul class="meta-list">
+          <li><svg class="ic"><use href="#i-clock"/></svg><span>12 November 2026<span class="sep"> · </span><span class="t">18:00 GMT</span></span></li>
+          <li><svg class="ic"><use href="#i-globe"/></svg>Online and in person</li>
+        </ul>
+      </div>
+    </section>
+    <section class="mini-card mini-card--volunteer" id="join" data-section="volunteer" aria-labelledby="vol-title">
+      <div class="mini-media">
+        <img src="../../shared/images/community-table.jpg" alt="A long table with cups and a teapot under string lights in a courtyard at early evening." style="object-position:50% 60%">
+      </div>
+      <div class="mini-body">
+        <div class="mini-top"><p class="eyebrow eyebrow--leaf"><span class="eyebrow__dot"></span>Volunteer roles</p><a class="btn btn--leaf btn--sm" href="#">Find a role</a></div>
+        <h3 id="vol-title" class="mini-title">Volunteer with us</h3>
+        <ul class="roles">
+          <li>Translate</li>
+          <li>Research</li>
+          <li>Organise</li>
+          <li>Fundraise</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="impact" id="give" data-section="impact" aria-labelledby="impact-title">
+    <div class="wrap">
+      <div class="impact-panel">
+        <div class="impact-story">
+          <p class="eyebrow eyebrow--white"><span class="eyebrow__dot"></span>What changed in 2025</p>
+          <h2 id="impact-title" class="section-title">Your support at work</h2>
+          <p class="impact-quote">After our 2025 report on school access, a regional education authority opened 1,400 new school places for displaced children.</p>
+          <div class="impact-actions">
+            <a class="btn btn--sun" href="#"><svg class="ic"><use href="#i-heart"/></svg>Give monthly</a>
+          </div>
+        </div>
+        <figure class="impact-media">
+          <svg class="media-blob" aria-hidden="true"><use href="#blob-b"/></svg>
+          <img class="img-warm" src="../../shared/images/school-morning.jpg" alt="Children with backpacks, seen as silhouettes, walking along a dirt path towards a small school building in morning light." style="object-position:55% 60%">
+        </figure>
+        <div class="impact-figures">
+          <p class="sample-label"><svg class="ic"><use href="#i-info"/></svg>Sample figures for illustration</p>
+          <dl class="figures">
+            <div><dt>42</dt><dd>research publications</dd></div>
+            <div><dt>1,350</dt><dd>testimonies documented</dd></div>
+            <div><dt>9</dt><dd>policy changes supported</dd></div>
+            <div><dt>27,000</dt><dd>supporters in 60 countries</dd></div>
+          </dl>
+          <a class="text-link" href="#">How we measure impact<svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap learn" id="learn">
+    <section class="latest" data-section="latest" aria-labelledby="latest-title">
+      <div class="section-head">
+        <h2 id="latest-title" class="section-title">Latest news &amp; stories</h2>
+        <a class="text-link" href="#">All news &amp; stories<svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="round-link" href="#" aria-label="All news &amp; stories"><svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ul class="story-list">
+        <li class="story-row">
+          <img src="../../shared/images/school-tent.jpg" alt="Inside a canvas tent used as a classroom: low benches, a blackboard and colourful backpacks hanging on a line." style="object-position:50% 55%">
+          <div>
+            <p class="story-meta"><span class="tag tag--sun">News</span><span class="topic">Children's Rights ·</span>2 Oct 2026</p>
+            <h3 class="story-title"><a href="#">Displaced Children Are Missing a Third School Year in a Row</a></h3>
+          </div>
+        </li>
+        <li class="story-row">
+          <img src="../../shared/images/heat-roofs.jpg" alt="Dense corrugated-metal roofs of an informal settlement under a white, hazy sky." style="object-position:50% 60%">
+          <div>
+            <p class="story-meta"><span class="tag tag--sky">Research brief</span><span class="topic">Climate &amp; Environment ·</span>30 Sep 2026</p>
+            <h3 class="story-title"><a href="#">New Data Shows Heat Waves Hit Informal Settlements Hardest</a></h3>
+          </div>
+        </li>
+        <li class="story-row">
+          <img src="../../shared/images/press-mics.jpg" alt="A cluster of microphones at the edge of a podium in front of a blurred hall." style="object-position:50% 55%">
+          <div>
+            <p class="story-meta"><span class="tag tag--coral">Statement</span><span class="topic">Free Expression ·</span>28 Sep 2026</p>
+            <h3 class="story-title"><a href="#">Journalists Detained for Covering Protests Must Be Released</a></h3>
+          </div>
+        </li>
+        <li class="story-row">
+          <img src="../../shared/images/legal-clinic.jpg" alt="A folding table with papers and a stamp under a large tree, two people seated at a distance, fields beyond." style="object-position:50% 60%">
+          <div>
+            <p class="story-meta"><span class="tag tag--leaf">Story</span><span class="topic">Women's Rights ·</span>25 Sep 2026</p>
+            <h3 class="story-title"><a href="#">How Mobile Legal Clinics Are Helping Women Claim Land Rights</a></h3>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="report-card" data-section="report" aria-labelledby="report-title">
+      <p class="eyebrow eyebrow--white"><span class="eyebrow__dot"></span>Featured report</p>
+      <div class="report-top">
+        <div class="cover" aria-hidden="true">
+          <div class="cover__img"><img src="../../shared/images/school-tent.jpg" alt="" style="object-position:50% 55%"></div>
+          <span class="cover__kicker">Report · 2026</span>
+          <span class="cover__title">Unequal Ground</span>
+          <span class="cover__sub">Education for Displaced Children</span>
+          <svg class="cover__mark" viewBox="0 0 48 48"><path d="M13.5 29.5a10.5 10.5 0 0 1 21 0z" fill="#1D2B3A"/><path d="M10 29.5h28M16 35h16" stroke="#1D2B3A" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="report-head">
+          <p class="report-meta">Report · September 2026<span class="sep"> · </span><span class="t">84 pages</span></p>
+          <h3 id="report-title" class="report-title">Unequal Ground: Education for Displaced Children</h3>
+          <a class="btn btn--navy btn--sm" href="#">Read the report</a>
+        </div>
+      </div>
+      <p class="report-sum">Based on interviews with 212 families, teachers and officials, this report examines why displaced children are left out of school and sets out twelve practical recommendations.</p>
+      <ul class="report-links">
+        <li><a href="#"><svg class="ic"><use href="#i-download"/></svg>Download PDF (2.4 MB)</a></li>
+        <li class="is-secondary"><a href="#"><svg class="ic"><use href="#i-book"/></svg>Executive summary</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="wrap trust-row">
+    <section class="faq-card" data-section="trust" aria-labelledby="faq-title">
+      <div class="faq-head">
+        <div>
+          <p class="eyebrow eyebrow--sky"><span class="eyebrow__dot"></span>How we work</p>
+          <h2 id="faq-title" class="section-title">Why trust our work</h2>
+        </div>
+        <img class="faq-img" src="../../shared/images/field-notebook.jpg" alt="Top-down view of a wooden table with an open notebook, a pen, a small voice recorder, a folded map, tea and glasses." style="object-position:50% 50%">
+      </div>
+      <div class="faq">
+        <div class="faq-item is-open">
+          <p class="faq-q"><span>How do you check facts?</span><span class="tag tag--leaf">Evidence first</span><span class="faq-toggle"><svg class="ic"><use href="#i-minus"/></svg></span></p>
+          <p class="faq-a">Every finding is checked against multiple sources before we publish.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q"><span>Where does my money go?</span><span class="tag tag--sun">Accountable</span><span class="faq-toggle"><svg class="ic"><use href="#i-plus"/></svg></span></p>
+        </div>
+      </div>
+      <ul class="trust-links">
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="#">Funding &amp; fina&#8288;nces</a></li>
+        <li><a href="#">Annual accounts 2025 (PDF)</a></li>
+        <li><a href="#">Corrections policy</a></li>
+        <li><a href="#">Safeguarding</a></li>
+      </ul>
+    </section>
+    <section class="news-card" id="newsletter" data-section="newsletter" aria-labelledby="news-title">
+      <svg class="news-art" viewBox="0 0 120 96" aria-hidden="true">
+        <circle cx="70" cy="48" r="44" fill="#FFC93C"/>
+        <rect x="22" y="30" width="76" height="52" rx="10" fill="#FFFFFF" stroke="#1D2B3A" stroke-width="2.5"/>
+        <path d="M25 34l35 26 35-26" fill="none" stroke="#1D2B3A" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M97 22.5s-6.6-4-6.6-8.9a3.7 3.7 0 0 1 6.6-2.2 3.7 3.7 0 0 1 6.6 2.2c0 4.9-6.6 8.9-6.6 8.9z" fill="#FF6B57"/>
+      </svg>
+      <p class="eyebrow eyebrow--white"><span class="eyebrow__dot"></span>Newsletter</p>
+      <h2 id="news-title" class="section-title">The Daybreak Briefing</h2>
+      <p class="news-text">One email every Friday: our latest research, stories and ways to act.</p>
+      <form class="news-form" action="#">
+        <fieldset class="prefs">
+          <legend class="visually-hidden">Send me</legend>
+          <label class="pref"><input type="checkbox" checked><span><svg class="ic"><use href="#i-check"/></svg>Research</span></label>
+          <label class="pref"><input type="checkbox" checked><span><svg class="ic"><use href="#i-check"/></svg>Stories</span></label>
+          <label class="pref"><input type="checkbox" checked><span><svg class="ic"><use href="#i-check"/></svg>Ways to act</span></label>
+        </fieldset>
+        <label class="field-label" for="email">Email address</label>
+        <div class="field-row">
+          <input id="email" type="email" placeholder="you@example.com" autocomplete="email">
+          <button class="btn btn--navy" type="submit">Subscribe</button>
+        </div>
+        <p class="consent"><svg class="ic"><use href="#i-check"/></svg>We'll never share your email. Unsubscribe anytime.</p>
+      </form>
+    </section>
+  </div>
+</main>
+
+<nav class="tabbar" data-section="tabbar" aria-label="Quick actions">
+  <ul>
+    <li><a class="tab is-active" href="#" aria-current="page"><span class="tab__ic"><svg class="ic"><use href="#i-home"/></svg></span>Home</a></li>
+    <li><a class="tab" href="#join"><span class="tab__ic"><svg class="ic"><use href="#i-people"/></svg></span>Join</a></li>
+    <li><a class="tab tab--give" href="#give"><span class="tab__ic"><svg class="ic"><use href="#i-heart"/></svg></span>Give</a></li>
+    <li><a class="tab" href="#attend"><span class="tab__ic"><svg class="ic"><use href="#i-calendar"/></svg></span>Attend</a></li>
+    <li><a class="tab" href="#learn"><span class="tab__ic"><svg class="ic"><use href="#i-book"/></svg></span>Learn</a></li>
+  </ul>
+</nav>
+
+<footer class="site-footer" data-section="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="brand brand--light" href="index.html" aria-label="Daybreak Rights Network, home">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="15" fill="#FFF8EC"/><path d="M13.5 29.5a10.5 10.5 0 0 1 21 0z" fill="#FFC93C"/><path d="M10 29.5h28" stroke="#1D2B3A" stroke-width="2.6" stroke-linecap="round"/><path d="M16 35h16" stroke="#1D2B3A" stroke-opacity=".45" stroke-width="2.6" stroke-linecap="round"/></svg>
+        <span class="brand-text"><span class="brand-name">Daybreak Rights Network</span></span>
+      </a>
+      <p class="footer-contact"><a href="#">hello@daybreak.example</a><br>Press: <a href="#">press@daybreak.example</a></p>
+    </div>
+    <nav class="footer-cols" aria-label="Footer">
+      <div class="footer-col">
+        <h2>Our Work</h2>
+        <ul><li><a href="#">Children's Rights</a></li><li><a href="#">Refugees &amp; Migration</a></li><li><a href="#">Detention &amp; Justice</a></li><li><a href="#">Where We Work</a></li><li><a href="#">Research</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2>Get Involved</h2>
+        <ul><li><a href="#">Campaigns</a></li><li><a href="#">Volunteer</a></li><li><a href="#">Events</a></li><li><a href="#">Newsletter</a></li><li><a href="#">Donate</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2>About</h2>
+        <ul><li><a href="#">Mission</a></li><li><a href="#">Team</a></li><li><a href="#">Funding &amp; transparency</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h2>Policies</h2>
+        <ul><li><a href="#">Privacy</a></li><li><a href="#">Cookies</a></li><li><a href="#">Safeguarding</a></li><li><a href="#">Accessibility</a></li><li><a href="#">Corrections</a></li></ul>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap">
+    <div class="footer-legal">
+      <p>© 2026 Daybreak Rights Network (provisional name). Registered charity number to be confirmed.</p>
+      <ul class="social" aria-label="Social channels">
+        <li><a href="#" aria-label="Social channel one"><svg class="ic"><use href="#i-chat"/></svg></a></li>
+        <li><a href="#" aria-label="Social channel two"><svg class="ic"><use href="#i-camera"/></svg></a></li>
+        <li><a href="#" aria-label="Social channel three"><svg class="ic"><use href="#i-video"/></svg></a></li>
+        <li><a href="#" aria-label="Social channel four"><svg class="ic"><use href="#i-rss"/></svg></a></li>
+      </ul>
+
+    </div>
+  </div>
+</footer>
+</div>
+</body>
+</html>

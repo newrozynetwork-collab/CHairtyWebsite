@@ -1,0 +1,26 @@
+{
+  "number": 3,
+  "slug": "03-research-evidence",
+  "name": "Research & Evidence",
+  "tagline": "A precise evidence desk where research leads",
+  "idea": "Draft.",
+  "fit": "Draft.",
+  "informedBy": ["Draft", "Draft", "Draft"],
+  "distinct": "Draft.",
+  "palette": [
+    {"name": "Graphite", "hex": "#1E2630", "role": "Text"},
+    {"name": "White", "hex": "#FFFFFF", "role": "Background"},
+    {"name": "Fog", "hex": "#EEF1F4", "role": "Panels"},
+    {"name": "Line", "hex": "#D5DBE1", "role": "Rules"},
+    {"name": "Deep teal", "hex": "#0F6E6E", "role": "Primary action"},
+    {"name": "Signal amber", "hex": "#F2B33D", "role": "Highlights"}
+  ],
+  "fonts": {"heading": {"family": "IBM Plex Serif", "weights": "400, 600"}, "body": {"family": "IBM Plex Sans", "weights": "400, 500, 600"}, "accent": {"family": "IBM Plex Mono", "weights": "400, 500"}},
+  "buttons": "Draft.",
+  "imageDirection": "Draft.",
+  "navigation": "Draft.",
+  "visualCharacter": "Draft.",
+  "contentEmphasis": "Draft.",
+  "bestFor": "Draft.",
+  "tradeoffs": "Draft."
+}

@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>school-morning — original illustration</title>
+<style>html,body{margin:0;padding:0;background:#000}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="c" width="2400" height="1600"></canvas>
+<script>
+// school-morning: original procedural illustration created for this proposal (deterministic, seeded).
+window.__done = false;
+// ---------------------------------------------------------------------------
+// Shared helpers (inlined into every source so each page is self-contained).
+// Deterministic: all randomness comes from seeded PRNGs.
+// ---------------------------------------------------------------------------
+const W = 2400, H = 1600;
+function mulberry32(a) { return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+let R = mulberry32(12345);
+const setSeed = s => { R = mulberry32(s); };
+const rnd = (a = 0, b = 1) => a + (b - a) * R();
+const pick = arr => arr[Math.floor(R() * arr.length)];
+const gauss = () => { let u = 0; for (let i = 0; i < 6; i++) u += R(); return (u - 3) / 0.7071; };
+const clamp = (v, a = 0, b = 1) => v < a ? a : v > b ? b : v;
+const lerp = (a, b, t) => a + (b - a) * t;
+const sstep = (a, b, v) => { const t = clamp((v - a) / (b - a)); return t * t * (3 - 2 * t); };
+const tick = () => new Promise(r => setTimeout(r, 0));
+
+function makeNoise(s) {
+  const r = mulberry32(s); const perm = new Uint8Array(256); for (let i = 0; i < 256; i++) perm[i] = i;
+  for (let i = 255; i > 0; i--) { const j = Math.floor(r() * (i + 1)); const t = perm[i]; perm[i] = perm[j]; perm[j] = t; }
+  const p = new Uint8Array(512); for (let i = 0; i < 512; i++) p[i] = perm[i & 255];
+  const gx = new Float32Array(256), gy = new Float32Array(256);
+  for (let i = 0; i < 256; i++) { const a = r() * Math.PI * 2; gx[i] = Math.cos(a); gy[i] = Math.sin(a); }
+  function n2(x, y) {
+    let xi = Math.floor(x), yi = Math.floor(y); const xf = x - xi, yf = y - yi; xi &= 255; yi &= 255;
+    const u = xf * xf * xf * (xf * (xf * 6 - 15) + 10), v = yf * yf * yf * (yf * (yf * 6 - 15) + 10);
+    const a = p[p[xi] + yi], b = p[p[xi + 1] + yi], c = p[p[xi] + yi + 1], d = p[p[xi + 1] + yi + 1];
+    const ga = gx[a] * xf + gy[a] * yf, gb = gx[b] * (xf - 1) + gy[b] * yf, gc = gx[c] * xf + gy[c] * (yf - 1), gd = gx[d] * (xf - 1) + gy[d] * (yf - 1);
+    const x1 = ga + (gb - ga) * u, x2 = gc + (gd - gc) * u; return (x1 + (x2 - x1) * v) * 1.41;
+  }
+  function fbm(x, y, o = 5, g = 0.5, l = 2.0) { let s = 0, a = 1, n = 0; for (let i = 0; i < o; i++) { s += a * n2(x, y); n += a; a *= g; x = x * l + 17.31; y = y * l + 9.17; } return s / n; }
+  function ridged(x, y, o = 5) { let s = 0, a = 1, n = 0, w = 1; for (let i = 0; i < o; i++) { let v = 1 - Math.abs(n2(x, y)); v *= v; s += v * a * w; n += a; w = clamp(v * 1.6, 0.25, 1); a *= 0.5; x = x * 2.03 + 5.1; y = y * 2.03 + 1.7; } return s / n; }
+  return { n2, fbm, ridged };
+}
+
+function hx(h) { if (Array.isArray(h)) return h; h = h.replace('#', ''); return [parseInt(h.substr(0, 2), 16), parseInt(h.substr(2, 2), 16), parseInt(h.substr(4, 2), 16)]; }
+function mix(a, b, t) { a = hx(a); b = hx(b); return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+function scl(a, k) { a = hx(a); return [a[0] * k, a[1] * k, a[2] * k]; }
+function mul(a, b) { a = hx(a); b = hx(b); return [a[0] * b[0] / 255, a[1] * b[1] / 255, a[2] * b[2] / 255]; }
+function rgba(c, al = 1) { c = hx(c); return `rgba(${Math.round(clamp(c[0], 0, 255))},${Math.round(clamp(c[1], 0, 255))},${Math.round(clamp(c[2], 0, 255))},${al})`; }
+function ramp(stops, t) {
+  if (t <= stops[0][0]) return hx(stops[0][1]);
+  for (let i = 1; i < stops.length; i++) if (t <= stops[i][0]) { const a = stops[i - 1], b = stops[i]; return mix(a[1], b[1], (t - a[0]) / (b[0] - a[0])); }
+  return hx(stops[stops.length - 1][1]);
+}
+function mk(w = W, h = H) { const c = document.createElement('canvas'); c.width = w; c.height = h; return c.getContext('2d'); }
+function luma(r, g, b) { return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255; }
+
+function bloom(ctx, { thr = 0.72, str = 0.5, rad = 60, scale = 0.25, tint = [255, 244, 228] } = {}) {
+  const w = Math.round(W * scale), h = Math.round(H * scale);
+  const s = mk(w, h); s.imageSmoothingQuality = 'high'; s.drawImage(ctx.canvas, 0, 0, w, h);
+  const id = s.getImageData(0, 0, w, h), d = id.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const l = luma(d[i], d[i + 1], d[i + 2]); const k = clamp((l - thr) / (1 - thr)); const m = k * k;
+    d[i] = d[i] * m * tint[0] / 255; d[i + 1] = d[i + 1] * m * tint[1] / 255; d[i + 2] = d[i + 2] * m * tint[2] / 255; d[i + 3] = 255;
+  }
+  s.putImageData(id, 0, 0);
+  const b = mk(w, h); b.filter = `blur(${rad * scale}px)`; b.drawImage(s.canvas, 0, 0);
+  ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.globalAlpha = str; ctx.imageSmoothingQuality = 'high'; ctx.drawImage(b.canvas, 0, 0, W, H); ctx.restore();
+}
+
+function finish(ctx, { grain = 0.03, vig = 0.2, seed = 99, lift = 0.012, contrast = 0.0, sat = 1.0, cx = 0.5, cy = 0.5 } = {}) {
+  const id = ctx.getImageData(0, 0, W, H), d = id.data;
+  const gw = (W >> 1) + 1, gh = (H >> 1) + 1, g2 = new Float32Array(gw * gh); const r = mulberry32(seed);
+  for (let i = 0; i < g2.length; i++) g2[i] = (r() + r() + r() - 1.5) * 1.6;
+  const ccx = W * cx, ccy = H * cy;
+  let hs = seed * 2654435761 >>> 0;
+  for (let y = 0; y < H; y++) {
+    const dy = (y - ccy) / (H * 0.5);
+    for (let x = 0; x < W; x++) {
+      const i = (y * W + x) * 4;
+      let rr = d[i] / 255, gg = d[i + 1] / 255, bb = d[i + 2] / 255;
+      if (contrast) { rr = rr + contrast * rr * (1 - rr) * (rr - 0.5) * 4; gg = gg + contrast * gg * (1 - gg) * (gg - 0.5) * 4; bb = bb + contrast * bb * (1 - bb) * (bb - 0.5) * 4; }
+      if (sat !== 1) { const l = 0.2126 * rr + 0.7152 * gg + 0.0722 * bb; rr = l + (rr - l) * sat; gg = l + (gg - l) * sat; bb = l + (bb - l) * sat; }
+      const dx = (x - ccx) / (W * 0.5); const rad = Math.sqrt(dx * dx * 0.85 + dy * dy * 1.0);
+      const v = 1 - vig * sstep(0.35, 1.35, rad);
+      rr *= v; gg *= v; bb *= v;
+      rr = lift + rr * (1 - lift); gg = lift + gg * (1 - lift); bb = lift + bb * (1 - lift);
+      hs = (Math.imul(hs ^ (hs >>> 15), 2246822519) + 0x9E3779B9) >>> 0; const f1 = (hs & 0xffff) / 65535; const f2 = (hs >>> 16) / 65535;
+      const fine = (f1 + f2 - 1) * 1.7;
+      const coarse = g2[(y >> 1) * gw + (x >> 1)];
+      const l = 0.2126 * rr + 0.7152 * gg + 0.0722 * bb;
+      const wgt = 0.45 + 2.2 * l * (1 - l);
+      const n = (fine * 0.55 + coarse * 0.7) * grain * wgt;
+      d[i] = clamp(rr + n) * 255; d[i + 1] = clamp(gg + n) * 255; d[i + 2] = clamp(bb + n) * 255;
+    }
+  }
+  ctx.putImageData(id, 0, 0);
+}
+
+// Filled chain of overlapping discs along a polyline: [[x, y, width], ...] in screen px. Gives soft round joints.
+function limb(c, pts) {
+  for (let i = 0; i < pts.length - 1; i++) {
+    const a = pts[i], b = pts[i + 1];
+    const n = Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / Math.max(0.4, Math.min(a[2], b[2]) * 0.15)) + 1;
+    for (let k = 0; k <= n; k++) {
+      const t = k / n; const x = lerp(a[0], b[0], t), y = lerp(a[1], b[1], t), r = Math.max(0.3, lerp(a[2], b[2], t) / 2);
+      c.moveTo(x + r, y); c.arc(x, y, r, 0, Math.PI * 2);
+    }
+  }
+}
+// Smooth closed curve through points (uniform Catmull-Rom converted to Bezier segments).
+function smoothClosed(c, P, k = 1) {
+  const n = P.length; c.moveTo(P[0][0], P[0][1]);
+  for (let i = 0; i < n; i++) {
+    const p0 = P[(i - 1 + n) % n], p1 = P[i], p2 = P[(i + 1) % n], p3 = P[(i + 2) % n];
+    c.bezierCurveTo(p1[0] + (p2[0] - p0[0]) / 6 * k, p1[1] + (p2[1] - p0[1]) / 6 * k, p2[0] - (p3[0] - p1[0]) / 6 * k, p2[1] - (p3[1] - p1[1]) / 6 * k, p2[0], p2[1]);
+  }
+  c.closePath();
+}
+// Draw a list of figure shapes (metres, u to the right, v up) through a mapping to screen space.
+// map(u, v) -> [x, y]; sc(u, v) -> px per metre (for limb widths). Each shape is filled on its own.
+function drawShapes(c, shapes, map, sc) {
+  for (const s of shapes) {
+    c.beginPath();
+    if (s.t === 'poly') smoothClosed(c, s.p.map(q => map(q[0], q[1])), s.k ?? 1);
+    else if (s.t === 'ell') {
+      const n = 36, cr = Math.cos(s.rot || 0), sr = Math.sin(s.rot || 0);
+      for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2; const du = s.rx * Math.cos(a), dv = s.ry * Math.sin(a); const p = map(s.c[0] + du * cr - dv * sr, s.c[1] + du * sr + dv * cr); i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1]); }
+      c.closePath();
+    } else if (s.t === 'limb') limb(c, s.p.map(q => { const m = map(q[0], q[1]); return [m[0], m[1], q[2] * sc(q[0], q[1])]; }));
+    c.fill();
+  }
+}
+// A school-age child seen from behind, walking. Everything in head units then scaled to metres.
+function childShapes(o) {
+  const hu = o.h / o.hr, T = o.hr, S = [];
+  const M = (u, v) => [u * hu, v * hu];
+  const poly = pts => S.push({ t: 'poly', p: pts.map(q => M(q[0], q[1])) });
+  const ell = (u, v, rx, ry, rot = 0) => S.push({ t: 'ell', c: M(u, v), rx: rx * hu, ry: ry * hu, rot });
+  const lmb = pts => S.push({ t: 'limb', p: pts.map(q => [q[0] * hu, q[1] * hu, q[2] * hu]) });
+  const crotch = T * 0.465;
+  // legs: one planted, one trailing with the heel lifted (sole toward camera)
+  for (const side of [-1, 1]) {
+    const trailing = (side === 1) === (o.step > 0);
+    const x = side * 0.26;
+    if (!trailing) {
+      lmb([[x, crotch + 0.1, 0.52], [x * 0.98, crotch * 0.55, 0.42], [x * 0.95, crotch * 0.22, 0.31], [x * 0.95, 0.32, 0.23]]);
+      ell(x * 0.95, 0.14, 0.2, 0.15);
+    } else {
+      lmb([[x, crotch + 0.1, 0.52], [x * 1.02, crotch * 0.58, 0.42], [x * 1.04, crotch * 0.33, 0.31], [x * 1.05, 0.62, 0.23]]);
+      ell(x * 1.06, 0.36, 0.17, 0.3, side * 0.06);
+    }
+  }
+  // shorts / skirt
+  if (o.skirt) poly([[-0.6, T - 2.55], [-0.7, crotch + 0.4], [-0.86, crotch - 0.55], [0, crotch - 0.6], [0.86, crotch - 0.55], [0.7, crotch + 0.4], [0.6, T - 2.55]]);
+  else poly([[-0.6, T - 2.55], [-0.66, crotch + 0.2], [-0.62, crotch - 0.3], [-0.02, crotch - 0.25], [0.62, crotch - 0.3], [0.66, crotch + 0.2], [0.6, T - 2.55]]);
+  // torso
+  poly([[-0.16, T - 1.12], [-0.46, T - 1.27], [-0.74, T - 1.4], [-0.75, T - 1.85], [-0.62, T - 2.45], [-0.62, T - 2.75], [0, T - 2.8], [0.62, T - 2.75], [0.62, T - 2.45], [0.75, T - 1.85], [0.74, T - 1.4], [0.46, T - 1.27], [0.16, T - 1.12]]);
+  // arms (slight swing): the arm on the side of the trailing leg swings forward and looks shorter
+  for (const side of [-1, 1]) {
+    const fwd = (side === 1) === (o.step > 0) ? -1 : 1; // -1: swinging forward (away), +1: back (toward camera)
+    const sw = o.swing ?? 0.6;
+    const el = [side * (0.84 + 0.04 * fwd * sw), T - 2.5 + (fwd < 0 ? 0.08 : 0)];
+    const wr = [side * (0.86 + 0.08 * fwd * sw), T - 3.35 + (fwd < 0 ? 0.25 * sw : 0)];
+    lmb([[side * 0.68, T - 1.45, 0.34], [el[0], el[1], 0.28], [wr[0], wr[1], 0.22]]);
+    ell(wr[0] + side * 0.01, wr[1] - 0.22, 0.13, 0.19);
+  }
+  // neck, head and hair
+  lmb([[0, T - 0.85, 0.36], [0, T - 1.25, 0.38]]);
+  ell(0, T - 0.5, 0.41, 0.5);
+  if (o.hair === 'puffs') { ell(-0.3, T - 0.18, 0.21, 0.19); ell(0.3, T - 0.18, 0.21, 0.19); }
+  if (o.hair === 'braids') { lmb([[-0.2, T - 0.75, 0.13], [-0.25, T - 1.25, 0.11], [-0.27, T - 1.55, 0.09]]); lmb([[0.2, T - 0.75, 0.13], [0.25, T - 1.25, 0.11], [0.27, T - 1.55, 0.09]]); }
+  if (o.hair === 'pony') lmb([[0.02, T - 0.3, 0.2], [0.06, T - 0.75, 0.16], [0.08, T - 1.2, 0.1]]);
+  if (o.hair === 'short') ell(0, T - 0.46, 0.43, 0.53);
+  // backpack: slightly oversized, rising above the shoulders, with a top grab loop
+  const pw = o.pack.w, top = T - 1.2 + (o.pack.up || 0), bot = top - o.pack.h, r = 0.26;
+  S.push({ t: 'poly', pack: true, p: [[-pw / 2 + r, top], [pw / 2 - r, top], [pw / 2, top - r], [pw / 2 + 0.03, bot + r], [pw / 2 - r, bot], [-pw / 2 + r, bot], [-pw / 2 - 0.03, bot + r], [-pw / 2, top - r]].map(q => M(q[0], q[1])) });
+  S.push({ t: 'limb', pack: true, p: [[-0.13, top - 0.02, 0.06], [-0.08, top + 0.12, 0.06], [0.08, top + 0.12, 0.06], [0.13, top - 0.02, 0.06]].map(q => [q[0] * hu, q[1] * hu, q[2] * hu]) });
+  return S;
+}
+
+// ---------------------------------------------------------------------------
+// school-morning — a small single-storey school with painted walls, early morning. The low sun
+// shines through a big tree at the left; children with backpacks walk up the dirt path toward
+// the door, their long shadows stretching back toward us. Calm sky upper right.
+(async function main() {
+  const ctx = document.getElementById('c').getContext('2d');
+  setSeed(3131);
+  const NA = makeNoise(71), NB = makeNoise(72), NC = makeNoise(73), ND = makeNoise(74), NE = makeNoise(75);
+
+  // ---------- camera and sun ----------
+  const YH = 912, VX = 1200, FL = 1900, HC = 1.45;
+  const proj = (X, Y, Z) => [VX + FL * X / Z, YH + FL * (HC - Y) / Z];
+  const SUNP = { x: 640, y: 432 };
+  const sv = (() => { const v = [(SUNP.x - VX) / FL, (YH - SUNP.y) / FL, 1]; const l = Math.hypot(...v); return v.map(a => a / l); })();
+  const SDX = -sv[0], SDZ = -sv[2]; const SDL = Math.hypot(SDX, SDZ);
+  const SHX = SDX / SDL, SHZ = SDZ / SDL, SHL = Math.hypot(sv[0], sv[2]) / sv[1]; // ground shadow direction and length per metre of height
+
+  // ---------- sky ----------
+  const SKY = [[0, '#a7b6c2'], [0.3, '#bcc6cb'], [0.62, '#d6d6cf'], [0.85, '#e8dfcd'], [1, '#efe2c9']];
+  const skyRow = []; for (let y = 0; y < H; y++) skyRow.push(ramp(SKY, clamp(y / YH)));
+  const GLOW = [255, 240, 205];
+  function glowAt(x, y) {
+    const dx = (x - SUNP.x) / H, dy = (y - SUNP.y) / H; const d2 = dx * dx + dy * dy;
+    return clamp(1.0 * Math.exp(-d2 / 0.00018) + 0.5 * Math.exp(-d2 / 0.0035) + 0.32 * Math.exp(-d2 / 0.03) + 0.16 * Math.exp(-d2 / 0.2));
+  }
+  function sky(x, y) {
+    const c = skyRow[clamp(Math.round(y), 0, H - 1)]; const g = glowAt(x, y);
+    const hzg = Math.exp(-Math.pow((y - YH) / 150, 2)) * 0.18;
+    const gg = clamp(g + hzg);
+    return [255 - (255 - c[0]) * (1 - gg * GLOW[0] / 255), 255 - (255 - c[1]) * (1 - gg * GLOW[1] / 255), 255 - (255 - c[2]) * (1 - gg * GLOW[2] / 255)];
+  }
+  const hz = []; for (let x = 0; x <= W; x++) hz[x] = sky(Math.min(x, W - 1), YH - 4);
+
+  // ---------- scene solids for shadow rays ----------
+  const B = { x0: -0.5, x1: 10.5, z0: 22, z1: 28.5, wh: 3.1, rx0: -1.0, rx1: 11.0, rz0: 21.5, rz1: 29.0, ridge: 4.55, eave: 2.95, rzc: 25.25 };
+  const roofY = Z => B.ridge - (B.ridge - B.eave) * Math.abs(Z - B.rzc) / (B.rzc - B.rz0);
+  const TREE = { x: -11.2, z: 24.5, r: 0.42, th: 4.6, cx: -10.8, cy: 7.5, cz: 24.5, ax: 6.8, ay: 3.9, az: 5.6 };
+  function slab(o, d, lo, hi) { let t0 = 0, t1 = 1e9; for (let k = 0; k < 3; k++) { if (Math.abs(d[k]) < 1e-9) { if (o[k] < lo[k] || o[k] > hi[k]) return null; continue; } let a = (lo[k] - o[k]) / d[k], b = (hi[k] - o[k]) / d[k]; if (a > b) { const t = a; a = b; b = t; } t0 = Math.max(t0, a); t1 = Math.min(t1, b); if (t0 > t1) return null; } return [t0, t1]; }
+  function sunVis(X, Y, Z) {
+    const o = [X, Y, Z];
+    // building
+    const bi = slab(o, sv, [B.rx0, 0, B.rz0], [B.rx1, B.ridge, B.rz1]);
+    if (bi) {
+      for (let k = 0; k <= 10; k++) {
+        const t = lerp(bi[0], bi[1], k / 10); const px = X + sv[0] * t, py = Y + sv[1] * t, pz = Z + sv[2] * t;
+        if (px > B.x0 && px < B.x1 && pz > B.z0 && pz < B.z1 && py < B.wh) return 0;
+        if (px > B.rx0 && px < B.rx1 && pz > B.rz0 && pz < B.rz1 && py > B.eave - 0.12 && py < roofY(pz)) return 0;
+      }
+    }
+    // trunk
+    const ts = ((TREE.x - X) * sv[0] + (TREE.z - Z) * sv[2]) / (sv[0] * sv[0] + sv[2] * sv[2]);
+    if (ts > 0 && Y + ts * sv[1] < TREE.th) { const dx = X + sv[0] * ts - TREE.x, dz = Z + sv[2] * ts - TREE.z; if (dx * dx + dz * dz < TREE.r * TREE.r) return 0; }
+    // canopy (noisy ellipsoid, partially transparent)
+    const ox = (X - TREE.cx) / TREE.ax, oy = (Y - TREE.cy) / TREE.ay, oz = (Z - TREE.cz) / TREE.az;
+    const dx = sv[0] / TREE.ax, dy = sv[1] / TREE.ay, dz = sv[2] / TREE.az;
+    const a = dx * dx + dy * dy + dz * dz, b = 2 * (ox * dx + oy * dy + oz * dz), c = ox * ox + oy * oy + oz * oz - 1;
+    const disc = b * b - 4 * a * c;
+    if (disc > 0) {
+      const sq = Math.sqrt(disc); let t0 = (-b - sq) / (2 * a), t1 = (-b + sq) / (2 * a);
+      if (t1 > 0) {
+        t0 = Math.max(0, t0); let acc = 0; const N = 9, dt = (t1 - t0) / N;
+        for (let k = 0; k < N; k++) {
+          const t = t0 + (k + 0.5) * dt; const px = X + sv[0] * t, py = Y + sv[1] * t, pz = Z + sv[2] * t;
+          const q = Math.pow((px - TREE.cx) / TREE.ax, 2) + Math.pow((py - TREE.cy) / TREE.ay, 2) + Math.pow((pz - TREE.cz) / TREE.az, 2);
+          const n = 0.55 * NA.n2(px / 1.3 + pz * 0.21, py / 1.3) + 0.45 * NB.n2(pz / 1.3 - px * 0.17, py / 1.1 + 3.3);
+          acc += clamp((n + 0.12) * 3.2) * (1 - q * 0.6) * dt;
+        }
+        return Math.exp(-acc * 1.15);
+      }
+    }
+    return 1;
+  }
+
+  // ---------- path ----------
+  const PATH = [[1.0, -1.9], [4, -1.6], [8, -0.95], [12, -0.25], [16, 0.35], [19.5, 0.85], [22, 1.05]];
+  function pathX(Z) { if (Z <= PATH[0][0]) return PATH[0][1]; for (let i = 1; i < PATH.length; i++) if (Z <= PATH[i][0]) { const a = PATH[i - 1], b = PATH[i]; const t = (Z - a[0]) / (b[0] - a[0]); return lerp(a[1], b[1], t * t * (3 - 2 * t) * 0.3 + t * 0.7); } return PATH[PATH.length - 1][1]; }
+
+  // ---------- pass 1: sun visibility on the ground (blurred a little for penumbra) ----------
+  const visC = mk(); const visI = visC.createImageData(W, H); const VD = visI.data;
+  for (let y = YH + 1; y < H; y++) {
+    const Z = FL * HC / (y - YH);
+    for (let x = 0; x < W; x++) {
+      const X = (x - VX) * Z / FL;
+      const v = Z > 120 ? 1 : sunVis(X, 0.02, Z);
+      const i = (y * W + x) * 4; VD[i + 3] = Math.round(v * 255);
+    }
+    if ((y & 63) === 0) await tick();
+  }
+  visC.putImageData(visI, 0, 0);
+  const visB = mk(); visB.filter = 'blur(1.6px)'; visB.drawImage(visC.canvas, 0, 0);
+  const VIS = visB.getImageData(0, 0, W, H).data;
+  await tick();
+
+  // ---------- children (positions, sizes) ----------
+  const KIDS = [
+    { X: -1.25, Z: 8.9, h: 1.37, hr: 6.1, step: 1, skirt: true, hair: 'puffs', pack: { w: 1.38, h: 1.85, up: 0.05 }, packCol: '#3d2a2a' },
+    { X: -0.38, Z: 9.5, h: 1.2, hr: 5.7, step: -1, skirt: false, hair: 'short', pack: { w: 1.42, h: 1.9, up: 0.12 }, packCol: '#232a38' },
+    { X: 0.02, Z: 13.6, h: 1.31, hr: 6.0, step: -1, skirt: false, hair: 'short', pack: { w: 1.35, h: 1.8, up: 0.0 }, packCol: '#2d3326' },
+    { X: 0.62, Z: 14.3, h: 1.12, hr: 5.5, step: 1, skirt: true, hair: 'braids', pack: { w: 1.42, h: 1.85, up: 0.1 }, packCol: '#40302a' },
+    { X: 0.95, Z: 18.6, h: 1.28, hr: 6.0, step: 1, skirt: false, hair: 'short', pack: { w: 1.32, h: 1.75, up: 0.0 }, packCol: '#2a2a2e' },
+  ];
+  setSeed(99);
+  for (const k of KIDS) k.shapes = childShapes(k);
+
+  // child shadows on the ground (projected silhouettes), as a mask
+  const shM = mk(); shM.fillStyle = '#000';
+  for (const k of KIDS) {
+    const map = (u, v) => proj(k.X + u + v * SHL * SHX, 0, k.Z + v * SHL * SHZ);
+    const sc = (u, v) => FL / (k.Z + v * SHL * SHZ);
+    drawShapes(shM, k.shapes, map, sc);
+  }
+  const shB = mk(); shB.filter = 'blur(2.2px)'; shB.drawImage(shM.canvas, 0, 0);
+  const SHD = shB.getImageData(0, 0, W, H).data;
+  await tick();
+
+  // ---------- pass 2: sky and ground ----------
+  const img = ctx.createImageData(W, H); const D = img.data;
+  const DIRT = hx('#b4916c'), DIRT2 = hx('#a07c5a'), GRASS1 = hx('#7d8250'), GRASS2 = hx('#9b9258'), GRASS3 = hx('#6b7448');
+  const SUNC = [255, 226, 178], AMB = [118, 128, 150];
+  const nl = sv[1];
+  for (let y = 0; y < H; y++) {
+    if (y <= YH) {
+      for (let x = 0; x < W; x++) { const c = sky(x, y); const i = (y * W + x) * 4; D[i] = c[0]; D[i + 1] = c[1]; D[i + 2] = c[2]; D[i + 3] = 255; }
+      if ((y & 127) === 0) await tick();
+      continue;
+    }
+    const Z = FL * HC / (y - YH); const fp = Z / FL;
+    const hzk = 1 - Math.exp(-Z / 420);
+    const px = pathX(Z);
+    for (let x = 0; x < W; x++) {
+      const X = (x - VX) * Z / FL;
+      // materials: path, schoolyard, grass
+      const pw = 0.95 + 0.12 * NA.n2(Z / 2.2, 4.4) + 0.05 * NB.n2(Z / 0.5, X);
+      const onPath = clamp((pw - Math.abs(X - px)) / Math.max(fp, 0.04) * 0.5 + 0.5);
+      const yard = clamp(sstep(16.6, 18.6, Z + 0.8 * NA.n2(X / 3, 1.7)) * sstep(-4.2, -2.8, X + 0.6 * NB.n2(Z / 2, 2.2)) * sstep(13.5, 12.0, X));
+      const bare = Math.max(onPath, yard, clamp(0.5 + 0.9 * NC.fbm(X / 3.5, Z / 5, 3) - 0.75) * 0.8);
+      const gt = clamp(0.5 + 0.9 * NB.fbm(X / 4, Z / 6, 3));
+      let g = mix(mix(GRASS1, GRASS2, gt), GRASS3, clamp(0.5 + NC.fbm(X / 1.3, Z / 1.9, 2)) * 0.45);
+      const det = clamp(0.012 / fp);
+      const blade = (NC.n2(x / 2.2, y / 9) * 0.6 + NC.n2(x / 5, y / 17) * 0.4) * det;
+      g = scl(g, 1 + 0.2 * blade);
+      let d = mix(DIRT, DIRT2, clamp(0.5 + 0.8 * NA.fbm(X / 1.6, Z / 2.4, 3)));
+      const peb = NE.n2(X / 0.06, Z / 0.08) * clamp(0.004 / fp);
+      const rut = Math.exp(-Math.pow((Math.abs(X - px) - 0.42) / 0.12, 2)) * onPath * 0.06;
+      d = scl(d, 1 + 0.1 * peb + 0.06 * NB.n2(X / 0.4, Z / 0.6) * clamp(0.02 / fp) - rut);
+      let a = mix(g, d, bare);
+      // lighting: sky ambient + sun (with blurred visibility and the children's shadows)
+      const i = (y * W + x) * 4;
+      let vis = VIS[i + 3] / 255; vis *= 1 - 0.92 * SHD[i + 3] / 255;
+      // ambient occlusion at the building foot
+      let ao = 1;
+      if (Z > 19 && Z < 22.2 && X > B.x0 - 0.8 && X < B.x1 + 0.8) ao = 1 - 0.35 * Math.exp(-(22 - Z) / 0.45) * sstep(B.x0 - 0.8, B.x0, X) * sstep(B.x1 + 0.8, B.x1, X);
+      const sunK = 3.3 * nl * vis;
+      let r = a[0] * (AMB[0] / 255 * 0.62 * ao + sunK * SUNC[0] / 255);
+      let gg = a[1] * (AMB[1] / 255 * 0.62 * ao + sunK * SUNC[1] / 255);
+      let b = a[2] * (AMB[2] / 255 * 0.62 * ao + sunK * SUNC[2] / 255);
+      // grass blades catch the backlight
+      const tipk = (1 - bare) * clamp(blade * 2) * vis * 0.5;
+      r += 60 * tipk; gg += 52 * tipk; b += 20 * tipk;
+      const hc = hz[x];
+      r += (hc[0] - r) * hzk; gg += (hc[1] - gg) * hzk; b += (hc[2] - b) * hzk;
+      D[i] = r; D[i + 1] = gg; D[i + 2] = b; D[i + 3] = 255;
+    }
+    if ((y & 63) === 0) await tick();
+  }
+  ctx.putImageData(img, 0, 0);
+  await tick();
+
+  // ---------- distant treeline and low hills (hazy, behind the school) ----------
+  setSeed(5);
+  {
+    const far = mk();
+    // hills
+    far.beginPath(); far.moveTo(0, YH + 2);
+    for (let x = 0; x <= W; x += 6) { const t = x / W; far.lineTo(x, YH - 34 - 46 * NA.fbm(t * 2.3, 0.5, 4) - 30 * sstep(0.55, 1.0, t)); }
+    far.lineTo(W, YH + 2); far.closePath(); far.fillStyle = 'rgba(160,166,160,1)'; far.fill();
+    // treeline
+    for (let i = 0; i < 520; i++) {
+      const Z = rnd(140, 420); const X = rnd(-0.75, 0.75) * Z;
+      const [x, yb] = proj(X, 0, Z); const hp = FL * rnd(6, 13) / Z;
+      const hk = 1 - Math.exp(-Z / 420);
+      const col = mix(mix('#4f5a44', '#7b8270', R() * 0.5), hz[clamp(Math.round(x), 0, W)], 0.55 + hk * 0.3);
+      far.fillStyle = rgba(col);
+      far.beginPath();
+      const n = 4 + Math.floor(R() * 4);
+      for (let k = 0; k < n; k++) { const bx = x + rnd(-0.5, 0.5) * hp * 0.7, by = yb - hp * rnd(0.35, 0.8); const rr = hp * rnd(0.22, 0.38); far.moveTo(bx + rr, by); far.arc(bx, by, rr, 0, Math.PI * 2); }
+      far.rect(x - hp * 0.5, yb - hp * 0.4, hp, hp * 0.4 + 1);
+      far.fill();
+    }
+    ctx.save(); ctx.filter = 'blur(1.2px)'; ctx.drawImage(far.canvas, 0, 0); ctx.restore();
+  }
+  await tick();
+
+  // ---------- the school ----------
+  const P = (X, Y, Z) => proj(X, Y, Z);
+  const poly = (c, pts, fill) => { c.beginPath(); pts.forEach((p, i) => { const q = P(...p); i ? c.lineTo(q[0], q[1]) : c.moveTo(q[0], q[1]); }); c.closePath(); c.fillStyle = fill; c.fill(); };
+  const SHADE = [0.66, 0.68, 0.76]; // facade in open shade: sky + warm bounce from the sunlit yard
+  const shade = (col, k = 1) => { col = hx(col); return [col[0] * SHADE[0] * k + 10, col[1] * SHADE[1] * k + 8, col[2] * SHADE[2] * k + 6]; };
+  const bld = mk();
+  {
+    const Zf = B.z0;
+    // plinth
+    poly(bld, [[B.x0 - 0.05, 0, Zf - 0.02], [B.x1 + 0.05, 0, Zf - 0.02], [B.x1 + 0.05, 0.28, Zf - 0.02], [B.x0 - 0.05, 0.28, Zf - 0.02]], rgba(shade('#8d7a68')));
+    // painted lower band and upper wall
+    poly(bld, [[B.x0, 0.28, Zf], [B.x1, 0.28, Zf], [B.x1, 1.05, Zf], [B.x0, 1.05, Zf]], rgba(shade('#5e958f')));
+    poly(bld, [[B.x0, 1.05, Zf], [B.x1, 1.05, Zf], [B.x1, 1.12, Zf], [B.x0, 1.12, Zf]], rgba(shade('#3f6d73')));
+    poly(bld, [[B.x0, 1.12, Zf], [B.x1, 1.12, Zf], [B.x1, B.wh, Zf], [B.x0, B.wh, Zf]], rgba(shade('#ead9b6')));
+    // wall texture: soft plaster mottling and red dust splashed up from the yard
+    const [fx0, fy0] = P(B.x0, B.wh, Zf), [fx1, fy1] = P(B.x1, 0, Zf);
+    bld.save(); bld.beginPath(); bld.rect(fx0, fy0, fx1 - fx0, fy1 - fy0); bld.clip();
+    for (let i = 0; i < 260; i++) { const x = rnd(fx0, fx1), y = rnd(fy0, fy1); const r = rnd(6, 30); bld.fillStyle = `rgba(${R() < 0.5 ? '255,250,235' : '90,80,70'},${rnd(0.02, 0.05)})`; bld.beginPath(); bld.ellipse(x, y, r * 1.6, r, 0, 0, Math.PI * 2); bld.fill(); }
+    const dg = bld.createLinearGradient(0, fy1, 0, fy1 - 60); dg.addColorStop(0, 'rgba(150,95,60,0.35)'); dg.addColorStop(1, 'rgba(150,95,60,0)'); bld.fillStyle = dg; bld.fillRect(fx0, fy1 - 60, fx1 - fx0, 60);
+    bld.restore();
+    // windows: open blue shutters, dark interior with a hint of the far window light
+    const winX = [3.1, 5.6, 8.1];
+    for (const wx of winX) {
+      const w0 = wx - 0.65, w1 = wx + 0.65, s0 = 1.0, s1 = 2.2;
+      poly(bld, [[w0 - 0.08, s0 - 0.08, Zf - 0.01], [w1 + 0.08, s0 - 0.08, Zf - 0.01], [w1 + 0.08, s1 + 0.08, Zf - 0.01], [w0 - 0.08, s1 + 0.08, Zf - 0.01]], rgba(shade('#cfc3a8', 0.95)));
+      poly(bld, [[w0, s0, Zf - 0.015], [w1, s0, Zf - 0.015], [w1, s1, Zf - 0.015], [w0, s1, Zf - 0.015]], rgba([34, 32, 33]));
+      // light from windows on the far wall
+      poly(bld, [[w0 + 0.3, s0 + 0.15, Zf - 0.016], [w1 - 0.25, s0 + 0.15, Zf - 0.016], [w1 - 0.3, s1 - 0.25, Zf - 0.016], [w0 + 0.35, s1 - 0.25, Zf - 0.016]], rgba([70, 68, 64], 0.6));
+      // frame bars
+      bld.strokeStyle = rgba(shade('#4b7a99')); bld.lineWidth = Math.max(1, 0.06 * FL / Zf);
+      bld.beginPath(); { const a = P(wx, s0, Zf - 0.02), b = P(wx, s1, Zf - 0.02); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); } bld.stroke();
+      // open shutters
+      poly(bld, [[w0 - 0.62, s0 - 0.02, Zf - 0.12], [w0 - 0.04, s0 - 0.02, Zf - 0.03], [w0 - 0.04, s1 + 0.02, Zf - 0.03], [w0 - 0.62, s1 + 0.02, Zf - 0.12]], rgba(shade('#4f7f9c')));
+      poly(bld, [[w1 + 0.04, s0 - 0.02, Zf - 0.03], [w1 + 0.62, s0 - 0.02, Zf - 0.12], [w1 + 0.62, s1 + 0.02, Zf - 0.12], [w1 + 0.04, s1 + 0.02, Zf - 0.03]], rgba(shade('#4a7895')));
+      // sill shadow
+      poly(bld, [[w0 - 0.1, s0 - 0.08, Zf - 0.05], [w1 + 0.1, s0 - 0.08, Zf - 0.05], [w1 + 0.1, s0 - 0.16, Zf - 0.01], [w0 - 0.1, s0 - 0.16, Zf - 0.01]], rgba(shade('#9b8f7a', 0.8)));
+    }
+    // door: open, painted leaf swung inward, dark classroom beyond
+    const d0 = 0.55, d1 = 1.55;
+    poly(bld, [[d0 - 0.1, 0.28, Zf - 0.01], [d1 + 0.1, 0.28, Zf - 0.01], [d1 + 0.1, 2.25, Zf - 0.01], [d0 - 0.1, 2.25, Zf - 0.01]], rgba(shade('#cdbf9f', 0.95)));
+    poly(bld, [[d0, 0.28, Zf - 0.015], [d1, 0.28, Zf - 0.015], [d1, 2.15, Zf - 0.015], [d0, 2.15, Zf - 0.015]], rgba([30, 28, 29]));
+    poly(bld, [[d0, 0.28, Zf - 0.016], [d0 + 0.22, 0.32, Zf + 0.8], [d0 + 0.22, 2.1, Zf + 0.8], [d0, 2.15, Zf - 0.016]], rgba(shade('#3e7387', 0.85)));
+    // step
+    poly(bld, [[d0 - 0.25, 0, Zf - 0.55], [d1 + 0.25, 0, Zf - 0.55], [d1 + 0.25, 0.2, Zf - 0.55], [d0 - 0.25, 0.2, Zf - 0.55]], rgba(shade('#9a8a76')));
+    poly(bld, [[d0 - 0.25, 0.2, Zf - 0.55], [d1 + 0.25, 0.2, Zf - 0.55], [d1 + 0.25, 0.2, Zf], [d0 - 0.25, 0.2, Zf]], rgba(mix(shade('#b4a690'), [255, 230, 190], 0.15)));
+    // eave shadow band on the wall top
+    const eg = (() => { const a = P(0, B.wh, Zf), b = P(0, B.wh - 0.55, Zf); const g = bld.createLinearGradient(0, a[1], 0, b[1]); g.addColorStop(0, 'rgba(40,36,40,0.45)'); g.addColorStop(1, 'rgba(40,36,40,0)'); return g; })();
+    { const a = P(B.x0, B.wh, Zf), b = P(B.x1, B.wh - 0.55, Zf); bld.fillStyle = eg; bld.fillRect(a[0], a[1], b[0] - a[0], b[1] - a[1]); }
+    // roof: front slope of corrugated sheet, reflecting the bright morning sky
+    const r0 = [B.rx0, B.eave, B.rz0], r1 = [B.rx1, B.eave, B.rz0], r2 = [B.rx1, B.ridge, B.rzc], r3 = [B.rx0, B.ridge, B.rzc];
+    const rq = [r0, r1, r2, r3].map(p => P(...p));
+    bld.save(); bld.beginPath(); rq.forEach((q, i) => i ? bld.lineTo(q[0], q[1]) : bld.moveTo(q[0], q[1])); bld.closePath(); bld.clip();
+    const rg = bld.createLinearGradient(0, rq[2][1], 0, rq[0][1]);
+    rg.addColorStop(0, '#d9d6cc'); rg.addColorStop(0.55, '#b9b7b0'); rg.addColorStop(1, '#8f8e8b');
+    bld.fillStyle = rg; bld.fillRect(rq[0][0] - 10, rq[2][1] - 10, rq[1][0] - rq[0][0] + 20, rq[0][1] - rq[2][1] + 20);
+    // brighter toward the sun side (left)
+    const sg = bld.createLinearGradient(rq[0][0], 0, rq[1][0], 0); sg.addColorStop(0, 'rgba(255,240,210,0.35)'); sg.addColorStop(0.5, 'rgba(255,240,210,0.08)'); sg.addColorStop(1, 'rgba(255,240,210,0)');
+    bld.fillStyle = sg; bld.fillRect(rq[0][0] - 10, rq[2][1] - 10, rq[1][0] - rq[0][0] + 20, rq[0][1] - rq[2][1] + 20);
+    // corrugations converge toward the vanishing point
+    const nC = 150;
+    for (let i = 0; i <= nC; i++) {
+      const X = lerp(B.rx0, B.rx1, i / nC);
+      const a = P(X, B.eave, B.rz0), b = P(X, B.ridge, B.rzc);
+      bld.strokeStyle = i % 2 ? 'rgba(70,70,74,0.22)' : 'rgba(255,252,240,0.18)'; bld.lineWidth = 1.2;
+      bld.beginPath(); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); bld.stroke();
+    }
+    // sheet overlaps and a few rust streaks
+    for (let i = 0; i < 9; i++) { const X = lerp(B.rx0, B.rx1, (i + 0.5) / 9) + rnd(-0.2, 0.2); const a = P(X, B.eave, B.rz0), b = P(X + 0.25, lerp(B.eave, B.ridge, 0.7), lerp(B.rz0, B.rzc, 0.7)); const g = bld.createLinearGradient(a[0], a[1], b[0], b[1]); g.addColorStop(0, 'rgba(120,70,40,0.25)'); g.addColorStop(1, 'rgba(120,70,40,0)'); bld.strokeStyle = g; bld.lineWidth = rnd(4, 9); bld.beginPath(); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); bld.stroke(); }
+    bld.restore();
+    // ridge cap catching the sun, fascia board
+    { const a = P(B.rx0, B.ridge, B.rzc), b = P(B.rx1, B.ridge, B.rzc); bld.strokeStyle = 'rgba(255,238,200,0.9)'; bld.lineWidth = 2.2; bld.beginPath(); bld.moveTo(a[0], a[1] - 0.5); bld.lineTo(b[0], b[1] - 0.5); bld.stroke(); }
+    poly(bld, [[B.rx0, B.eave, B.rz0], [B.rx1, B.eave, B.rz0], [B.rx1, B.eave - 0.2, B.rz0], [B.rx0, B.eave - 0.2, B.rz0]], rgba(shade('#6a5a4d')));
+    // barge edges
+    for (const X of [B.rx0, B.rx1]) { const a = P(X, B.eave - 0.2, B.rz0), b = P(X, B.ridge, B.rzc); bld.strokeStyle = rgba(shade('#5f5246')); bld.lineWidth = 3; bld.beginPath(); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); bld.stroke(); }
+    // sunlit left edge of the building (light grazing the corner)
+    { const a = P(B.x0, 0.28, Zf), b = P(B.x0, B.wh - 0.1, Zf); const g = bld.createLinearGradient(a[0], 0, a[0] + 26, 0); g.addColorStop(0, 'rgba(255,226,170,0.5)'); g.addColorStop(1, 'rgba(255,226,170,0)'); bld.fillStyle = g; bld.fillRect(a[0], b[1], 26, a[1] - b[1]); }
+    // a small rain tank on a stand at the right end
+    const tx = B.x1 - 0.9, tz = Zf - 1.1;
+    poly(bld, [[tx - 0.55, 0, tz], [tx + 0.55, 0, tz], [tx + 0.55, 0.5, tz], [tx - 0.55, 0.5, tz]], rgba(shade('#7d6f62')));
+    { const a = P(tx - 0.6, 0.5, tz), b = P(tx + 0.6, 1.95, tz); const g = bld.createLinearGradient(a[0], 0, b[0], 0); g.addColorStop(0, rgba(shade('#3b4a52', 1.3))); g.addColorStop(0.4, rgba(shade('#26323a'))); g.addColorStop(1, rgba(shade('#1e272d'))); bld.fillStyle = g; bld.beginPath(); bld.roundRect(a[0], b[1], b[0] - a[0], a[1] - b[1], 6); bld.fill(); }
+  }
+  ctx.drawImage(bld.canvas, 0, 0);
+  await tick();
+
+  // ---------- the tree (backlit) ----------
+  setSeed(808);
+  const tr = mk();
+  {
+    // trunk and limbs
+    const tcol = '#2b2622';
+    tr.fillStyle = tcol; tr.strokeStyle = tcol; tr.lineCap = 'round';
+    const T0 = proj(TREE.x, 0, TREE.z), T1 = proj(TREE.x + 0.3, TREE.th, TREE.z);
+    const tw = FL * 0.9 / TREE.z;
+    tr.beginPath(); tr.moveTo(T0[0] - tw * 0.75, T0[1] + 4); tr.quadraticCurveTo(T0[0] - tw * 0.45, T0[1] - 40, T1[0] - tw * 0.32, T1[1]); tr.lineTo(T1[0] + tw * 0.32, T1[1]); tr.quadraticCurveTo(T0[0] + tw * 0.5, T0[1] - 40, T0[0] + tw * 0.8, T0[1] + 4); tr.closePath(); tr.fill();
+    const limbs = [[[0.3, 4.6], [-2.8, 7.8], [-5.5, 9.2]], [[0.3, 4.6], [2.2, 7.2], [4.6, 8.4]], [[0.2, 4.4], [-0.6, 8.2], [-0.2, 10.6]], [[0.3, 4.8], [3.6, 6.2], [5.8, 6.6]], [[0.2, 4.5], [-3.6, 6.0], [-6.2, 6.4]]];
+    for (const L of limbs) {
+      const pts = L.map(([dx, y]) => proj(TREE.x + dx, y, TREE.z));
+      tr.lineWidth = tw * 0.42; tr.beginPath(); tr.moveTo(pts[0][0], pts[0][1]); tr.quadraticCurveTo(pts[1][0], pts[1][1], pts[2][0], pts[2][1]); tr.lineWidth = tw * 0.3; tr.stroke();
+    }
+    // canopy: many leaf clumps inside a flattened dome
+    const clumps = [];
+    for (let i = 0; i < 2600; i++) {
+      let ux, uy, uz; do { ux = rnd(-1, 1); uy = rnd(-1, 1); uz = rnd(-1, 1); } while (ux * ux + uy * uy + uz * uz > 1);
+      const surf = Math.sqrt(ux * ux + uy * uy + uz * uz);
+      if (surf < 0.55 && R() < 0.7) continue;
+      const X = TREE.cx + ux * TREE.ax, Y = TREE.cy + uy * TREE.ay * (uy < 0 ? 0.75 : 1), Z = TREE.cz + uz * TREE.az;
+      const n = NA.n2(X / 2.2, Y / 2.0);
+      if (n < -0.32 && surf > 0.7) continue; // gaps where the sky shows through
+      clumps.push({ X, Y, Z, r: rnd(0.45, 0.95) * (1.1 - 0.3 * surf) });
+    }
+    clumps.sort((a, b) => b.Z - a.Z);
+    for (const c of clumps) {
+      const [x, y] = proj(c.X, c.Y, c.Z); const rp = c.r * FL / c.Z;
+      tr.fillStyle = rgba(mix('#2a3123', '#3a4230', R()));
+      tr.beginPath();
+      const k = 5 + Math.floor(R() * 4);
+      for (let j = 0; j < k; j++) { const a = rnd(0, Math.PI * 2), d = rnd(0, 0.65) * rp; const rr = rp * rnd(0.32, 0.55); tr.moveTo(x + Math.cos(a) * d + rr, y + Math.sin(a) * d); tr.arc(x + Math.cos(a) * d, y + Math.sin(a) * d * 0.8, rr, 0, Math.PI * 2); }
+      tr.fill();
+    }
+    // fine leaf fringe on the outer edge
+    for (let i = 0; i < 4200; i++) {
+      const a = rnd(0, Math.PI * 2); const ex = Math.cos(a), ey = Math.sin(a);
+      if (ey > 0.55) continue;
+      const X = TREE.cx + ex * TREE.ax * rnd(0.86, 1.04), Y = TREE.cy - ey * TREE.ay * rnd(0.86, 1.06), Z = TREE.cz + rnd(-0.5, 0.5) * TREE.az;
+      const [x, y] = proj(X, Y, Z); const rp = rnd(0.07, 0.16) * FL / Z;
+      tr.fillStyle = rgba(mix('#2a3123', '#3a4230', R()));
+      tr.beginPath(); tr.ellipse(x, y, rp * 1.3, rp, rnd(0, 3), 0, Math.PI * 2); tr.fill();
+    }
+  }
+  // translucent glow in the leaves nearest the sun; rim light on sun-facing edges
+  {
+    const g = tr.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 520);
+    g.addColorStop(0, 'rgba(196,190,110,0.85)'); g.addColorStop(0.35, 'rgba(120,128,70,0.45)'); g.addColorStop(1, 'rgba(90,100,60,0)');
+    tr.save(); tr.globalCompositeOperation = 'source-atop'; tr.fillStyle = g; tr.fillRect(0, 0, W, H); tr.restore();
+    const rim = mk(); rim.drawImage(tr.canvas, 0, 0);
+    rim.globalCompositeOperation = 'destination-out';
+    for (const [ox, oy] of [[3, 2], [5, 3]]) rim.drawImage(tr.canvas, ox, oy);
+    rim.globalCompositeOperation = 'source-in'; rim.fillStyle = 'rgba(232,214,150,0.9)'; rim.fillRect(0, 0, W, H);
+    tr.save(); tr.globalCompositeOperation = 'source-atop'; tr.globalAlpha = 0.55; tr.filter = 'blur(1px)'; tr.drawImage(rim.canvas, 0, 0); tr.restore();
+  }
+  ctx.save(); ctx.filter = 'blur(0.8px)'; ctx.drawImage(tr.canvas, 0, 0); ctx.restore();
+  await tick();
+
+  // ---------- children (silhouettes with rim light from the low sun) ----------
+  const kidsL = mk();
+  for (const k of [...KIDS].sort((a, b) => b.Z - a.Z)) {
+    const one = mk();
+    const map = (u, v) => proj(k.X + u, v, k.Z), sc = () => FL / k.Z;
+    one.fillStyle = '#2a2420';
+    drawShapes(one, k.shapes.filter(s => !s.pack), map, sc);
+    one.fillStyle = k.packCol;
+    drawShapes(one, k.shapes.filter(s => s.pack), map, sc);
+    // rim light: the part of the silhouette within a few px of the sun-facing edge
+    const rim = mk(); rim.drawImage(one.canvas, 0, 0);
+    const rw = Math.max(1.6, 0.022 * FL / k.Z);
+    const dir = [SUNP.x - proj(k.X, k.h * 0.6, k.Z)[0], SUNP.y - proj(k.X, k.h * 0.6, k.Z)[1]]; const dl = Math.hypot(...dir);
+    rim.globalCompositeOperation = 'destination-out'; rim.drawImage(one.canvas, -dir[0] / dl * rw, -dir[1] / dl * rw);
+    rim.globalCompositeOperation = 'source-in'; rim.fillStyle = 'rgba(255,214,150,1)'; rim.fillRect(0, 0, W, H);
+    one.save(); one.globalCompositeOperation = 'source-atop'; one.globalAlpha = 0.75; one.filter = 'blur(0.8px)'; one.drawImage(rim.canvas, 0, 0); one.restore();
+    kidsL.drawImage(one.canvas, 0, 0);
+  }
+  ctx.save(); ctx.filter = 'blur(0.6px)'; ctx.drawImage(kidsL.canvas, 0, 0); ctx.restore();
+  await tick();
+
+  // ---------- light: sun disc veiled by leaves, shafts through the canopy, haze, bloom ----------
+  {
+    const sd = mk(); const g = sd.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 60);
+    g.addColorStop(0, 'rgba(255,252,240,1)'); g.addColorStop(0.3, 'rgba(255,248,226,0.95)'); g.addColorStop(1, 'rgba(255,240,210,0)');
+    sd.fillStyle = g; sd.fillRect(SUNP.x - 80, SUNP.y - 80, 160, 160);
+    // only where the canopy lets the sky through
+    sd.globalCompositeOperation = 'destination-out'; sd.drawImage(tr.canvas, 0, 0);
+    ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.drawImage(sd.canvas, 0, 0); ctx.restore();
+  }
+  {
+    const q = 4, rw4 = W / q, rh4 = H / q;
+    const rays = mk(rw4, rh4); rays.drawImage(ctx.canvas, 0, 0, rw4, rh4);
+    const rd = rays.getImageData(0, 0, rw4, rh4), rdd = rd.data;
+    for (let i = 0; i < rdd.length; i += 4) { const y = Math.floor(i / 4 / rw4) * q; const l = luma(rdd[i], rdd[i + 1], rdd[i + 2]); const k = clamp((l - 0.86) / 0.14) * (y < YH ? 1 : 0); rdd[i] *= k; rdd[i + 1] *= k * 0.95; rdd[i + 2] *= k * 0.82; }
+    rays.putImageData(rd, 0, 0);
+    const acc = mk(rw4, rh4); acc.globalCompositeOperation = 'lighter';
+    const sx = SUNP.x / q, sy = SUNP.y / q;
+    for (let k = 0; k < 40; k++) { const s = 1 + k * 0.045; acc.globalAlpha = 0.05 * (1 - k / 40); acc.drawImage(rays.canvas, sx - sx * s, sy - sy * s, rw4 * s, rh4 * s); }
+    ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.globalAlpha = 0.55; ctx.filter = 'blur(2px)'; ctx.drawImage(acc.canvas, 0, 0, W, H); ctx.restore();
+  }
+  const veil = ctx.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 0.75 * W);
+  veil.addColorStop(0, 'rgba(255,236,200,0.30)'); veil.addColorStop(0.3, 'rgba(255,232,196,0.10)'); veil.addColorStop(1, 'rgba(255,230,190,0)');
+  ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = veil; ctx.fillRect(0, 0, W, H); ctx.restore();
+  bloom(ctx, { thr: 0.74, str: 0.5, rad: 70 });
+  await tick();
+  finish(ctx, { grain: 0.028, vig: 0.2, seed: 3131, lift: 0.02, contrast: 0.05, sat: 0.9, cx: 0.45 });
+  window.__done = true;
+})();
+</script>
+</body>
+</html>

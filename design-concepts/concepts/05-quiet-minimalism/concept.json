@@ -1,0 +1,67 @@
+{
+  "number": 5,
+  "slug": "05-quiet-minimalism",
+  "name": "Quiet Minimalism",
+  "tagline": "Calm, spacious and typographic: seriousness through restraint",
+  "idea": "A quiet, book-like website where typography carries the work: generous margins, fine rules and a large serif headline; stories as numbered lists, impact told in one sentence, and images used sparingly, so every word carries weight.",
+  "fit": "Restraint signals seriousness. For an organisation whose credibility rests on careful evidence and dignified testimony, a calm, reading-first site lets the research and the families’ words speak without visual noise.",
+  "informedBy": [
+    "Hierarchy from scale, spacing and fine rules.",
+    "A dated, typed list of the latest stories.",
+    "Participation placed at one meaningful point."
+  ],
+  "distinct": "Built from type and space alone: two homepage images, one Menu button, numbered lists instead of cards, and impact told in one sentence.",
+  "palette": [
+    {
+      "name": "Bone",
+      "hex": "#F6F4EF",
+      "role": "Background"
+    },
+    {
+      "name": "Charcoal",
+      "hex": "#262626",
+      "role": "Text, primary buttons"
+    },
+    {
+      "name": "Ash",
+      "hex": "#5E5A52",
+      "role": "Secondary text"
+    },
+    {
+      "name": "Stone",
+      "hex": "#B8B2A6",
+      "role": "Hairline rules"
+    },
+    {
+      "name": "Moss",
+      "hex": "#4F5D47",
+      "role": "Links and accents"
+    },
+    {
+      "name": "White",
+      "hex": "#FFFFFF",
+      "role": "Support band, covers"
+    }
+  ],
+  "fonts": {
+    "heading": {
+      "family": "Cormorant Garamond",
+      "weights": "400, 500, italics"
+    },
+    "body": {
+      "family": "Manrope",
+      "weights": "400, 500, 600"
+    },
+    "accent": {
+      "family": "",
+      "weights": ""
+    }
+  },
+  "buttons": "Square charcoal buttons, hairline outlines, moss underlined links and bordered tags; no rounded corners.",
+  "imageDirection": "Two or three images per page, desaturated and soft, never full-bleed, with generous margins and thin captions.",
+  "navigation": "Wordmark, Search, one Menu button and an underlined Donate link; mobile keeps only Menu and Donate.",
+  "visualCharacter": "Calm, bookish, typographic; bone paper, fine rules, moss accents",
+  "contentEmphasis": "Reading first: the lead feature, numbered latest list, research",
+  "bestFor": "An organisation that wants to be read and trusted, with a calm, credible, long-lasting presence.",
+  "tradeoffs": "Less urgent and emotional; one Menu button hides the sections, sparse imagery can feel reserved, and campaigns rely on strong copy."
+}

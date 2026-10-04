@@ -1,0 +1,67 @@
+{
+  "number": 7,
+  "slug": "07-contemporary-magazine",
+  "name": "Contemporary Magazine",
+  "tagline": "Human rights reporting, art-directed like a monthly magazine.",
+  "idea": "The site reads like a well-designed monthly magazine. Each edition opens with a cover story set as a two-page spread, then a contents grid of mixed tile sizes, colour-blocked report spreads and short field notes, so research feels inviting.",
+  "fit": "Daybreak needs credible research to feel inviting. The edition structure gives features, reports and updates their own scale and colour, and places donate and newsletter asks where engaged readers arrive.",
+  "informedBy": [
+    "A strong lead story with asymmetric layout instead of rows of equal cards",
+    "Report covers that stand apart from news",
+    "A serif reading face and captioned images"
+  ],
+  "distinct": "The only concept built from colour-block spreads and a mosaic contents grid, with oversized italic headlines, tilted report covers and circular, offset image crops.",
+  "palette": [
+    {
+      "name": "Cream",
+      "hex": "#FBF6EC",
+      "role": "Background"
+    },
+    {
+      "name": "Ink",
+      "hex": "#141414",
+      "role": "Text and main buttons"
+    },
+    {
+      "name": "Cobalt",
+      "hex": "#2A44B8",
+      "role": "Feature spreads and links"
+    },
+    {
+      "name": "Tomato",
+      "hex": "#E5532D",
+      "role": "Donate and accents"
+    },
+    {
+      "name": "Pistachio",
+      "hex": "#CFE6B0",
+      "role": "Figures and image frames"
+    },
+    {
+      "name": "Blush",
+      "hex": "#F4C9BD",
+      "role": "Soft panels"
+    }
+  ],
+  "fonts": {
+    "heading": {
+      "family": "Instrument Serif",
+      "weights": "400, 400 italic"
+    },
+    "body": {
+      "family": "Instrument Sans",
+      "weights": "400, 500, 600"
+    },
+    "accent": {
+      "family": "Spectral",
+      "weights": "400 (long reading)"
+    }
+  },
+  "buttons": "Pill buttons: tomato for Donate, ink for main actions, outlined for downloads; arrow links; soft tags.",
+  "imageDirection": "Natural colour, cropped like a collage: tall and wide crops, circular cut-outs and offset colour-block frames, with captions.",
+  "navigation": "Centred wordmark with edition date, dotted section row and a tomato Donate pill.",
+  "visualCharacter": "Colourful, art-directed, editorial; big italic serif headlines.",
+  "contentEmphasis": "Features and stories first, with reports as collectable objects.",
+  "bestFor": "Reaching new and younger supporters through storytelling while keeping research credible and easy to browse.",
+  "tradeoffs": "Needs strong images and editorial effort for every edition; bright colour may feel less formal for policy audiences; display type needs care."
+}

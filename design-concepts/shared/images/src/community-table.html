@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>community-table — original illustration</title>
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block}</style>
+</head><body><canvas id="c" width="2400" height="1600"></canvas>
+<script>
+/* community-table — original illustration created for this proposal (documentary-illustration series).
+   Self-contained and deterministic: all randomness comes from a seeded PRNG. */
+"use strict";
+// ---------------------------------------------------------------- kit
+const W = 2400, H = 1600;
+const cvs = document.getElementById('c');
+const ctx = cvs.getContext('2d', { willReadFrequently: true });
+
+// seeded PRNG (mulberry32)
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function makeRand(seed) {
+  const r = mulberry32(seed);
+  const f = () => r();
+  f.range = (a, b) => a + (b - a) * r();
+  f.int = (a, b) => Math.floor(a + (b - a + 1) * r());
+  f.gauss = () => { let u = 0; while (u === 0) u = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * r()); };
+  f.pick = arr => arr[Math.floor(r() * arr.length)];
+  return f;
+}
+// 2D value noise in [0,1] and fBm
+function makeNoise(seed) {
+  const r = mulberry32(seed), P = new Uint16Array(512), G = new Float32Array(256);
+  for (let i = 0; i < 256; i++) { P[i] = i; G[i] = r(); }
+  for (let i = 255; i > 0; i--) { const j = Math.floor(r() * (i + 1)); const t = P[i]; P[i] = P[j]; P[j] = t; }
+  for (let i = 0; i < 256; i++) P[i + 256] = P[i];
+  return function (x, y) {
+    const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+    const X = xi & 255, Y = yi & 255;
+    const a = G[P[P[X] + Y]], b = G[P[P[X + 1] + Y]], c = G[P[P[X] + Y + 1]], d = G[P[P[X + 1] + Y + 1]];
+    const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  };
+}
+function fbm(n, x, y, oct = 5, lac = 2.0, gain = 0.5) {
+  let s = 0, a = 0.5, f = 1, norm = 0;
+  for (let i = 0; i < oct; i++) { s += a * n(x * f + i * 17.3, y * f - i * 9.1); norm += a; a *= gain; f *= lac; }
+  return s / norm;
+}
+const clamp = (v, a = 0, b = 1) => (v < a ? a : v > b ? b : v);
+const lerp = (a, b, t) => a + (b - a) * t;
+const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const hexRGB = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+const rgba = (c, a = 1) => `rgba(${Math.round(c[0])},${Math.round(c[1])},${Math.round(c[2])},${a})`;
+const mixc = (c1, c2, t) => [lerp(c1[0], c2[0], t), lerp(c1[1], c2[1], t), lerp(c1[2], c2[2], t)];
+// vectors
+const v3 = {
+  add: (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]],
+  sub: (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]],
+  mul: (a, s) => [a[0] * s, a[1] * s, a[2] * s],
+  dot: (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+  cross: (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]],
+  len: a => Math.hypot(a[0], a[1], a[2]),
+  norm: a => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; },
+  lerp: (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t],
+};
+// linear light -> display (soft filmic shoulder + sRGB-ish gamma)
+const toneMap = (x, exposure = 1) => Math.pow(1 - Math.exp(-Math.max(0, x) * exposure), 1 / 2.2);
+const toneRGB = (c, exposure = 1) => [toneMap(c[0], exposure) * 255, toneMap(c[1], exposure) * 255, toneMap(c[2], exposure) * 255];
+// layers
+function newLayer(w = W, h = H) { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
+function blurCopy(src, px, scale = 1) {
+  // blurred copy of a canvas; scale<1 blurs at reduced resolution (fast, for big radii)
+  const sw = Math.max(1, Math.round(src.width * scale)), sh = Math.max(1, Math.round(src.height * scale));
+  const a = newLayer(sw, sh), ac = a.getContext('2d');
+  ac.filter = `blur(${px * scale}px)`; ac.drawImage(src, 0, 0, sw, sh); ac.filter = 'none';
+  if (scale === 1) return a;
+  const b = newLayer(src.width, src.height), bc = b.getContext('2d');
+  bc.imageSmoothingEnabled = true; bc.imageSmoothingQuality = 'high'; bc.drawImage(a, 0, 0, src.width, src.height);
+  return b;
+}
+function convexHull(pts) {
+  const p = pts.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lo = [], up = [];
+  for (const q of p) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], q) <= 0) lo.pop(); lo.push(q); }
+  for (let i = p.length - 1; i >= 0; i--) { const q = p[i]; while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], q) <= 0) up.pop(); up.push(q); }
+  up.pop(); lo.pop(); return lo.concat(up);
+}
+function poly(c, pts) { c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for (let i = 1; i < pts.length; i++) c.lineTo(pts[i][0], pts[i][1]); c.closePath(); }
+// bloom: bright-pass at quarter res, multi-radius blur, screen back
+function addBloom(target, { threshold = 0.75, knee = 0.15, radii = [8, 24, 64], weights = [0.5, 0.35, 0.25], strength = 0.5, tint = [255, 240, 220] } = {}) {
+  const s = 0.25, sw = W * s, sh = H * s;
+  const small = newLayer(sw, sh), sc = small.getContext('2d', { willReadFrequently: true });
+  sc.drawImage(target.canvas, 0, 0, sw, sh);
+  const id = sc.getImageData(0, 0, sw, sh), d = id.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const l = (0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2]) / 255;
+    const k = smooth(threshold - knee, threshold + knee, l) * (l - threshold * 0.5);
+    d[i] = d[i] * k * tint[0] / 255; d[i + 1] = d[i + 1] * k * tint[1] / 255; d[i + 2] = d[i + 2] * k * tint[2] / 255;
+  }
+  sc.putImageData(id, 0, 0);
+  target.save(); target.globalCompositeOperation = 'screen'; target.imageSmoothingQuality = 'high';
+  radii.forEach((r, i) => { const b = blurCopy(small, r * s); target.globalAlpha = clamp(strength * weights[i]); target.drawImage(b, 0, 0, W, H); });
+  target.restore();
+}
+// final pass: optional grade, vignette, two-scale luminance film grain
+function finish(target, { grain = 0.03, seed = 1, vignette = 0.3, vcx = 0.5, vcy = 0.5, vr0 = 0.35, vr1 = 0.95, grade = null } = {}) {
+  const id = target.getImageData(0, 0, W, H), d = id.data, r = mulberry32(seed);
+  // coarse grain field (half res, bilinear) for clumpy film structure
+  const cw = W / 2 + 2, ch = H / 2 + 2, coarse = new Float32Array(cw * ch);
+  for (let i = 0; i < coarse.length; i++) coarse[i] = (r() + r() + r() - 1.5) * 2;
+  const diag = Math.hypot(W, H) / 2;
+  for (let y = 0; y < H; y++) {
+    const gy = y / 2, y0 = Math.floor(gy), fy = gy - y0;
+    for (let x = 0; x < W; x++) {
+      const i = (y * W + x) * 4;
+      let R = d[i] / 255, G = d[i + 1] / 255, B = d[i + 2] / 255;
+      if (grade) { const o = grade(R, G, B, x, y); R = o[0]; G = o[1]; B = o[2]; }
+      if (vignette) {
+        const dx = (x - vcx * W) / (W / 2), dy = (y - vcy * H) / (H / 2);
+        const dd = Math.sqrt(dx * dx * 0.8 + dy * dy * 1.0) / 1.25;
+        const v = 1 - vignette * smooth(vr0, vr1, dd);
+        R *= v; G *= v; B *= v;
+      }
+      const gx = x / 2, x0 = Math.floor(gx), fx = gx - x0, j = y0 * cw + x0;
+      const c = (coarse[j] * (1 - fx) + coarse[j + 1] * fx) * (1 - fy) + (coarse[j + cw] * (1 - fx) + coarse[j + cw + 1] * fx) * fy;
+      const L = 0.2126 * R + 0.7152 * G + 0.0722 * B;
+      const n = ((r() + r() + r() - 1.5) * 2 * 0.65 + c * 0.75) * grain * (0.45 + 2.2 * L * (1 - L));
+      d[i] = clamp(R + n) * 255; d[i + 1] = clamp(G + n) * 255; d[i + 2] = clamp(B + n) * 255;
+    }
+  }
+  target.putImageData(id, 0, 0);
+}
+// piecewise-linear colour ramp: stops = [[t,[r,g,b]],...]
+function ramp(stops, t) {
+  if (t <= stops[0][0]) return stops[0][1].slice();
+  for (let i = 1; i < stops.length; i++) if (t <= stops[i][0]) {
+    const a = stops[i - 1], b = stops[i], u = (t - a[0]) / (b[0] - a[0]);
+    return mixc(a[1], b[1], u);
+  }
+  return stops[stops.length - 1][1].slice();
+}
+const v2norm = a => { const l = Math.hypot(a[0], a[1]) || 1; return [a[0] / l, a[1] / l]; };
+// ---------------------------------------------------------------- scene
+// ===================== COMMUNITY TABLE =====================
+// Early evening in a courtyard. A long table with a linen cloth runs away from the camera, set with cups and a
+// teapot; string lights between timber poles; people sitting at the far end against a warm doorway.
+const rand = makeRand(24680);
+const nA = makeNoise(501), nB = makeNoise(502), nC = makeNoise(503), nD = makeNoise(504);
+function hash1(n) { let h = Math.imul((n | 0) ^ 0x9e3779b9, 0x85ebca6b); h ^= h >>> 13; h = Math.imul(h, 0xc2b2ae35); h ^= h >>> 16; return (h >>> 0) / 4294967296; }
+
+// ---------- camera & courtyard (metres) ----------
+const F = 1750, CX = 1200, CY = 690, CAMY = 1.3;
+const P = (x, y, z) => [CX + F * x / z, CY - F * (y - CAMY) / z];
+const ZF = 2.35, KC = 30;
+const coc = z => KC * Math.abs(1 / z - 1 / ZF);
+const TX = 0.08, TW = 0.49, TY = 0.75, TZ0 = 0.9, TZ1 = 8.9;      // table centre-line x, half width, height, z range
+const WL = -3.2, WR = 3.4, WH = 2.4, ZB = 13.0, BH = 3.6;          // side walls, far building
+const DOOR = { x: 0.32, hw: 0.66, spring: 2.0 };
+const WIN1 = { x0: -2.1, x1: -1.35, y0: 1.15, y1: 2.25 };
+const EXPO = 1.0;
+
+// ---------- lights: string lights between poles, the doorway ----------
+const lights = [], strands = [];
+const POLES = [3.2, 7.0, 9.3, 11.8];
+function addStrand(a, b, sag) {
+  const len = Math.hypot(b[0] - a[0], b[2] - a[2]), n = Math.round(len / 0.5), s = { a, b, sag, bulbs: [], wire: [] };
+  for (let k = 0; k <= 40; k++) { const t = k / 40; s.wire.push([lerp(a[0], b[0], t), lerp(a[1], b[1], t) - sag * 4 * t * (1 - t), lerp(a[2], b[2], t)]); }
+  for (let k = 1; k < n; k++) {
+    const t = (k + rand.range(-0.08, 0.08)) / n;
+    const p = [lerp(a[0], b[0], t), lerp(a[1], b[1], t) - sag * 4 * t * (1 - t) - 0.07, lerp(a[2], b[2], t)];
+    const I = 0.05 * rand.range(0.85, 1.15);
+    s.bulbs.push({ p, I }); lights.push({ x: p[0], y: p[1], z: p[2], I, col: [1.0, 0.66, 0.34], hemi: 0 });
+  }
+  strands.push(s);
+}
+for (const z of POLES) addStrand([-3.0, 3.25, z], [3.0, 3.2, z], 0.36);
+addStrand([-3.0, 3.25, 7.0], [3.0, 3.2, 9.3], 0.42);
+addStrand([-3.0, 3.25, 9.3], [3.0, 3.2, 11.8], 0.42);
+for (const [dx, dy] of [[-0.35, 1.0], [0.35, 1.0], [0, 1.9]]) lights.push({ x: DOOR.x + dx, y: dy, z: ZB + 0.05, I: 0.55, col: [1.0, 0.72, 0.42], hemi: -1 });
+
+// chairs (for shadows and drawing): [x of seat centre, z, side (-1 left, +1 right), yaw jitter, occupied]
+const chairs = [];
+{
+  const zs = [1.7, 2.45, 3.2, 3.95, 4.7, 5.45, 6.2, 6.95, 7.7, 8.45];
+  for (const side of [-1, 1]) zs.forEach((z, k) => {
+    const pulled = rand.range(0.0, 0.12) + (k < 3 ? 0.06 : 0);
+    chairs.push({ x: TX + side * (TW + 0.20 + pulled), z: z + rand.range(-0.06, 0.06), side, yaw: rand.range(-0.12, 0.12), occ: false });
+  });
+}
+const seatHit = (x, z) => { for (const c of chairs) if (Math.abs(x - c.x) < 0.21 && Math.abs(z - c.z) < 0.21) return true; return false; };
+
+// ---------- 1. surfaces: per-pixel ray cast + lighting + depth ----------
+function castRay(X, Y) {
+  const dx = (X + 0.5 - CX) / F, dy = -(Y + 0.5 - CY) / F;
+  let best = null, bz = 1e9;
+  if (dy < 0) {
+    const z = (TY - CAMY) / dy, x = dx * z;
+    if (z >= TZ0 && z <= TZ1 && x >= TX - TW && x <= TX + TW) { bz = z; best = [0, x, TY, z]; }
+    const zg = -CAMY / dy, xg = dx * zg;
+    if (zg < ZB && xg > WL && xg < WR && zg < bz) { bz = zg; best = [1, xg, 0, zg]; }
+  }
+  if (dx < 0) { const z = WL / dx, y = CAMY + dy * z; if (y >= 0 && y <= WH && z < ZB && z < bz) { bz = z; best = [2, WL, y, z]; } }
+  if (dx > 0) { const z = WR / dx, y = CAMY + dy * z; if (y >= 0 && y <= WH && z < ZB && z < bz) { bz = z; best = [3, WR, y, z]; } }
+  { const x = dx * ZB, y = CAMY + dy * ZB; if (x >= WL && x <= WR && y >= 0 && y <= BH && ZB < bz) { bz = ZB; best = [4, x, y, ZB]; } }
+  return best;
+}
+const SKY = [[0.00, [62, 84, 120]], [0.30, [88, 108, 140]], [0.55, [132, 140, 160]], [0.75, [186, 170, 168]], [0.90, [224, 190, 160]], [1.0, [236, 200, 160]]];
+const skyAt = Y => ramp(SKY, clamp(Y / 560));
+const AMB_UP = [0.060, 0.072, 0.098], AMB_SIDE = [0.034, 0.040, 0.054];
+const surf = ctx.createImageData(W, H), SD = surf.data;
+const depth = new Float32Array(W * H).fill(1e9);
+for (let Y = 0; Y < H; Y++) {
+  for (let X = 0; X < W; X++) {
+    const i = Y * W + X, o = i * 4, h = castRay(X, Y);
+    if (!h) { const c = skyAt(Y); SD[o] = c[0]; SD[o + 1] = c[1]; SD[o + 2] = c[2]; SD[o + 3] = 255; continue; }
+    const [kind, x, y, z] = h;
+    depth[i] = z;
+    let n, alb, emit = null;
+    if (kind === 0) {                         // linen tablecloth with fold creases
+      n = [0, 1, 0];
+      const u = (x - (TX - TW)) / (2 * TW), cz = (z - TZ0) / 0.62;
+      const cu = Math.abs(u - 0.5) < 0.01 ? 1 : 0;
+      const fz = cz - Math.floor(cz), crease = Math.exp(-Math.pow((fz - 0.5) * 9, 2));
+      const m = 0.95 + 0.04 * fbm(nA, x * 3, z * 1.2, 3) - 0.035 * crease - 0.02 * Math.exp(-Math.pow((u - 0.5) / 0.012, 2));
+      n = [0, 1, 0.12 * Math.cos(fz * Math.PI * 2) * crease];
+      const edge = smooth(0.0, 0.025, Math.min(u, 1 - u));       // cloth rolls over the edge
+      alb = [0.80 * m * (0.7 + 0.3 * edge), 0.78 * m * (0.7 + 0.3 * edge), 0.74 * m * (0.7 + 0.3 * edge)];
+    } else if (kind === 1) {                  // stone pavers
+      n = [0, 1, 0];
+      const s = 0.5, gx = (x + 0.13) / s, gz = z / s, ix = Math.floor(gx + (Math.floor(gz) % 2) * 0.5), iz = Math.floor(gz);
+      const fx = gx + (Math.floor(gz) % 2) * 0.5 - ix, fzz = gz - iz;
+      const jw = Math.max(0.012, 0.9 * z / F / s);
+      const jt = Math.min(fx, 1 - fx, fzz, 1 - fzz);
+      const joint = 0.55 + 0.45 * smooth(0, jw, jt);
+      const tone = 0.82 + 0.3 * hash1(ix * 73 + iz * 151);
+      const mott = 0.88 + 0.18 * fbm(nB, x * 2.5, z * 2.5, 3);
+      alb = [0.44 * tone * mott * joint, 0.38 * tone * mott * joint, 0.31 * tone * mott * joint];
+    } else if (kind === 2 || kind === 3) {    // courtyard walls: lime plaster, darker and damp at the foot
+      n = [kind === 2 ? 1 : -1, 0, 0];
+      const m = 0.86 + 0.16 * fbm(nC, z * 1.3, y * 1.3, 4) + 0.04 * (nA(z * 40, y * 40) - 0.5);
+      const foot = 1 - 0.25 * smooth(0.5, 0.0, y), cap = y > WH - 0.08 ? 1.12 : 1;
+      alb = [0.66 * m * foot * cap, 0.58 * m * foot * cap, 0.48 * m * foot * cap];
+    } else {                                  // far building with an arched doorway and a window
+      n = [0, 0, -1];
+      const m = 0.88 + 0.14 * fbm(nD, x * 1.1, y * 1.1, 4);
+      alb = [0.70 * m, 0.62 * m, 0.52 * m];
+      const dxd = x - DOOR.x, inArch = Math.abs(dxd) < DOOR.hw && (y < DOOR.spring || Math.hypot(dxd, y - DOOR.spring) < DOOR.hw);
+      if (inArch) {
+        const t = clamp(y / (DOOR.spring + DOOR.hw));
+        emit = [1.25 + 0.4 * t, 0.86 + 0.28 * t, 0.50 + 0.14 * t].map(v => v * (0.9 + 0.1 * Math.cos(dxd * 2)));
+        if (y < 0.06) emit = emit.map(v => v * 0.7);
+      } else if (x > WIN1.x0 && x < WIN1.x1 && y > WIN1.y0 && y < WIN1.y1) {
+        const bar = Math.abs(x - (WIN1.x0 + WIN1.x1) / 2) < 0.025 || Math.abs(y - 1.7) < 0.025;
+        emit = bar ? [0.12, 0.08, 0.05] : [0.85, 0.6, 0.34];
+      } else {
+        // reveal shadow around openings
+        const rim = (Math.abs(dxd) < DOOR.hw + 0.12 && (y < DOOR.spring + 0.05 || Math.hypot(dxd, y - DOOR.spring) < DOOR.hw + 0.12)) ? 0.8 : 1;
+        alb = alb.map(v => v * rim);
+      }
+    }
+    if (emit) { for (let c = 0; c < 3; c++) SD[o + c] = toneMap(emit[c], EXPO) * 255; SD[o + 3] = 255; continue; }
+    // lighting
+    let Er = 0, Eg = 0, Eb = 0;
+    for (const L of lights) {
+      const lx = L.x - x, ly = L.y - y, lz = L.z - z;
+      if (L.hemi && lz < 0.02) continue;
+      if (L.hemi && kind === 4) continue;
+      const ndl = n[0] * lx + n[1] * ly + n[2] * lz; if (ndl <= 0) continue;
+      const d2 = lx * lx + ly * ly + lz * lz;
+      let vis = 1;
+      if (kind === 1) {
+        // under the table / chair seats
+        if (ly > TY) { const t = (TY - y) / ly, xc = x + lx * t, zc = z + lz * t; if (xc > TX - TW - 0.02 && xc < TX + TW + 0.02 && zc > TZ0 && zc < TZ1 + 0.02) vis = 0; }
+        if (vis && ly > 0.45) { const t = (0.45 - y) / ly; if (seatHit(x + lx * t, z + lz * t)) vis = 0.25; }
+      }
+      let k = L.I * ndl / (d2 * Math.sqrt(d2)) * vis;
+      if (L.hemi) k *= clamp(-lz / Math.sqrt(d2)) * 1.0;
+      Er += k * L.col[0]; Eg += k * L.col[1]; Eb += k * L.col[2];
+    }
+    const amb = n[1] > 0.5 ? AMB_UP : AMB_SIDE;
+    // soft ambient occlusion: under/near the table, at wall feet
+    let ao = 1;
+    if (kind === 1) {
+      const dxT = Math.max(0, Math.abs(x - TX) - TW), inZ = z > TZ0 && z < TZ1;
+      if (inZ) ao *= 0.35 + 0.65 * smooth(0, 0.6, dxT);
+      ao *= 0.6 + 0.4 * smooth(0, 0.5, Math.min(x - WL, WR - x));
+    }
+    const rad = [alb[0] * (Er + amb[0] * ao), alb[1] * (Eg + amb[1] * ao), alb[2] * (Eb + amb[2] * ao)];
+    for (let c = 0; c < 3; c++) SD[o + c] = toneMap(rad[c], EXPO) * 255;
+    SD[o + 3] = 255;
+  }
+}
+// depth of field on the surfaces
+const main = (() => {
+  const sl = newLayer(), slc = sl.getContext('2d'); slc.putImageData(surf, 0, 0);
+  const levels = [0, 1.2, 2.5, 4, 6, 8];
+  const datas = levels.map(s => (s ? blurCopy(sl, s, s > 4 ? 0.5 : 1) : sl).getContext('2d').getImageData(0, 0, W, H).data);
+  const out = new Uint8ClampedArray(W * H * 4);
+  for (let i = 0; i < W * H; i++) {
+    const s = Math.min(levels[levels.length - 1], coc(Math.min(depth[i], 60)) * 0.5);
+    let a = 0; while (a < levels.length - 2 && levels[a + 1] < s) a++;
+    const t = clamp((s - levels[a]) / (levels[a + 1] - levels[a])), A = datas[a], B = datas[a + 1], o = i * 4;
+    out[o] = lerp(A[o], B[o], t); out[o + 1] = lerp(A[o + 1], B[o + 1], t); out[o + 2] = lerp(A[o + 2], B[o + 2], t); out[o + 3] = 255;
+  }
+  return out;
+})();
+
+// ---------- 2. objects: drawn into small layers, blurred by their depth, composited with a depth test ----------
+const objs = [];
+function addObj(z, bbox, draw, zTest = z) { objs.push({ z, bbox, draw, zTest }); }
+function composite(o) {
+  let [x0, y0, x1, y1] = o.bbox; const r = coc(o.z), pad = Math.ceil(r * 1.6 + 4);
+  x0 = Math.max(0, Math.floor(x0 - pad)); y0 = Math.max(0, Math.floor(y0 - pad)); x1 = Math.min(W, Math.ceil(x1 + pad)); y1 = Math.min(H, Math.ceil(y1 + pad));
+  const w = x1 - x0, h = y1 - y0; if (w <= 0 || h <= 0) return;
+  const L = newLayer(w, h), g = L.getContext('2d'); g.translate(-x0, -y0); o.draw(g);
+  const B = r > 0.8 ? blurCopy(L, r * 0.5) : L;
+  const d = B.getContext('2d').getImageData(0, 0, w, h).data;
+  for (let yy = 0; yy < h; yy++) for (let xx = 0; xx < w; xx++) {
+    const s = (yy * w + xx) * 4, a = d[s + 3] / 255; if (a <= 0) continue;
+    const gi = (y0 + yy) * W + (x0 + xx); if (depth[gi] < o.zTest - 0.02) continue;
+    const t = gi * 4;
+    if (o.add) { main[t] += d[s] * a; main[t + 1] += d[s + 1] * a; main[t + 2] += d[s + 2] * a; }
+    else { main[t] = lerp(main[t], d[s], a); main[t + 1] = lerp(main[t + 1], d[s + 1], a); main[t + 2] = lerp(main[t + 2], d[s + 2], a); }
+  }
+}
+
+// light at a point (for shading objects): returns warm/cool irradiance terms
+function lightAt(x, y, z, n) {
+  let r = 0, gg = 0, b = 0;
+  for (const L of lights) {
+    const lx = L.x - x, ly = L.y - y, lz = L.z - z; if (L.hemi && lz < 0.02) continue;
+    const d2 = lx * lx + ly * ly + lz * lz, d = Math.sqrt(d2), ndl = n ? Math.max(0, (n[0] * lx + n[1] * ly + n[2] * lz) / d) : 0.6;
+    let k = L.I * ndl / d2; if (L.hemi) k *= clamp(-lz / d);
+    r += k * L.col[0]; gg += k * L.col[1]; b += k * L.col[2];
+  }
+  return [r, gg, b];
+}
+const tone3 = c => [toneMap(c[0], EXPO) * 255, toneMap(c[1], EXPO) * 255, toneMap(c[2], EXPO) * 255];
+function shade(alb, x, y, z, n, ambK = 1) {
+  const E = lightAt(x, y, z, n), up = n ? Math.max(0, n[1]) : 0.5;
+  const amb = [lerp(AMB_SIDE[0], AMB_UP[0], up) * ambK, lerp(AMB_SIDE[1], AMB_UP[1], up) * ambK, lerp(AMB_SIDE[2], AMB_UP[2], up) * ambK];
+  return tone3([alb[0] * (E[0] + amb[0]), alb[1] * (E[1] + amb[1]), alb[2] * (E[2] + amb[2])]);
+}
+
+// --- chairs: simple timber chairs seen from the side ---
+const OAK = [0.34, 0.21, 0.12];
+function chairParts(c) {
+  const dir = -c.side, parts = [];  // seat front faces the table (towards -side)
+  const cs = Math.cos(c.yaw), sn = Math.sin(c.yaw);
+  const L = (u, y, v) => [c.x + (u * cs - v * sn) * 1, y, c.z + (u * sn + v * cs)];   // u: across (towards the table = dir), v: along z
+  const leg = (u, v, y0, y1, r) => parts.push({ kind: 'cyl', a: L(u, y0, v), b: L(u, y1, v), r });
+  const hs = 0.2;
+  for (const v of [-hs, hs]) { leg(dir * hs, v, 0, 0.44, 0.016); leg(-dir * hs, v, 0, 0.44, 0.017); leg(-dir * hs, v, 0.44, 0.9, 0.016); }
+  parts.push({ kind: 'quad', pts: [L(-hs - 0.01, 0.45, -hs - 0.01), L(hs + 0.01, 0.45, -hs - 0.01), L(hs + 0.01, 0.45, hs + 0.01), L(-hs - 0.01, 0.45, hs + 0.01)].map(p => p), top: true });
+  // back rails (on the side away from the table)
+  for (const y of [0.62, 0.84]) parts.push({ kind: 'quad', pts: [L(-dir * hs, y, -hs), L(-dir * hs, y, hs), L(-dir * hs, y + 0.055, hs), L(-dir * hs, y + 0.055, -hs)] });
+  return parts;
+}
+function drawChair(g, c) {
+  const parts = chairParts(c);
+  for (const p of parts) {
+    if (p.kind === 'cyl') {
+      const a = P(...p.a), b = P(...p.b), w = Math.max(1, F * p.r * 2 / p.a[2]);
+      const col = shade(OAK, p.a[0], (p.a[1] + p.b[1]) / 2, p.a[2], [0, 0.3, -0.9]);
+      g.strokeStyle = rgba(col); g.lineWidth = w; g.lineCap = 'butt'; g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(b[0], b[1]); g.stroke();
+    } else {
+      const q = p.pts.map(v => P(...v)), m = p.pts[0];
+      const col = p.top ? shade(OAK.map(v => v * 1.1), m[0], m[1], m[2], [0, 1, 0]) : shade(OAK, m[0], m[1], m[2], [0, 0.2, -1]);
+      g.fillStyle = rgba(col); poly(g, q); g.fill();
+      if (p.top) { const e0 = P(...p.pts[0]), e1 = P(...p.pts[1]); g.strokeStyle = rgba(col.map(v => v * 0.7)); g.lineWidth = Math.max(1, F * 0.022 / m[2]); g.beginPath(); g.moveTo(e0[0], e0[1]); g.lineTo(e1[0], e1[1]); g.stroke(); }
+    }
+  }
+}
+for (const c of chairs) {
+  const pts = [P(c.x - 0.3, 0, c.z), P(c.x + 0.3, 0.95, c.z), P(c.x - 0.3, 0.95, c.z - 0.25), P(c.x + 0.3, 0, c.z + 0.25)];
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+  addObj(c.z, [Math.min(...xs) - 10, Math.min(...ys) - 10, Math.max(...xs) + 10, Math.max(...ys) + 10], g => drawChair(g, c), c.z - 0.25);
+}
+
+// --- seated people at the far end (silhouettes, warm top light, rim from the doorway) ---
+function seated(g, hx, hz, face, o) {
+  // side view in metres; hip at (hx, 0.47, hz); face: +1 looks to +x, -1 to -x, 0 = faces the camera (head of the table)
+  const S = (u, y) => P(hx + u * (face || 1), y, hz);
+  const hh = 0.225 * (o.h || 1);
+  const lean = o.lean || 0.06;
+  const shoulder = [0.03 + lean, 1.0 * (o.h || 1)], head = [0.07 + lean * 1.4, shoulder[1] + 0.21 * (o.h || 1)];
+  const body = face === 0 ? null : [
+    [-0.12, 0.47], [-0.13, 0.62], [-0.11 + lean * 0.4, 0.82], [shoulder[0] - 0.12, shoulder[1] - 0.02], [shoulder[0] - 0.02, shoulder[1] + 0.03],
+    [shoulder[0] + 0.08, shoulder[1] - 0.01], [shoulder[0] + 0.12, shoulder[1] - 0.12], [0.13 + lean * 0.5, 0.76], [0.12, 0.6], [0.4, 0.56], [0.46, 0.5], [0.44, 0.0], [0.38, 0.0], [0.36, 0.45], [0.05, 0.44],
+  ];
+  const col = o.col;
+  g.fillStyle = col;
+  if (body) {
+    g.beginPath(); body.forEach((p, i) => { const s = S(p[0], p[1]); i ? g.lineTo(s[0], s[1]) : g.moveTo(s[0], s[1]); }); g.closePath(); g.fill();
+    // neck + head
+    const n0 = S(shoulder[0] + 0.0, shoulder[1]), hc = S(head[0], head[1]), rr = F * hh * 0.5 / hz;
+    g.beginPath(); g.ellipse(hc[0], hc[1], rr * 0.82, rr, (face || 1) * 0.15, 0, Math.PI * 2); g.fill();
+    g.lineWidth = F * 0.1 / hz; g.strokeStyle = col; g.beginPath(); g.moveTo(n0[0], n0[1]); g.lineTo(hc[0] - (face || 1) * rr * 0.1, hc[1] + rr * 0.6); g.stroke();
+    if (o.hair) { g.beginPath(); g.ellipse(hc[0] - (face || 1) * rr * 0.25, hc[1] + rr * 0.35, rr * 0.75, rr * 0.95, 0, 0, Math.PI * 2); g.fill(); }
+    // forearm on the table
+    const e = S(shoulder[0] + 0.02, 0.78), w = S(shoulder[0] + (o.gesture ? 0.22 : 0.32), o.gesture ? 0.98 : 0.79);
+    const sh = S(shoulder[0] - 0.02, shoulder[1] - 0.05);
+    g.lineCap = 'round'; g.lineWidth = F * 0.085 / hz; g.beginPath(); g.moveTo(sh[0], sh[1]); g.lineTo(e[0], e[1]); g.lineTo(w[0], w[1]); g.stroke();
+  } else {
+    // front view at the head of the table: shoulders and head above the table
+    const c0 = P(hx, 0.47, hz), u = F / hz;
+    const sw = 0.21 * (o.w || 1), sy = 1.0, hy = 1.21;
+    const pts = [[-0.17, 0.6], [-sw * 0.95, 0.85], [-sw, sy - 0.04], [-sw * 0.7, sy + 0.02], [-0.05, sy + 0.04], [0.05, sy + 0.04], [sw * 0.7, sy + 0.02], [sw, sy - 0.04], [sw * 0.95, 0.85], [0.17, 0.6]];
+    g.beginPath(); pts.forEach((p, i) => { const s = P(hx + p[0], p[1], hz); i ? g.lineTo(s[0], s[1]) : g.moveTo(s[0], s[1]); }); g.closePath(); g.fill();
+    const hc = P(hx + 0.01, hy, hz);
+    g.beginPath(); g.ellipse(hc[0], hc[1], u * 0.075, u * 0.105, 0, 0, Math.PI * 2); g.fill();
+    const nk = P(hx, sy, hz); g.fillRect(nk[0] - u * 0.035, hc[1], u * 0.07, nk[1] - hc[1]);
+  }
+}
+const sitters = [
+  { x: TX - TW - 0.27, z: 7.75, face: 1, o: { lean: 0.09, hair: true, h: 0.97 } },
+  { x: TX - TW - 0.25, z: 8.5, face: 1, o: { lean: 0.04, gesture: true } },
+  { x: TX + TW + 0.26, z: 8.45, face: -1, o: { lean: 0.07, h: 1.02 } },
+  { x: TX + TW + 0.27, z: 7.0, face: -1, o: { lean: 0.1, hair: true, h: 0.96 } },
+  { x: TX + 0.02, z: TZ1 + 0.32, face: 0, o: { w: 1.0 } },
+];
+for (const s of sitters) {
+  for (const c of chairs) if (Math.abs(c.z - s.z) < 0.4 && Math.sign(c.x - TX) === Math.sign(s.x - TX) && s.face !== 0) c.occ = true;
+  const top = P(s.x, 1.45, s.z), bot = P(s.x, 0, s.z), r = F * 0.7 / s.z;
+  addObj(s.z, [top[0] - r, top[1] - 10, top[0] + r, bot[1]], g => {
+    const tY = P(s.x, 1.35, s.z)[1], bY = P(s.x, 0.6, s.z)[1];
+    const grd = g.createLinearGradient(0, tY, 0, bY);
+    grd.addColorStop(0, 'rgb(66,46,34)'); grd.addColorStop(0.25, 'rgb(40,30,26)'); grd.addColorStop(1, 'rgb(30,24,22)');
+    seated(g, s.x, s.z, s.face, Object.assign({ col: grd }, s.o));
+  }, s.z - 0.3);
+}
+// chairs at the far end that are occupied are hidden behind the sitters anyway; keep them (backs show)
+
+// --- tableware ---
+const CERAMIC = [0.78, 0.74, 0.66], TEAPOT = [0.16, 0.27, 0.30], TEA = [0.30, 0.13, 0.04];
+function ell(g, x, y, rx, ry, fill) { g.fillStyle = fill; g.beginPath(); g.ellipse(x, y, Math.max(0.5, rx), Math.max(0.3, ry), 0, 0, Math.PI * 2); g.fill(); }
+function elev(y, z) { const d = CAMY - y; return d / Math.hypot(d, z); }
+function contactShadow(g, x, z, r, k = 0.5) {
+  const c = P(x, TY, z), rx = F * r * 1.25 / z, ry = rx * elev(TY, z);
+  const gr = g.createRadialGradient(c[0], c[1], 0, c[0], c[1], rx);
+  gr.addColorStop(0, `rgba(40,28,20,${k})`); gr.addColorStop(1, 'rgba(40,28,20,0)');
+  g.save(); g.translate(c[0], c[1]); g.scale(1, Math.max(0.05, ry / rx)); g.translate(-c[0], -c[1]);
+  g.fillStyle = gr; g.beginPath(); g.arc(c[0], c[1], rx, 0, Math.PI * 2); g.fill(); g.restore();
+}
+function cup(g, x, z, o = {}) {
+  const r = o.r || 0.042, h = o.h || 0.075, y0 = TY;
+  const b = P(x, y0, z), t = P(x, y0 + h, z), s = F / z, rx = r * s, rxb = rx * 0.78;
+  contactShadow(g, x, z, r * 1.05, 0.45);
+  if (o.saucer) { const sc = shade(CERAMIC, x, y0, z, [0, 1, 0]); ell(g, b[0], b[1], rx * 1.7, rx * 1.7 * elev(y0, z), rgba(sc)); ell(g, b[0], b[1] - 1, rx * 1.55, rx * 1.55 * elev(y0, z), rgba(sc.map(v => v * 0.92))); }
+  const side = shade(o.col || CERAMIC, x, y0 + h / 2, z - r, [0, 0.25, -1]), lit = shade(o.col || CERAMIC, x, y0 + h, z, [0, 0.8, 0.5]);
+  const gr = g.createLinearGradient(b[0] - rx, 0, b[0] + rx, 0);
+  gr.addColorStop(0, rgba(side.map(v => v * 0.75))); gr.addColorStop(0.35, rgba(side)); gr.addColorStop(0.62, rgba(lit)); gr.addColorStop(1, rgba(side.map(v => v * 0.7)));
+  g.fillStyle = gr; g.beginPath();
+  g.moveTo(b[0] - rxb, b[1]); g.lineTo(t[0] - rx, t[1]); g.ellipse(t[0], t[1], rx, rx * elev(y0 + h, z), 0, Math.PI, 0, true); g.lineTo(b[0] + rxb, b[1]); g.ellipse(b[0], b[1], rxb, rxb * elev(y0, z), 0, 0, Math.PI, false); g.closePath(); g.fill();
+  if (o.handle) { g.strokeStyle = rgba(side.map(v => v * 0.85)); g.lineWidth = Math.max(1, s * 0.008); g.beginPath(); g.ellipse(t[0] + o.handle * rx * 1.12, (t[1] + b[1]) / 2, rx * 0.35, (b[1] - t[1]) * 0.3, 0, 0, Math.PI * 2); g.stroke(); }
+  // rim + tea surface with a reflected bulb
+  const ry = rx * elev(y0 + h, z);
+  ell(g, t[0], t[1], rx, ry, rgba(lit.map(v => Math.min(255, v * 1.08))));
+  if (!o.empty) { const tc = shade(TEA, x, y0 + h * 0.8, z, [0, 1, 0]); ell(g, t[0], t[1] + ry * 0.12, rx * 0.86, ry * 0.8, rgba(tc)); ell(g, t[0] + rx * 0.25, t[1] + ry * 0.05, rx * 0.12, ry * 0.18, 'rgba(255,214,160,0.75)'); }
+  else ell(g, t[0], t[1] + ry * 0.1, rx * 0.86, ry * 0.8, rgba(side.map(v => v * 0.8)));
+}
+function teapot(g, x, z) {
+  const s = F / z, y0 = TY, b = P(x, y0, z);
+  contactShadow(g, x, z, 0.12, 0.55);
+  const bodyH = 0.125, bw = 0.105 * s, cy = P(x, y0 + bodyH * 0.48, z)[1], bh = bodyH * s * 0.52;
+  const base = shade(TEAPOT, x, y0 + 0.06, z - 0.1, [0, 0.2, -1]), top = shade(TEAPOT, x, y0 + 0.13, z, [0, 1, 0]), bounce = shade(TEAPOT.map(v => v * 1.3), x, y0 + 0.02, z - 0.1, [0, -0.6, -0.8], 1.6);
+  // spout (behind body on the right) and handle (left)
+  g.strokeStyle = rgba(base); g.lineCap = 'round';
+  g.lineWidth = s * 0.024; g.beginPath(); g.moveTo(b[0] + bw * 0.7, cy + bh * 0.2); g.quadraticCurveTo(b[0] + bw * 1.35, cy - bh * 0.05, b[0] + bw * 1.6, cy - bh * 1.15); g.stroke();
+  g.lineWidth = s * 0.016; g.strokeStyle = rgba(base.map(v => v * 0.85)); g.beginPath(); g.ellipse(b[0] - bw * 1.08, cy - bh * 0.15, bw * 0.38, bh * 0.75, 0, -Math.PI * 0.55, Math.PI * 0.6); g.stroke();
+  // body: squat sphere with soft key from above-behind, warm bounce from the cloth below
+  const gr = g.createRadialGradient(b[0] - bw * 0.15, cy - bh * 0.6, bw * 0.1, b[0], cy, bw * 1.15);
+  gr.addColorStop(0, rgba(top)); gr.addColorStop(0.55, rgba(base)); gr.addColorStop(0.85, rgba(base.map(v => v * 0.8))); gr.addColorStop(1, rgba(bounce));
+  g.fillStyle = gr; g.beginPath(); g.ellipse(b[0], cy, bw, bh, 0, 0, Math.PI * 2); g.fill();
+  // foot ring
+  ell(g, b[0], b[1] - 1, bw * 0.62, bw * 0.62 * elev(y0, z), rgba(base.map(v => v * 0.7)));
+  // lid + knob
+  const ly = cy - bh * 0.92;
+  ell(g, b[0], ly, bw * 0.5, bw * 0.5 * elev(y0 + 0.13, z) + 2, rgba(top));
+  ell(g, b[0], ly - bh * 0.18, bw * 0.4, bh * 0.22, rgba(base.map(v => v * 1.05)));
+  ell(g, b[0], ly - bh * 0.42, bw * 0.12, bh * 0.12, rgba(top));
+  // specular: tiny reflections of the string lights along the shoulder, and a soft sheen
+  g.fillStyle = 'rgba(255,226,186,0.85)';
+  for (let k = 0; k < 7; k++) { const a = -2.5 + k * 0.28; g.beginPath(); g.arc(b[0] + Math.cos(a) * bw * 0.72, cy + Math.sin(a) * bh * 0.72, Math.max(0.8, s * 0.0028), 0, Math.PI * 2); g.fill(); }
+  g.fillStyle = 'rgba(255,236,210,0.16)'; g.beginPath(); g.ellipse(b[0] - bw * 0.35, cy - bh * 0.35, bw * 0.28, bh * 0.16, -0.4, 0, Math.PI * 2); g.fill();
+}
+function bowl(g, x, z) {
+  const s = F / z, b = P(x, TY, z), r = 0.12;
+  contactShadow(g, x, z, r, 0.5);
+  const rx = r * s, ry = rx * elev(TY + 0.06, z), t = P(x, TY + 0.06, z);
+  const c1 = shade([0.62, 0.52, 0.40], x, TY + 0.03, z - r, [0, 0.2, -1]);
+  g.fillStyle = rgba(c1); g.beginPath(); g.moveTo(t[0] - rx, t[1]); g.quadraticCurveTo(t[0] - rx * 0.7, b[1] + 2, t[0], b[1] + 2); g.quadraticCurveTo(t[0] + rx * 0.7, b[1] + 2, t[0] + rx, t[1]); g.closePath(); g.fill();
+  // oranges
+  const fr = makeRand(Math.round(x * 100 + z * 10));
+  const pts = [[-0.05, 0.0], [0.045, 0.01], [0.0, 0.04], [-0.02, -0.04], [0.06, -0.035]];
+  for (const [ox, oz] of pts.sort((a, b2) => b2[1] - a[1])) {
+    const p = P(x + ox, TY + 0.085, z + oz), rr = 0.036 * F / (z + oz);
+    const lit = shade([0.85, 0.42, 0.12], x, TY + 0.12, z, [0, 1, 0]), dk = shade([0.85, 0.42, 0.12], x, TY + 0.06, z - 0.05, [0, 0.1, -1]);
+    const gg = g.createRadialGradient(p[0] - rr * 0.25, p[1] - rr * 0.4, rr * 0.1, p[0], p[1], rr);
+    gg.addColorStop(0, rgba(lit)); gg.addColorStop(1, rgba(dk.map(v => v * 0.8)));
+    g.fillStyle = gg; g.beginPath(); g.arc(p[0], p[1], rr, 0, Math.PI * 2); g.fill();
+  }
+  ell(g, t[0], t[1] + 1, rx, ry, 'rgba(0,0,0,0)');
+}
+function vase(g, x, z) {
+  const s = F / z, b = P(x, TY, z), t = P(x, TY + 0.14, z);
+  contactShadow(g, x, z, 0.05, 0.45);
+  const c = shade([0.58, 0.46, 0.34], x, TY + 0.07, z - 0.04, [0, 0.2, -1]);
+  g.fillStyle = rgba(c); g.beginPath(); g.ellipse(b[0], (b[1] + t[1]) / 2 + 2, 0.045 * s, (b[1] - t[1]) / 2, 0, 0, Math.PI * 2); g.fill();
+  // a few sprigs of greenery
+  const vr = makeRand(77);
+  g.lineCap = 'round';
+  for (let k = 0; k < 14; k++) {
+    const a = -Math.PI / 2 + vr.range(-0.9, 0.9), L = vr.range(0.1, 0.24) * s;
+    const ex = t[0] + Math.cos(a) * L, ey = t[1] + Math.sin(a) * L;
+    g.strokeStyle = rgba(shade([0.20, 0.30, 0.16], x, TY + 0.25, z, [0, 1, 0])); g.lineWidth = Math.max(1, s * 0.004);
+    g.beginPath(); g.moveTo(t[0], t[1]); g.quadraticCurveTo(t[0] + Math.cos(a) * L * 0.5 + vr.range(-4, 4), t[1] + Math.sin(a) * L * 0.6, ex, ey); g.stroke();
+    for (let j = 0; j < 4; j++) { const tt = 0.4 + j * 0.18; g.fillStyle = rgba(shade([0.26, 0.36, 0.18], x, TY + 0.25, z, [0, 1, 0])); g.beginPath(); g.ellipse(lerp(t[0], ex, tt) + vr.range(-3, 3), lerp(t[1], ey, tt), s * 0.012, s * 0.006, a + vr.range(-1, 1), 0, Math.PI * 2); g.fill(); }
+  }
+}
+function plate(g, x, z, bread) {
+  const s = F / z, c = P(x, TY + 0.01, z), rx = 0.1 * s, ry = rx * elev(TY, z);
+  contactShadow(g, x, z, 0.1, 0.3);
+  ell(g, c[0], c[1], rx, ry, rgba(shade(CERAMIC, x, TY, z, [0, 1, 0])));
+  ell(g, c[0], c[1] + 1, rx * 0.7, ry * 0.7, rgba(shade(CERAMIC.map(v => v * 0.94), x, TY, z, [0, 1, 0])));
+  if (bread) { const bc = shade([0.66, 0.44, 0.24], x, TY + 0.04, z, [0, 1, 0]); ell(g, c[0], c[1] - ry * 0.35, rx * 0.62, ry * 1.1 + 4, rgba(bc)); }
+}
+// place settings
+{
+  const zs = [1.75, 2.5, 3.25, 4.0, 4.75, 5.5, 6.25, 7.0, 7.75, 8.5];
+  for (const side of [-1, 1]) zs.forEach((z, k) => {
+    const rr = makeRand(k * 13 + (side > 0 ? 7 : 3));
+    if (rr() < 0.1) return;
+    const x = TX + side * (TW - 0.17) + rr.range(-0.03, 0.03), zz = z + rr.range(-0.08, 0.08);
+    const handle = rr() < 0.6 ? (rr() < 0.5 ? 1 : -1) : 0, saucer = rr() < 0.35, empty = rr() < 0.2;
+    const col = rr() < 0.25 ? [0.55, 0.62, 0.62] : rr() < 0.2 ? [0.72, 0.52, 0.38] : null;
+    addObj(zz, [P(x - 0.12, TY, zz)[0], P(x, TY + 0.1, zz)[1] - 6, P(x + 0.12, TY, zz)[0], P(x, TY, zz - 0.1)[1] + 6], g => cup(g, x, zz, { handle, saucer, empty, col }));
+    if (rr() < 0.3) { const px = TX + side * (TW - 0.33), pz = zz + 0.02; addObj(pz + 0.001, [P(px - 0.12, TY, pz)[0], P(px, TY + 0.08, pz)[1], P(px + 0.12, TY, pz)[0], P(px, TY, pz - 0.12)[1]], g => plate(g, px, pz, rr() < 0.4)); }
+  });
+  const tp = [TX + 0.02, 2.4];
+  addObj(tp[1], [P(tp[0] - 0.2, TY, tp[1])[0], P(tp[0], TY + 0.24, tp[1])[1], P(tp[0] + 0.22, TY, tp[1])[0], P(tp[0], TY, tp[1] - 0.15)[1]], g => teapot(g, tp[0], tp[1]));
+  const tp2 = [TX - 0.04, 5.9];
+  addObj(tp2[1], [P(tp2[0] - 0.2, TY, tp2[1])[0], P(tp2[0], TY + 0.24, tp2[1])[1], P(tp2[0] + 0.22, TY, tp2[1])[0], P(tp2[0], TY, tp2[1] - 0.15)[1]], g => teapot(g, tp2[0], tp2[1]));
+  addObj(3.9, [P(TX - 0.2, TY, 3.9)[0], P(TX, TY + 0.15, 3.9)[1], P(TX + 0.25, TY, 3.9)[0], P(TX, TY, 3.75)[1]], g => bowl(g, TX + 0.04, 3.9));
+  addObj(4.9, [P(TX - 0.3, TY, 4.9)[0], P(TX, TY + 0.45, 4.9)[1], P(TX + 0.3, TY, 4.9)[0], P(TX, TY, 4.8)[1]], g => vase(g, TX - 0.02, 4.9));
+  addObj(7.2, [P(TX - 0.2, TY, 7.2)[0], P(TX, TY + 0.1, 7.2)[1], P(TX + 0.2, TY, 7.2)[0], P(TX, TY, 7.05)[1]], g => plate(g, TX + 0.05, 7.2, true));
+}
+
+// --- poles, wires and bulbs ---
+for (const z of POLES) for (const sx of [-3.0, 3.0]) {
+  const a = P(sx, 0, z), b = P(sx, 3.32, z), w = Math.max(2, F * 0.07 / z);
+  addObj(z, [a[0] - w, b[1], a[0] + w, a[1]], g => {
+    const col = shade([0.30, 0.22, 0.15], sx, 1.5, z, [-Math.sign(sx), 0, -0.5]);
+    g.fillStyle = rgba(col); g.fillRect(a[0] - w / 2, b[1], w, a[1] - b[1]);
+    g.fillStyle = rgba(col.map(v => v * 1.25)); g.fillRect(a[0] - w / 2 + (sx < 0 ? w * 0.55 : 0), b[1], w * 0.45, a[1] - b[1]);
+  });
+}
+for (const s of strands) {
+  // wire as segments with their own depth
+  for (let k = 0; k < s.wire.length - 1; k += 4) {
+    const seg = s.wire.slice(k, Math.min(s.wire.length, k + 5)), zm = seg.reduce((a, p) => a + p[2], 0) / seg.length;
+    const sp = seg.map(p => P(...p)), xs = sp.map(p => p[0]), ys = sp.map(p => p[1]);
+    addObj(zm, [Math.min(...xs), Math.min(...ys) - 3, Math.max(...xs), Math.max(...ys) + 3], g => {
+      g.strokeStyle = 'rgba(28,22,20,0.85)'; g.lineWidth = Math.max(1, F * 0.006 / zm); g.beginPath(); sp.forEach((p, i) => i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.stroke();
+    });
+  }
+  for (const bb of s.bulbs) {
+    const p = P(...bb.p), r = Math.max(1.6, F * 0.028 / bb.p[2]);
+    const o = { z: bb.p[2], bbox: [p[0] - r * 6, p[1] - r * 6, p[0] + r * 6, p[1] + r * 6], draw: g => {
+      const gl = g.createRadialGradient(p[0], p[1], 0, p[0], p[1], r * 6);
+      gl.addColorStop(0, 'rgba(255,214,150,0.5)'); gl.addColorStop(0.25, 'rgba(255,170,90,0.14)'); gl.addColorStop(1, 'rgba(255,150,70,0)');
+      g.fillStyle = gl; g.beginPath(); g.arc(p[0], p[1], r * 6, 0, Math.PI * 2); g.fill();
+      const gb = g.createRadialGradient(p[0], p[1] - r * 0.2, 0, p[0], p[1], r);
+      gb.addColorStop(0, 'rgba(255,250,232,1)'); gb.addColorStop(0.6, 'rgba(255,214,150,1)'); gb.addColorStop(1, 'rgba(255,180,110,0.9)');
+      g.fillStyle = gb; g.beginPath(); g.arc(p[0], p[1], r, 0, Math.PI * 2); g.fill();
+      g.fillStyle = 'rgba(30,24,20,0.9)'; g.fillRect(p[0] - r * 0.35, p[1] - r * 1.5, r * 0.7, r * 0.6);
+    }, zTest: bb.p[2], add: false };
+    objs.push(o);
+  }
+}
+
+// --- vegetation: tree canopy over the right wall, climbing plants, potted plants, distant trees ---
+function foliage(g, cx, cy, rx, ry, seed, dark, lit, litDir) {
+  const fr = makeRand(seed);
+  for (let k = 0; k < 260; k++) {
+    const a = fr() * Math.PI * 2, rr = Math.sqrt(fr());
+    const x = cx + Math.cos(a) * rx * rr, y = cy + Math.sin(a) * ry * rr, s = fr.range(0.025, 0.06) * Math.min(rx, ry);
+    const t = clamp(0.5 + 0.5 * ((y - cy) / ry) * litDir + fr.range(-0.2, 0.2));
+    g.fillStyle = rgba(mixc(dark, lit, t * t), 0.9);
+    g.beginPath(); g.ellipse(x, y, s * 1.6, s, fr.range(0, Math.PI), 0, Math.PI * 2); g.fill();
+  }
+}
+{
+  // big tree behind the right wall
+  const c = P(5.6, 5.4, 9.0), rx = F * 3.6 / 9.0, ry = F * 2.9 / 9.0;
+  addObj(9.0, [c[0] - rx * 1.1, c[1] - ry * 1.1, c[0] + rx * 1.1, c[1] + ry * 1.1], g => {
+    foliage(g, c[0], c[1], rx, ry, 11, [24, 32, 30], [96, 82, 52], 1);
+    foliage(g, c[0] - rx * 0.5, c[1] + ry * 0.55, rx * 0.6, ry * 0.4, 12, [30, 36, 32], [150, 112, 62], 1);
+  }, 9.0);
+  // distant trees beyond the far building
+  for (const [x, y, r, seed] of [[-2.4, 4.6, 2.2, 21], [1.6, 4.9, 2.6, 22], [4.4, 4.2, 2.0, 23], [-5.0, 4.0, 2.4, 24]]) {
+    const cc = P(x, y, 18), rr = F * r / 18;
+    addObj(18, [cc[0] - rr * 1.2, cc[1] - rr, cc[0] + rr * 1.2, cc[1] + rr * 1.4], g => foliage(g, cc[0], cc[1] + rr * 0.3, rr * 1.15, rr, seed, [48, 56, 62], [84, 88, 92], -1), 18);
+  }
+  // climbing plant on the left wall, potted lemon trees along the right wall
+  for (const [z0, z1, seed] of [[5.0, 7.4, 31], [9.6, 12.4, 32]]) {
+    const a = P(WL + 0.05, 2.25, z0), b = P(WL + 0.05, 0.4, z1);
+    addObj((z0 + z1) / 2, [Math.min(a[0], b[0]) - 40, a[1] - 40, Math.max(a[0], b[0]) + 40, b[1] + 40], g => {
+      const fr = makeRand(seed);
+      for (let k = 0; k < 420; k++) {
+        const z = lerp(z0, z1, fr()), y = lerp(0.3, 2.45, Math.pow(fr(), 0.7)), p = P(WL + 0.06, y, z), s = F * 0.05 / z;
+        const t = clamp(lightAt(WL + 0.06, y, z, [1, 0, 0])[0] * 8);
+        g.fillStyle = rgba(mixc([26, 36, 26], [140, 120, 66], t), 0.92); g.beginPath(); g.ellipse(p[0], p[1], s * 0.9, s * 0.6, fr() * 3, 0, Math.PI * 2); g.fill();
+      }
+    });
+  }
+  for (const z of [6.1, 10.6]) {
+    const x = WR - 0.45, pot = [P(x, 0, z), P(x, 0.55, z)], r = F * 0.3 / z;
+    addObj(z, [pot[0][0] - r * 3, P(x, 2.0, z)[1], pot[0][0] + r * 3, pot[0][1] + 4], g => {
+      const pc = shade([0.55, 0.30, 0.18], x - 0.2, 0.3, z, [-1, 0, -0.4]);
+      g.fillStyle = rgba(pc); g.beginPath(); g.moveTo(pot[0][0] - r * 0.75, pot[0][1]); g.lineTo(pot[1][0] - r, pot[1][1]); g.lineTo(pot[1][0] + r, pot[1][1]); g.lineTo(pot[0][0] + r * 0.75, pot[0][1]); g.closePath(); g.fill();
+      const tr = P(x, 1.25, z);
+      g.strokeStyle = 'rgb(46,34,26)'; g.lineWidth = Math.max(1, F * 0.03 / z); g.beginPath(); g.moveTo(pot[1][0], pot[1][1]); g.lineTo(tr[0], tr[1]); g.stroke();
+      foliage(g, tr[0], tr[1] - r * 0.8, r * 1.6, r * 1.4, Math.round(z * 10), [28, 40, 28], [120, 112, 60], 1);
+      const fr = makeRand(Math.round(z * 7));
+      for (let k = 0; k < 9; k++) { const a = fr() * 6.28, rr = Math.sqrt(fr()) * r * 1.3; g.fillStyle = 'rgba(214,170,60,0.9)'; g.beginPath(); g.arc(tr[0] + Math.cos(a) * rr, tr[1] - r * 0.8 + Math.sin(a) * rr * 0.9, Math.max(1, r * 0.09), 0, Math.PI * 2); g.fill(); }
+    });
+  }
+}
+
+// ---------- 3. composite objects far to near ----------
+objs.sort((a, b) => b.z - a.z);
+for (const o of objs) composite(o);
+{
+  const out = ctx.createImageData(W, H); out.data.set(main); ctx.putImageData(out, 0, 0);
+}
+// ---------- 4. atmosphere: warm glow under the lights, bloom, finish ----------
+{
+  const hz = newLayer(), hc = hz.getContext('2d'); hc.globalCompositeOperation = 'lighter';
+  for (const L of lights) { if (L.hemi) continue; const p = P(L.x, L.y, L.z), r = F * 0.9 / L.z; const g = hc.createRadialGradient(p[0], p[1], 0, p[0], p[1], r); g.addColorStop(0, 'rgba(255,170,90,0.05)'); g.addColorStop(1, 'rgba(255,170,90,0)'); hc.fillStyle = g; hc.fillRect(p[0] - r, p[1] - r, 2 * r, 2 * r); }
+  const dp = P(DOOR.x, 1.4, ZB), dr = 520; const g = hc.createRadialGradient(dp[0], dp[1], 0, dp[0], dp[1], dr); g.addColorStop(0, 'rgba(255,190,120,0.10)'); g.addColorStop(1, 'rgba(255,190,120,0)'); hc.fillStyle = g; hc.fillRect(dp[0] - dr, dp[1] - dr, 2 * dr, 2 * dr);
+  ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.drawImage(blurCopy(hz, 12, 0.25), 0, 0); ctx.restore();
+}
+addBloom(ctx, { threshold: 0.74, knee: 0.14, radii: [4, 16, 56], weights: [0.5, 0.4, 0.3], strength: 0.7, tint: [255, 222, 184] });
+finish(ctx, {
+  grain: 0.032, seed: 41, vignette: 0.3, vcx: 0.5, vcy: 0.55, vr0: 0.32, vr1: 1.05,
+  grade: (r, g, b) => {
+    const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    const s = 0.9; r = l + (r - l) * s; g = l + (g - l) * s; b = l + (b - l) * s;
+    return [r, g, b];
+  },
+});
+window.__done = true;
+</script></body></html>

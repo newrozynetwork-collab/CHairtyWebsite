@@ -1,0 +1,34 @@
+{
+  "number": 8,
+  "slug": "08-community-participation",
+  "name": "Community & Participation",
+  "tagline": "Every visit offers a clear, friendly way to help.",
+  "idea": "A welcoming front door for supporters. The homepage opens with four large, colour-coded ways to take part, then shows why each matters through the lead story, events, results and honest answers to common questions. Rounded, bright and highly legible.",
+  "fit": "Turning readers into donors, signers, volunteers and attendees is a core goal of the brief. This design puts those actions first, with research, impact and transparency one step away.",
+  "informedBy": [
+    "Participation placed at meaningful points in the reading flow",
+    "A preference-based newsletter sign-up with clear consent wording",
+    "Impact framed as a concrete, dated result beside clearly labelled figures"
+  ],
+  "distinct": "The only concept organised around actions rather than articles: drawn action tiles, a Give, Join, Attend and Learn colour code, trust answered as an FAQ, and an app-style tab bar on mobile.",
+  "palette": [
+    { "name": "Soft cream", "hex": "#FFF8EC", "role": "Background" },
+    { "name": "Navy ink", "hex": "#1D2B3A", "role": "Text" },
+    { "name": "Sunflower", "hex": "#FFC93C", "role": "Primary action" },
+    { "name": "Leaf", "hex": "#1F6B43", "role": "Links and results" },
+    { "name": "Coral", "hex": "#FF6B57", "role": "Accent" },
+    { "name": "Sky", "hex": "#CDE7F7", "role": "Soft panels" }
+  ],
+  "fonts": {
+    "heading": { "family": "Lexend", "weights": "400, 500, 600, 700" },
+    "body": { "family": "Atkinson Hyperlegible", "weights": "400, 700" },
+    "accent": { "family": "", "weights": "" }
+  },
+  "buttons": "Chunky pill buttons: sunflower for giving, navy for reading and registering, outlined for secondary actions; large touch targets.",
+  "imageDirection": "Bright, warm crops in softly rounded frames, with organic sunflower shapes behind key images. Community and school scenes lead; captions stay visible.",
+  "navigation": "Give, Join, Attend and Learn chips above a rounded menu bar; on mobile they become a bottom tab bar.",
+  "visualCharacter": "Warm, rounded, colour-coded and app-like",
+  "contentEmphasis": "Ways to act, events, results and trust questions",
+  "bestFor": "Growing supporter numbers through giving, campaigns, volunteering and events",
+  "tradeoffs": "Research and reports sit lower in the hierarchy, and the cheerful colour system needs discipline on very difficult stories."
+}

@@ -1,0 +1,67 @@
+{
+  "number": 2,
+  "slug": "02-human-stories",
+  "name": "Human Stories",
+  "tagline": "Warm, people-first storytelling where testimony leads the way",
+  "idea": "A warm, intimate design that explains the work through the people at its centre. Testimony opens the page in large italic type beside a quiet photograph, and stories follow in a gentle zigzag of rounded images and words, on soft cream paper.",
+  "fit": "Supporters and donors respond to people, not abstractions. Leading with first-person testimony builds empathy and trust, while clear labels, captions and a visible ‘How we work’ keep the research credible.",
+  "informedBy": [
+    "A strong lead story and clear scanning hierarchy, not rows of equal cards",
+    "Impact told as a dated, concrete result beside clearly labelled figures",
+    "Captions and credits on every image; giving placed at meaningful points"
+  ],
+  "distinct": "A person’s own words, not a headline, open the page. Round portraits and zigzag story pairs bring a warmth the institutional concepts avoid.",
+  "palette": [
+    {
+      "name": "Cream",
+      "hex": "#FFF9F2",
+      "role": "Background"
+    },
+    {
+      "name": "Warm sand",
+      "hex": "#F3E7D8",
+      "role": "Bands and chips"
+    },
+    {
+      "name": "Clay",
+      "hex": "#B4532A",
+      "role": "Primary action"
+    },
+    {
+      "name": "Cocoa",
+      "hex": "#3B2A24",
+      "role": "Text and footer"
+    },
+    {
+      "name": "Ochre",
+      "hex": "#E0A54B",
+      "role": "Quote marks, highlights"
+    },
+    {
+      "name": "Sage",
+      "hex": "#7E8F6F",
+      "role": "Calm accent"
+    }
+  ],
+  "fonts": {
+    "heading": {
+      "family": "Fraunces",
+      "weights": "300 italic, 500, 600"
+    },
+    "body": {
+      "family": "Nunito Sans",
+      "weights": "400, 600, 700, 800"
+    },
+    "accent": {
+      "family": "",
+      "weights": ""
+    }
+  },
+  "buttons": "Rounded clay pills for giving and reading; outlined cocoa pills for secondary actions; underlined clay links with an ochre line.",
+  "imageDirection": "Warm golden grade, rounded corners and circular portrait crops. Quiet, dignified scenes with people seen from behind or in silhouette, always captioned and credited.",
+  "navigation": "A light top bar: four visible sections, a friendly Menu for the rest, search, and a rounded clay Give button.",
+  "visualCharacter": "Warm, intimate, paper-soft; big italic quotes and rounded photographs",
+  "contentEmphasis": "Testimony and stories first, then impact, evidence and giving",
+  "bestFor": "Growing supporters and monthly giving through empathy, while keeping research credible and findable",
+  "tradeoffs": "Depends on strong, consented testimony and good photography; less dense, so researchers see fewer items per screen than in news-led concepts."
+}

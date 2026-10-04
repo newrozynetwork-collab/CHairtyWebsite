@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>press-mics — original illustration</title>
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block}</style>
+</head><body><canvas id="c" width="2400" height="1600"></canvas>
+<script>
+/* press-mics — original illustration created for this proposal (documentary-illustration series).
+   Self-contained and deterministic: all randomness comes from seeded PRNGs; no external resources. */
+"use strict";
+window.__done = false;
+// ---------------------------------------------------------------- kit
+const W = 2400, H = 1600;
+const cvs = document.getElementById('c');
+const ctx = cvs.getContext('2d', { willReadFrequently: true });
+const yieldFrame = () => new Promise(r => setTimeout(r, 0));
+
+// seeded PRNG (mulberry32)
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function makeRand(seed) {
+  const r = mulberry32(seed);
+  const f = () => r();
+  f.range = (a, b) => a + (b - a) * r();
+  f.int = (a, b) => Math.floor(a + (b - a + 1) * r());
+  f.gauss = () => { let u = 0; while (u === 0) u = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * r()); };
+  f.pick = arr => arr[Math.floor(r() * arr.length)];
+  return f;
+}
+// integer hashes -> [0,1)
+function hash1(n) { let h = Math.imul((n | 0) ^ 0x9e3779b9, 0x85ebca6b); h ^= h >>> 13; h = Math.imul(h, 0xc2b2ae35); h ^= h >>> 16; return (h >>> 0) / 4294967296; }
+function hash2(x, y, s = 0) { let h = Math.imul(x | 0, 0x27d4eb2d) ^ Math.imul(y | 0, 0x165667b1) ^ Math.imul(s | 0, 0x9e3779b9); h = Math.imul(h ^ (h >>> 15), 0x85ebca6b); h ^= h >>> 13; h = Math.imul(h, 0xc2b2ae35); h ^= h >>> 16; return (h >>> 0) / 4294967296; }
+// 2D value noise in [0,1] and fBm
+function makeNoise(seed) {
+  const r = mulberry32(seed), P = new Uint16Array(512), G = new Float32Array(256);
+  for (let i = 0; i < 256; i++) { P[i] = i; G[i] = r(); }
+  for (let i = 255; i > 0; i--) { const j = Math.floor(r() * (i + 1)); const t = P[i]; P[i] = P[j]; P[j] = t; }
+  for (let i = 0; i < 256; i++) P[i + 256] = P[i];
+  return function (x, y) {
+    const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+    const X = xi & 255, Y = yi & 255;
+    const a = G[P[P[X] + Y]], b = G[P[P[X + 1] + Y]], c = G[P[P[X] + Y + 1]], d = G[P[P[X + 1] + Y + 1]];
+    const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  };
+}
+function fbm(n, x, y, oct = 5, lac = 2.0, gain = 0.5) {
+  let s = 0, a = 0.5, f = 1, norm = 0;
+  for (let i = 0; i < oct; i++) { s += a * n(x * f + i * 17.3, y * f - i * 9.1); norm += a; a *= gain; f *= lac; }
+  return s / norm;
+}
+// cellular (Worley) noise: sets WR.f1, WR.f2, WR.id, WR.cx, WR.cy (feature point of nearest cell)
+const WR = { f1: 0, f2: 0, id: 0, cx: 0, cy: 0 };
+function worley(x, y, seed = 0, jit = 0.85) {
+  const xi = Math.floor(x), yi = Math.floor(y);
+  let f1 = 9, f2 = 9, id = 0, cx = 0, cy = 0;
+  for (let j = -1; j <= 1; j++) for (let i = -1; i <= 1; i++) {
+    const X = xi + i, Y = yi + j;
+    const px = X + 0.5 + (hash2(X, Y, seed) - 0.5) * jit, py = Y + 0.5 + (hash2(X, Y, seed + 7) - 0.5) * jit;
+    const dx = px - x, dy = py - y, d = dx * dx + dy * dy;
+    if (d < f1) { f2 = f1; f1 = d; id = (X * 73856093) ^ (Y * 19349663); cx = px; cy = py; } else if (d < f2) f2 = d;
+  }
+  WR.f1 = Math.sqrt(f1); WR.f2 = Math.sqrt(f2); WR.id = id; WR.cx = cx; WR.cy = cy;
+  return WR;
+}
+const clamp = (v, a = 0, b = 1) => (v < a ? a : v > b ? b : v);
+const lerp = (a, b, t) => a + (b - a) * t;
+const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const hexRGB = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+const rgba = (c, a = 1) => `rgba(${Math.round(c[0])},${Math.round(c[1])},${Math.round(c[2])},${a})`;
+const mixc = (c1, c2, t) => [lerp(c1[0], c2[0], t), lerp(c1[1], c2[1], t), lerp(c1[2], c2[2], t)];
+const lin = h => hexRGB(h).map(c => Math.pow(c / 255, 2.2));           // sRGB hex -> linear albedo
+const scl = (c, s) => [c[0] * s, c[1] * s, c[2] * s];
+// vectors
+const v3 = {
+  add: (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]],
+  sub: (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]],
+  mul: (a, s) => [a[0] * s, a[1] * s, a[2] * s],
+  dot: (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+  cross: (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]],
+  len: a => Math.hypot(a[0], a[1], a[2]),
+  norm: a => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; },
+  lerp: (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t],
+};
+const { add, sub, mul, dot, cross, norm, len } = v3;
+// linear light -> display (soft filmic shoulder + sRGB-ish gamma)
+const toneMap = (x, exposure = 1) => Math.pow(1 - Math.exp(-Math.max(0, x) * exposure), 1 / 2.2);
+const toneRGB = (c, exposure = 1) => [toneMap(c[0], exposure) * 255, toneMap(c[1], exposure) * 255, toneMap(c[2], exposure) * 255];
+// layers
+function newLayer(w = W, h = H) { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
+function blurCopy(src, px, scale = 1) {
+  const sw = Math.max(1, Math.round(src.width * scale)), sh = Math.max(1, Math.round(src.height * scale));
+  const a = newLayer(sw, sh), ac = a.getContext('2d');
+  ac.filter = `blur(${px * scale}px)`; ac.drawImage(src, 0, 0, sw, sh); ac.filter = 'none';
+  if (scale === 1) return a;
+  const b = newLayer(src.width, src.height), bc = b.getContext('2d');
+  bc.imageSmoothingEnabled = true; bc.imageSmoothingQuality = 'high'; bc.drawImage(a, 0, 0, src.width, src.height);
+  return b;
+}
+function poly(c, pts) { c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for (let i = 1; i < pts.length; i++) c.lineTo(pts[i][0], pts[i][1]); c.closePath(); }
+// bloom: bright-pass at quarter res, multi-radius blur, screen back
+function addBloom(target, { threshold = 0.75, knee = 0.15, radii = [8, 24, 64], weights = [0.5, 0.35, 0.25], strength = 0.5, tint = [255, 240, 220] } = {}) {
+  const s = 0.25, sw = W * s, sh = H * s;
+  const small = newLayer(sw, sh), sc = small.getContext('2d', { willReadFrequently: true });
+  sc.drawImage(target.canvas, 0, 0, sw, sh);
+  const id = sc.getImageData(0, 0, sw, sh), d = id.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const l = (0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2]) / 255;
+    const k = smooth(threshold - knee, threshold + knee, l) * (l - threshold * 0.5);
+    d[i] = d[i] * k * tint[0] / 255; d[i + 1] = d[i + 1] * k * tint[1] / 255; d[i + 2] = d[i + 2] * k * tint[2] / 255;
+  }
+  sc.putImageData(id, 0, 0);
+  target.save(); target.globalCompositeOperation = 'screen'; target.imageSmoothingQuality = 'high';
+  radii.forEach((r, i) => { const b = blurCopy(small, r * s); target.globalAlpha = clamp(strength * weights[i]); target.drawImage(b, 0, 0, W, H); });
+  target.restore();
+}
+// final pass: optional grade, vignette, two-scale luminance film grain (same recipe as the rest of the series)
+function finish(target, { grain = 0.03, seed = 1, vignette = 0.3, vcx = 0.5, vcy = 0.5, vr0 = 0.35, vr1 = 0.95, grade = null } = {}) {
+  const id = target.getImageData(0, 0, W, H), d = id.data, r = mulberry32(seed);
+  const cw = W / 2 + 2, ch = H / 2 + 2, coarse = new Float32Array(cw * ch);
+  for (let i = 0; i < coarse.length; i++) coarse[i] = (r() + r() + r() - 1.5) * 2;
+  for (let y = 0; y < H; y++) {
+    const gy = y / 2, y0 = Math.floor(gy), fy = gy - y0;
+    for (let x = 0; x < W; x++) {
+      const i = (y * W + x) * 4;
+      let R = d[i] / 255, G = d[i + 1] / 255, B = d[i + 2] / 255;
+      if (grade) { const o = grade(R, G, B, x, y); R = o[0]; G = o[1]; B = o[2]; }
+      if (vignette) {
+        const dx = (x - vcx * W) / (W / 2), dy = (y - vcy * H) / (H / 2);
+        const dd = Math.sqrt(dx * dx * 0.8 + dy * dy * 1.0) / 1.25;
+        const v = 1 - vignette * smooth(vr0, vr1, dd);
+        R *= v; G *= v; B *= v;
+      }
+      const gx = x / 2, x0 = Math.floor(gx), fx = gx - x0, j = y0 * cw + x0;
+      const c = (coarse[j] * (1 - fx) + coarse[j + 1] * fx) * (1 - fy) + (coarse[j + cw] * (1 - fx) + coarse[j + cw + 1] * fx) * fy;
+      const L = 0.2126 * R + 0.7152 * G + 0.0722 * B;
+      const n = ((r() + r() + r() - 1.5) * 2 * 0.65 + c * 0.75) * grain * (0.45 + 2.2 * L * (1 - L));
+      d[i] = clamp(R + n) * 255; d[i + 1] = clamp(G + n) * 255; d[i + 2] = clamp(B + n) * 255;
+    }
+  }
+  target.putImageData(id, 0, 0);
+}
+// float RGB (linear) buffer -> canvas through the tone curve
+function putLinear(buf, exposure = 1, target = ctx) {
+  const id = target.createImageData(W, H), d = id.data;
+  const LUT = new Float32Array(4097);
+  for (let i = 0; i <= 4096; i++) LUT[i] = toneMap(i / 4096 * 16, exposure) * 255;
+  for (let i = 0, j = 0; i < W * H; i++, j += 3) {
+    d[i * 4] = LUT[Math.min(4096, Math.max(0, buf[j] * 256) | 0)];
+    d[i * 4 + 1] = LUT[Math.min(4096, Math.max(0, buf[j + 1] * 256) | 0)];
+    d[i * 4 + 2] = LUT[Math.min(4096, Math.max(0, buf[j + 2] * 256) | 0)];
+    d[i * 4 + 3] = 255;
+  }
+  target.putImageData(id, 0, 0);
+}
+
+// ================================================================ ray tracer
+// Leaves: box(0) sphere(1) cylinder(2) plane(3) sdf(4); groups(9) hold leaves or groups.
+const EPS = 1e-4;
+let _tn = 0, _tf = 0;
+function slab(b0, b1, ox, oy, oz, ix, iy, iz, tmax) {
+  let t1 = (b0[0] - ox) * ix, t2 = (b1[0] - ox) * ix;
+  let tn = t1 < t2 ? t1 : t2, tf = t1 < t2 ? t2 : t1;
+  t1 = (b0[1] - oy) * iy; t2 = (b1[1] - oy) * iy;
+  if (t1 > t2) { const t = t1; t1 = t2; t2 = t; }
+  if (t1 > tn) tn = t1; if (t2 < tf) tf = t2;
+  t1 = (b0[2] - oz) * iz; t2 = (b1[2] - oz) * iz;
+  if (t1 > t2) { const t = t1; t1 = t2; t2 = t; }
+  if (t1 > tn) tn = t1; if (t2 < tf) tf = t2;
+  if (tf < tn || tf < 0 || tn > tmax) return false;
+  _tn = tn; _tf = tf; return true;
+}
+const inv = d => 1 / (Math.abs(d) < 1e-9 ? (d < 0 ? -1e-9 : 1e-9) : d);
+let LEAF_ID = 1;
+const LEAVES = [];
+function regLeaf(L, mat, o) {
+  L.mat = mat; L.id = LEAF_ID++; L.shadow = o.shadow !== false; L.ao = o.ao !== false; L.prim = o.prim !== false;
+  L.tag = o.tag || null; L.data = o.data || null; LEAVES[L.id] = L; return L;
+}
+// oriented box: centre c, half sizes h, axes ax = [u, v, w] (unit, orthogonal)
+function Box(c, h, mat, o = {}) {
+  const ax = o.ax || [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  const e = [0, 1, 2].map(k => Math.abs(ax[0][k]) * h[0] + Math.abs(ax[1][k]) * h[1] + Math.abs(ax[2][k]) * h[2]);
+  return regLeaf({ k: 0, c, h, ax, bmin: [c[0] - e[0], c[1] - e[1], c[2] - e[2]], bmax: [c[0] + e[0], c[1] + e[1], c[2] + e[2]] }, mat, o);
+}
+const yawAxes = a => [[Math.cos(a), 0, -Math.sin(a)], [0, 1, 0], [Math.sin(a), 0, Math.cos(a)]];
+function Sphere(c, r, mat, o = {}) { return regLeaf({ k: 1, c, r, bmin: [c[0] - r, c[1] - r, c[2] - r], bmax: [c[0] + r, c[1] + r, c[2] + r] }, mat, o); }
+function Cyl(a, b, r, mat, o = {}) {
+  const ba = sub(b, a), baba = dot(ba, ba);
+  return regLeaf({ k: 2, a, b, r, ba, baba, bmin: [0, 1, 2].map(i => Math.min(a[i], b[i]) - r), bmax: [0, 1, 2].map(i => Math.max(a[i], b[i]) + r) }, mat, o);
+}
+function Plane(p, n, mat, o = {}) { return regLeaf({ k: 3, p, n: norm(n), bmin: null, bmax: null, inf: true }, mat, o); }
+// signed-distance object inside an AABB (sphere traced); f(x,y,z) -> distance
+function SDF(bmin, bmax, f, mat, o = {}) {
+  return regLeaf({ k: 4, f, bmin, bmax, kk: o.k || 0.9, eps: o.eps || 2e-4, steps: o.steps || 96, ne: o.ne || 4e-4 }, mat, o);
+}
+function Group(kids, o = {}) {
+  const b0 = [Infinity, Infinity, Infinity], b1 = [-Infinity, -Infinity, -Infinity];
+  for (const k of kids) for (let i = 0; i < 3; i++) { b0[i] = Math.min(b0[i], k.bmin[i]); b1[i] = Math.max(b1[i], k.bmax[i]); }
+  return { k: 9, kids, bmin: b0, bmax: b1, shadow: o.shadow !== false, ao: o.ao !== false, prim: true };
+}
+function hitLeaf(L, ox, oy, oz, dx, dy, dz, tmax) {
+  switch (L.k) {
+    case 0: {
+      const px = L.c[0] - ox, py = L.c[1] - oy, pz = L.c[2] - oz;
+      let tn = -Infinity, tf = Infinity;
+      for (let i = 0; i < 3; i++) {
+        const a = L.ax[i], h = L.h[i];
+        const e = a[0] * px + a[1] * py + a[2] * pz, f = a[0] * dx + a[1] * dy + a[2] * dz;
+        if (Math.abs(f) > 1e-12) {
+          let t1 = (e + h) / f, t2 = (e - h) / f; if (t1 > t2) { const t = t1; t1 = t2; t2 = t; }
+          if (t1 > tn) tn = t1; if (t2 < tf) tf = t2; if (tn > tf || tf < 0) return Infinity;
+        } else if (-e - h > 0 || -e + h < 0) return Infinity;
+      }
+      return tn > EPS && tn <= tmax ? tn : Infinity;
+    }
+    case 1: {
+      const cx = ox - L.c[0], cy = oy - L.c[1], cz = oz - L.c[2];
+      const b = cx * dx + cy * dy + cz * dz, c = cx * cx + cy * cy + cz * cz - L.r * L.r;
+      const h = b * b - c; if (h < 0) return Infinity;
+      const t = -b - Math.sqrt(h);
+      return t > EPS && t <= tmax ? t : Infinity;
+    }
+    case 2: {
+      const a = L.a, bax = L.ba[0], bay = L.ba[1], baz = L.ba[2], baba = L.baba, r = L.r;
+      const ocx = ox - a[0], ocy = oy - a[1], ocz = oz - a[2];
+      const bard = bax * dx + bay * dy + baz * dz, baoc = bax * ocx + bay * ocy + baz * ocz;
+      const k2 = baba - bard * bard;
+      const k1 = baba * (ocx * dx + ocy * dy + ocz * dz) - baoc * bard;
+      const k0 = baba * (ocx * ocx + ocy * ocy + ocz * ocz) - baoc * baoc - r * r * baba;
+      let h = k1 * k1 - k2 * k0; if (h < 0) return Infinity;
+      h = Math.sqrt(h);
+      let t = (-k1 - h) / k2;
+      const y = baoc + t * bard;
+      if (y > 0 && y < baba && t > EPS) return t <= tmax ? t : Infinity;
+      t = ((y < 0 ? 0 : baba) - baoc) / bard;
+      if (Math.abs(k1 + k2 * t) < h && t > EPS) return t <= tmax ? t : Infinity;
+      return Infinity;
+    }
+    case 3: {
+      const dn = dx * L.n[0] + dy * L.n[1] + dz * L.n[2];
+      if (Math.abs(dn) < 1e-12) return Infinity;
+      const t = ((L.p[0] - ox) * L.n[0] + (L.p[1] - oy) * L.n[1] + (L.p[2] - oz) * L.n[2]) / dn;
+      return t > EPS && t <= tmax ? t : Infinity;
+    }
+    case 4: {
+      if (!slab(L.bmin, L.bmax, ox, oy, oz, inv(dx), inv(dy), inv(dz), tmax)) return Infinity;
+      let t = Math.max(_tn, EPS); const tf = Math.min(_tf, tmax);
+      for (let i = 0; i < L.steps; i++) {
+        const d = L.f(ox + dx * t, oy + dy * t, oz + dz * t);
+        if (d < L.eps) return t;
+        t += d * L.kk + 1e-5;
+        if (t > tf) return Infinity;
+      }
+      return Infinity;
+    }
+  }
+  return Infinity;
+}
+let HIT_T = Infinity;
+function traceClosest(nodes, ox, oy, oz, dx, dy, dz, tmax, ix, iy, iz) {
+  let best = tmax, bestL = null;
+  for (let n = 0; n < nodes.length; n++) {
+    const N = nodes[n];
+    if (N.k === 9) {
+      if (!slab(N.bmin, N.bmax, ox, oy, oz, ix, iy, iz, best)) continue;
+      const L = traceClosest(N.kids, ox, oy, oz, dx, dy, dz, best, ix, iy, iz);
+      if (L) { best = HIT_T; bestL = L; }
+    } else {
+      if (!N.prim) continue;
+      if (N.k !== 3 && N.k !== 4 && !slab(N.bmin, N.bmax, ox, oy, oz, ix, iy, iz, best)) continue;
+      const t = hitLeaf(N, ox, oy, oz, dx, dy, dz, best);
+      if (t < best) { best = t; bestL = N; }
+    }
+  }
+  HIT_T = best; return bestL;
+}
+// any-hit for shadows (flag 'shadow') or AO (flag 'ao')
+function traceAny(nodes, ox, oy, oz, dx, dy, dz, tmax, ix, iy, iz, flag) {
+  for (let n = 0; n < nodes.length; n++) {
+    const N = nodes[n];
+    if (!N[flag]) continue;
+    if (N.k === 9) {
+      if (!slab(N.bmin, N.bmax, ox, oy, oz, ix, iy, iz, tmax)) continue;
+      if (traceAny(N.kids, ox, oy, oz, dx, dy, dz, tmax, ix, iy, iz, flag)) return true;
+    } else {
+      if (N.k !== 3 && N.k !== 4 && !slab(N.bmin, N.bmax, ox, oy, oz, ix, iy, iz, tmax)) continue;
+      if (hitLeaf(N, ox, oy, oz, dx, dy, dz, tmax) < tmax) return true;
+    }
+  }
+  return false;
+}
+// nearest distance for AO
+function traceDist(nodes, ox, oy, oz, dx, dy, dz, tmax, ix, iy, iz) {
+  let best = tmax;
+  for (let n = 0; n < nodes.length; n++) {
+    const N = nodes[n];
+    if (!N.ao) continue;
+    if (N.k === 9) {
+      if (!slab(N.bmin, N.bmax, ox, oy, oz, ix, iy, iz, best)) continue;
+      best = traceDist(N.kids, ox, oy, oz, dx, dy, dz, best, ix, iy, iz);
+    } else {
+      if (N.k !== 3 && N.k !== 4 && !slab(N.bmin, N.bmax, ox, oy, oz, ix, iy, iz, best)) continue;
+      const t = hitLeaf(N, ox, oy, oz, dx, dy, dz, best); if (t < best) best = t;
+    }
+  }
+  return best;
+}
+const NRM = [0, 1, 0];
+function normalAt(L, px, py, pz) {
+  switch (L.k) {
+    case 0: {
+      const qx = px - L.c[0], qy = py - L.c[1], qz = pz - L.c[2];
+      let best = -1, bi = 0, bs = 1;
+      for (let i = 0; i < 3; i++) { const a = L.ax[i]; const v = (a[0] * qx + a[1] * qy + a[2] * qz) / L.h[i]; if (Math.abs(v) > best) { best = Math.abs(v); bi = i; bs = v < 0 ? -1 : 1; } }
+      const a = L.ax[bi]; NRM[0] = a[0] * bs; NRM[1] = a[1] * bs; NRM[2] = a[2] * bs; return NRM;
+    }
+    case 1: { NRM[0] = (px - L.c[0]) / L.r; NRM[1] = (py - L.c[1]) / L.r; NRM[2] = (pz - L.c[2]) / L.r; return NRM; }
+    case 2: {
+      const qx = px - L.a[0], qy = py - L.a[1], qz = pz - L.a[2];
+      const y = (qx * L.ba[0] + qy * L.ba[1] + qz * L.ba[2]) / L.baba, bl = Math.sqrt(L.baba);
+      if (y < 1e-4) { NRM[0] = -L.ba[0] / bl; NRM[1] = -L.ba[1] / bl; NRM[2] = -L.ba[2] / bl; return NRM; }
+      if (y > 1 - 1e-4) { NRM[0] = L.ba[0] / bl; NRM[1] = L.ba[1] / bl; NRM[2] = L.ba[2] / bl; return NRM; }
+      let nx = qx - L.ba[0] * y, ny = qy - L.ba[1] * y, nz = qz - L.ba[2] * y; const l = Math.hypot(nx, ny, nz) || 1;
+      NRM[0] = nx / l; NRM[1] = ny / l; NRM[2] = nz / l; return NRM;
+    }
+    case 3: { NRM[0] = L.n[0]; NRM[1] = L.n[1]; NRM[2] = L.n[2]; return NRM; }
+    case 4: {
+      const e = L.ne, f = L.f;
+      let nx = f(px + e, py, pz) - f(px - e, py, pz), ny = f(px, py + e, pz) - f(px, py - e, pz), nz = f(px, py, pz + e) - f(px, py, pz - e);
+      const l = Math.hypot(nx, ny, nz) || 1; NRM[0] = nx / l; NRM[1] = ny / l; NRM[2] = nz / l; return NRM;
+    }
+  }
+  return NRM;
+}
+// SDF helpers
+const sdRoundBox = (x, y, z, bx, by, bz, r) => {
+  const qx = Math.abs(x) - bx + r, qy = Math.abs(y) - by + r, qz = Math.abs(z) - bz + r;
+  return Math.hypot(Math.max(qx, 0), Math.max(qy, 0), Math.max(qz, 0)) + Math.min(Math.max(qx, Math.max(qy, qz)), 0) - r;
+};
+const sdTorusZ = (x, y, z, R, r) => Math.hypot(Math.hypot(x, y) - R, z) - r;          // ring in the xy plane
+const sdCapsule = (x, y, z, ax, ay, az, bx, by, bz, r) => {
+  const pax = x - ax, pay = y - ay, paz = z - az, bax = bx - ax, bay = by - ay, baz = bz - az;
+  const h = clamp((pax * bax + pay * bay + paz * baz) / (bax * bax + bay * bay + baz * baz));
+  return Math.hypot(pax - bax * h, pay - bay * h, paz - baz * h) - r;
+};
+const smin = (a, b, k) => { const h = clamp(0.5 + 0.5 * (b - a) / k); return lerp(b, a, h) - k * h * (1 - h); };
+
+// camera: yaw 0 looks along -z, positive yaw turns right; pitch up positive; f in px; (cx, cy) principal point (lens shift)
+function makeCam(pos, yaw, pitch, f, cx = W / 2, cy = H / 2) {
+  const fw = [Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), -Math.cos(yaw) * Math.cos(pitch)];
+  const rt = norm(cross(fw, [0, 1, 0])), up = cross(rt, fw);
+  return {
+    pos, fw, rt, up, f, cx, cy,
+    proj(p) { const qx = p[0] - pos[0], qy = p[1] - pos[1], qz = p[2] - pos[2]; const z = qx * fw[0] + qy * fw[1] + qz * fw[2];
+      return [cx + f * (qx * rt[0] + qy * rt[1] + qz * rt[2]) / z, cy - f * (qx * up[0] + qy * up[1] + qz * up[2]) / z, z]; },
+  };
+}
+function lookAtCam(pos, target, f, cx = W / 2, cy = H / 2) {
+  const d = norm(sub(target, pos));
+  return makeCam(pos, Math.atan2(d[0], -d[2]), Math.asin(d[1]), f, cx, cy);
+}
+
+// Main renderer. opts:
+//  shade(h) -> [r,g,b] linear; h = {x,y,px,py,pz,nx,ny,nz,dx,dy,dz,t,L,vis,ao}
+//  miss(dx,dy,dz,x,y) -> [r,g,b]
+//  sun: towards-sun unit vector; sunJit: cone half-angle (rad); aoR, aoN; aoMax: max distance for AO
+//  denoise radii: visR, aoBlur
+async function renderRT(top, cam, opts) {
+  const N = W * H;
+  const ID = new Int32Array(N), T = new Float32Array(N), NX = new Float32Array(N), NY = new Float32Array(N), NZ = new Float32Array(N);
+  const VIS = new Float32Array(N), AO = new Float32Array(N);
+  const OUT = new Float32Array(N * 3);
+  const rnd = mulberry32(opts.seed || 99);
+  const sun = opts.sun, sunJit = opts.sunJit || 0.01, aoR = opts.aoR || 0.5, aoN = opts.aoN || 2, aoMax = opts.aoMax || 40;
+  // --- screen tiles for primary rays
+  const TS = 16, TW = Math.ceil(W / TS), TH = Math.ceil(H / TS);
+  const tiles = Array.from({ length: TW * TH }, () => []), glob = [];
+  for (const nd of top) {
+    if (!nd.prim) continue;
+    if (!nd.bmin) { glob.push(nd); continue; }
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity, behind = false;
+    for (let c = 0; c < 8; c++) {
+      const p = [(c & 1) ? nd.bmax[0] : nd.bmin[0], (c & 2) ? nd.bmax[1] : nd.bmin[1], (c & 4) ? nd.bmax[2] : nd.bmin[2]];
+      const s = cam.proj(p); if (s[2] < 0.02) { behind = true; break; }
+      x0 = Math.min(x0, s[0]); x1 = Math.max(x1, s[0]); y0 = Math.min(y0, s[1]); y1 = Math.max(y1, s[1]);
+    }
+    if (behind) { glob.push(nd); continue; }
+    const tx0 = Math.max(0, Math.floor((x0 - 2) / TS)), tx1 = Math.min(TW - 1, Math.floor((x1 + 2) / TS));
+    const ty0 = Math.max(0, Math.floor((y0 - 2) / TS)), ty1 = Math.min(TH - 1, Math.floor((y1 + 2) / TS));
+    for (let ty = ty0; ty <= ty1; ty++) for (let tx = tx0; tx <= tx1; tx++) tiles[ty * TW + tx].push(nd);
+  }
+  const tileList = tiles.map(t => glob.concat(t));
+  const { fw, rt, up, f, cx, cy, pos } = cam;
+  const ox = pos[0], oy = pos[1], oz = pos[2];
+  const rayDir = (sx, sy, out) => {
+    const a = sx - cx, b = -(sy - cy);
+    let dx = fw[0] * f + rt[0] * a + up[0] * b, dy = fw[1] * f + rt[1] * a + up[1] * b, dz = fw[2] * f + rt[2] * a + up[2] * b;
+    const l = Math.sqrt(dx * dx + dy * dy + dz * dz); out[0] = dx / l; out[1] = dy / l; out[2] = dz / l;
+  };
+  const D = [0, 0, 0];
+  // --- pass 1: primary visibility
+  for (let y = 0; y < H; y++) {
+    const trow = Math.floor(y / TS) * TW;
+    for (let x = 0; x < W; x++) {
+      const i = y * W + x;
+      rayDir(x + 0.5, y + 0.5, D);
+      const L = traceClosest(tileList[trow + Math.floor(x / TS)], ox, oy, oz, D[0], D[1], D[2], 1e9, inv(D[0]), inv(D[1]), inv(D[2]));
+      if (!L) { ID[i] = 0; T[i] = 1e9; continue; }
+      ID[i] = L.id; T[i] = HIT_T;
+      const n = normalAt(L, ox + D[0] * HIT_T, oy + D[1] * HIT_T, oz + D[2] * HIT_T);
+      let nx = n[0], ny = n[1], nz = n[2];
+      if (nx * D[0] + ny * D[1] + nz * D[2] > 0 && L.k !== 4) { nx = -nx; ny = -ny; nz = -nz; }   // two-sided thin parts
+      NX[i] = nx; NY[i] = ny; NZ[i] = nz;
+    }
+    if ((y & 127) === 127) await yieldFrame();
+  }
+  // --- pass 2: sun visibility (jittered cone -> soft penumbra after denoise) and AO
+  const tb = norm(Math.abs(sun[1]) < 0.9 ? cross(sun, [0, 1, 0]) : cross(sun, [1, 0, 0])), bb = cross(sun, tb);
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = y * W + x; if (!ID[i]) continue;
+      rayDir(x + 0.5, y + 0.5, D);
+      const t = T[i], nx = NX[i], ny = NY[i], nz = NZ[i];
+      const off = 1e-3 + t * 2e-4;
+      const px = ox + D[0] * t + nx * off, py = oy + D[1] * t + ny * off, pz = oz + D[2] * t + nz * off;
+      // sun
+      if (opts.visFn) VIS[i] = opts.visFn(px, py, pz, nx, ny, nz, rnd, LEAVES[ID[i]]);
+      else if (nx * sun[0] + ny * sun[1] + nz * sun[2] > -0.05) {
+        const a = rnd() * 2 * Math.PI, rr = Math.sqrt(rnd()) * sunJit;
+        let lx = sun[0] + (tb[0] * Math.cos(a) + bb[0] * Math.sin(a)) * rr, ly = sun[1] + (tb[1] * Math.cos(a) + bb[1] * Math.sin(a)) * rr, lz = sun[2] + (tb[2] * Math.cos(a) + bb[2] * Math.sin(a)) * rr;
+        const l = Math.sqrt(lx * lx + ly * ly + lz * lz); lx /= l; ly /= l; lz /= l;
+        VIS[i] = traceAny(top, px, py, pz, lx, ly, lz, 1e4, inv(lx), inv(ly), inv(lz), 'shadow') ? 0 : 1;
+      } else VIS[i] = 0;
+      // AO (cosine hemisphere, distance weighted)
+      if (t < aoMax && aoN > 0) {
+        const ta = Math.abs(nx) < 0.9 ? norm(cross([nx, ny, nz], [1, 0, 0])) : norm(cross([nx, ny, nz], [0, 1, 0]));
+        const tb2 = cross([nx, ny, nz], ta);
+        let occ = 0;
+        for (let k = 0; k < aoN; k++) {
+          const u = (k + rnd()) / aoN, ph = 2 * Math.PI * rnd(), s = Math.sqrt(u), c = Math.sqrt(1 - u);
+          const rx = ta[0] * s * Math.cos(ph) + tb2[0] * s * Math.sin(ph) + nx * c;
+          const ry = ta[1] * s * Math.cos(ph) + tb2[1] * s * Math.sin(ph) + ny * c;
+          const rz = ta[2] * s * Math.cos(ph) + tb2[2] * s * Math.sin(ph) + nz * c;
+          const dd = traceDist(top, px, py, pz, rx, ry, rz, aoR, inv(rx), inv(ry), inv(rz));
+          if (dd < aoR) occ += 1 - dd / aoR;
+        }
+        AO[i] = 1 - occ / aoN;
+      } else AO[i] = 1;
+    }
+    if ((y & 63) === 63) await yieldFrame();
+  }
+  // --- pass 3: edge-aware denoise of VIS and AO
+  const bil = (buf, r, sig) => {
+    const tmp = new Float32Array(N), wts = []; for (let k = -r; k <= r; k++) wts.push(Math.exp(-(k * k) / (2 * sig * sig)));
+    for (let pass = 0; pass < 2; pass++) {
+      const src = pass ? tmp : buf, dst = pass ? buf : tmp, sx = pass ? W : 1;
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+        const i = y * W + x, id = ID[i]; if (!id) { dst[i] = src[i]; continue; }
+        const ti = T[i], nx = NX[i], ny = NY[i], nz = NZ[i];
+        let s = 0, ws = 0;
+        for (let k = -r; k <= r; k++) {
+          const xx = pass ? x : x + k, yy = pass ? y + k : y; if (xx < 0 || yy < 0 || xx >= W || yy >= H) continue;
+          const j = yy * W + xx; if (ID[j] !== id) continue;
+          const dt = Math.abs(T[j] - ti) / (ti * 0.01 + 1e-3); if (dt > 3) continue;
+          const nd = NX[j] * nx + NY[j] * ny + NZ[j] * nz; if (nd < 0.8) continue;
+          const w = wts[k + r] * Math.exp(-dt * dt);
+          s += src[j] * w; ws += w;
+        }
+        dst[i] = ws > 0 ? s / ws : src[i];
+      }
+    }
+  };
+  bil(VIS, opts.visR || 5, (opts.visR || 5) * 0.6); await yieldFrame();
+  if (aoN > 0) { bil(AO, opts.aoBlur || 6, (opts.aoBlur || 6) * 0.6); await yieldFrame(); }
+  // --- pass 4: shading
+  const h = { x: 0, y: 0, px: 0, py: 0, pz: 0, nx: 0, ny: 0, nz: 0, dx: 0, dy: 0, dz: 0, t: 0, L: null, vis: 1, ao: 1, sub: false };
+  const shadeAt = (sx, sy, i, L, t, nx, ny, nz, vis, ao, d) => {
+    h.x = sx; h.y = sy; h.t = t; h.L = L; h.dx = d[0]; h.dy = d[1]; h.dz = d[2];
+    h.px = ox + d[0] * t; h.py = oy + d[1] * t; h.pz = oz + d[2] * t; h.nx = nx; h.ny = ny; h.nz = nz; h.vis = vis; h.ao = ao;
+    return opts.shade(h);
+  };
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = y * W + x; rayDir(x + 0.5, y + 0.5, D);
+      const c = ID[i] ? shadeAt(x + 0.5, y + 0.5, i, LEAVES[ID[i]], T[i], NX[i], NY[i], NZ[i], VIS[i], AO[i], D) : opts.miss(D[0], D[1], D[2], x + 0.5, y + 0.5);
+      OUT[i * 3] = c[0]; OUT[i * 3 + 1] = c[1]; OUT[i * 3 + 2] = c[2];
+    }
+    if ((y & 127) === 127) await yieldFrame();
+  }
+  // --- pass 5: adaptive anti-aliasing on geometric / shading edges
+  const edge = new Uint8Array(N);
+  const isEdge = (i, j) => {
+    if (ID[i] !== ID[j]) return true;
+    if (!ID[i]) return false;
+    if (NX[i] * NX[j] + NY[i] * NY[j] + NZ[i] * NZ[j] < 0.97) return true;
+    return LEAVES[ID[i]].k === 4 && Math.abs(T[i] - T[j]) > 0.03 * Math.min(T[i], T[j]) + 0.002;
+  };
+  for (let y = 0; y < H - 1; y++) for (let x = 0; x < W - 1; x++) {
+    const i = y * W + x;
+    if (isEdge(i, i + 1)) { edge[i] = 1; edge[i + 1] = 1; }
+    if (isEdge(i, i + W)) { edge[i] = 1; edge[i + W] = 1; }
+  }
+  if (opts.aaExtra) for (let i = 0; i < N; i++) if (!edge[i] && opts.aaExtra(i, ID[i])) edge[i] = 1;
+  const offs = opts.aaOffsets || [[-0.375, -0.125], [0.125, -0.375], [0.375, 0.125], [-0.125, 0.375], [-0.25, 0.3], [0.3, 0.25], [0.25, -0.2], [-0.3, -0.3]];
+  const nAA = opts.aaN || 4;
+  const ACC = new Float32Array(N * 3).fill(-1);
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = y * W + x; if (!edge[i]) continue;
+      let r = OUT[i * 3], g = OUT[i * 3 + 1], b = OUT[i * 3 + 2];
+      for (let s = 0; s < nAA; s++) {
+        const sx = x + 0.5 + offs[s][0], sy = y + 0.5 + offs[s][1];
+        rayDir(sx, sy, D);
+        const L = traceClosest(tileList[Math.floor(y / TS) * TW + Math.floor(x / TS)], ox, oy, oz, D[0], D[1], D[2], 1e9, inv(D[0]), inv(D[1]), inv(D[2]));
+        let c;
+        if (!L) c = opts.miss(D[0], D[1], D[2], sx, sy);
+        else {
+          const t = HIT_T, n = normalAt(L, ox + D[0] * t, oy + D[1] * t, oz + D[2] * t);
+          let nx = n[0], ny = n[1], nz = n[2];
+          if (nx * D[0] + ny * D[1] + nz * D[2] > 0 && L.k !== 4) { nx = -nx; ny = -ny; nz = -nz; }
+          // borrow lighting terms from a neighbour that sees the same leaf
+          let vis = -1, ao = 1;
+          for (let k = 0; k < 9 && vis < 0; k++) {
+            const xx = x + (k % 3) - 1, yy = y + Math.floor(k / 3) - 1; if (xx < 0 || yy < 0 || xx >= W || yy >= H) continue;
+            const j = yy * W + xx; if (ID[j] === L.id && Math.abs(T[j] - t) < t * 0.02) { vis = VIS[j]; ao = AO[j]; }
+          }
+          if (vis < 0) {
+            const off = 1e-3 + t * 2e-4, px = ox + D[0] * t + nx * off, py = oy + D[1] * t + ny * off, pz = oz + D[2] * t + nz * off;
+            vis = opts.visFn ? opts.visFn(px, py, pz, nx, ny, nz, rnd, L) : (traceAny(top, px, py, pz, sun[0], sun[1], sun[2], 1e4, inv(sun[0]), inv(sun[1]), inv(sun[2]), 'shadow') ? 0 : 1);
+          }
+          c = shadeAt(sx, sy, i, L, t, nx, ny, nz, vis, ao, D);
+        }
+        r += c[0]; g += c[1]; b += c[2];
+      }
+      ACC[i * 3] = r / (nAA + 1); ACC[i * 3 + 1] = g / (nAA + 1); ACC[i * 3 + 2] = b / (nAA + 1);
+    }
+    if ((y & 127) === 127) await yieldFrame();
+  }
+  for (let i = 0; i < N; i++) if (ACC[i * 3] >= 0) { OUT[i * 3] = ACC[i * 3]; OUT[i * 3 + 1] = ACC[i * 3 + 1]; OUT[i * 3 + 2] = ACC[i * 3 + 2]; }
+  return { OUT, ID, T, NX, NY, NZ, VIS, AO };
+}
+// ================================================================ scene: press-mics
+// ===================== PRESS MICS =====================
+// Close 3/4 side view of a tight bundle of press microphones (muted foam covers, no logos, no flags) taped
+// together on a clamp at the front edge of a dark wooden podium, all aimed up at the empty speaking position
+// on the left. Behind: a press hall in deep blur (daylight windows, warm wall lights, rows of seats).
+async function main() {
+  const rand = makeRand(31337);
+  const nA = makeNoise(201), nB = makeNoise(202), nC = makeNoise(203), nD = makeNoise(204);
+  const F = 2500;
+  const cam = makeCam([0.92, 1.40, 0.42], -71 * Math.PI / 180, -2.5 * Math.PI / 180, F, W / 2, H / 2);
+  const EXPO = 1.2;
+
+  // ---------- 1. backdrop: blurred hall, painted in screen space ----------
+  const bg = newLayer(), g = bg.getContext('2d');
+  {
+    let gr = g.createLinearGradient(0, 0, 0, H);
+    gr.addColorStop(0, '#2a2420'); gr.addColorStop(0.35, '#4d4238'); gr.addColorStop(0.6, '#5a4c40'); gr.addColorStop(0.8, '#3b322b'); gr.addColorStop(1, '#241e1a');
+    g.fillStyle = gr; g.fillRect(0, 0, W, H);
+    // speaker side (left): tall daylight window bays, a pale wall between them
+    for (let k = 0; k < 3; k++) {
+      const x0 = -60 + k * 330, w = 230 - k * 40, y0 = 120 + k * 60, y1 = 1080 - k * 50;
+      const wg = g.createLinearGradient(0, y0, 0, y1);
+      wg.addColorStop(0, '#c3cdd0'); wg.addColorStop(0.55, '#dfe2da'); wg.addColorStop(1, '#b4b6ac');
+      g.globalAlpha = 0.95 - k * 0.2; g.fillStyle = wg; g.fillRect(x0, y0, w, y1 - y0); g.globalAlpha = 1;
+    }
+    // warm light pool on the back wall, centre-left (behind the heads: mid tone so dark foam reads)
+    let rg = g.createRadialGradient(950, 650, 50, 950, 650, 700);
+    rg.addColorStop(0, 'rgba(196,160,118,0.75)'); rg.addColorStop(1, 'rgba(160,128,96,0)');
+    g.fillStyle = rg; g.fillRect(0, 0, W, H);
+    // audience side (right): wood panels, wall lights
+    for (let k = 0; k < 16; k++) {
+      const x = 1550 + k * 56;
+      g.fillStyle = k % 3 === 0 ? 'rgba(140,98,62,0.5)' : 'rgba(96,70,48,0.45)';
+      g.fillRect(x, 300 - k * 4, 34, 700 + k * 8);
+    }
+    for (const [x, y, r] of [[1780, 420, 170], [2180, 380, 210]]) {
+      const q = g.createRadialGradient(x, y, 0, x, y, r);
+      q.addColorStop(0, 'rgba(255,212,160,0.8)'); q.addColorStop(1, 'rgba(255,200,140,0)');
+      g.fillStyle = q; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
+    }
+    // rows of seats and a few seated / standing people (pure shapes, will dissolve in the blur)
+    for (let row = 0; row < 7; row++) {
+      const y = 1240 - row * 62, sc = 1.1 - row * 0.1;
+      for (let k = 0; k < 16; k++) {
+        const x = 1250 + k * 95 * sc + (row % 2) * 40;
+        g.fillStyle = `rgba(${30 + row * 5},${26 + row * 4},${23 + row * 4},0.95)`;
+        g.beginPath(); g.roundRect(x - 36 * sc, y - 78 * sc, 72 * sc, 90 * sc, 12 * sc); g.fill();
+        if ((k * 7 + row * 3) % 5 === 0) {           // a seated person: head + shoulders
+          g.fillStyle = 'rgba(34,28,25,0.95)';
+          g.beginPath(); g.ellipse(x, y - 128 * sc, 20 * sc, 24 * sc, 0, 0, Math.PI * 2); g.fill();
+          g.beginPath(); g.ellipse(x, y - 78 * sc, 44 * sc, 30 * sc, 0, Math.PI, 0); g.fill();
+        }
+      }
+    }
+    for (const [x, s] of [[1480, 0.9], [2120, 1.0]]) {     // standing camera operators by tripods
+      g.fillStyle = 'rgba(26,22,20,0.95)';
+      g.beginPath(); g.ellipse(x, 700 - 150 * s, 18 * s, 22 * s, 0, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.moveTo(x - 38 * s, 700 - 112 * s); g.quadraticCurveTo(x, 700 - 128 * s, x + 38 * s, 700 - 112 * s); g.lineTo(x + 32 * s, 780); g.lineTo(x - 32 * s, 780); g.closePath(); g.fill();
+      g.fillRect(x + 50 * s, 620, 60 * s, 40 * s);
+    }
+    let fl = g.createLinearGradient(0, 1150, 0, H); fl.addColorStop(0, 'rgba(30,25,22,0.5)'); fl.addColorStop(1, 'rgba(18,15,13,1)');
+    g.fillStyle = fl; g.fillRect(0, 1150, W, H - 1150);
+  }
+  const bgBlur = blurCopy(blurCopy(bg, 44, 0.5), 30, 0.5);
+  {
+    // lens bokeh: a few ceiling downlights and glints, varied in size and brightness
+    const bc = bgBlur.getContext('2d');
+    bc.globalCompositeOperation = 'screen';
+    const disc = (x, y, r, a, tint) => {
+      const q = bc.createRadialGradient(x, y, 0, x, y, r);
+      q.addColorStop(0, rgba(tint, a * 0.7)); q.addColorStop(0.8, rgba(tint, a * 0.85)); q.addColorStop(0.94, rgba(tint, a)); q.addColorStop(1, rgba(tint, 0));
+      bc.fillStyle = q; bc.beginPath(); bc.arc(x, y, r, 0, Math.PI * 2); bc.fill();
+    };
+    const lights = [[1180, 90, 62, 0.36], [1520, 130, 58, 0.3], [1840, 70, 70, 0.34], [2200, 120, 66, 0.28], [880, 150, 52, 0.22], [1380, 230, 46, 0.2], [1700, 250, 44, 0.24], [2050, 260, 48, 0.2], [2330, 300, 40, 0.18], [620, 210, 44, 0.14]];
+    for (const [x, y, r, a] of lights) disc(x, y, r, a, [255, 221, 172]);
+    for (let k = 0; k < 7; k++) disc(rand.range(1600, 2380), rand.range(380, 560), rand.range(22, 36), 0.12 + 0.12 * rand(), [255, 205, 150]);
+    for (let k = 0; k < 5; k++) disc(rand.range(60, 700), rand.range(300, 900), rand.range(24, 34), 0.08 + 0.06 * rand(), [235, 240, 236]);
+    bc.globalCompositeOperation = 'source-over';
+  }
+  const bgData = bgBlur.getContext('2d').getImageData(0, 0, W, H).data;
+  const UNT = new Float32Array(256); for (let i = 0; i < 256; i++) { const x = Math.min(0.999, Math.pow(i / 255, 2.2)); UNT[i] = -Math.log(1 - x) / EXPO; }
+  const miss = (dx, dy, dz, x, y) => { const i = (Math.min(H - 1, Math.floor(y)) * W + Math.min(W - 1, Math.floor(x))) * 4; return [UNT[bgData[i]], UNT[bgData[i + 1]], UNT[bgData[i + 2]]]; };
+
+  // ---------- 2. microphones ----------
+  const sdRoundCone = (px, py, pz, ax, ay, az, bx, by, bz, r1, r2) => {
+    const bax = bx - ax, bay = by - ay, baz = bz - az, l2 = bax * bax + bay * bay + baz * baz, rr = r1 - r2, a2 = l2 - rr * rr, il2 = 1 / l2;
+    const pax = px - ax, pay = py - ay, paz = pz - az;
+    const y = pax * bax + pay * bay + paz * baz, z = y - l2;
+    const qx = pax * l2 - bax * y, qy = pay * l2 - bay * y, qz = paz * l2 - baz * y;
+    const x2 = qx * qx + qy * qy + qz * qz, y2 = y * y * l2, z2 = z * z * l2;
+    const k = Math.sign(rr) * rr * rr * x2;
+    if (Math.sign(z) * a2 * z2 > k) return Math.sqrt(x2 + z2) * il2 - r2;
+    if (Math.sign(y) * a2 * y2 < k) return Math.sqrt(x2 + y2) * il2 - r1;
+    return (Math.sqrt(x2 * a2 * il2) + y * rr) * il2 - r1;
+  };
+  const bboxOf = (pts, pad) => [[0, 1, 2].map(i => Math.min(...pts.map(p => p[i])) - pad), [0, 1, 2].map(i => Math.max(...pts.map(p => p[i])) + pad)];
+  const top = [];
+  const HB = [0.0, 1.17, -0.085];                 // clamp at the podium's front edge
+  const M = [-0.04, 1.62, 0.8];                   // where the speaker's mouth would be
+  const ax0 = norm(sub(M, HB)), ux = [1, 0, 0], vy = norm(cross(ax0, ux));
+  const metalMat = (col, s = 0.35, gl = 60) => () => ({ a: lin(col), s, g: gl, kind: 'metal' });
+  function foamMat(col, scale) {
+    const c = lin(col);
+    return h => {
+      const n1 = nA(h.px * scale + h.pz * scale * 0.7, h.py * scale), n2 = nB(h.px * scale * 2.3 - h.pz * scale, h.py * scale * 2.3 + h.pz * scale * 0.5);
+      return { a: scl(c, 0.78 + 0.36 * n1 * n2 + 0.08 * (n2 - 0.5)), s: 0.0, g: 1, kind: 'foam', bump: (n1 - 0.5) * 0.6 };
+    };
+  }
+  const mics = [];
+  function addMic(m) {
+    const tail = add(HB, add(mul(ux, m.off[0]), mul(vy, m.off[1])));
+    const dir = norm(add(sub(M, tail), [m.jit[0], m.jit[1], 0]));
+    const at = d => add(tail, mul(dir, d));
+    const kids = [];
+    const bodyEnd = m.body;
+    // tapered body (thicker towards the head) + collar
+    const b0 = at(0.0), b1 = at(bodyEnd);
+    const bb = bboxOf([b0, b1], m.br + 0.01);
+    kids.push(SDF(bb[0], bb[1], (x, y, z) => sdRoundCone(x, y, z, b0[0], b0[1], b0[2], b1[0], b1[1], b1[2], m.br * 0.7, m.br), metalMat(m.bodyCol || '#1d1e20', 0.4, 70), { ne: 2e-4 }));
+    if (m.band) kids.push(Cyl(at(bodyEnd * 0.55), at(bodyEnd * 0.55 + 0.01), m.br * 0.9 + 0.0025, metalMat('#8e9194', 0.8, 90)));
+    if (m.type === 'ball' || m.type === 'grille') {
+      const r = m.r, c = at(bodyEnd + r * 0.75);
+      kids.push(Cyl(at(bodyEnd - 0.012), at(bodyEnd + 0.008), m.br + 0.0035, metalMat('#55585b', 0.7, 80)));
+      if (m.type === 'ball') kids.push(Sphere(c, r, foamMat(m.col, 380)));
+      else kids.push(Sphere(c, r, h => {
+        const q = sub([h.px, h.py, h.pz], c), u = Math.atan2(q[1], q[0]) * 30, v = Math.acos(clamp(dot(q, dir) / r, -1, 1)) * 30;
+        const hole = Math.abs(Math.sin(u + Math.sin(v) * 0.6) * Math.sin(v));
+        return { a: scl(lin('#aeb2b5'), 0.25 + 0.75 * smooth(0.2, 0.7, 1 - hole)), s: 0.8, g: 50, kind: 'metal' };
+      }));
+      m.headC = c; m.headR = r;
+    } else if (m.type === 'egg') {
+      const r = m.r, a = at(bodyEnd + r * 0.6), b = at(bodyEnd + r * 1.5);
+      kids.push(Cyl(at(bodyEnd - 0.012), at(bodyEnd + 0.008), m.br + 0.0035, metalMat('#55585b', 0.7, 80)));
+      const bb2 = bboxOf([a, b], r + 0.01);
+      kids.push(SDF(bb2[0], bb2[1], (x, y, z) => sdRoundCone(x, y, z, a[0], a[1], a[2], b[0], b[1], b[2], r, r * 0.84), foamMat(m.col, 380), { ne: 2e-4 }));
+      m.headC = b; m.headR = r;
+    } else if (m.type === 'shotgun' || m.type === 'fur') {
+      const r = m.r, a = at(bodyEnd + r * 0.8), b = at(bodyEnd + m.flen - r);
+      if (m.type === 'fur') {
+        const bb2 = bboxOf([a, b], r + 0.02);
+        kids.push(SDF(bb2[0], bb2[1], (x, y, z) => sdCapsule(x, y, z, a[0], a[1], a[2], b[0], b[1], b[2], r) - 0.0045 * nC(x * 300, y * 300 + z * 300), h => {
+          const n = nD(h.px * 900 + h.pz * 400, h.py * 900 - h.pz * 300), n2 = nA(h.px * 160, h.py * 160 + h.pz * 160);
+          return { a: scl(lin(m.col), 0.45 + 0.6 * n + 0.25 * n2), s: 0, g: 1, kind: 'fur', bump: (n - 0.5) * 1.4 };
+        }, { ne: 7e-4, k: 0.6, steps: 140 }));
+      } else {
+        kids.push(Cyl(a, b, r, foamMat(m.col, 330)));
+        kids.push(Sphere(a, r, foamMat(m.col, 330)));
+        kids.push(Sphere(b, r, foamMat(m.col, 330)));
+      }
+      m.headC = b; m.headR = r;
+    }
+    m.tail = tail; m.dir = dir;
+    top.push(Group(kids));
+    mics.push(m);
+  }
+  // muted covers: charcoal, slate, dusty navy, dark maroon, olive grey, black, fur
+  addMic({ type: 'shotgun', off: [0.004, 0.072], jit: [0.0, 0.0], body: 0.2, r: 0.021, flen: 0.18, br: 0.0105, col: '#5e6064', band: true });
+  addMic({ type: 'ball', off: [-0.034, 0.03], jit: [0.02, 0.01], body: 0.2, r: 0.041, br: 0.02, col: '#3a3b3e' });
+  addMic({ type: 'ball', off: [0.036, 0.022], jit: [-0.02, 0.02], body: 0.18, r: 0.04, br: 0.0195, col: '#5b3536' });
+  addMic({ type: 'egg', off: [0.002, -0.006], jit: [0.0, 0.0], body: 0.19, r: 0.034, br: 0.019, col: '#344459' });
+  addMic({ type: 'grille', off: [-0.04, -0.03], jit: [0.03, -0.01], body: 0.17, r: 0.029, br: 0.019, bodyCol: '#26272a', band: true });
+  addMic({ type: 'fur', off: [0.042, -0.036], jit: [-0.03, -0.02], body: 0.12, r: 0.034, flen: 0.15, br: 0.012, col: '#857a6d' });
+  addMic({ type: 'ball', off: [-0.006, -0.066], jit: [0.0, -0.02], body: 0.16, r: 0.038, br: 0.019, col: '#26272a' });
+  addMic({ type: 'ball', off: [0.03, 0.062], jit: [-0.025, 0.03], body: 0.15, r: 0.036, br: 0.018, col: '#5c6150' });
+  // gaffer tape binding the bundle + clamp and short stand on the podium edge
+  {
+    const kids = [];
+    const tapeC = add(HB, mul(ax0, 0.035));
+    const tapeMat = h => ({ a: scl(lin('#8b8a84'), 0.85 + 0.25 * nA(h.px * 400, h.py * 400 + h.pz * 200)), s: 0.15, g: 18, kind: 'tape' });
+    kids.push(SDF([tapeC[0] - 0.09, tapeC[1] - 0.11, tapeC[2] - 0.08], [tapeC[0] + 0.09, tapeC[1] + 0.11, tapeC[2] + 0.08], (x, y, z) => {
+      const q = sub([x, y, z], tapeC), a = dot(q, ax0), ux_ = q[0], vy_ = dot(q, vy);
+      return Math.max(Math.hypot(ux_ / 1.0, vy_ / 1.45) - 0.062, Math.abs(a) - 0.024) - 0.004;
+    }, tapeMat, { ne: 3e-4 }));
+    const dark = metalMat('#1a1b1d', 0.35, 50);
+    kids.push(Box([HB[0], HB[1] - 0.06, HB[2] - 0.01], [0.03, 0.05, 0.022], dark));
+    kids.push(Box([HB[0], 1.09, -0.112], [0.035, 0.035, 0.018], dark));
+    kids.push(Cyl([HB[0] - 0.02, 1.125, -0.112], [HB[0] + 0.02, 1.125, -0.112], 0.012, metalMat('#5a5d60', 0.7, 80)));
+    top.push(Group(kids));
+  }
+  // gooseneck house microphone on the speaker's side (thin, matte black)
+  {
+    const kids = [], dark = metalMat('#161718', 0.3, 40);
+    const P0 = [-0.24, 1.105, 0.3], P1 = [-0.24, 1.3, 0.24], P2 = [-0.16, 1.4, 0.32], P3 = [-0.12, 1.42, 0.42];
+    const bz = t => { const u = 1 - t; return [0, 1, 2].map(i => u * u * u * P0[i] + 3 * u * u * t * P1[i] + 3 * u * t * t * P2[i] + t * t * t * P3[i]); };
+    const N = 20;
+    for (let i = 0; i < N; i++) { const a = bz(i / N), b = bz((i + 1) / N); kids.push(Cyl(a, b, 0.0058, dark)); kids.push(Sphere(b, 0.0058, dark)); }
+    const d = norm(sub(P3, bz(0.95)));
+    kids.push(Cyl(P3, add(P3, mul(d, 0.045)), 0.009, dark));
+    kids.push(Sphere(add(P3, mul(d, 0.06)), 0.017, foamMat('#222325', 500)));
+    kids.push(Cyl([-0.24, 1.105, 0.3], [-0.24, 1.125, 0.3], 0.032, dark));
+    top.push(Group(kids));
+  }
+  // cables from the tails over the front edge of the podium
+  {
+    const cm = () => ({ a: lin('#121212'), s: 0.3, g: 40, kind: 'cable' });
+    const cr = (p0, p1, p2, p3, t) => [0, 1, 2].map(i => 0.5 * ((2 * p1[i]) + (-p0[i] + p2[i]) * t + (2 * p0[i] - 5 * p1[i] + 4 * p2[i] - p3[i]) * t * t + (-p0[i] + 3 * p1[i] - 3 * p2[i] + p3[i]) * t * t * t));
+    for (const [mi, ex, ez] of [[1, -0.06, -0.15], [2, 0.07, -0.16], [6, 0.0, -0.14], [3, 0.12, -0.17]]) {
+      const kids = [], a = mics[mi].tail;
+      const pts = [a, add(a, [0, -0.04, -0.04]), [ex, 1.11, -0.12], [ex + 0.01, 1.07, ez], [ex + 0.03, 0.85, ez - 0.02]];
+      const P = [pts[0]].concat(pts, [pts[pts.length - 1]]);
+      let prev = null;
+      for (let s = 1; s < P.length - 2; s++) for (let k = 0; k <= 8; k++) {
+        const q = cr(P[s - 1], P[s], P[s + 1], P[s + 2], k / 8);
+        if (prev) kids.push(Cyl(prev, q, 0.0034, cm));
+        kids.push(Sphere(q, 0.0034, cm)); prev = q;
+      }
+      top.push(Group(kids));
+    }
+  }
+  // podium: dark walnut top with rounded edges, notes on the speaker's side
+  const WAL = lin('#4b3426'), WAL2 = lin('#2c1e15');
+  const woodTop = h => {
+    const g1 = fbm(nB, h.px * 5, h.pz * 38 + h.px * 3, 4), g2 = nC(h.px * 2, h.pz * 7);
+    return { a: scl(mixc(WAL, WAL2, clamp(0.35 + 0.9 * (g1 - 0.5) + 0.3 * (g2 - 0.5))), 0.95), s: 0.3, g: 40, kind: 'wood' };
+  };
+  top.push(Box([0, 1.08, 0.19], [0.52, 0.025, 0.31], woodTop));
+  top.push(Cyl([-0.52, 1.08, -0.12], [0.52, 1.08, -0.12], 0.025, woodTop));
+  top.push(Cyl([0.52, 1.08, -0.12], [0.52, 1.08, 0.5], 0.025, woodTop));
+  top.push(Box([0, 0.6, -0.11], [0.5, 0.48, 0.02], () => ({ a: scl(WAL2, 0.8), s: 0.1, g: 20, kind: 'wood' })));
+  top.push(Box([0.5, 0.6, 0.19], [0.02, 0.48, 0.3], () => ({ a: scl(WAL2, 0.75), s: 0.1, g: 20, kind: 'wood' })));
+  top.push(Box([-0.2, 1.1062, 0.36], [0.105, 0.0008, 0.148], () => ({ a: lin('#dcd7cc'), s: 0.03, g: 10, kind: 'paper' }), { ax: yawAxes(-0.2) }));
+
+  // ---------- 3. lighting ----------
+  const KEY = norm([0.42, 0.62, -0.66]), KEYC = [1.0, 0.9, 0.78], KEYI = 2.6;      // TV lights on the audience side
+  const RIM = norm([-0.55, 0.35, 0.76]), RIMC = [0.84, 0.9, 0.98], RIMI = 2.2;     // daylight from the windows behind the speaker
+  const FILL = norm([0.9, 0.1, 0.4]), FILLC = [1.0, 0.86, 0.7], FILLI = 0.5;
+  const res = await renderRT(top, cam, {
+    sun: KEY, sunJit: 0.12, aoR: 0.05, aoN: 4, aoMax: 5, visR: 5, aoBlur: 6, seed: 9,
+    miss,
+    shade(h) {
+      const m = h.L.mat(h);
+      let nx = h.nx, ny = h.ny, nz = h.nz;
+      if (m.bump) { nx += m.bump * 0.25; ny += m.bump * 0.18; nz -= m.bump * 0.1; const l = Math.hypot(nx, ny, nz); nx /= l; ny /= l; nz /= l; }
+      const vx = -h.dx, vy = -h.dy, vz = -h.dz;
+      const ndv = Math.max(0, nx * vx + ny * vy + nz * vz);
+      const soft = m.kind === 'foam' || m.kind === 'fur';
+      const wrap = soft ? 0.5 : 0.08;
+      const lam = L => Math.max(0, (nx * L[0] + ny * L[1] + nz * L[2] + wrap) / (1 + wrap));
+      const ao = h.ao;
+      const k = KEYI * lam(KEY) * (0.2 + 0.8 * h.vis), rr = RIMI * lam(RIM), ff = FILLI * lam(FILL);
+      const amb = 0.12 * ao;
+      let r = m.a[0] * (KEYC[0] * k + RIMC[0] * rr + FILLC[0] * ff + amb * 0.95);
+      let gg = m.a[1] * (KEYC[1] * k + RIMC[1] * rr + FILLC[1] * ff + amb * 0.88);
+      let b = m.a[2] * (KEYC[2] * k + RIMC[2] * rr + FILLC[2] * ff + amb * 0.8);
+      if (soft) {
+        // velvet sheen of foam / fur at grazing angles, picked up from the back light
+        const sh = Math.pow(1 - ndv, 2.5) * (0.5 * RIMI * Math.max(0, nx * RIM[0] + ny * RIM[1] + nz * RIM[2] + 0.3) + 0.25 * KEYI * Math.max(0, nx * KEY[0] + ny * KEY[1] + nz * KEY[2] + 0.3));
+        r += sh * 0.05 * RIMC[0] * (0.6 + m.a[0] * 4); gg += sh * 0.05 * RIMC[1] * (0.6 + m.a[1] * 4); b += sh * 0.05 * RIMC[2] * (0.6 + m.a[2] * 4);
+      }
+      if (m.s > 0) {
+        for (const [L, C, I, vis] of [[KEY, KEYC, KEYI, h.vis], [RIM, RIMC, RIMI, 1]]) {
+          const hx = L[0] + vx, hy = L[1] + vy, hz = L[2] + vz, hl = Math.hypot(hx, hy, hz);
+          const nh = Math.max(0, (nx * hx + ny * hy + nz * hz) / hl);
+          const sp = m.s * Math.pow(nh, m.g) * (m.g + 2) / 8 * I * vis * Math.max(0, nx * L[0] + ny * L[1] + nz * L[2]);
+          r += sp * C[0]; gg += sp * C[1]; b += sp * C[2];
+        }
+        // soft environment: the blurred hall, warmer below, brighter towards the windows (+z)
+        const dn = h.dx * nx + h.dy * ny + h.dz * nz;
+        const rx = h.dx - 2 * dn * nx, ry = h.dy - 2 * dn * ny, rz = h.dz - 2 * dn * nz;
+        const fres = 0.04 + 0.96 * Math.pow(1 - ndv, 5);
+        const e = 0.18 + 0.22 * smooth(-0.3, 0.8, ry) + 0.25 * smooth(0.0, 0.9, rz);
+        const kk = m.kind === 'metal' ? 0.35 * m.s : 0.5 * fres * m.s;
+        r += e * 1.0 * kk; gg += e * 0.92 * kk; b += e * 0.85 * kk;
+      }
+      return [r, gg, b];
+    },
+  });
+  putLinear(res.OUT, EXPO);
+
+  // ---------- 4. depth of field (focus on the heads) ----------
+  {
+    const zf = 0.86;
+    const b1 = blurCopy(cvs, 2), b2 = blurCopy(cvs, 5), b3 = blurCopy(cvs, 11);
+    const d0 = ctx.getImageData(0, 0, W, H), d = d0.data;
+    const d1 = b1.getContext('2d').getImageData(0, 0, W, H).data, d2 = b2.getContext('2d').getImageData(0, 0, W, H).data, d3 = b3.getContext('2d').getImageData(0, 0, W, H).data;
+    for (let i = 0; i < W * H; i++) {
+      if (!res.ID[i]) continue;
+      const c = Math.abs(1 / zf - 1 / res.T[i]) * 8.5;
+      if (c < 0.35) continue;
+      const j = i * 4, w1 = clamp((c - 0.35) / 1.4), w2 = clamp((c - 1.8) / 3), w3 = clamp((c - 5) / 6);
+      for (let k = 0; k < 3; k++) { let v = lerp(d[j + k], d1[j + k], w1); v = lerp(v, d2[j + k], w2); d[j + k] = lerp(v, d3[j + k], w3); }
+    }
+    ctx.putImageData(d0, 0, 0);
+  }
+  addBloom(ctx, { threshold: 0.8, knee: 0.12, radii: [6, 24, 80], weights: [0.35, 0.35, 0.3], strength: 0.4, tint: [255, 232, 205] });
+  finish(ctx, {
+    grain: 0.03, seed: 61, vignette: 0.3, vcx: 0.5, vcy: 0.5, vr0: 0.3, vr1: 1.05,
+    grade: (r, gg, b) => {
+      const l = 0.2126 * r + 0.7152 * gg + 0.0722 * b;
+      const s = 0.86; r = l + (r - l) * s; gg = l + (gg - l) * s; b = l + (b - l) * s;
+      const c = 0.02 * (1 - smooth(0.0, 0.35, l)); b += c * 0.6; r -= c * 0.2;
+      return [r, gg, b];
+    },
+  });
+}
+window.addEventListener('load', () => setTimeout(async () => {
+  try { await main(); } catch (e) { console.error('render failed: ' + (e && e.stack || e)); }
+  window.__done = true;
+}, 30));
+</script></body></html>
