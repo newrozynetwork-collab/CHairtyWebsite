@@ -1,0 +1,167 @@
+[
+ {
+  "file": "empty-chair.jpg",
+  "title": "A chair by the window",
+  "alt": "A simple wooden chair and small side table beside a tall window, morning light falling across the floor.",
+  "focal": {
+   "x": 0.66,
+   "y": 0.6
+  },
+  "calmArea": "upper-left",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "vigil-candles.jpg",
+  "title": "Candles on the steps",
+  "alt": "Small candles in glass jars glowing on stone steps at night, with people standing out of focus behind.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.62
+  },
+  "calmArea": "top",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "school-tent.jpg",
+  "title": "A tent classroom",
+  "alt": "Inside a canvas tent used as a classroom: low benches, a blackboard and colourful backpacks hanging on a line.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.55
+  },
+  "calmArea": "upper area",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "heat-roofs.jpg",
+  "title": "Metal roofs in the heat",
+  "alt": "Dense corrugated-metal roofs of an informal settlement under a white, hazy sky.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.6
+  },
+  "calmArea": "sky",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "press-mics.jpg",
+  "title": "Microphones at a podium",
+  "alt": "A cluster of microphones at the edge of a podium in front of a blurred hall.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.55
+  },
+  "calmArea": "sides",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "legal-clinic.jpg",
+  "title": "A legal clinic under a tree",
+  "alt": "A folding table with papers and a stamp under a large tree, two people seated at a distance, fields beyond.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.6
+  },
+  "calmArea": "sky",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "road-dusk.jpg",
+  "title": "The road at dusk",
+  "alt": "An adult and a child, seen from behind, walking along a long rural road at dusk carrying bags.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.66
+  },
+  "calmArea": "sky",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "shelter-ramp.jpg",
+  "title": "An accessible shelter entrance",
+  "alt": "A row of prefabricated shelters with a gentle access ramp and handrail leading to a door.",
+  "focal": {
+   "x": 0.55,
+   "y": 0.6
+  },
+  "calmArea": "sky",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "community-table.jpg",
+  "title": "A shared table",
+  "alt": "A long table with cups and a teapot under string lights in a courtyard at early evening.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.6
+  },
+  "calmArea": "top",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "city-dusk.jpg",
+  "title": "City at blue hour",
+  "alt": "A city skyline at blue hour seen from a rooftop, windows lit, a calm sky above.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.65
+  },
+  "calmArea": "sky",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "valley-dawn.jpg",
+  "title": "Valley at dawn",
+  "alt": "A wide mountain valley at dawn, with mist between the ridges, a river and a small village.",
+  "focal": {
+   "x": 0.55,
+   "y": 0.6
+  },
+  "calmArea": "sky",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "field-notebook.jpg",
+  "title": "Field notes",
+  "alt": "Top-down view of a wooden table with an open notebook, a pen, a small voice recorder, a folded map, tea and glasses.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.5
+  },
+  "calmArea": "edges",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "window-silhouette.jpg",
+  "title": "Holding a photograph",
+  "alt": "The silhouette of a woman at a window holding a small picture frame to her chest, backlit through a sheer curtain.",
+  "focal": {
+   "x": 0.55,
+   "y": 0.5
+  },
+  "calmArea": "left",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "water-jerrycans.jpg",
+  "title": "Water containers",
+  "alt": "Rows of yellow and blue plastic water containers lined up beside a tap stand in long morning shadows.",
+  "focal": {
+   "x": 0.5,
+   "y": 0.62
+  },
+  "calmArea": "top",
+  "credit": "Original illustration created for this proposal"
+ },
+ {
+  "file": "school-morning.jpg",
+  "title": "Walking to school",
+  "alt": "Children with backpacks, seen as silhouettes, walking along a dirt path towards a small school building in morning light.",
+  "focal": {
+   "x": 0.55,
+   "y": 0.6
+  },
+  "calmArea": "sky",
+  "credit": "Original illustration created for this proposal"
+ }
+]
