@@ -639,7 +639,8 @@ async function main() {
     const c = lin(col);
     return h => {
       const n1 = nA(h.px * scale + h.pz * scale * 0.7, h.py * scale), n2 = nB(h.px * scale * 2.3 - h.pz * scale, h.py * scale * 2.3 + h.pz * scale * 0.5);
-      return { a: scl(c, 0.8 + 0.34 * n1 * n2 + 0.08 * (n2 - 0.5)), s: 0.0, g: 1, kind: 'foam', bump: (n1 - 0.5) * 0.6 };
+      const pore = smooth(0.18, 0.05, nC(h.px * scale * 3.1 + h.py * 50, h.py * scale * 3.1 - h.pz * scale * 2.2));
+      return { a: scl(c, (0.82 + 0.3 * n1 * n2 + 0.08 * (n2 - 0.5)) * (1 - 0.45 * pore)), s: 0.0, g: 1, kind: 'foam', bump: (n1 - 0.5) * 0.7 };
     };
   }
   const mics = [];
@@ -711,21 +712,21 @@ async function main() {
   {
     const cm = () => ({ a: lin('#121212'), s: 0.25, g: 40, kind: 'cable' });
     const cr = (p0, p1, p2, p3, t) => [0, 1, 2].map(i => 0.5 * ((2 * p1[i]) + (-p0[i] + p2[i]) * t + (2 * p0[i] - 5 * p1[i] + 4 * p2[i] - p3[i]) * t * t + (-p0[i] + 3 * p1[i] - 3 * p2[i] + p3[i]) * t * t * t));
-    for (const [mi, ez] of [[1, 0.05], [6, 0.11]]) {
+    for (const [mi, ez] of [[6, 0.09]]) {
       const kids = [], a = mics[mi].tail, d = mics[mi].dir;
-      const pts = [a, add(a, mul(d, -0.035)), [0.205, 1.2, ez], [0.222, 1.15, ez + 0.01], [0.226, 0.9, ez + 0.02]];
+      const pts = [a, add(a, mul(d, -0.05)), [0.235, 1.215, ez], [0.25, 1.17, ez + 0.02], [0.255, 0.95, ez + 0.04]];
       const P = [pts[0]].concat(pts, [pts[pts.length - 1]]);
       let prev = null;
       for (let s = 1; s < P.length - 2; s++) for (let k = 0; k <= 8; k++) {
         const q = cr(P[s - 1], P[s], P[s + 1], P[s + 2], k / 8);
-        if (prev) kids.push(Cyl(prev, q, 0.0034, cm));
-        kids.push(Sphere(q, 0.0034, cm)); prev = q;
+        if (prev) kids.push(Cyl(prev, q, 0.0042, cm));
+        kids.push(Sphere(q, 0.0042, cm)); prev = q;
       }
       top.push(Group(kids));
     }
   }
   // lectern: dark walnut, sloped reading top (low on the speaker's side), side panel towards us
-  const WAL = lin('#4b3426'), WAL2 = lin('#2c1e15');
+  const WAL = lin('#3f2c21'), WAL2 = lin('#22170f');
   const XB = -0.33, XF = 0.2, YB = 1.06, YF = 1.2, ZH = 0.3;
   const slope = Math.atan2(YF - YB, XF - XB);
   const tu = [Math.cos(slope), Math.sin(slope), 0], tv = [-Math.sin(slope), Math.cos(slope), 0];
@@ -739,12 +740,14 @@ async function main() {
     let a = scl(mixc(WAL, WAL2, clamp(0.45 + 1.0 * (g1 - 0.5) + 0.2 * (g2 - 0.5))), 0.85);
     // a slim lighter edge banding along the sloped top edge and the front edge
     const dTop = (YB + (h.px - XB) * Math.tan(slope)) - h.py, dFront = XF - h.px;
-    if (Math.min(dTop, dFront) < 0.012 && Math.abs(h.pz) > ZH - 0.001) a = scl(lin('#6a4a34'), 1.0);
+    const inset = Math.min(dTop - 0.06, dFront - 0.06, h.px - XB - 0.06, h.py - 0.06);
+    if (Math.abs(h.pz) > ZH - 0.001 && Math.abs(inset) < 0.004) a = scl(a, 0.55);                 // routed groove around a raised panel
+    if (Math.abs(h.pz) > ZH - 0.001 && inset > 0.004) a = scl(a, 1.06);
     return { a, s: 0.22, g: 30, kind: 'wood' };
   };
   // top board (sloped)
   const tc = [(XB + XF) / 2 + tv[0] * -0.015, (YB + YF) / 2 + tv[1] * -0.015, 0];
-  top.push(Box(tc, [Math.hypot(XF - XB, YF - YB) / 2 + 0.015, 0.015, ZH + 0.012], woodTop, { ax: [tu, tv, [0, 0, 1]] }));
+  top.push(Box(add(tc, mul(tu, 0.012)), [Math.hypot(XF - XB, YF - YB) / 2 + 0.03, 0.016, ZH + 0.03], woodTop, { ax: [tu, tv, [0, 0, 1]] }));
   // side panels as prisms (trapezoid in x-y, thickness in z)
   const prism = zc => (x, y, z) => {
     const dz = Math.abs(z - zc) - 0.018;
@@ -754,12 +757,10 @@ async function main() {
   };
   for (const zc of [ZH, -ZH]) top.push(SDF([XB - 0.01, -0.01, zc - 0.03], [XF + 0.01, YF + 0.01, zc + 0.03], prism(zc), sideMat, { k: 0.95, ne: 2e-4 }));
   top.push(Box([XF - 0.012, (YF - 0.03) / 2, 0], [0.012, (YF - 0.03) / 2, ZH], sideMat));
-  // book-rest lip on the speaker's side
-  top.push(Box([XB + 0.01, YB + 0.02, 0], [0.012, 0.025, ZH], woodTop));
 
   // ---------- 3. lighting ----------
   const KEY = norm([0.62, 0.55, 0.56]), KEYC = [1.0, 0.9, 0.78], KEYI = 2.5;      // TV lights on the audience side
-  const RIM = norm([-0.75, 0.35, -0.55]), RIMC = [0.84, 0.9, 0.98], RIMI = 2.3;   // daylight windows behind the speaker
+  const RIM = norm([-0.8, 0.3, -0.45]), RIMC = [0.78, 0.88, 1.0], RIMI = 3.0;   // daylight windows behind the speaker
   const FILL = norm([0.0, 0.2, 1.0]), FILLC = [1.0, 0.86, 0.7], FILLI = 0.45;
   const res = await renderRT(top, cam, {
     sun: KEY, sunJit: 0.12, aoR: 0.05, aoN: 4, aoMax: 5, visR: 5, aoBlur: 6, seed: 9,
