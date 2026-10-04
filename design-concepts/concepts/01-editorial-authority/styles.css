@@ -383,6 +383,13 @@ figcaption { font-family: var(--sans); font-size: 14px; line-height: 1.4; color:
 .findings li:last-child { border-bottom: 0; padding-bottom: 2px; }
 .findings b { display: block; font-family: var(--serif); font-weight: 600; font-size: 46px; line-height: 1; letter-spacing: -.02em; }
 .findings span { display: block; font-family: var(--sans); font-size: 15px; line-height: 1.35; margin-top: 5px; }
+.film { display: block; margin-top: 26px; }
+.film-poster { position: relative; display: block; }
+.film-poster img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: 55% 45%; }
+.film-poster .play-box { position: absolute; left: 12px; bottom: 12px; width: 40px; height: 40px; background: var(--paper); }
+.film-poster .play-box svg { width: 13px; height: 14px; }
+.film .kicker { display: block; margin-top: 11px; }
+.film-label { display: block; margin-top: 4px; font-family: var(--serif); font-weight: 600; font-size: 19px; line-height: 1.2; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .pullquote { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 20px 0 18px; position: relative; }
 .pullquote::before, .pullquote::after { content: ""; position: absolute; left: 0; right: 0; border-top: 1px solid var(--ink); }
 .pullquote::before { top: 3px; }

@@ -190,16 +190,29 @@ const rotH = p => {
 // skull + face mass (no features; covered by hair anyway)
 const HEAD = [[-0.15, -1.47], [0.12, -1.41], [0.31, -1.22], [0.39, -0.98], [0.41, -0.78], [0.36, -0.58], [0.28, -0.42], [0.12, -0.35], [-0.08, -0.42], [-0.28, -0.50], [-0.46, -0.63], [-0.58, -0.86], [-0.59, -1.10], [-0.44, -1.37]].map(rotH);
 // hair: a soft bob, close to the bowed skull, falling with gravity in front of the face (final body coords)
+// loose shoulder-length hair: a mass hugging the skull, then separate tapered locks down the back and over the face
 const HAIR = [
-  [-0.31, -1.22], [-0.03, -1.41], [0.32, -1.37], [0.57, -1.15], [0.665, -0.88], [0.683, -0.60], [0.668, -0.36],
-  [0.640, -0.16], [0.600, -0.035], [0.53, 0.0], [0.43, -0.01], [0.30, -0.03], [0.18, -0.06], [0.05, -0.20], [-0.12, -0.38],
-  [-0.30, -0.26], [-0.40, -0.17], [-0.46, -0.16], [-0.49, -0.26], [-0.50, -0.45], [-0.48, -0.72], [-0.42, -1.00],
+  [-0.53, -0.18], [-0.515, -0.55], [-0.455, -0.85], [-0.34, -1.10], [-0.12, -1.30], [0.12, -1.38], [0.36, -1.34],
+  [0.56, -1.17], [0.665, -0.93], [0.695, -0.68], [0.685, -0.45], [0.64, -0.30], [0.52, -0.22], [0.36, -0.18],
+  [0.20, -0.12], [0.06, -0.06], [-0.10, -0.10], [-0.30, -0.12], [-0.45, -0.10],
+];
+// locks: centre-line points + root half-width (head units); they taper to the tip
+const LOCKS = [
+  [[[-0.47, -0.72], [-0.565, -0.32], [-0.625, 0.04], [-0.655, 0.25]], 0.07],
+  [[[-0.40, -0.62], [-0.50, -0.22], [-0.575, 0.10], [-0.60, 0.31]], 0.08],
+  [[[-0.50, -0.78], [-0.605, -0.36], [-0.685, -0.02], [-0.725, 0.17]], 0.035],
+  [[[-0.30, -0.50], [-0.42, -0.14], [-0.52, 0.16], [-0.53, 0.36]], 0.07],
+  [[[0.62, -0.95], [0.69, -0.55], [0.665, -0.25], [0.605, -0.035]], 0.065],
+  [[[0.55, -0.90], [0.62, -0.50], [0.585, -0.22], [0.50, -0.075]], 0.075],
+  [[[0.66, -0.86], [0.725, -0.50], [0.718, -0.25], [0.675, -0.105]], 0.028],
+  [[[0.45, -0.80], [0.50, -0.46], [0.45, -0.22], [0.36, -0.10]], 0.06],
 ];
 const NECK = [rotH([-0.40, -0.70]), [-0.50, -0.10], [0.03, 0.02], [0.12, -0.08], rotH([0.10, -0.38]), rotH([-0.10, -0.46])];
 // slightly smaller head (elegant ~8-head proportion), scaled towards the base of the neck
 const HS = 0.92, HP = [-0.18, -0.12];
 const hsc = p => [HP[0] + (p[0] - HP[0]) * HS, HP[1] + (p[1] - HP[1]) * HS, p[2]];
 for (const arr of [HEAD, HAIR]) for (let i = 0; i < arr.length; i++) arr[i] = hsc(arr[i]);
+for (const L of LOCKS) { L[0] = L[0].map(hsc); L[1] *= HS; }
 for (const i of [0, 4, 5]) NECK[i] = hsc(NECK[i]);
 const TORSO = [
   [-0.50, -0.10], [-0.62, 0.10], [-0.71, 0.38], [-0.73, 0.70], [-0.68, 1.05], [-0.60, 1.45],
@@ -209,7 +222,7 @@ const TORSO = [
 // frame: glass side towards her, top tilted slightly away from the chest (she is looking down at it)
 const FR = { bl: [0.37, 1.11], tl: [0.53, 0.19] };
 {
-  const d = v2norm([FR.tl[0] - FR.bl[0], FR.tl[1] - FR.bl[1]]), th = 0.10;
+  const d = v2norm([FR.tl[0] - FR.bl[0], FR.tl[1] - FR.bl[1]]), th = 0.11;
   FR.n = [-d[1], d[0]]; if (FR.n[0] < 0) FR.n = [-FR.n[0], -FR.n[1]];
   FR.tr = [FR.tl[0] + FR.n[0] * th, FR.tl[1] + FR.n[1] * th]; FR.br = [FR.bl[0] + FR.n[0] * th, FR.bl[1] + FR.n[1] * th];
 }
@@ -246,7 +259,7 @@ function drawFigure(c, fills) {
   // fills: {body, arm, hand, frame, hair}
   c.fillStyle = fills.body; figPath(c, TORSO); c.fill(); figPath(c, NECK); c.fill(); figPath(c, HEAD); c.fill();
   c.fillStyle = fills.arm; figPath(c, UPPER_ARM); c.fill();
-  c.fillStyle = fills.frame; frameQuad(c); c.fill(); poly(c, STRUT.map(T)); c.fill();
+  c.fillStyle = fills.frame; frameQuad(c); c.fill();
   c.fillStyle = fills.hand; figPath(c, FAR_FINGERS); c.fill();
   c.fillStyle = fills.arm; figPath(c, FOREARM); c.fill();
   c.fillStyle = fills.hand; figPath(c, HAND); c.fill();
@@ -370,11 +383,32 @@ const hairPx = sampleCurve(HAIR.map(T), 16);
   });
   hairPx.cx = cx; hairPx.cy = cy;
 }
-function drawHair(c) { c.beginPath(); c.moveTo(hairPx[0][0], hairPx[0][1]); for (const p of hairPx) c.lineTo(p[0], p[1]); c.closePath(); c.fill(); }
+function lockPoly(L) {
+  // smooth centre-line (Catmull-Rom, open), offset both sides with a tapering width
+  const pts = L[0].map(T), n = pts.length, cl = [];
+  for (let i = 0; i < n - 1; i++) {
+    const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(n - 1, i + 2)];
+    for (let k = 0; k < 10; k++) { const t = k / 10, t2 = t * t, t3 = t2 * t; cl.push([0, 1].map(j => 0.5 * (2 * p1[j] + (-p0[j] + p2[j]) * t + (2 * p0[j] - 5 * p1[j] + 4 * p2[j] - p3[j]) * t2 + (-p0[j] + 3 * p1[j] - 3 * p2[j] + p3[j]) * t3))); }
+  }
+  cl.push(pts[n - 1]);
+  const Lp = [], Rp = [];
+  for (let i = 0; i < cl.length; i++) {
+    const a = cl[Math.max(0, i - 1)], b = cl[Math.min(cl.length - 1, i + 1)];
+    let dx = b[0] - a[0], dy = b[1] - a[1]; const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
+    const u = i / (cl.length - 1), w = L[1] * HU * Math.pow(1 - u, 0.7) * (0.85 + 0.3 * Math.sin(u * 7 + L[1] * 40));
+    Lp.push([cl[i][0] - dy * w, cl[i][1] + dx * w]); Rp.push([cl[i][0] + dy * w, cl[i][1] - dx * w]);
+  }
+  return [...Lp, ...Rp.reverse()];
+}
+const lockPolys = LOCKS.map(lockPoly);
+function drawHair(c) {
+  c.beginPath(); c.moveTo(hairPx[0][0], hairPx[0][1]); for (const p of hairPx) c.lineTo(p[0], p[1]); c.closePath(); c.fill();
+  for (const lp of lockPolys) { c.beginPath(); c.moveTo(lp[0][0], lp[0][1]); for (const p of lp) c.lineTo(p[0], p[1]); c.closePath(); c.fill(); }
+}
 function drawFigure2(c, fills) {
   c.fillStyle = fills.body; figPath(c, TORSO); c.fill(); figPath(c, NECK); c.fill(); figPath(c, HEAD); c.fill();
   c.fillStyle = fills.arm; figPath(c, UPPER_ARM); c.fill();
-  c.fillStyle = fills.frame; frameQuad(c); c.fill(); poly(c, STRUT.map(T)); c.fill();
+  c.fillStyle = fills.frame; frameQuad(c); c.fill();
   c.fillStyle = fills.hand; figPath(c, FAR_FINGERS); c.fill();
   c.fillStyle = fills.arm; figPath(c, FOREARM); c.fill();
   c.fillStyle = fills.hand; figPath(c, HAND); c.fill();
@@ -463,9 +497,6 @@ ctx.drawImage(fig, 0, 0);
   const a = T(FR.tl), b = T(FR.tr);
   ctx.strokeStyle = 'rgba(255,236,210,0.55)'; ctx.lineWidth = 1.8;
   ctx.beginPath(); ctx.moveTo(a[0] + 1.5, a[1] + 1); ctx.lineTo(b[0] - 0.5, b[1] + 0.5); ctx.stroke();
-  const s0 = T(STRUT[1]), s1 = T(STRUT[2]);
-  ctx.strokeStyle = 'rgba(255,236,210,0.25)'; ctx.lineWidth = 1.2;
-  ctx.beginPath(); ctx.moveTo(s0[0], s0[1]); ctx.lineTo(s1[0], s1[1]); ctx.stroke();
   ctx.restore();
 }
 

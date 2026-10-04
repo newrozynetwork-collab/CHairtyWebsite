@@ -281,7 +281,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 /* ---------- learn: report + latest ---------- */
 .learn { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: stretch; }
-.learn > section { margin-top: 44px; }
+.learn > section { margin-top: 52px; }
 .report-card > .eyebrow { align-self: flex-start; }
 .report-card { grid-column: 1 / 6; grid-row: 1; display: flex; flex-direction: column; padding: 26px 28px; border-radius: 32px; background: var(--sky); }
 .report-top { display: grid; grid-template-columns: 146px minmax(0, 1fr); gap: 26px; margin-top: 18px; align-items: start; }
@@ -321,7 +321,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 /* ---------- trust (FAQ) + newsletter ---------- */
 .trust-row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
-.trust-row > section { margin: 44px 0 52px; }
+.trust-row > section { margin: 52px 0 60px; }
 .faq-card { grid-column: 1 / 8; padding: 28px 36px 30px; border-radius: 32px; background: var(--paper); box-shadow: var(--shadow); }
 .faq-head { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .faq-head .section-title { margin-top: 12px; }
@@ -686,6 +686,34 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .tab--give { position: relative; margin-top: -24px; color: var(--navy); }
   .tab--give .tab__ic { width: 56px; height: 56px; border-radius: 50%; background: var(--sun); color: var(--navy); box-shadow: 0 0 0 5px var(--paper), 0 6px 14px rgba(29, 43, 58, .22); }
   .tab--give .tab__ic .ic { width: 25px; height: 25px; }
+
+
+  /* story page, single column */
+  .page-story .article-head { padding: 12px 0 22px; }
+  .article-head__grid, .article-body__grid { display: block; }
+  .article-head__text { padding: 0; }
+  .crumbs ol { font-size: 14px; }
+  .story-title-h1 { font-size: 30px; line-height: 1.12; }
+  .story-dek { font-size: 17px; }
+  .byline-row { flex-wrap: wrap; }
+  .share a { width: 40px; height: 40px; }
+  .article-head__media { margin-top: 20px; }
+  .lead-img { height: 220px; border-radius: 22px; }
+  .media-blob--head { width: 130px; height: 130px; right: -40px; top: -30px; }
+  .watch-pill--show { height: 42px; font-size: 14px; left: 10px; bottom: 10px; }
+  .lead-cap { font-size: 13px; }
+  .prose { padding: 0; }
+  .prose p { font-size: 17px; }
+  .prose p.lead { font-size: 18px; }
+  .prose h2 { font-size: 23px; }
+  .wycd { padding: 14px; }
+  .wycd__actions { margin-left: 0; }
+  .story-side { margin-top: 28px; }
+  .end-panel { display: block; padding: 14px; border-radius: 26px; }
+  .end-give { padding: 6px 4px 14px; }
+  .end-intro .section-title { font-size: 26px; }
+  .footer-compact { flex-wrap: wrap; }
+  .footer-inline { margin-left: 0; gap: 4px 14px; font-size: 14px; }
 
   /* footer: compact, accordion rows */
   .site-footer { padding: 24px 0 16px; border-radius: 30px 30px 0 0; }

@@ -152,7 +152,7 @@ em, i { font-style: italic; }
 .tile .meta { margin-top: 8px; }
 
 .ed-more { display: flex; flex-direction: column; }
-.ed-more-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 24px; }
+.ed-more-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, minmax(248px, 1fr)); gap: 24px; }
 .tile-b { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 274px; background: var(--blush); }
 .tile-b .tb-text { padding: 24px 28px 22px; display: flex; flex-direction: column; }
 .tile-b .kicker { color: var(--ink); }
@@ -164,7 +164,7 @@ em, i { font-style: italic; }
 
 .tile-c { background: var(--cobalt); color: var(--cream); padding: 22px 22px 20px; display: flex; flex-direction: column; position: relative; }
 .tile-c .kicker { color: var(--pistachio); max-width: 170px; }
-.tile-c .circle { position: absolute; top: 18px; right: 18px; width: 92px; height: 92px; object-view-box: inset(22% 27% 9% 27%); }
+.tile-c .circle { position: absolute; top: 18px; right: 18px; width: 92px; height: 92px; object-view-box: inset(12% 20% 2% 20%); object-position: 50% 55%; }
 .tile-c h3 { font-size: 27px; line-height: 1.04; margin-top: auto; }
 .tile-c .quip { font: italic 400 23px/1.1 var(--serif); color: var(--pistachio); margin-top: 6px; }
 .tile-c .meta { color: var(--cream); margin-top: 6px; }

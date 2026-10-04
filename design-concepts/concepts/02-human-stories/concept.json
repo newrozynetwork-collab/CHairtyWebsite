@@ -46,7 +46,7 @@
   "fonts": {
     "heading": {
       "family": "Fraunces",
-      "weights": "300 italic, 500, 600"
+      "weights": "300 italic, 400–600"
     },
     "body": {
       "family": "Nunito Sans",

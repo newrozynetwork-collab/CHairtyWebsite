@@ -182,40 +182,72 @@ function childShapes(o) {
 }
 
 // ---------------------------------------------------------------------------
-// heat-roofs — elevated view across the dense corrugated-metal roofs of an informal settlement
-// under a white-hot hazy sky. The sun burns upper right; sheets glare below it, water tanks
-// dot the roofs and the far rows dissolve into shimmering haze. Calm sky upper left.
+// heat-roofs — elevated view across the dense corrugated-metal roofs of an informal settlement under a
+// white-hot hazy sky. The sun burns upper right; metal sheets glare beneath it, black water tanks dot
+// the roofs, and the far rows dissolve into shimmering haze. Calm sky upper left.
 (async function main() {
   const ctx = document.getElementById('c').getContext('2d');
   setSeed(9001);
-  const NA = makeNoise(301), NB = makeNoise(302), NC = makeNoise(303), ND = makeNoise(304);
+  const NA = makeNoise(301), NB = makeNoise(302), NC = makeNoise(303), ND = makeNoise(304), NE = makeNoise(305);
 
   // ---------- camera (elevated, shift-lens so verticals stay vertical) ----------
-  const YH = 400, VX = 1200, FL = 1800, HC = 18;
+  const YH = 392, VX = 1200, FL = 1800, HC = 17;
   const proj = (X, Y, Z) => [VX + FL * X / Z, YH + FL * (HC - Y) / Z];
-  const SUNP = { x: 1925, y: 150 };
-  // lighting direction: same azimuth as the visible sun, a higher elevation for midday heat
-  const az = Math.atan2(SUNP.x - VX, FL), el = 0.56;
+  const SUNP = { x: 1905, y: 150 };
+  // light: same azimuth as the visible sun, higher elevation (midday heat, short hard shadows)
+  const az = Math.atan2(SUNP.x - VX, FL), el = 0.62;
   const S = [Math.sin(az) * Math.cos(el), Math.sin(el), Math.cos(az) * Math.cos(el)];
-  const hazeCol = [236, 231, 220];
+  const hazeCol = [233, 228, 216];
+  const norm = v => { const l = Math.hypot(...v); return v.map(a => a / l); };
 
-  // ---------- sky: white-hot, barely tinted ----------
-  function glowAt(x, y) { const dx = (x - SUNP.x) / H, dy = (y - SUNP.y) / H; const d2 = dx * dx + dy * dy; return clamp(1.2 * Math.exp(-d2 / 0.0006) + 0.45 * Math.exp(-d2 / 0.008) + 0.3 * Math.exp(-d2 / 0.06) + 0.18 * Math.exp(-d2 / 0.35)); }
-  const SKY = [[0, '#c9cbc6'], [0.5, '#dcdbd3'], [0.85, '#e7e3d8'], [1, '#ece6da']];
-  function sky(x, y) { const c = ramp(SKY, clamp(y / YH)); const g = glowAt(x, y); return [255 - (255 - c[0]) * (1 - g), 255 - (255 - c[1]) * (1 - g * 0.985), 255 - (255 - c[2]) * (1 - g * 0.94)]; }
+  // ---------- sky: bleached, a touch darker away from the sun so the disc reads ----------
+  function glowAt(x, y) { const dx = (x - SUNP.x) / H, dy = (y - SUNP.y) / H; const d2 = dx * dx + dy * dy; return clamp(1.25 * Math.exp(-d2 / 0.0007) + 0.5 * Math.exp(-d2 / 0.008) + 0.32 * Math.exp(-d2 / 0.05) + 0.22 * Math.exp(-d2 / 0.3)); }
+  const SKY = [[0, '#c3c4bf'], [0.55, '#d4d2c9'], [0.9, '#e2ddd0'], [1, '#e8e2d4']];
+  function sky(x, y) { const c = ramp(SKY, clamp(y / YH)); const g = glowAt(x, y); return [255 - (255 - c[0]) * (1 - g), 255 - (255 - c[1]) * (1 - g * 0.985), 255 - (255 - c[2]) * (1 - g * 0.93)]; }
 
-  // ---------- base: sky above, shaded lane ground below ----------
+  // ---------- corrugated sheet textures (128 px per metre, 4 m square) ----------
+  const TP = 128, TS = 512;
+  const MATS = [
+    { name: 'galv', base: [176, 180, 180], rust: 0.08, metal: 0.95 },
+    { name: 'galvOld', base: [146, 146, 140], rust: 0.25, metal: 0.7 },
+    { name: 'rust', base: [148, 98, 66], rust: 0.65, metal: 0.3 },
+    { name: 'rustDeep', base: [112, 70, 47], rust: 0.9, metal: 0.18 },
+    { name: 'paint', base: [104, 128, 132], rust: 0.35, metal: 0.35 },
+    { name: 'paintRed', base: [146, 98, 86], rust: 0.3, metal: 0.3 },
+  ];
+  for (const [mi, m] of MATS.entries()) {
+    const c = mk(TS, TS); const id = c.createImageData(TS, TS), d = id.data;
+    const nR = makeNoise(900 + mi);
+    let sum = [0, 0, 0];
+    for (let v = 0; v < TS; v++) for (let u = 0; u < TS; u++) {
+      const corr = Math.cos(u / (0.076 * TP) * Math.PI * 2);
+      const prof = 0.86 + 0.14 * corr;
+      const sheetU = (u % Math.round(0.86 * TP));
+      const seam = sheetU < 3 ? 0.78 : sheetU < 6 ? 1.06 : 1;
+      const fix = ((Math.abs((v % Math.round(1.2 * TP)) - 20) < 2) && (u % 39 < 3)) ? 0.6 : 1;
+      // rust: blotches streaking down the slope (along v), heavier toward the lower edge
+      const rn = nR.fbm(u / 46, v / 140, 4) + 0.35 * nR.n2(u / 9, v / 60) + 0.3 * (v / TS - 0.5);
+      const rk = clamp((rn + 0.6 * m.rust - 0.25) * 2.4) * (0.4 + 0.6 * m.rust);
+      let col = mix(m.base, mix([150, 88, 52], [96, 56, 36], clamp(nR.n2(u / 20, v / 20) * 0.8 + 0.5)), rk);
+      const grime = 1 - 0.1 * clamp(nR.fbm(u / 90 + 5, v / 30, 3) + 0.3) - 0.06 * (v / TS);
+      col = scl(col, prof * seam * fix * grime * (0.96 + 0.08 * nR.n2(u / 3, v / 80)));
+      const i = (v * TS + u) * 4; d[i] = col[0]; d[i + 1] = col[1]; d[i + 2] = col[2]; d[i + 3] = 255;
+      sum[0] += col[0]; sum[1] += col[1]; sum[2] += col[2];
+    }
+    c.putImageData(id, 0, 0);
+    m.tex = c.canvas; m.avg = sum.map(a => a / (TS * TS));
+    const cb = mk(TS, TS); cb.filter = 'blur(3px)'; cb.drawImage(c.canvas, 0, 0); m.texSoft = cb.canvas;
+    m.pat = ctx.createPattern(m.tex, 'repeat'); m.patSoft = ctx.createPattern(m.texSoft, 'repeat');
+    await tick();
+  }
+
+  // ---------- base: sky above, dusty shaded ground below ----------
   const img = ctx.createImageData(W, H); const D = img.data;
   for (let y = 0; y < H; y++) {
     for (let x = 0; x < W; x++) {
       let c;
       if (y <= YH + 1) c = sky(x, y);
-      else {
-        const Z = FL * HC / (y - YH); const X = (x - VX) * Z / FL;
-        const hk = 1 - Math.exp(-Z / 260);
-        const g = 0.5 + 0.5 * NA.fbm(X / 3, Z / 3, 3);
-        c = mix(mix('#3a332d', '#6a5c4c', g * 0.6), hazeCol, hk);
-      }
+      else { const Z = FL * HC / (y - YH); const X = (x - VX) * Z / FL; const hk = 1 - Math.exp(-Z / 240); c = mix(mix('#3b322b', '#5f5143', clamp(0.5 + 0.5 * NA.fbm(X / 3, Z / 3, 3))), hazeCol, hk); }
       const i = (y * W + x) * 4; D[i] = c[0]; D[i + 1] = c[1]; D[i + 2] = c[2]; D[i + 3] = 255;
     }
     if ((y & 127) === 0) await tick();
@@ -227,38 +259,39 @@ function childShapes(o) {
   setSeed(17);
   {
     const far = mk();
-    for (let i = 0; i < 140; i++) {
-      const Z = rnd(900, 2600); const X = rnd(-1.1, 1.1) * Z; const w = rnd(8, 40), h = R() < 0.15 ? rnd(18, 55) : rnd(4, 12);
+    for (let i = 0; i < 160; i++) {
+      const Z = rnd(900, 2600); const X = rnd(-1.15, 1.15) * Z; const w = rnd(10, 46), h = R() < 0.14 ? rnd(18, 50) : rnd(4, 11);
       const a = proj(X - w / 2, h, Z), b = proj(X + w / 2, 0, Z);
-      const hk = 1 - Math.exp(-Z / 420);
-      far.fillStyle = rgba(mix('#8f8c86', hazeCol, 0.55 + 0.4 * hk));
+      const hk = 1 - Math.exp(-Z / 380);
+      far.fillStyle = rgba(mix('#94908a', hazeCol, 0.6 + 0.38 * hk));
       far.fillRect(a[0], a[1], b[0] - a[0], b[1] - a[1]);
     }
-    ctx.save(); ctx.filter = 'blur(1.5px)'; ctx.drawImage(far.canvas, 0, 0); ctx.restore();
+    ctx.save(); ctx.filter = 'blur(1.6px)'; ctx.drawImage(far.canvas, 0, 0); ctx.restore();
   }
 
   // ---------- settlement layout ----------
   setSeed(4242);
   const blds = [];
-  const lane = (X, Z) => Math.abs(X - (-26 + Z * 0.62 + 6 * NB.n2(Z / 40, 1.1))) < 1.6; // a wider lane slanting away to the right
-  let Zr = 16.5;
+  const laneX = Z => -24 + Z * 0.6 + 6 * NB.n2(Z / 40, 1.1);
+  let Zr = 15.5;
   while (Zr < 1000) {
-    const dRow = rnd(5.2, 7.8);
-    const span = Zr * 0.75 + 12;
+    const dRow = rnd(5.0, 7.6);
+    const span = Zr * 0.78 + 12;
     let X = -span + rnd(0, 5);
+    const rowRot = 0.05 * NA.n2(Zr / 60, 3.3);
     while (X < span) {
-      const w = rnd(3.6, 7.2);
-      const gap = R() < 0.18 ? rnd(1.0, 1.8) : rnd(0.25, 0.7);
-      const cx = X + w / 2, cz = Zr + dRow / 2 + rnd(-0.5, 0.5);
-      if (!lane(cx, cz)) {
-        const d = dRow - rnd(0.35, 1.1);
-        const big = R() < 0.06;
+      const w = rnd(3.4, 7.0);
+      const gap = R() < 0.16 ? rnd(0.9, 1.6) : rnd(0.2, 0.6);
+      const cx = X + w / 2, cz = Zr + dRow / 2 + rnd(-0.6, 0.6);
+      if (Math.abs(cx - laneX(cz)) > 1.7 + 0.04 * cz) {
+        const big = R() < 0.05;
+        const m = R();
         blds.push({
-          X: cx, Z: cz, w, d, rot: gauss() * 0.045 + (R() < 0.08 ? rnd(-0.25, 0.25) : 0),
-          h: big ? rnd(4.8, 5.8) : rnd(2.3, 3.3),
-          slope: rnd(0.05, 0.16), sdir: Math.floor(R() * 4),
-          mat: R(), rust: R(), seed: Math.floor(R() * 1e9),
-          tank: R() < 0.13, drum: R() < 0.08,
+          X: cx, Z: cz, w, d: dRow - rnd(0.3, 1.0), rot: rowRot + gauss() * 0.04 + (R() < 0.07 ? rnd(-0.22, 0.22) : 0),
+          h: big ? rnd(5.0, 6.0) : rnd(2.3, 3.2), flat: big,
+          slope: rnd(0.04, 0.14), sdir: Math.floor(R() * 4),
+          mat: big ? -1 : m < 0.2 ? 0 : m < 0.4 ? 1 : m < 0.7 ? 2 : m < 0.88 ? 3 : m < 0.95 ? 4 : 5,
+          seed: Math.floor(R() * 1e9), tank: R() < (big ? 0.7 : 0.11), drum: R() < 0.07,
         });
       }
       X += w + gap;
@@ -267,183 +300,188 @@ function childShapes(o) {
   }
   blds.sort((a, b) => b.Z - a.Z);
 
-  // ---------- materials and shading ----------
-  const GALV = hx('#a9adae'), GALV2 = hx('#8c9192'), RUST = hx('#86553a'), RUST2 = hx('#6b432f'), PAINT = ['#6f8796', '#8a6559', '#7c8a6a', '#6d7f8a'].map(hx);
+  // ---------- shading ----------
   const camP = [0, HC, 0];
-  const norm = v => { const l = Math.hypot(...v); return v.map(a => a / l); };
-  function roofColor(base, metal, n, P) {
+  function roofLight(n, P, metal) {
     const v = norm([camP[0] - P[0], camP[1] - P[1], camP[2] - P[2]]);
     const ndl = Math.max(0, n[0] * S[0] + n[1] * S[1] + n[2] * S[2]);
     const hv = norm([S[0] + v[0], S[1] + v[1], S[2] + v[2]]);
     const ndh = Math.max(0, n[0] * hv[0] + n[1] * hv[1] + n[2] * hv[2]);
     const ndv = Math.max(0, n[0] * v[0] + n[1] * v[1] + n[2] * v[2]);
-    const fres = 0.25 + 0.75 * Math.pow(1 - ndv, 4);
-    const spec = metal * (1.6 * Math.pow(ndh, 60) + 0.45 * Math.pow(ndh, 9));
-    const dif = 0.38 + 1.05 * ndl;
-    let c = [base[0] * dif, base[1] * dif, base[2] * dif];
-    c = mix(c, [236, 233, 226], metal * fres * 0.45);
-    return [c[0] + 255 * spec, c[1] + 250 * spec, c[2] + 238 * spec];
+    const dif = 0.42 + 0.95 * ndl;
+    const spec = metal * (1.3 * Math.pow(ndh, 90) + 0.4 * Math.pow(ndh, 12));
+    const refl = metal * (0.12 + 0.5 * Math.pow(1 - ndv, 3));
+    return { dif, spec, refl };
   }
+  const hazeK = Z => 1 - Math.exp(-Z / 260);
+  function quad(c, q) { c.beginPath(); q.forEach((p, i) => i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1])); c.closePath(); }
 
-  // ---------- draw the buildings far to near ----------
-  const hazeK = Z => 1 - Math.exp(-Z / 300);
-  function fillQuad(pts, col) { ctx.fillStyle = col; ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.closePath(); ctx.fill(); }
   let count = 0;
   for (const b of blds) {
     const r = mulberry32(b.seed); const rr = (a = 0, c = 1) => a + (c - a) * r();
     const cs = Math.cos(b.rot), sn = Math.sin(b.rot);
     const L2W = (lx, ly, lz) => [b.X + lx * cs - lz * sn, ly, b.Z + lx * sn + lz * cs];
-    const hk = hazeK(b.Z);
-    const s0 = FL / b.Z;
-    // roof corner heights (mono-pitch)
-    const ov = 0.18, hw = b.w / 2 + ov, hd = b.d / 2 + ov;
-    const rise = b.slope * (b.sdir < 2 ? b.w : b.d);
+    const hk = hazeK(b.Z); const s0 = FL / b.Z;
+    if (s0 < 1.2) continue;
+    const ov = 0.2, hw = b.w / 2 + ov, hd = b.d / 2 + ov;
+    const rise = b.flat ? 0.05 : b.slope * (b.sdir < 2 ? b.w : b.d);
     const hAt = (lx, lz) => b.h + rise * (b.sdir === 0 ? (lx / (2 * hw) + 0.5) : b.sdir === 1 ? (0.5 - lx / (2 * hw)) : b.sdir === 2 ? (lz / (2 * hd) + 0.5) : (0.5 - lz / (2 * hd)));
-    const RC = [[-hw, -hd], [hw, -hd], [hw, hd], [-hw, hd]].map(([lx, lz]) => L2W(lx, hAt(lx, lz), lz));
-    // walls (visible faces only)
-    const wallBase = mix(['#8d8780', '#9a7f63', '#a99a86', '#7f8487', '#8f9b9b', '#a9806c'][Math.floor(r() * 6)], [0, 0, 0], 0);
+    // walls (visible faces only), mostly in shade; eave shadow at the top
+    const wallBase = ['#7d776f', '#8a735c', '#958a7a', '#6f7477', '#7f8b8a', '#8e6f60'][Math.floor(r() * 6)];
     const faces = [[[-b.w / 2, -b.d / 2], [b.w / 2, -b.d / 2], [0, -1]], [[b.w / 2, -b.d / 2], [b.w / 2, b.d / 2], [1, 0]], [[b.w / 2, b.d / 2], [-b.w / 2, b.d / 2], [0, 1]], [[-b.w / 2, b.d / 2], [-b.w / 2, -b.d / 2], [-1, 0]]];
     for (const [p0, p1, nl] of faces) {
       const n = [nl[0] * cs - nl[1] * sn, 0, nl[0] * sn + nl[1] * cs];
       const m = L2W((p0[0] + p1[0]) / 2, 0, (p0[1] + p1[1]) / 2);
       if (n[0] * (camP[0] - m[0]) + n[2] * (camP[2] - m[2]) <= 0) continue;
       const ndl = Math.max(0, n[0] * S[0] + n[2] * S[2]);
-      let col = scl(wallBase, 0.42 + 0.9 * ndl);
-      col = mix(col, hazeCol, hk);
+      const col = mix(scl(hx(b.flat ? '#a39e95' : wallBase), 0.38 + 0.85 * ndl), hazeCol, hk);
       const a0 = L2W(p0[0], 0, p0[1]), a1 = L2W(p1[0], 0, p1[1]);
       const q = [proj(...a0), proj(...a1), proj(a1[0], b.h, a1[2]), proj(a0[0], b.h, a0[2])];
-      fillQuad(q, rgba(col));
-      if (s0 > 18) { // doorway or window, a dark opening; sometimes a faded curtain
-        const t = rr(0.2, 0.7), ww = rr(0.7, 1.0) / Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
-        const lx = (u) => lerp(p0[0], p1[0], u), lz = (u) => lerp(p0[1], p1[1], u);
-        const door = r() < 0.5;
-        const y0 = door ? 0 : 1.0, y1 = door ? 1.95 : 1.8;
-        const d0 = L2W(lx(t), 0, lz(t)), d1 = L2W(lx(t + ww), 0, lz(t + ww));
-        const dq = [proj(d0[0], y0, d0[2]), proj(d1[0], y0, d1[2]), proj(d1[0], y1, d1[2]), proj(d0[0], y1, d0[2])];
-        const cur = r() < 0.4 ? mix(['#7a5a6a', '#5f7a8a', '#8a7a4a', '#6a6a7a'][Math.floor(r() * 4)], [0, 0, 0], 0.35) : [28, 26, 26];
-        fillQuad(dq, rgba(mix(cur, hazeCol, hk)));
+      ctx.fillStyle = rgba(col); quad(ctx, q); ctx.fill();
+      if (s0 > 6) {
+        // eave shadow and dark door/window openings
+        const g = ctx.createLinearGradient(0, q[3][1], 0, q[3][1] + 0.7 * s0);
+        g.addColorStop(0, `rgba(20,16,14,${0.5 * (1 - hk)})`); g.addColorStop(1, 'rgba(20,16,14,0)');
+        ctx.fillStyle = g; quad(ctx, q); ctx.fill();
+        if (s0 > 16) {
+          const t = rr(0.15, 0.65), ww = rr(0.7, 1.0) / Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
+          const lx = u => lerp(p0[0], p1[0], u), lz = u => lerp(p0[1], p1[1], u);
+          const door = r() < 0.55; const y0 = door ? 0 : 1.0, y1 = door ? 1.9 : 1.75;
+          const d0 = L2W(lx(t), 0, lz(t)), d1 = L2W(lx(t + ww), 0, lz(t + ww));
+          const cur = r() < 0.45 ? mix(['#8a5f68', '#5f7f8f', '#9a8550', '#6f7088', '#9a6a48'][Math.floor(r() * 5)], [0, 0, 0], 0.3) : [26, 23, 22];
+          ctx.fillStyle = rgba(mix(cur, hazeCol, hk)); quad(ctx, [proj(d0[0], y0, d0[2]), proj(d1[0], y0, d1[2]), proj(d1[0], y1, d1[2]), proj(d0[0], y1, d0[2])]); ctx.fill();
+        }
       }
     }
-    // roof: sheets laid along the slope; patchwork of galvanized, rusty and the odd painted sheet
-    const across = b.sdir < 2 ? 'z' : 'x'; // sheets run along the slope, so strips are cut across
-    const nStrips = Math.max(1, Math.round((across === 'z' ? 2 * hd : 2 * hw) / rr(0.75, 0.9)));
-    const tilt = Math.atan(b.slope); const sdl = [[1, 0], [-1, 0], [0, 1], [0, -1]][b.sdir];
+    // roof
+    const tilt = Math.atan(b.flat ? 0 : b.slope); const sdl = [[1, 0], [-1, 0], [0, 1], [0, -1]][b.sdir];
     const nLoc = [-sdl[0] * Math.sin(tilt), Math.cos(tilt), -sdl[1] * Math.sin(tilt)];
     const n = norm([nLoc[0] * cs - nLoc[2] * sn, nLoc[1], nLoc[0] * sn + nLoc[2] * cs]);
     const ctr = L2W(0, b.h, 0);
-    const baseMat = b.mat < 0.42 ? 'galv' : b.mat < 0.88 ? 'rust' : 'paint';
-    const paintC = PAINT[Math.floor(r() * PAINT.length)];
-    const P2 = (u, v) => { // u across strips 0..1, v along slope 0..1 -> world
-      const lx = across === 'z' ? lerp(-hw, hw, v) : lerp(-hw, hw, u);
-      const lz = across === 'z' ? lerp(-hd, hd, u) : lerp(-hd, hd, v);
-      return L2W(lx, hAt(lx, lz), lz);
-    };
-    for (let k = 0; k < nStrips; k++) {
-      const u0 = k / nStrips, u1 = (k + 1) / nStrips;
-      let base, metal;
-      const pr = r();
-      if (baseMat === 'galv') { base = pr < 0.75 ? mix(GALV, GALV2, r()) : mix(RUST, GALV2, r() * 0.6); metal = pr < 0.75 ? 0.9 : 0.4; }
-      else if (baseMat === 'rust') { base = pr < 0.8 ? mix(RUST, RUST2, r()) : mix(GALV2, RUST, r() * 0.5); metal = pr < 0.8 ? 0.22 : 0.6; }
-      else { base = pr < 0.7 ? scl(paintC, rr(0.9, 1.1)) : mix(RUST, RUST2, r()); metal = 0.35; }
-      base = scl(base, rr(0.9, 1.08));
-      let col = roofColor(base, metal, n, ctr);
-      col = mix(col, hazeCol, hk);
-      const q = [proj(...P2(u0, 0)), proj(...P2(u1, 0)), proj(...P2(u1, 1)), proj(...P2(u0, 1))];
-      fillQuad(q, rgba(col));
-      // corrugations and rust streaks on near roofs
-      if (s0 > 9) {
-        const nC = Math.round((u1 - u0) * (across === 'z' ? 2 * hd : 2 * hw) / 0.076);
-        const step = s0 > 40 ? 1 : s0 > 20 ? 2 : 3;
-        for (let j = 0; j < nC; j += step) {
-          const u = lerp(u0, u1, (j + 0.5) / nC);
-          const a = proj(...P2(u, 0)), c = proj(...P2(u, 1));
-          ctx.strokeStyle = j % 2 ? `rgba(30,24,20,${0.18 * (1 - hk)})` : `rgba(255,250,240,${0.14 * metal * (1 - hk) + 0.05})`;
-          ctx.lineWidth = Math.max(0.6, 0.03 * s0);
-          ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(c[0], c[1]); ctx.stroke();
+    const RC = [[-hw, -hd], [hw, -hd], [hw, hd], [-hw, hd]].map(([lx, lz]) => L2W(lx, hAt(lx, lz), lz));
+    const Q = RC.map(p => proj(...p));
+    if (b.flat) {
+      // concrete slab roof on the odd two-storey block
+      const lt = roofLight(n, ctr, 0.05);
+      ctx.fillStyle = rgba(mix(scl([168, 162, 152], lt.dif), hazeCol, hk)); quad(ctx, Q); ctx.fill();
+      if (s0 > 8) { ctx.strokeStyle = `rgba(60,52,46,${0.5 * (1 - hk)})`; ctx.lineWidth = Math.max(1, 0.12 * s0); quad(ctx, Q); ctx.stroke(); }
+    } else {
+      const m = MATS[b.mat];
+      // sheets run down the slope: texture v along the slope, u across
+      const alongX = b.sdir < 2;
+      const P2 = (u, v) => { const lx = alongX ? lerp(-hw, hw, v) : lerp(-hw, hw, u), lz = alongX ? lerp(-hd, hd, u) : lerp(-hd, hd, v); return L2W(lx, hAt(lx, lz), lz); };
+      const acrossLen = alongX ? 2 * hd : 2 * hw, slopeLen = alongX ? 2 * hw : 2 * hd;
+      const lowAtV0 = (b.sdir === 0 || b.sdir === 2); // v=0 edge is the low edge for sdir 0/2
+      const o = proj(...P2(0, lowAtV0 ? 1 : 0)), pU = proj(...P2(1, lowAtV0 ? 1 : 0)), pV = proj(...P2(0, lowAtV0 ? 0 : 1));
+      const lt = roofLight(n, ctr, m.metal);
+      if (s0 > 5) {
+        const pat = s0 > 22 ? m.pat : m.patSoft;
+        const k = 1 / TP;
+        const M = new DOMMatrix([(pU[0] - o[0]) * k / acrossLen, (pU[1] - o[1]) * k / acrossLen, (pV[0] - o[0]) * k / slopeLen, (pV[1] - o[1]) * k / slopeLen, o[0], o[1]]);
+        M.translateSelf(rr(0, TS), rr(0, TS));
+        pat.setTransform(M);
+        ctx.save(); quad(ctx, Q); ctx.clip();
+        ctx.fillStyle = pat; ctx.fillRect(Math.min(...Q.map(q => q[0])) - 2, Math.min(...Q.map(q => q[1])) - 2, Math.max(...Q.map(q => q[0])) - Math.min(...Q.map(q => q[0])) + 4, Math.max(...Q.map(q => q[1])) - Math.min(...Q.map(q => q[1])) + 4);
+        // light: diffuse (multiply), sky reflection and sun glare (screen), then haze
+        const dk = clamp(lt.dif / 1.4) * 255;
+        ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = rgba([dk * 1.0, dk * 0.985, dk * 0.95]); ctx.fill();
+        ctx.globalCompositeOperation = 'source-over';
+        const scrA = clamp(lt.refl * 0.55 + lt.spec);
+        if (scrA > 0.01) { ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = rgba([255, 250, 238], scrA); ctx.fill(); ctx.globalCompositeOperation = 'source-over'; }
+        // per-roof variation: a sheet or two of different age
+        if (s0 > 12 && r() < 0.55) {
+          const k0 = Math.floor(rr(0, Math.max(1, acrossLen / 0.86))), u0 = k0 * 0.86 / acrossLen, u1 = u0 + 0.86 / acrossLen;
+          ctx.fillStyle = r() < 0.5 ? `rgba(140,82,48,${0.35})` : `rgba(210,212,206,${0.3})`;
+          quad(ctx, [proj(...P2(u0, 0)), proj(...P2(u1, 0)), proj(...P2(u1, 1)), proj(...P2(u0, 1))]); ctx.fill();
         }
-        if (metal < 0.7 || r() < 0.3) {
-          for (let j = 0; j < 3; j++) {
-            const u = lerp(u0, u1, rr(0.1, 0.9)); const a = proj(...P2(u, rr(0, 0.2))), c = proj(...P2(u + rr(-0.02, 0.02), rr(0.4, 1)));
-            const g = ctx.createLinearGradient(a[0], a[1], c[0], c[1]);
-            g.addColorStop(0, `rgba(90,52,30,${0.35 * (1 - hk)})`); g.addColorStop(1, 'rgba(90,52,30,0)');
-            ctx.strokeStyle = g; ctx.lineWidth = Math.max(1, rr(0.05, 0.2) * s0); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(c[0], c[1]); ctx.stroke();
-          }
-        }
-        // seam between strips
-        const a = proj(...P2(u0, 0)), c = proj(...P2(u0, 1));
-        ctx.strokeStyle = `rgba(20,16,14,${0.35 * (1 - hk)})`; ctx.lineWidth = Math.max(0.6, 0.025 * s0); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(c[0], c[1]); ctx.stroke();
+        if (hk > 0.01) { ctx.fillStyle = rgba(hazeCol, hk); ctx.fillRect(Math.min(...Q.map(q => q[0])) - 2, Math.min(...Q.map(q => q[1])) - 2, Math.max(...Q.map(q => q[0])) - Math.min(...Q.map(q => q[0])) + 4, Math.max(...Q.map(q => q[1])) - Math.min(...Q.map(q => q[1])) + 4); }
+        ctx.restore();
+      } else {
+        let col = scl(m.avg, lt.dif / 1.25 * 1.1);
+        col = mix(col, [255, 250, 238], clamp(lt.refl * 0.55 + lt.spec));
+        col = scl(col, rr(0.92, 1.08));
+        ctx.fillStyle = rgba(mix(col, hazeCol, hk)); quad(ctx, Q); ctx.fill();
+      }
+      // edges: dark gap along the low edge, faint highlight on the sun-facing edge
+      if (s0 > 4) {
+        ctx.strokeStyle = `rgba(28,22,18,${0.45 * (1 - hk)})`; ctx.lineWidth = Math.max(0.7, 0.05 * s0);
+        ctx.beginPath(); ctx.moveTo(Q[3][0], Q[3][1]); ctx.lineTo(Q[0][0], Q[0][1]); ctx.lineTo(Q[1][0], Q[1][1]); ctx.stroke();
       }
     }
-    // roof edge: dark gap line on the low/front edges, bright on sunlit edge
-    if (s0 > 4) {
-      const e = [proj(...RC[0]), proj(...RC[1]), proj(...RC[2]), proj(...RC[3])];
-      ctx.strokeStyle = `rgba(25,20,18,${0.55 * (1 - hk)})`; ctx.lineWidth = Math.max(0.7, 0.05 * s0);
-      ctx.beginPath(); ctx.moveTo(e[3][0], e[3][1]); ctx.lineTo(e[0][0], e[0][1]); ctx.lineTo(e[1][0], e[1][1]); ctx.stroke();
-      ctx.strokeStyle = `rgba(255,248,232,${0.35 * (1 - hk)})`; ctx.lineWidth = Math.max(0.6, 0.025 * s0);
-      ctx.beginPath(); ctx.moveTo(e[1][0], e[1][1]); ctx.lineTo(e[2][0], e[2][1]); ctx.stroke();
-    }
-    // stones and tyres weighing the sheets down
-    if (s0 > 14) {
-      const nS = Math.floor(rr(2, 9));
+    // stones, bricks and the occasional tyre holding sheets down
+    if (s0 > 16 && !b.flat) {
+      const nS = Math.floor(rr(1, 6));
       for (let j = 0; j < nS; j++) {
-        const u = rr(0.05, 0.95), v = r() < 0.5 ? rr(0.03, 0.12) : rr(0.88, 0.97);
-        const p = proj(...P2(u, v)); const rad = rr(0.1, 0.22) * s0;
-        if (r() < 0.25) { ctx.strokeStyle = rgba(mix([30, 30, 32], hazeCol, hk)); ctx.lineWidth = rad * 0.45; ctx.beginPath(); ctx.ellipse(p[0], p[1], rad * 1.4, rad * 0.8, 0, 0, Math.PI * 2); ctx.stroke(); }
-        else { ctx.fillStyle = rgba(mix(scl([150, 145, 138], rr(0.6, 1.1)), hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1], rad, rad * 0.65, 0, 0, Math.PI * 2); ctx.fill(); }
+        const lx = rr(-0.9, 0.9) * hw, lz = (r() < 0.5 ? -1 : 1) * rr(0.75, 0.92) * hd;
+        const p = proj(...L2W(lx, hAt(lx, lz) + 0.05, lz)); const rad = rr(0.08, 0.16) * s0;
+        if (r() < 0.12) { ctx.fillStyle = rgba(mix([40, 38, 38], hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1], rad * 1.5, rad * 0.75, 0, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = rgba(mix([70, 66, 62], hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1] - rad * 0.08, rad * 0.75, rad * 0.35, 0, 0, Math.PI * 2); ctx.fill(); }
+        else { const sc2 = rr(0.6, 1.1); ctx.fillStyle = `rgba(20,16,14,${0.3 * (1 - hk)})`; ctx.beginPath(); ctx.ellipse(p[0] - rad * 0.4, p[1] + rad * 0.25, rad, rad * 0.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = rgba(mix(scl([168, 158, 146], sc2), hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1], rad, rad * 0.62, rr(-0.4, 0.4), 0, Math.PI * 2); ctx.fill(); }
       }
     }
-    // water tank / drum
-    if ((b.tank || b.drum) && s0 > 2.5) {
-      const tank = b.tank; const rad = tank ? rr(0.48, 0.6) : 0.3, th = tank ? rr(1.0, 1.25) : 0.9;
-      const u = rr(0.25, 0.75), v = rr(0.25, 0.75); const base = P2(u, v); const by = base[1] + (tank ? 0.25 : 0);
+    // water tank or drum
+    if ((b.tank || b.drum) && s0 > 2.2) {
+      const tank = b.tank; const rad = tank ? rr(0.52, 0.66) : 0.29, th = tank ? rr(1.15, 1.45) : 0.88;
+      const lx = rr(-0.5, 0.5) * hw, lz = rr(-0.5, 0.5) * hd; const base = L2W(lx, hAt(lx, lz), lz); const by = base[1] + (tank ? 0.18 : 0);
       const pB = proj(base[0], by, base[2]), pT = proj(base[0], by + th, base[2]);
-      const rp = rad * FL / base[2]; const ry = rp * 0.42;
-      const bc = tank ? [26, 27, 30] : mix('#3f6a8c', [40, 40, 40], 0.25);
-      // shadow on the roof toward camera-left
+      const rp = rad * FL / base[2]; const ry = rp * 0.5;
+      const bc = tank ? [24, 25, 28] : [52, 92, 120];
       const sh = proj(base[0] - S[0] / S[1] * th, base[1], base[2] - S[2] / S[1] * th);
-      ctx.fillStyle = `rgba(20,16,14,${0.45 * (1 - hk)})`; ctx.beginPath(); ctx.moveTo(pB[0] - rp, pB[1]); ctx.lineTo(sh[0] - rp, sh[1]); ctx.lineTo(sh[0] + rp, sh[1]); ctx.lineTo(pB[0] + rp, pB[1]); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = `rgba(16,12,10,${0.4 * (1 - hk)})`; ctx.beginPath(); ctx.moveTo(pB[0] - rp, pB[1]); ctx.lineTo(sh[0] - rp, sh[1]); ctx.ellipse(sh[0], sh[1], rp, ry, 0, Math.PI, 0, true); ctx.lineTo(pB[0] + rp, pB[1]); ctx.closePath(); ctx.fill();
       const g = ctx.createLinearGradient(pB[0] - rp, 0, pB[0] + rp, 0);
-      g.addColorStop(0, rgba(mix(scl(bc, 0.7), hazeCol, hk))); g.addColorStop(0.62, rgba(mix(scl(bc, 1.2), hazeCol, hk))); g.addColorStop(0.82, rgba(mix(scl(bc, 3.2), hazeCol, hk))); g.addColorStop(1, rgba(mix(scl(bc, 1.4), hazeCol, hk)));
+      g.addColorStop(0, rgba(mix(scl(bc, 0.8), hazeCol, hk))); g.addColorStop(0.55, rgba(mix(scl(bc, 1.3), hazeCol, hk))); g.addColorStop(0.8, rgba(mix(scl(bc, tank ? 4.2 : 2.0), hazeCol, hk))); g.addColorStop(0.92, rgba(mix(scl(bc, tank ? 2.4 : 1.5), hazeCol, hk))); g.addColorStop(1, rgba(mix(scl(bc, 1.1), hazeCol, hk)));
       ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(pB[0] - rp, pT[1]); ctx.lineTo(pB[0] - rp, pB[1]); ctx.ellipse(pB[0], pB[1], rp, ry, 0, Math.PI, 0, true); ctx.lineTo(pB[0] + rp, pT[1]); ctx.closePath(); ctx.fill();
-      ctx.fillStyle = rgba(mix(scl(bc, tank ? 2.4 : 1.6), hazeCol, hk)); ctx.beginPath(); ctx.ellipse(pT[0], pT[1], rp, ry, 0, 0, Math.PI * 2); ctx.fill();
-      if (tank && s0 > 10) { ctx.fillStyle = rgba(mix([18, 18, 20], hazeCol, hk)); ctx.beginPath(); ctx.ellipse(pT[0], pT[1], rp * 0.35, ry * 0.35, 0, 0, Math.PI * 2); ctx.fill(); }
+      if (tank && s0 > 8) { for (let k = 1; k < 4; k++) { const yy = lerp(pB[1], pT[1], k / 4); ctx.strokeStyle = `rgba(0,0,0,${0.25 * (1 - hk)})`; ctx.lineWidth = Math.max(0.6, 0.02 * s0); ctx.beginPath(); ctx.ellipse(pB[0], yy, rp, ry, 0, 0, Math.PI); ctx.stroke(); } }
+      ctx.fillStyle = rgba(mix(scl(bc, tank ? 2.8 : 1.7), hazeCol, hk)); ctx.beginPath(); ctx.ellipse(pT[0], pT[1], rp, ry, 0, 0, Math.PI * 2); ctx.fill();
+      if (tank && s0 > 7) { ctx.fillStyle = rgba(mix([16, 16, 18], hazeCol, hk)); ctx.beginPath(); ctx.ellipse(pT[0], pT[1], rp * 0.32, ry * 0.32, 0, 0, Math.PI * 2); ctx.fill(); }
+    }
+    // laundry line on some near roofs
+    if (s0 > 20 && r() < 0.12) {
+      const a = proj(...L2W(-hw * 0.7, b.h + 1.3, -hd * 0.2)), c2 = proj(...L2W(hw * 0.7, b.h + 1.3, hd * 0.1));
+      ctx.strokeStyle = 'rgba(40,36,34,0.6)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.quadraticCurveTo((a[0] + c2[0]) / 2, (a[1] + c2[1]) / 2 + 0.25 * s0, c2[0], c2[1]); ctx.stroke();
+      const nCl = 3 + Math.floor(r() * 4);
+      for (let k = 0; k < nCl; k++) { const t = (k + 0.5) / nCl; const x = lerp(a[0], c2[0], t), y = lerp(a[1], c2[1], t) + 0.25 * s0 * 4 * t * (1 - t) * 0.5; const cw = rr(0.25, 0.5) * s0, chh = rr(0.35, 0.7) * s0; ctx.fillStyle = rgba(mix(['#b85a4a', '#d9c9a0', '#4f7a9a', '#c7a14a', '#7a8a5a', '#e2dccf'][Math.floor(r() * 6)], hazeCol, 0.15)); ctx.fillRect(x - cw / 2, y, cw, chh); }
     }
     if ((++count & 511) === 0) await tick();
   }
   await tick();
 
-  // ---------- a couple of wooden poles with sagging wires over the roofs ----------
+  // ---------- poles and sagging wires over the roofs ----------
   {
-    const poles = [[-14, 46], [3, 52], [19, 58], [36, 64]];
-    const tops = poles.map(([X, Z]) => [X, 8.2, Z]);
-    for (const [X, Z] of poles) { const a = proj(X, 0, Z), b = proj(X, 8.4, Z); ctx.strokeStyle = 'rgba(52,44,38,0.95)'; ctx.lineWidth = 0.22 * FL / Z; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); const c = proj(X - 0.7, 8.0, Z), d = proj(X + 0.7, 8.0, Z); ctx.lineWidth = 0.1 * FL / Z; ctx.beginPath(); ctx.moveTo(c[0], c[1]); ctx.lineTo(d[0], d[1]); ctx.stroke(); }
-    for (const off of [-0.6, 0.0, 0.6]) {
-      for (let i = 0; i < tops.length - 1; i++) {
-        ctx.strokeStyle = 'rgba(40,34,30,0.8)'; ctx.lineWidth = 1.3; ctx.beginPath();
-        for (let k = 0; k <= 40; k++) { const t = k / 40; const X = lerp(tops[i][0], tops[i + 1][0], t) + off, Z = lerp(tops[i][2], tops[i + 1][2], t), Y = 8.0 - 0.9 * 4 * t * (1 - t) + (off ? 0 : 0.3); const p = proj(X, Y, Z); k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); }
-        ctx.stroke();
-      }
+    const poles = [[-15, 44], [2, 50], [18, 57], [33, 63]];
+    for (const [X, Z] of poles) { const a = proj(X, 0, Z), b = proj(X, 8.6, Z); ctx.strokeStyle = 'rgba(56,47,40,0.95)'; ctx.lineWidth = 0.2 * FL / Z; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); const c = proj(X - 0.65, 8.2, Z), d = proj(X + 0.65, 8.2, Z); ctx.lineWidth = 0.1 * FL / Z; ctx.beginPath(); ctx.moveTo(c[0], c[1]); ctx.lineTo(d[0], d[1]); ctx.stroke(); }
+    for (const off of [-0.6, 0, 0.6]) for (let i = 0; i < poles.length - 1; i++) {
+      ctx.strokeStyle = 'rgba(40,34,30,0.75)'; ctx.lineWidth = 1.2; ctx.beginPath();
+      for (let k = 0; k <= 40; k++) { const t = k / 40; const X = lerp(poles[i][0], poles[i + 1][0], t) + off, Z = lerp(poles[i][1], poles[i + 1][1], t), Y = 8.25 - 0.9 * 4 * t * (1 - t); const p = proj(X, Y, Z); k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); }
+      ctx.stroke();
     }
+    // a few service wires running off to houses
+    setSeed(31);
+    for (let i = 0; i < 9; i++) { const p0 = poles[Math.floor(R() * poles.length)]; const a = proj(p0[0], 8.2, p0[1]); const X1 = p0[0] + rnd(-9, 9), Z1 = p0[1] + rnd(-12, 6); const b = proj(X1, 3.3, Z1); ctx.strokeStyle = 'rgba(40,34,30,0.55)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.quadraticCurveTo((a[0] + b[0]) / 2, Math.max(a[1], b[1]) + 18, b[0], b[1]); ctx.stroke(); }
   }
   await tick();
 
-  // ---------- heat: haze gradient, shimmer, sun ----------
-  // haze veil thickening toward the horizon and the sun
+  // ---------- heat: haze thickening with distance, glare veil, shimmer, sun ----------
   {
-    const g = ctx.createLinearGradient(0, YH - 40, 0, YH + 520);
-    g.addColorStop(0, 'rgba(240,236,226,0.9)'); g.addColorStop(0.18, 'rgba(240,236,226,0.45)'); g.addColorStop(0.6, 'rgba(240,236,226,0.1)'); g.addColorStop(1, 'rgba(240,236,226,0)');
-    ctx.fillStyle = g; ctx.fillRect(0, YH - 40, W, 560);
-    const s = ctx.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 1300);
-    s.addColorStop(0, 'rgba(255,252,240,0.65)'); s.addColorStop(0.25, 'rgba(255,248,230,0.25)'); s.addColorStop(1, 'rgba(255,245,225,0)');
+    const id = ctx.getImageData(0, 0, W, H), d = id.data;
+    for (let y = YH - 30; y < H; y++) {
+      const dy = y - YH; const Z = dy > 0 ? FL * HC / dy : 1e9;
+      const extra = clamp(Math.exp(-Math.max(0, dy) / 110) * 0.55 + Math.exp(-Math.max(0, dy) / 30) * 0.3) * sstep(YH - 30, YH + 4, y);
+      for (let x = 0; x < W; x++) {
+        const i = (y * W + x) * 4; const k = extra;
+        d[i] += (hazeCol[0] - d[i]) * k; d[i + 1] += (hazeCol[1] - d[i + 1]) * k; d[i + 2] += (hazeCol[2] - d[i + 2]) * k;
+      }
+    }
+    ctx.putImageData(id, 0, 0);
+    const s = ctx.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 1500);
+    s.addColorStop(0, 'rgba(255,252,240,0.6)'); s.addColorStop(0.22, 'rgba(255,248,232,0.22)'); s.addColorStop(0.6, 'rgba(255,245,228,0.06)'); s.addColorStop(1, 'rgba(255,245,225,0)');
     ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = s; ctx.fillRect(0, 0, W, H); ctx.restore();
   }
-  // shimmer: displace rows and columns slightly with a noise field, strongest near the horizon
   {
     const src = ctx.getImageData(0, 0, W, H), sd = src.data; const out = ctx.createImageData(W, H), od = out.data;
     for (let y = 0; y < H; y++) {
-      const a = 3.2 * Math.exp(-Math.max(0, y - YH) / 260) * sstep(YH - 60, YH + 5, y);
+      const a = 2.6 * Math.exp(-Math.max(0, y - YH) / 240) * sstep(YH - 50, YH + 6, y);
       for (let x = 0; x < W; x++) {
-        const dx = a * NC.n2(x / 55, y / 7.5), dy = a * 0.6 * ND.n2(x / 40 + 9, y / 10);
+        const dx = a * NC.n2(x / 50, y / 6.5), dy = a * 0.55 * ND.n2(x / 38 + 9, y / 9);
         const sx = clamp(Math.round(x + dx), 0, W - 1), sy = clamp(Math.round(y + dy), 0, H - 1);
         const i = (y * W + x) * 4, j = (sy * W + sx) * 4;
         od[i] = sd[j]; od[i + 1] = sd[j + 1]; od[i + 2] = sd[j + 2]; od[i + 3] = 255;
@@ -452,15 +490,14 @@ function childShapes(o) {
     }
     ctx.putImageData(out, 0, 0);
   }
-  // sun disc
   {
-    const g = ctx.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 70);
-    g.addColorStop(0, 'rgba(255,255,252,1)'); g.addColorStop(0.45, 'rgba(255,254,248,1)'); g.addColorStop(0.62, 'rgba(255,250,236,0.6)'); g.addColorStop(1, 'rgba(255,248,230,0)');
+    const g = ctx.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 64);
+    g.addColorStop(0, 'rgba(255,255,253,1)'); g.addColorStop(0.5, 'rgba(255,255,250,1)'); g.addColorStop(0.68, 'rgba(255,252,240,0.55)'); g.addColorStop(1, 'rgba(255,250,236,0)');
     ctx.fillStyle = g; ctx.fillRect(SUNP.x - 80, SUNP.y - 80, 160, 160);
   }
-  bloom(ctx, { thr: 0.8, str: 0.55, rad: 90, tint: [255, 250, 236] });
+  bloom(ctx, { thr: 0.82, str: 0.6, rad: 100, tint: [255, 250, 236] });
   await tick();
-  finish(ctx, { grain: 0.03, vig: 0.14, seed: 9001, lift: 0.03, contrast: 0.04, sat: 0.86, cx: 0.55, cy: 0.45 });
+  finish(ctx, { grain: 0.03, vig: 0.16, seed: 9001, lift: 0.028, contrast: 0.06, sat: 0.85, cx: 0.55, cy: 0.45 });
   window.__done = true;
 })();
 </script>

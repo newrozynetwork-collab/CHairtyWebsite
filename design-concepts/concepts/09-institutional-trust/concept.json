@@ -1,0 +1,19 @@
+{
+  "number": 9,
+  "slug": "09-institutional-trust",
+  "name": "Institutional Trust",
+  "tagline": "Draft",
+  "idea": "Draft",
+  "fit": "Draft",
+  "informedBy": ["Draft", "Draft", "Draft"],
+  "distinct": "Draft",
+  "palette": [{"name": "Navy", "hex": "#14213D", "role": "Text"}],
+  "fonts": {"heading": {"family": "Libre Caslon Display", "weights": "400"}, "body": {"family": "Public Sans", "weights": "400, 500, 600"}, "accent": {"family": "Libre Caslon Text", "weights": "400, 400 italic"}},
+  "buttons": "Draft",
+  "imageDirection": "Draft",
+  "navigation": "Draft",
+  "visualCharacter": "Draft",
+  "contentEmphasis": "Draft",
+  "bestFor": "Draft",
+  "tradeoffs": "Draft"
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components · Daybreak Rights Network · Concept 09</title>
+<link rel="stylesheet" href="../../shared/fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { background: var(--ivory); }
+  #components { display: inline-flex; align-items: center; gap: 12px; padding: 20px 14px; background: var(--ivory); }
+  #components .btn { padding: 0 20px; }
+  #components .chip { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 10px; border: 1px solid var(--rule); background: var(--white); font: 500 14px/1 var(--sans); color: var(--navy); white-space: nowrap; }
+  #components .chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15.5M13.5 6l6 6-6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3.5v11.5M7 10.5l5 5 5-5M4.5 20h15"/></symbol>
+  </defs>
+</svg>
+<div id="components">
+  <a class="btn btn--donate" href="#">Donate</a>
+  <a class="btn btn--secondary" href="#">Read the report</a>
+  <a class="textlink" href="#">Our methodology <svg class="icon"><use href="#i-arrow"/></svg></a>
+  <span class="chip">Detention &amp; Justice</span>
+</div>
+</body>
+</html>
