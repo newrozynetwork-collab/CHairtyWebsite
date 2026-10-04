@@ -7,20 +7,104 @@
   "brief": {
     "lede": "A website for an independent human rights charity that publishes research and stories, stands with affected communities and turns readers into supporters. The client brief is still to be confirmed, so every concept uses the same provisional brand, sitemap and sample content, which makes them easy to compare.",
     "sections": [
-      { "title": "Mission (sample)", "text": "Daybreak Rights Network documents human rights conditions, stands with affected communities, and campaigns for accountability and lasting change." },
-      { "title": "Audiences", "items": ["Supporters and donors, giving once or monthly", "People affected by abuses, and the communities who support them", "Journalists, researchers and policymakers who need credible evidence", "Volunteers, partners and event attendees"] },
-      { "title": "Website goals", "items": ["Publish credible research and stories that are easy to find by topic and region", "Turn readers into supporters through donations, newsletter sign-ups and campaign actions", "Build trust by showing how the work is done, what changed and how it is funded"] },
-      { "title": "Sitemap used by every concept", "text": "Home · Our Work · Where We Work · Research & Reports · News & Stories · Impact · Get Involved · About · Donate · Contact · Policies" },
-      { "title": "Language", "text": "English. Further languages, including right-to-left scripts such as Arabic, can be designed in once the client confirms them." }
+      {
+        "title": "Mission (sample)",
+        "text": "Daybreak Rights Network documents human rights conditions, stands with affected communities, and campaigns for accountability and lasting change."
+      },
+      {
+        "title": "Audiences",
+        "items": [
+          "Supporters and donors, giving once or monthly",
+          "People affected by abuses, and the communities who support them",
+          "Journalists, researchers and policymakers who need credible evidence",
+          "Volunteers, partners and event attendees"
+        ]
+      },
+      {
+        "title": "Website goals",
+        "items": [
+          "Publish credible research and stories that are easy to find by topic and region",
+          "Turn readers into supporters through donations, newsletter sign-ups and campaign actions",
+          "Build trust by showing how the work is done, what changed and how it is funded"
+        ]
+      },
+      {
+        "title": "Sitemap used by every concept",
+        "text": "Home · Our Work · Where We Work · Research & Reports · News & Stories · Impact · Get Involved · About · Donate · Contact · Policies"
+      },
+      {
+        "title": "Language",
+        "text": "English. Further languages, including right-to-left scripts such as Arabic, can be designed in once the client confirms them."
+      }
     ],
     "notes": [
-      { "title": "What each concept shows", "text": "A desktop homepage (1280 px wide, across two pages), a mobile homepage (390 px wide), the same interior page for every concept (the feature story “The Long Wait”), and a compact style guide with colours, fonts, buttons and image direction." },
-      { "title": "Please note", "text": "These are design concepts, not functioning websites. Names, stories, quotations and figures are samples written for layout purposes only. Images are original illustrations standing in for the client’s own photography. All fonts are open-licence (SIL Open Font Licence)." },
-      { "title": "Reference", "text": "Design principles were drawn from a study of the public website of Human Rights Watch (hrw.org, October 2026): editorial hierarchy, topic and region navigation, research publication structure and impact storytelling. No branding, text, images or layouts from that site are used in these concepts." }
+      {
+        "title": "What each concept shows",
+        "text": "A desktop homepage (1280 px wide, across two pages), a mobile homepage (390 px wide), the same interior page for every concept (the feature story “The Long Wait”), and a compact style guide with colours, fonts, buttons and image direction."
+      },
+      {
+        "title": "Please note",
+        "text": "These are design concepts, not functioning websites. Names, stories, quotations and figures are samples written for layout purposes only. Images are original illustrations standing in for the client’s own photography. All fonts are open-licence (SIL Open Font Licence)."
+      },
+      {
+        "title": "Reference",
+        "text": "Design principles were drawn from a study of the public website of Human Rights Watch (hrw.org, October 2026): editorial hierarchy, topic and region navigation, research publication structure and impact storytelling. No branding, text, images or layouts from that site are used in these concepts."
+      }
     ]
   },
   "compareIntro": "All ten concepts share the same brief, sitemap and sample content, so the differences below come from design alone: composition, typography, colour, imagery and navigation.",
   "formIntro": "Please mark your preferences and return this page. Combining strengths from more than one concept is welcome. Note which elements you would like to carry over.",
-  "inputs": ["Organisation name and logo files", "Brand colours and fonts (if any)", "Photography or an image library", "Languages to support (including any right-to-left)", "Final page list and priorities", "Donation platform and newsletter tool"],
-  "recommendation": { "intro": "", "picks": [] }
+  "inputs": [
+    "Organisation name and logo files",
+    "Brand colours and fonts (if any)",
+    "Photography or an image library",
+    "Languages to support (including any right-to-left)",
+    "Final page list and priorities",
+    "Donation platform and newsletter tool"
+  ],
+  "recommendation": {
+    "intro": "Every concept meets the brief. Three stand out against its goals: helping people find research and stories by topic and region, turning readers into supporters, and earning trust.",
+    "picks": [
+      {
+        "number": 6,
+        "rank": "First choice",
+        "reasons": [
+          "Answers the first goal most directly: region and topic are the main way in, so every story and report has an obvious home.",
+          "Campaign, donate and newsletter sit together in clear cards, with impact shown as supporters across the world.",
+          "The most distinctive identity of the ten, and it scales well as the work grows into new regions."
+        ]
+      },
+      {
+        "number": 1,
+        "rank": "Also recommended",
+        "reasons": [
+          "The strongest signal of credibility and independence for journalists, researchers and policymakers.",
+          "Suits an organisation that publishes often: the Latest column and dense coverage reward regular updates.",
+          "Participation boxes appear at natural points without interrupting the reading."
+        ]
+      },
+      {
+        "number": 2,
+        "rank": "Also recommended",
+        "reasons": [
+          "The warmest route for supporters and donors, the first audience in the brief: testimony leads, and giving feels personal.",
+          "Its quote-led hero and story pairs could also be carried into either of the concepts above."
+        ]
+      }
+    ],
+    "combine": {
+      "title": "A possible combination",
+      "text": "Global Atlas as the structure, with the testimony-led hero from Human Stories for major features and the footnoted impact panel from Institutional Trust on the About and Impact pages."
+    },
+    "next": {
+      "title": "Next steps",
+      "items": [
+        "Choose a direction, or a combination, using the selection form overleaf.",
+        "Share the organisation's name, logo, brand colours and any photography.",
+        "Confirm the languages to support, including any right-to-left scripts, and the final page list.",
+        "We develop the chosen concept into full page templates (hubs, report, donate, about) and a component library.",
+        "Build, then test for accessibility, performance and ease of editing."
+      ]
+    }
+  }
 }

@@ -10,7 +10,7 @@
     "A dated, typed list of the latest stories.",
     "Participation placed at one meaningful point."
   ],
-  "distinct": "Built from type and space alone: two homepage images, one Menu button, numbered lists instead of cards, and impact told in one sentence.",
+  "distinct": "Built mostly from type and space: a headline that runs the width of the page, numbered lists instead of cards, one Menu button, and impact told in one sentence.",
   "palette": [
     {
       "name": "Bone",
@@ -46,7 +46,7 @@
   "fonts": {
     "heading": {
       "family": "Cormorant Garamond",
-      "weights": "400, 500, italics"
+      "weights": "400, 500 and italic"
     },
     "body": {
       "family": "Manrope",
@@ -63,5 +63,5 @@
   "visualCharacter": "Calm, bookish, typographic; bone paper, fine rules, moss accents",
   "contentEmphasis": "Reading first: the lead feature, numbered latest list, research",
   "bestFor": "An organisation that wants to be read and trusted, with a calm, credible, long-lasting presence.",
-  "tradeoffs": "Less urgent and emotional; one Menu button hides the sections, sparse imagery can feel reserved, and campaigns rely on strong copy."
+  "tradeoffs": "Less urgent: Donate is a quiet text link, one Menu button hides the sections, and sparse imagery can feel reserved."
 }

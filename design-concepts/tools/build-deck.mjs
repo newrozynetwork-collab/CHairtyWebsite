@@ -51,23 +51,24 @@ for (const c of concepts) {
   const a = c.assets = { id: c.slug };
   const src = f => path.join(c.cap, f);
   const out = f => path.join(assetDir, `${c.slug}-${f}`);
-  jobs.push({ src: src('home-desktop.jpg'), out: out('home-1.jpg'), box: [0, 0, 1280 * DPR, split.cut * DPR], quality: 86 });
-  jobs.push({ src: src('home-desktop.jpg'), out: out('home-2.jpg'), box: [0, split.cut * DPR, 1280 * DPR, (split.cut + part2) * DPR], quality: 86 });
+  jobs.push({ src: src('home-desktop.jpg'), out: out('home-1.jpg'), box: [0, 0, 1280 * DPR, split.cut * DPR], width: 2000, quality: 80 });
+  jobs.push({ src: src('home-desktop.jpg'), out: out('home-2.jpg'), box: [0, split.cut * DPR, 1280 * DPR, (split.cut + part2) * DPR], width: 2000, quality: 80 });
   jobs.push({ src: src('home-desktop.jpg'), out: out('thumb.jpg'), box: [0, 0, 1280 * DPR, 720 * DPR], width: 1100, quality: 84 });
+  jobs.push({ src: src('home-desktop.jpg'), out: out('cover.jpg'), box: [0, 0, 1280 * DPR, 1600 * DPR], width: 760, quality: 84 });
   a.home1 = { file: out('home-1.jpg'), h: split.cut }; a.home2 = { file: out('home-2.jpg'), h: part2 };
-  a.thumb = out('thumb.jpg');
+  a.thumb = out('thumb.jpg'); a.cover = out('cover.jpg');
   const Hm = t['home-mobile'].height;
   let mplan = planMobileColumns(Hm, t['home-mobile'].sections);
   if (!mplan.ok) { warnings.push(`${c.slug}: mobile does not fit 3 columns (${mplan.reason}); truncating`); }
   a.mobile = mplan.columns.slice(0, 3).map(([y0, y1], i) => {
     const y1c = Math.min(y1, y0 + GEOMETRY.homeMobileColumnCap);
-    jobs.push({ src: src('home-mobile.jpg'), out: out(`mobile-${i + 1}.jpg`), box: [0, y0 * DPR, 390 * DPR, y1c * DPR], quality: 88 });
+    jobs.push({ src: src('home-mobile.jpg'), out: out(`mobile-${i + 1}.jpg`), box: [0, y0 * DPR, 390 * DPR, y1c * DPR], width: 640, quality: 82 });
     return { file: out(`mobile-${i + 1}.jpg`), h: y1c - y0 };
   });
   const Hs = t['story'].height;
   const hs = Math.min(Hs, GEOMETRY.storyMax);
   if (Hs > GEOMETRY.storyMax) warnings.push(`${c.slug}: story truncated by ${Hs - GEOMETRY.storyMax}px`);
-  jobs.push({ src: src('story.jpg'), out: out('story.jpg'), box: [0, 0, 1280 * DPR, hs * DPR], quality: 86 });
+  jobs.push({ src: src('story.jpg'), out: out('story.jpg'), box: [0, 0, 1280 * DPR, hs * DPR], width: 2000, quality: 80 });
   a.story = { file: out('story.jpg'), h: hs };
   jobs.push({ src: src('components.png'), out: out('components.png') });
   a.components = out('components.png');
@@ -151,7 +152,7 @@ if (!onlyConcept) {
       <p class="cover-sub">Ten design directions for <strong>${esc(CLIENT)}</strong></p>
       <p class="cover-note">${esc(deck.clientNote || 'Provisional brand name used until the client’s name, logo and brand assets are confirmed.')}</p>
     </div>
-    <div class="cover-grid">${concepts.map(c => `<figure><img src="${rel(c.assets.thumb)}"><figcaption><b>${num(c.meta.number)}</b> ${esc(c.meta.name)}</figcaption></figure>`).join('')}</div>
+    <div class="cover-grid">${concepts.map(c => `<figure><img src="${rel(c.assets.cover)}"><figcaption><b>${num(c.meta.number)}</b> ${esc(c.meta.name)}</figcaption></figure>`).join('')}</div>
     <div class="cover-foot"><span>Prepared for: ${esc(deck.preparedFor || 'Client name to be confirmed')}</span><span>Draft for client review · Sample content and illustrative images</span></div>`, { noHead: true, noFoot: true });
   const b = deck.brief || {};
   const contents = concepts.map((c, i) => `<li><span class="cn">${num(c.meta.number)}</span><span class="ct">${esc(c.meta.name)}<em>${esc(c.meta.tagline)}</em></span><span class="cp">${firstConceptPage + i * 4}</span></li>`).join('');

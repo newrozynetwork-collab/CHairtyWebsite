@@ -296,30 +296,36 @@ a:focus-visible, button:focus-visible, input:focus-visible {
    Interior: the feature story — one centred reading column, quiet margins
    ========================================================================== */
 .story-utility { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; }
-.crumbs { font: 500 14px/1.4 var(--sans); color: var(--ash); }
+.crumbs { font: 500 15px/1.4 var(--sans); color: var(--ash); }
 .crumbs a { color: var(--ash); text-decoration: none; }
 .crumbs a[aria-current] { color: var(--charcoal); }
 .crumbs span { margin: 0 .6em; color: var(--stone); }
 .share { display: flex; gap: 26px; }
-.share a { display: inline-flex; align-items: center; gap: 8px; font: 500 14px/1 var(--sans); color: var(--charcoal); text-decoration: none; }
+.share a { display: inline-flex; align-items: center; gap: 8px; font: 500 15px/1 var(--sans); color: var(--charcoal); text-decoration: none; }
 .share svg { width: 15px; height: 15px; color: var(--ash); }
 
-.story-head { max-width: 1040px; margin: 36px auto 0; text-align: center; }
+.story-head { max-width: 1040px; margin: 28px auto 0; text-align: center; }
 .story-head h1 { margin-top: 20px; font: 400 64px/1.04 var(--serif); letter-spacing: -.01em; }
-.story-head .dek { max-width: 700px; margin: 20px auto 0; font-size: 19px; line-height: 1.6; color: var(--ash); }
+.story-head .dek { max-width: 640px; margin: 20px auto 0; font-size: 19px; line-height: 1.6; color: var(--ash); text-wrap: balance; }
 .story-head .byline { margin-top: 16px; }
 
-.story-body { margin-top: 38px; padding-top: 36px; border-top: 1px solid var(--stone); align-items: start; }
-.story-media { grid-column: 1 / span 3; }
+.story-body { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--stone); align-items: start; }
+.story-media { grid-column: 2 / span 3; }
 .story-media img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 66% 60%; }
 .pullquote { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--stone); }
 .pullquote p { font: italic 400 26px/1.24 var(--serif); color: var(--charcoal); text-wrap: balance; }
 .pullquote footer { margin-top: 12px; font: 500 14px/1.45 var(--sans); color: var(--ash); }
 
-.story-text { grid-column: 4 / span 6; }
+.story-text { grid-column: 5 / span 7; }
 .story-text p { font-size: 18px; line-height: 1.66; color: var(--charcoal); }
 .story-text p + p { margin-top: 16px; }
-.story-text .first::first-line { font-weight: 600; letter-spacing: .005em; }
+.story-text .first strong { font-weight: 600; }
+.findings-row { margin: 22px 0 18px; padding: 12px 0 12px; border-top: 1px solid var(--charcoal); border-bottom: 1px solid var(--stone); }
+.findings-row dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; margin: 10px 0 0; }
+.findings-row dt { font: 400 40px/1 var(--serif); color: var(--moss); font-variant-numeric: lining-nums; }
+.findings-row dd { margin: 6px 0 0; font: 500 15px/1.4 var(--sans); color: var(--charcoal); }
+.fr-head { display: flex; justify-content: space-between; align-items: baseline; }
+.story-text .findings-note { margin: 0; font: 500 13px/1.4 var(--sans); color: var(--ash); }
 .story-text h2 { margin: 28px 0 8px; font: 500 30px/1.15 var(--serif); }
 
 .story-notes { grid-column: 10 / span 3; }
@@ -332,7 +338,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .filed { margin-top: 40px; }
 .filed .tag { margin-top: 12px; }
 
-.story-end { margin-top: 44px; }
+.story-end { margin-top: 32px; }
 .end-grid { padding-top: 26px; border-top: 1px solid var(--stone); align-items: start; }
 .end-report { grid-column: 1 / span 4; }
 .end-stories { grid-column: 5 / span 4; }
@@ -362,6 +368,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .compact .footer-base { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 12px; }
 .compact-policies a { font: 400 13px/1.5 var(--sans); color: var(--ash); text-decoration: none; }
 .compact-policies a:not(:last-child)::after { content: "·"; margin: 0 .2em 0 .6em; color: var(--stone); }
+
+@media (min-width: 601px) {
+  .hero-text { display: contents; }
+  .hero .kicker { grid-column: 1 / span 12; grid-row: 1; }
+  .hero .grid { grid-template-rows: auto auto auto auto 1fr; }
+  .hero-title { grid-column: 1 / span 12; grid-row: 2; font-size: 74px; line-height: 1.02; }
+  .hero-dek { grid-column: 1 / span 6; grid-row: 3; margin-top: 30px; }
+  .hero .byline { grid-column: 1 / span 6; grid-row: 4; }
+  .hero-actions { grid-column: 1 / span 6; grid-row: 5; align-self: start; }
+  .hero-figure { grid-column: 10 / span 3; grid-row: 3 / span 3; margin-top: 36px; }
+  .hero-figure img { aspect-ratio: 1 / 1; object-position: 64% 62%; }
+}
 
 /* ==========================================================================
    Mobile composition (390px): list-led, generous, Menu button only

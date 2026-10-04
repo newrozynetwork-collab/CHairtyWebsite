@@ -2,31 +2,60 @@
   "number": 1,
   "slug": "01-editorial-authority",
   "name": "Editorial Authority",
-  "tagline": "A broadsheet front page for independent human rights research",
-  "idea": "Daybreak’s homepage is composed like the front page of a quality newspaper: a centred nameplate, one dominant lead story, a dated Latest column and dense supporting coverage, all set on a twelve-column grid with fine column rules.",
-  "fit": "Daybreak’s credibility rests on evidence. A newspaper’s visual language signals rigour, independence and timeliness, helps journalists and policymakers scan quickly, and gives research, news and calls to act a clear, trusted order.",
+  "tagline": "A broadsheet front page for independent research",
+  "idea": "The homepage is composed like the front page of a quality newspaper: a centred nameplate, one dominant lead story, a dated Latest column and dense supporting coverage on a twelve-column grid with fine column rules.",
+  "fit": "Credibility rests on evidence. Newspaper conventions signal rigour and timeliness, help journalists and policymakers scan quickly, and give research, news and calls to act a clear, trusted order.",
   "informedBy": [
-    "A strong editorial lead with clear scanning hierarchy, favouring asymmetry over equal cards",
-    "A dated, typed stream of the latest news for a sense of recency",
-    "Hierarchy carried by scale, spacing and rules rather than decorative containers"
+    "A strong editorial lead with asymmetric, scannable hierarchy",
+    "A dated, typed stream of the latest news",
+    "Hierarchy carried by scale, spacing and rules, not boxes"
   ],
-  "distinct": "The only concept built on newspaper conventions: a nameplate masthead, column rules, a dated Latest column, drop caps and ruled boxes. It is the densest, most text-led of the ten.",
+  "distinct": "The only concept built on newspaper conventions: nameplate masthead, column rules, a dated Latest column, drop caps and ruled boxes. The densest, most text-led of the ten.",
   "palette": [
-    {"name": "Ink", "hex": "#15171B", "role": "Text, rules and nameplate"},
-    {"name": "Newsprint", "hex": "#F7F4EE", "role": "Background"},
-    {"name": "Rule", "hex": "#CFC8BA", "role": "Column rules and dividers"},
-    {"name": "Crimson", "hex": "#A4161A", "role": "Primary action and labels"},
-    {"name": "Slate", "hex": "#24425F", "role": "Links"},
-    {"name": "Graphite", "hex": "#5B5850", "role": "Captions and metadata"}
+    {
+      "name": "Ink",
+      "hex": "#15171B",
+      "role": "Text, rules and nameplate"
+    },
+    {
+      "name": "Newsprint",
+      "hex": "#F7F4EE",
+      "role": "Background"
+    },
+    {
+      "name": "Rule",
+      "hex": "#CFC8BA",
+      "role": "Column rules and dividers"
+    },
+    {
+      "name": "Crimson",
+      "hex": "#A4161A",
+      "role": "Primary action and labels"
+    },
+    {
+      "name": "Slate",
+      "hex": "#24425F",
+      "role": "Links"
+    },
+    {
+      "name": "Graphite",
+      "hex": "#5B5850",
+      "role": "Captions and metadata"
+    }
   ],
   "fonts": {
-    "heading": {"family": "Newsreader", "weights": "headlines 600–800, reading text 400, italics"},
-    "body": {"family": "Libre Franklin", "weights": "interface and labels 500, 600, 700"},
-    "accent": {"family": "", "weights": ""}
+    "heading": {
+      "family": "Newsreader",
+      "weights": "400–800, italics"
+    },
+    "body": {
+      "family": "Libre Franklin",
+      "weights": "500, 600, 700"
+    }
   },
-  "buttons": "Square-cornered: crimson solid for giving and actions, ink outline for reading, underlined slate text links, and uppercase hairline-boxed topic tags.",
-  "imageDirection": "Natural colour, documentary-style images in 3:2 crops, always with a visible caption and credit. One dominant lead image; smaller pictures sit in disciplined rows beneath hairline rules.",
-  "navigation": "Centred nameplate flanked by date and Donate; sections between double rules. Mobile: compact masthead, sideways-scrolling section bar.",
+  "buttons": "Square corners: crimson for giving, ink outline for reading, slate text links, boxed uppercase tags.",
+  "imageDirection": "Natural-colour documentary images in 3:2 crops, always captioned and credited: one dominant lead image, smaller pictures in disciplined rows.",
+  "navigation": "Centred nameplate with date and Donate; sections between double rules; a sideways-scrolling section bar on mobile.",
   "visualCharacter": "Broadsheet newspaper: serif, ruled, dense and authoritative",
   "contentEmphasis": "Lead investigation, latest news and research publications",
   "bestFor": "An organisation whose reputation rests on credible, frequently published research and news for informed audiences.",

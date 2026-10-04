@@ -267,7 +267,7 @@ button.chip { border: 0; cursor: pointer; }
 
 .trust { padding: 40px 40px 42px 62px; display: flex; flex-direction: column; }
 .trust-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.trust-head .circle { width: 72px; height: 72px; object-position: 50% 50%; margin: -10px 0 -10px; }
+.trust-head .circle { width: 72px; height: 72px; object-position: 50% 50%; object-view-box: inset(16% 26% 14% 26%); margin: -10px 0 -10px; }
 .trust h2 { font: italic 400 54px/.95 var(--serif); letter-spacing: -.02em; }
 .trust-list { margin-top: 18px; display: grid; gap: 12px; }
 .trust-list li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; }

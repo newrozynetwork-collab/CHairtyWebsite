@@ -63,10 +63,10 @@ body { font-family: 'Inter', sans-serif; color: #16191E; -webkit-print-color-adj
 .cover-sub { font-size: 17px; line-height: 1.35; margin: 0 0 2.5mm; color: #22262C; }
 .cover-sub strong { font-weight: 600; }
 .cover-note { font-size: 10.5px; line-height: 1.45; color: #59606B; margin: 0; max-width: 120mm; }
-.cover-grid { position: absolute; left: 0; right: 0; top: 78mm; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4mm 5mm; }
+.cover-grid { position: absolute; left: 0; right: 0; top: 96mm; display: grid; grid-template-columns: repeat(5, 1fr); gap: 7mm 4mm; }
 .cover-grid figure { margin: 0; }
-.cover-grid img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; display: block; border: .25mm solid #D3D7DC; border-radius: 1.2mm; background: #fff; }
-.cover-grid figcaption { font-size: 8.8px; margin-top: 1.2mm; color: #3A4049; }
+.cover-grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; display: block; border: .25mm solid #D3D7DC; border-radius: 1.2mm; background: #fff; box-shadow: 0 1.2mm 3mm rgba(30, 25, 15, .10); }
+.cover-grid figcaption { font-size: 8.8px; line-height: 1.3; margin-top: 2mm; color: #3A4049; }
 .cover-grid figcaption b { font-weight: 700; color: #8C4A2F; margin-right: 1mm; }
 .cover-foot { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; font-size: 8.6px; color: #59606B; border-top: .3mm solid #D8D4CA; padding-top: 2.6mm; }
 
@@ -91,10 +91,10 @@ body { font-family: 'Inter', sans-serif; color: #16191E; -webkit-print-color-adj
 .page-intro { font-size: 10.5px; line-height: 1.5; color: #3A4049; margin: -1mm 0 4mm; max-width: 160mm; }
 table { border-collapse: collapse; width: 100%; }
 .cmp th { text-align: left; font-size: 7.6px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #59606B; padding: 0 2mm 1.8mm 0; border-bottom: .4mm solid #16191E; }
-.cmp td { vertical-align: top; font-size: 8.9px; line-height: 1.38; color: #22262C; padding: 2mm 2.4mm 2mm 0; border-bottom: .25mm solid #E1E4E8; }
-.cmp .c0 { width: 34mm; }
-.cmp td.c0 img { width: 32mm; aspect-ratio: 16/9; object-fit: cover; object-position: top; display: block; border: .25mm solid #D3D7DC; border-radius: .8mm; margin-bottom: 1mm; }
-.cmp td.c0 b { font-size: 8.8px; font-weight: 600; }
+.cmp td { vertical-align: top; font-size: 8.7px; line-height: 1.34; color: #22262C; padding: 1.6mm 2.4mm 1.6mm 0; border-bottom: .25mm solid #E1E4E8; }
+.cmp .c0 { width: 30mm; }
+.cmp td.c0 img { width: 25mm; aspect-ratio: 16/9; object-fit: cover; object-position: top; display: block; border: .25mm solid #D3D7DC; border-radius: .8mm; margin-bottom: .8mm; }
+.cmp td.c0 b { font-size: 8.4px; font-weight: 600; display: block; line-height: 1.25; }
 
 /* ---------- recommendation ---------- */
 .picks { display: grid; gap: 4mm; }

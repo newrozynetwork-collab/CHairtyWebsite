@@ -173,31 +173,26 @@ function addCandle(x, z, yb, o = {}) {
   if (overlaps(x, z, R)) return null;
   const wax = Hj * rand.range(0.18, 0.62);
   const lit = o.lit !== undefined ? o.lit : rand() > 0.04;
-  const c = { x, z, yb, R, Hj, wax, wy: yb + wax, fy: yb + wax + 0.019, I: lit ? 0.016 * rand.range(0.75, 1.25) : 0, lit, tint: rand() < 0.22 ? 'amber' : (rand() < 0.15 ? 'frost' : 'clear'), fl: rand.range(-0.15, 0.15), fh: rand.range(0.024, 0.032) };
+  const c = { x, z, yb, R, Hj, wax, wy: yb + wax, fy: yb + wax + 0.019, I: lit ? 0.0062 * rand.range(0.7, 1.3) : 0, lit, tint: rand() < 0.22 ? 'amber' : (rand() < 0.15 ? 'frost' : 'clear'), fl: rand.range(-0.15, 0.15), fh: rand.range(0.024, 0.032) };
   candles.push(c); return c;
 }
-// groups along each tread: little clusters with gaps, like candles left by many hands
-function populate(k, n, xr, zr, yb, centre = 0.0) {
-  let placed = 0, guard = 0;
-  while (placed < n && guard++ < 4000) {
-    const gx = centre + rand.gauss() * xr * 0.42;
-    if (Math.abs(gx) > xr) continue;
-    const gs = rand.int(1, 5);
-    for (let j = 0; j < gs && placed < n; j++) {
-      const x = gx + j * rand.range(0.075, 0.11) * (rand() < 0.5 ? 1 : -1) + rand.range(-0.02, 0.02);
-      const z = rand.range(zr[0], zr[1]);
-      if (addCandle(x, z, yb)) placed++;
-    }
+// clusters along each tread, with dark gaps between them, like candles left by many hands
+function cluster(xc, n, zr, yb) {
+  let placed = 0, guard = 0, x = xc - (n - 1) * 0.045;
+  while (placed < n && guard++ < 200) {
+    const z = rand.range(zr[0], zr[1]);
+    const c = addCandle(x + rand.range(-0.015, 0.015), z, yb);
+    if (c) { placed++; x += c.R * 2 + rand.range(0.012, 0.05); } else x += 0.02;
   }
 }
-populate(1, 7, 1.05, [1.98, 2.24], 2 * RISE, 0.1);
-populate(2, 24, 1.30, [2.41, 2.69], 3 * RISE, 0.0);
-populate(3, 19, 1.55, [2.83, 3.10], 4 * RISE, -0.05);
-populate(4, 12, 1.85, [3.26, 3.70], LAND_Y, 0.0);
+for (const [xc, n] of [[-0.86, 2], [-0.46, 1], [0.40, 2], [0.86, 2]]) cluster(xc, n, [1.99, 2.22], 2 * RISE);
+for (const [xc, n] of [[-1.06, 3], [-0.62, 4], [-0.17, 3], [0.24, 4], [0.68, 3], [1.08, 2]]) cluster(xc, n, [2.42, 2.68], 3 * RISE);
+for (const [xc, n] of [[-1.32, 2], [-0.86, 3], [-0.36, 4], [0.14, 3], [0.60, 3], [1.14, 3]]) cluster(xc, n, [2.84, 3.09], 4 * RISE);
+for (const [xc, n] of [[-1.52, 2], [-0.80, 3], [0.02, 3], [0.76, 3], [1.42, 2]]) cluster(xc, n, [3.27, 3.66], LAND_Y);
 // a few at the feet of the people on the landing (become bokeh)
 for (const [x, z] of [[-1.15, 7.2], [-0.35, 7.0], [0.55, 7.3], [1.2, 7.1], [-2.3, 8.6], [2.1, 8.4], [0.05, 9.4], [-1.7, 9.8], [1.65, 9.9]]) addCandle(x, z, LAND_Y, { type: 'votive', lit: true });
 // one near, very out of focus candle at the lower left (foreground bokeh)
-addCandle(-0.62, 2.02, 2 * RISE, { type: 'tall', lit: true });
+addCandle(-0.70, 2.03, 2 * RISE, { type: 'tall', lit: true });
 candles.forEach(c => { c.sx = P(c.x, c.fy, c.z); });
 
 // ---------- 1. stairs: per-pixel geometry, lighting, depth ----------
@@ -250,11 +245,14 @@ for (let Y = 0; Y < H; Y++) {
     const joint = 1 - 0.5 * clamp(1 - (jd - 0.002) / Math.max(jpx * 1.2, 1e-4));
     const tone = 0.86 + 0.2 * hash1(si * 13 + k * 101 + kind * 7);
     const mott = 0.84 + 0.22 * fbm(nA, x * 2.2 + k * 3.1, (kind ? z : y) * 2.2, 4) + 0.07 * (nC(x * 60, (kind ? z : y) * 60) - 0.5);
-    let alb = [0.40 * tone * mott, 0.365 * tone * mott, 0.325 * tone * mott];
+    const kb = kind ? 1.0 : 0.72;
+    let alb = [0.42 * tone * mott * kb, 0.38 * tone * mott * kb, 0.335 * tone * mott * kb];
     if (kind && k < NR - 1) {   // worn, slightly darker band along the middle of each tread
       const wv = Math.exp(-Math.pow(((z - (Z0 + k * RUN)) / RUN - 0.55) / 0.3, 2)) * 0.08 * fbm(nD, x * 0.8, k, 2);
       alb = alb.map(v => v * (1 - wv));
     }
+    if (!kind) { const streak = 0.9 + 0.12 * fbm(nB, x * 9, y * 0.8 + k * 5, 3); alb = alb.map(v => v * streak); }
+    else { const chip = nD(x * 23, k * 3.7) > 0.72 && (z - (Z0 + k * RUN)) < 0.02 ? 0.7 : 1; alb = alb.map(v => v * chip); }
     alb = alb.map(v => v * joint);
     // wax drips near candles
     if (kind) for (const c of candles) {
@@ -285,29 +283,33 @@ for (let Y = 0; Y < H; Y++) {
   }
 }
 
-// ---------- 2. background: dark plaza edge, a building, trees, distant lights (all far out of focus) ----------
+// ---------- 2. background: a building across the square, softly lit from below; night sky above ----------
 const bg = newLayer(), bgc = bg.getContext('2d');
 {
-  const g = bgc.createLinearGradient(0, 0, 0, CY + 60);
-  g.addColorStop(0, '#07090f'); g.addColorStop(0.45, '#0e1018'); g.addColorStop(0.85, '#1c1719'); g.addColorStop(1, '#2a1f1c');
+  const g = bgc.createLinearGradient(0, 0, 0, CY + 80);
+  g.addColorStop(0, '#06080d'); g.addColorStop(0.11, '#0a0c13'); g.addColorStop(0.16, '#1e1a1c'); g.addColorStop(0.45, '#2c2524');
+  g.addColorStop(0.8, '#3a2f2a'); g.addColorStop(1, '#43342b');
   bgc.fillStyle = g; bgc.fillRect(0, 0, W, H);
-  // building mass behind, slightly lighter than the sky, with a few warm windows
-  bgc.fillStyle = '#121219'; bgc.fillRect(-50, 150, 1150, 520); bgc.fillRect(1500, 80, 1000, 600);
-  for (let k = 0; k < 14; k++) {
-    const x = rand() < 0.5 ? rand.range(40, 1050) : rand.range(1560, 2380), y = rand.range(180, 520);
-    bgc.fillStyle = rgba([255, 196, 130], rand.range(0.18, 0.4)); bgc.fillRect(x, y, rand.range(40, 70), rand.range(60, 90));
+  // facade rhythm: pilasters and tall windows (a few lit)
+  for (let k = 0; k < 11; k++) {
+    const x = -60 + k * 250 + rand.range(-10, 10);
+    bgc.fillStyle = 'rgba(70,58,50,0.35)'; bgc.fillRect(x, 120, 46, 520);
+    for (const y of [190, 380]) {
+      const lit = rand() < 0.3;
+      bgc.fillStyle = lit ? rgba([255, 190, 120], rand.range(0.35, 0.6)) : 'rgba(14,12,14,0.55)';
+      bgc.fillRect(x + 90, y, 70, 130);
+    }
   }
-  // tree masses
-  for (let k = 0; k < 16; k++) { bgc.fillStyle = 'rgba(6,8,10,0.8)'; bgc.beginPath(); bgc.arc(rand.range(900, 1700), rand.range(120, 420), rand.range(80, 170), 0, Math.PI * 2); bgc.fill(); }
+  // cornice line
+  bgc.fillStyle = 'rgba(60,50,46,0.6)'; bgc.fillRect(0, 108, W, 14);
 }
-const bgBlur = blurCopy(bg, 26, 0.25);
-ctx.drawImage(bgBlur, 0, 0);
-// distant bokeh: street lights and windows
+ctx.drawImage(blurCopy(bg, 24, 0.25), 0, 0);
+// distant bokeh: street lamps along the base of the building, a few windows
 {
   const bl = newLayer(), b2 = bl.getContext('2d'); b2.globalCompositeOperation = 'lighter';
-  for (let k = 0; k < 34; k++) {
-    const x = rand.range(-50, W + 50), y = rand.range(250, 640), r = rand.range(26, 54);
-    const warm = rand() < 0.75, col = warm ? [255, 186, 110] : [200, 214, 236], a = rand.range(0.05, 0.17) * (y > 400 ? 1 : 0.6);
+  for (let k = 0; k < 26; k++) {
+    const x = rand.range(-50, W + 50), y = rand.range(330, 640), r = rand.range(24, 50);
+    const warm = rand() < 0.8, col = warm ? [255, 186, 110] : [200, 214, 236], a = rand.range(0.05, 0.15);
     const g = b2.createRadialGradient(x, y, 0, x, y, r);
     g.addColorStop(0, rgba(col, a * 0.8)); g.addColorStop(0.82, rgba(col, a)); g.addColorStop(0.92, rgba(col, a * 0.7)); g.addColorStop(1, rgba(col, 0));
     b2.fillStyle = g; b2.beginPath(); b2.arc(x, y, r, 0, Math.PI * 2); b2.fill();
@@ -341,33 +343,42 @@ ctx.drawImage(bgBlur, 0, 0);
 
 // ---------- 4. people standing on the landing (soft, warm-lit from below) ----------
 function standing(c, x, yf, Hp, o) {
-  // front-view silhouette; units of height. o: {sw, hip, hem, arms, tilt, hair}
-  const u = Hp, X = fx => x + fx * u, Yv = fy => yf - fy * u;
-  const sw = o.sw || 1, hip = o.hip || 1, hem = o.hem === undefined ? 0.36 : o.hem, hd = o.child ? 1 / 5.4 : 1 / 7.5;
-  const hc = 1 - hd / 2, hrx = hd * 0.36, hry = hd * 0.5;
-  c.beginPath(); c.ellipse(X(o.tilt || 0), Yv(hc), hrx * u, hry * u, 0, 0, Math.PI * 2); c.fill();
-  if (o.hair) { c.beginPath(); c.ellipse(X(0), Yv(hc - hd * 0.18), hrx * 1.25 * u, hry * 1.15 * u, 0, 0, Math.PI * 2); c.fill(); }
-  const sy = 1 - hd * 1.32, shW = (o.child ? 0.15 : 0.122) * sw;
-  const body = [
-    [-0.032, 1 - hd * 1.05], [0.032, 1 - hd * 1.05],
-    [0.05, sy + 0.012], [shW * 0.8, sy - 0.002], [shW, sy - 0.03], [shW + 0.006, sy - 0.09],
-    [shW * 0.96, sy - 0.2], [0.095 * hip + 0.012, 0.5], [0.1 * hip + 0.02, Math.max(hem, 0.3)], [0.03, Math.max(hem, 0.3) - 0.004],
-    [-0.03, Math.max(hem, 0.3) - 0.004], [-(0.1 * hip + 0.02), Math.max(hem, 0.3)], [-(0.095 * hip + 0.012), 0.5],
-    [-shW * 0.96, sy - 0.2], [-(shW + 0.006), sy - 0.09], [-shW, sy - 0.03], [-shW * 0.8, sy - 0.002], [-0.05, sy + 0.012],
-  ];
-  c.beginPath(); spathK(c, body.map(p => [X(p[0]), Yv(p[1])])); c.fill();
-  // legs
-  for (const s of [-1, 1]) {
-    const leg = [[s * 0.012, Math.max(hem, 0.3) + 0.02], [s * 0.078, Math.max(hem, 0.3) + 0.02], [s * 0.07, 0.27], [s * 0.062, 0.17], [s * 0.046, 0.06], [s * 0.056, 0.012], [s * 0.05, 0.0], [s * 0.012, 0.0], [s * 0.02, 0.06], [s * 0.018, 0.2]];
-    c.beginPath(); spathK(c, leg.map(p => [X(p[0] + (o.stance || 0) * s * 0.01), Yv(p[1])])); c.fill();
+  // front view, units of standing height (feet at 0, crown at 1)
+  const X = fx => x + fx * Hp, Yv = fy => yf - fy * Hp;
+  const child = !!o.child, sw = o.sw || 1, hipW = o.hip || 1;
+  const hd = child ? 1 / 5.4 : 1 / 7.5, chin = 1 - hd, tilt = o.tilt || 0;
+  const hrx = hd * (child ? 0.40 : 0.37), hry = hd * 0.5;
+  c.beginPath(); c.ellipse(X(tilt), Yv(1 - hd * 0.5), hrx * Hp, hry * Hp, tilt * 4, 0, Math.PI * 2); c.fill();
+  const shY = 1 - hd * (child ? 1.22 : 1.3), SW = (child ? 0.135 : 0.118) * sw;
+  if (o.hair === 'long') {
+    c.beginPath(); spathK(c, [[-hrx * 1.12 + tilt, 1 - hd * 0.45], [-hrx * 1.05 + tilt, 1 - hd * 0.05], [-hrx * 1.3, shY - 0.045], [-hrx * 0.3, shY - 0.02], [hrx * 0.3, shY - 0.02], [hrx * 1.3, shY - 0.045], [hrx * 1.05 + tilt, 1 - hd * 0.05], [hrx * 1.12 + tilt, 1 - hd * 0.45], [tilt, 1.004]].map(p => [X(p[0]), Yv(p[1])])); c.fill();
+  } else if (o.hair === 'short') {
+    c.beginPath(); c.ellipse(X(tilt), Yv(1 - hd * 0.42), hrx * 1.1 * Hp, hry * 1.06 * Hp, 0, Math.PI, 0); c.fill();
   }
-  // arms: hanging slightly away from the body, or forearms brought together in front
+  const nW = child ? 0.034 : 0.027;
+  c.fillRect(X(tilt * 0.5 - nW), Yv(chin + hd * 0.15), nW * 2 * Hp, (hd * 0.15 + (chin - shY) + 0.02) * Hp);
+  const waistW = (child ? 0.098 : 0.084) * sw * (o.coat ? 1.06 : 1), hipHW = (child ? 0.1 : 0.094) * hipW;
+  const hem = o.hem === undefined ? 0.42 : o.hem, hemW = hipHW + (o.flare === undefined ? 0.014 : o.flare);
+  const T = [
+    [0.03, chin - 0.012], [0.045, shY + 0.024], [SW * 0.75, shY + 0.01], [SW * 0.96, shY - 0.008], [SW, shY - 0.04],
+    [SW * 0.94, shY - 0.13], [waistW, 0.60], [hipHW, 0.5], [hemW, hem], [0, hem - 0.004],
+  ];
+  const torso = [...T, ...T.slice(0, -1).reverse().map(p => [-p[0], p[1]])];
+  c.beginPath(); spathK(c, torso.map(p => [X(p[0]), Yv(p[1])])); c.fill();
+  const top = Math.min(hem + 0.02, 0.49);
   for (const s of [-1, 1]) {
-    const a0 = [s * (shW - 0.01), sy - 0.035];
+    const lx = s * (0.042 + (o.stance || 0) * 0.014);
+    const leg = [[lx - s * 0.03, top], [lx + s * 0.036, top], [lx + s * 0.031, 0.28], [lx + s * 0.03, 0.16], [lx + s * 0.022, 0.055], [lx + s * 0.034, 0.012], [lx + s * 0.03, 0.0], [lx - s * 0.02, 0.0], [lx - s * 0.02, 0.055], [lx - s * 0.024, 0.2], [lx - s * 0.026, 0.3]];
+    c.beginPath(); spathK(c, leg.map(p => [X(p[0]), Yv(p[1])])); c.fill();
+  }
+  for (const s of [-1, 1]) {
+    const sh = [s * (SW - 0.014), shY - 0.03, 0.036];
     let pts;
-    if (o.arms === 'clasp' || (o.arms === 'candle')) pts = [[a0[0], a0[1], 0.032], [s * (shW + 0.006), sy - 0.2, 0.028], [s * 0.05, 0.52, 0.024], [s * 0.01, 0.5, 0.022]];
-    else pts = [[a0[0], a0[1], 0.032], [s * (shW + 0.012), sy - 0.2, 0.028], [s * (shW + 0.004), 0.5, 0.022], [s * (shW - 0.004), 0.42, 0.02]];
-    c.beginPath(); spathK(c, limbK(pts.map(p => [X(p[0]), Yv(p[1]), p[2] * u]))); c.fill();
+    if (o.arms === 'clasp') pts = [sh, [s * (SW + 0.004), 0.70, 0.031], [s * (SW - 0.002), 0.615, 0.028], [s * 0.05, 0.53, 0.024], [s * 0.012, 0.515, 0.022]];
+    else if (o.arms === 'candle') pts = [sh, [s * (SW + 0.002), 0.70, 0.031], [s * (SW - 0.01), 0.63, 0.028], [s * 0.05, 0.61, 0.024], [s * 0.012, 0.61, 0.022]];
+    else if (o.arms === 'hold' && s === o.holdSide) pts = [sh, [s * (SW + 0.012), 0.70, 0.031], [s * (SW + 0.02), 0.6, 0.027], [s * (SW + 0.03), 0.5, 0.024], [s * (SW + 0.04), 0.44, 0.022]];
+    else pts = [sh, [s * (SW + 0.01), 0.70, 0.031], [s * (SW + 0.012), 0.6, 0.027], [s * (SW + 0.004), 0.49, 0.023], [s * (SW - 0.002), 0.42, 0.021]];
+    c.beginPath(); spathK(c, limbK(pts.map(p => [X(p[0]), Yv(p[1]), p[2] * Hp]))); c.fill();
   }
 }
 // smooth path + limb helpers (shared shapes)
@@ -390,42 +401,54 @@ function limbK(nodes) {
   return [...L, ...R.reverse()];
 }
 const people = [
-  // [x m, z m, height m, opts]
-  [-3.3, 10.6, 1.74, { sw: 1.05 }], [-2.45, 10.2, 1.62, { sw: 0.92, hip: 1.1, hair: true, arms: 'clasp' }], [-1.75, 10.8, 1.80, { sw: 1.08 }],
-  [1.9, 10.4, 1.66, { sw: 0.95, arms: 'clasp' }], [2.6, 10.9, 1.78, { sw: 1.06 }], [3.4, 10.3, 1.60, { sw: 0.9, hip: 1.12, hair: true }],
-  [-0.15, 11.2, 1.70, { sw: 1.0 }],
-  [-1.25, 8.0, 1.66, { sw: 0.93, hip: 1.1, hair: true, arms: 'clasp', hem: 0.3 }], [-0.62, 8.3, 1.81, { sw: 1.08, hem: 0.42 }],
-  [0.35, 8.1, 1.63, { sw: 0.92, hip: 1.1, arms: 'candle', hem: 0.28 }], [0.95, 8.4, 1.77, { sw: 1.05, hem: 0.4, stance: 1 }],
-  [1.55, 8.0, 1.68, { sw: 0.95, hip: 1.08, hair: true, hem: 0.34 }], [1.86, 7.9, 1.14, { child: true, sw: 1.0, hem: 0.38 }],
+  // [x m, z m, height m, opts]  far group, then near group
+  [-3.3, 10.6, 1.76, { sw: 1.06, hair: 'short', hem: 0.45 }], [-2.5, 10.2, 1.62, { sw: 0.92, hip: 1.1, hair: 'long', arms: 'clasp', hem: 0.36 }],
+  [-1.78, 10.8, 1.80, { sw: 1.08, hair: 'short', hem: 0.5, stance: 1 }], [1.95, 10.4, 1.66, { sw: 0.95, arms: 'clasp', hair: 'long', hem: 0.34 }],
+  [2.62, 10.9, 1.78, { sw: 1.06, hair: 'short', hem: 0.47 }], [3.42, 10.3, 1.60, { sw: 0.9, hip: 1.12, hair: 'long', hem: 0.32 }],
+  [-0.12, 11.2, 1.72, { sw: 1.0, hair: 'short', hem: 0.46 }],
+  [-1.28, 8.0, 1.66, { sw: 0.93, hip: 1.1, hair: 'long', arms: 'clasp', hem: 0.30, tilt: 0.004 }], [-0.64, 8.3, 1.81, { sw: 1.08, hair: 'short', hem: 0.44, stance: 1 }],
+  [0.34, 8.1, 1.63, { sw: 0.92, hip: 1.1, hair: 'long', arms: 'candle', hem: 0.30 }], [0.96, 8.4, 1.77, { sw: 1.05, hair: 'short', hem: 0.42, stance: 1 }],
+  [1.52, 8.0, 1.68, { sw: 0.95, hip: 1.08, hair: 'long', hem: 0.34, arms: 'hold', holdSide: 1 }], [1.80, 7.9, 1.14, { child: true, sw: 1.0, hair: 'short', hem: 0.40, arms: 'hold', holdSide: -1 }],
 ];
 {
-  const groups = [[9.8, 12], [7.5, 9]];
-  for (const [z0, z1] of groups) {
+  const groups = [[9.8, 12, 0.62], [7.5, 9, 1.0]];
+  for (const [z0, z1, warmK] of groups) {
     const pl = newLayer(), pc = pl.getContext('2d');
     const grp = people.filter(p => p[1] >= z0 && p[1] < z1).sort((a, b) => b[1] - a[1]);
     let zs = 0;
     for (const [x, z, hm, o] of grp) {
       zs += z;
       const feet = P(x, LAND_Y, z), Hp = F * hm / z;
-      // silhouette mask in its own layer, then shaded: warm light from the candles below, dark heads
       const one = newLayer(), oc = one.getContext('2d');
       oc.fillStyle = '#fff'; standing(oc, feet[0], feet[1], Hp, o);
+      // rim: the lit facade behind catches the top edges of heads and shoulders
+      const rim = newLayer(), rc = rim.getContext('2d');
+      rc.drawImage(one, 0, 0); rc.globalCompositeOperation = 'destination-out'; rc.drawImage(one, 0, 3.5);
+      rc.globalCompositeOperation = 'source-in'; rc.fillStyle = 'rgba(120,104,96,0.5)'; rc.fillRect(0, 0, W, H);
       oc.globalCompositeOperation = 'source-in';
       const g = oc.createLinearGradient(0, feet[1], 0, feet[1] - Hp);
-      const warm = o.arms === 'candle' ? 1.25 : 1;
-      g.addColorStop(0, rgba([92 * warm, 56 * warm, 32 * warm])); g.addColorStop(0.18, rgba([58, 38, 26])); g.addColorStop(0.5, rgba([30, 22, 19]));
-      g.addColorStop(0.8, rgba([16, 14, 15])); g.addColorStop(1, rgba([12, 11, 13]));
+      const k = warmK * (o.arms === 'candle' ? 1.15 : 1);
+      g.addColorStop(0, rgba([20 + 120 * k, 14 + 70 * k, 10 + 36 * k])); g.addColorStop(0.1, rgba([16 + 60 * k, 12 + 34 * k, 10 + 18 * k]));
+      g.addColorStop(0.3, rgba([16 + 18 * k, 13 + 10 * k, 12 + 6 * k])); g.addColorStop(0.6, rgba([14, 12, 12])); g.addColorStop(1, rgba([11, 10, 11]));
       oc.fillStyle = g; oc.fillRect(0, 0, W, H);
-      if (o.arms === 'candle') {    // the candle she holds lights her hands and coat
-        const hy = feet[1] - Hp * 0.5;
-        const gg = oc.createRadialGradient(feet[0], hy, 0, feet[0], hy, Hp * 0.25);
-        gg.addColorStop(0, 'rgba(255,170,90,0.75)'); gg.addColorStop(1, 'rgba(255,150,80,0)');
+      if (o.arms === 'candle') {    // the candle she holds lights her hands and coat front
+        const hy = feet[1] - Hp * 0.61;
+        const gg = oc.createRadialGradient(feet[0], hy, 0, feet[0], hy, Hp * 0.2);
+        gg.addColorStop(0, 'rgba(255,170,90,0.7)'); gg.addColorStop(1, 'rgba(255,150,80,0)');
         oc.globalCompositeOperation = 'source-atop'; oc.fillStyle = gg; oc.fillRect(0, 0, W, H);
       }
+      oc.globalCompositeOperation = 'source-over'; oc.drawImage(rim, 0, 0);
       pc.drawImage(one, 0, 0);
+      if (o.arms === 'candle') {   // the flame itself
+        const fpos = [feet[0], feet[1] - Hp * 0.64];
+        const fg = pc.createRadialGradient(fpos[0], fpos[1], 0, fpos[0], fpos[1], Hp * 0.03);
+        fg.addColorStop(0, 'rgba(255,240,210,1)'); fg.addColorStop(0.5, 'rgba(255,190,110,0.8)'); fg.addColorStop(1, 'rgba(255,160,80,0)');
+        pc.fillStyle = fg; pc.fillRect(fpos[0] - Hp * 0.03, fpos[1] - Hp * 0.03, Hp * 0.06, Hp * 0.06);
+      }
     }
     const zAvg = zs / Math.max(1, grp.length);
-    ctx.drawImage(blurCopy(pl, coc(zAvg) * 0.5, 0.5), 0, 0);
+    const pbl = typeof PEOPLE_SHARP !== 'undefined' ? 0 : coc(zAvg) * 0.34;
+    ctx.drawImage(pbl ? blurCopy(pl, pbl, 0.5) : pl, 0, 0);
   }
 }
 
@@ -433,51 +456,62 @@ const people = [
 function drawCandle(c) {
   const z = c.z, s = F / z;
   const base = P(c.x, c.yb, c.z), top = P(c.x, c.yb + c.Hj, c.z), wx = P(c.x, c.wy, c.z), fl = P(c.x, c.fy, c.z);
-  const rw = c.R * s, elT = (CAMY - (c.yb + c.Hj)) / Math.hypot(z, CAMY - c.yb - c.Hj), elB = (CAMY - c.yb) / Math.hypot(z, CAMY - c.yb);
-  const eT = rw * elT, eB = rw * elB, eW = rw * 0.93 * ((CAMY - c.wy) / Math.hypot(z, CAMY - c.wy));
+  const rw = c.R * s;
+  const el = y => (CAMY - y) / Math.hypot(z, CAMY - y);
+  const eT = rw * el(c.yb + c.Hj), eB = rw * el(c.yb), eW = rw * 0.94 * el(c.wy);
   const pad = Math.ceil(rw * 3 + coc(z) * 2 + 30);
   const x0 = Math.floor(base[0] - pad), y0 = Math.floor(top[1] - pad), w = Math.ceil(2 * pad), h = Math.ceil(base[1] - top[1] + 2 * pad);
   const L = newLayer(w, h), g = L.getContext('2d');
   const cx = base[0] - x0, by = base[1] - y0, ty = top[1] - y0, wy = wx[1] - y0, fy = fl[1] - y0;
-  const glassTint = c.tint === 'amber' ? [255, 170, 90] : c.tint === 'frost' ? [255, 214, 170] : [255, 220, 180];
   const on = c.lit ? 1 : 0;
-  // jar body (seen through clear glass: the lit back wall + scattered light), clipped to the jar silhouette
-  g.save();
-  g.beginPath(); g.moveTo(cx - rw, ty); g.lineTo(cx - rw, by); g.ellipse(cx, by, rw, eB, 0, Math.PI, 0, true); g.lineTo(cx + rw, ty); g.ellipse(cx, ty, rw, eT, 0, 0, Math.PI, true); g.closePath();
-  g.clip();
-  const body = g.createRadialGradient(cx, fy, 0, cx, fy, Math.max(rw * 2.4, (by - ty)));
-  const k = c.tint === 'frost' ? 0.9 : c.tint === 'amber' ? 0.65 : 0.42;
-  body.addColorStop(0, rgba(glassTint, (0.55 * k + 0.1) * on + 0.04)); body.addColorStop(0.5, rgba(glassTint, (0.28 * k + 0.05) * on + 0.03)); body.addColorStop(1, rgba(glassTint, 0.06 * on + 0.03));
+  const tint = c.tint === 'amber' ? [255, 160, 80] : c.tint === 'frost' ? [255, 210, 160] : [255, 214, 170];
+  const jarPath = () => { g.beginPath(); g.moveTo(cx - rw, ty); g.lineTo(cx - rw, by); g.ellipse(cx, by, rw, eB, 0, Math.PI, 0, true); g.lineTo(cx + rw, ty); g.ellipse(cx, ty, rw, eT, 0, 0, Math.PI, true); g.closePath(); };
+  g.save(); jarPath(); g.clip();
+  // light scattered inside the glass, strongest around the flame
+  const k = c.tint === 'frost' ? 0.55 : c.tint === 'amber' ? 0.42 : 0.24;
+  const body = g.createRadialGradient(cx, fy, 0, cx, fy, Math.max(rw * 2.2, (by - ty) * 0.9));
+  body.addColorStop(0, rgba(tint, (k + 0.08) * on + 0.02)); body.addColorStop(0.45, rgba(tint, k * 0.45 * on + 0.015)); body.addColorStop(1, rgba(tint, 0.03 * on + 0.01));
   g.fillStyle = body; g.fillRect(0, 0, w, h);
-  // wax column: glowing top (translucent), darker towards the bottom
-  const wg = g.createLinearGradient(0, wy, 0, by);
-  wg.addColorStop(0, on ? 'rgba(255,214,150,0.95)' : 'rgba(150,140,128,0.9)'); wg.addColorStop(0.25, on ? 'rgba(236,160,92,0.92)' : 'rgba(120,112,104,0.9)');
-  wg.addColorStop(1, on ? 'rgba(120,64,34,0.92)' : 'rgba(70,64,60,0.9)');
-  g.fillStyle = wg; g.beginPath(); g.moveTo(cx - rw * 0.93, wy); g.lineTo(cx - rw * 0.93, by); g.ellipse(cx, by, rw * 0.93, eB * 0.93, 0, Math.PI, 0, true); g.lineTo(cx + rw * 0.93, wy); g.closePath(); g.fill();
-  // melted pool on top of the wax
-  const pg = g.createRadialGradient(cx, wy, 0, cx, wy, rw * 0.93);
-  pg.addColorStop(0, on ? 'rgba(255,246,214,1)' : 'rgba(170,160,150,1)'); pg.addColorStop(1, on ? 'rgba(255,200,130,1)' : 'rgba(140,130,122,1)');
-  g.fillStyle = pg; g.beginPath(); g.ellipse(cx, wy, rw * 0.93, Math.max(1, eW), 0, 0, Math.PI * 2); g.fill();
-  // glass edges catch the light (refraction), brighter near the flame
+  // wax column: translucent glow just under the melt pool, deepening to a dull amber-brown below
+  const wr = rw * 0.94;
+  const wg = g.createLinearGradient(0, wy, 0, by + eB);
+  if (on) { wg.addColorStop(0, 'rgba(255,214,150,0.97)'); wg.addColorStop(0.12, 'rgba(246,160,84,0.96)'); wg.addColorStop(0.45, 'rgba(170,86,40,0.95)'); wg.addColorStop(1, 'rgba(84,42,22,0.95)'); }
+  else { wg.addColorStop(0, 'rgba(120,112,104,0.95)'); wg.addColorStop(1, 'rgba(60,54,50,0.95)'); }
+  g.fillStyle = wg; g.beginPath(); g.moveTo(cx - wr, wy); g.lineTo(cx - wr, by); g.ellipse(cx, by, wr, eB * 0.94, 0, Math.PI, 0, true); g.lineTo(cx + wr, wy); g.closePath(); g.fill();
+  // cylinder shading of the wax: darker towards both sides
+  const hg = g.createLinearGradient(cx - wr, 0, cx + wr, 0);
+  hg.addColorStop(0, 'rgba(30,14,8,0.55)'); hg.addColorStop(0.3, 'rgba(30,14,8,0.0)'); hg.addColorStop(0.62, 'rgba(30,14,8,0.0)'); hg.addColorStop(1, 'rgba(30,14,8,0.6)');
+  g.fillStyle = hg; g.fillRect(cx - wr, wy, 2 * wr, by - wy + eB);
+  // melt pool
+  const pg = g.createRadialGradient(cx, wy, 0, cx, wy, wr);
+  if (on) { pg.addColorStop(0, 'rgba(255,250,228,1)'); pg.addColorStop(0.65, 'rgba(255,224,160,1)'); pg.addColorStop(1, 'rgba(236,170,96,1)'); }
+  else { pg.addColorStop(0, 'rgba(150,142,134,1)'); pg.addColorStop(1, 'rgba(120,112,104,1)'); }
+  g.fillStyle = pg; g.beginPath(); g.ellipse(cx, wy, wr, Math.max(1, eW), 0, 0, Math.PI * 2); g.fill();
+  // glints on the glass walls at flame height (refraction), fading above and below
   for (const sx of [-1, 1]) {
     const eg = g.createLinearGradient(0, ty, 0, by);
-    eg.addColorStop(0, rgba([255, 226, 190], 0.25 + 0.3 * on)); eg.addColorStop(clamp((fy - ty) / (by - ty)), rgba([255, 230, 196], 0.35 + 0.55 * on)); eg.addColorStop(1, rgba([255, 200, 150], 0.2 + 0.35 * on));
-    g.fillStyle = eg; g.fillRect(cx + sx * rw - (sx > 0 ? Math.max(1.4, rw * 0.09) : 0), ty, Math.max(1.4, rw * 0.09), by - ty);
+    const fpos = clamp((fy - ty) / (by - ty), 0.05, 0.95);
+    eg.addColorStop(0, 'rgba(255,220,170,0)'); eg.addColorStop(fpos, rgba([255, 226, 186], 0.12 + 0.5 * on)); eg.addColorStop(Math.min(1, fpos + 0.25), rgba([255, 200, 150], 0.08 + 0.15 * on)); eg.addColorStop(1, 'rgba(255,200,150,0)');
+    const wd = Math.max(1.2, rw * 0.075);
+    g.fillStyle = eg; g.fillRect(cx + sx * rw - (sx > 0 ? wd : 0), ty, wd, by - ty);
   }
-  // thick glass base glows
-  g.fillStyle = rgba([255, 196, 130], 0.18 + 0.35 * on); g.beginPath(); g.ellipse(cx, by - eB * 0.2, rw * 0.98, eB * 0.9, 0, 0, Math.PI * 2); g.fill();
-  // soft vertical reflection on the front glass
-  g.fillStyle = 'rgba(255,236,210,0.10)'; g.fillRect(cx - rw * 0.55, ty + 2, rw * 0.12, (by - ty) * 0.85);
+  // reflection of the flame on the far wall, soft
+  if (on) { const rg = g.createRadialGradient(cx + rw * 0.35, fy - rw * 0.15, 0, cx + rw * 0.35, fy - rw * 0.15, rw * 0.35); rg.addColorStop(0, 'rgba(255,230,190,0.35)'); rg.addColorStop(1, 'rgba(255,230,190,0)'); g.fillStyle = rg; g.fillRect(0, 0, w, h); }
   g.restore();
-  // rim of the jar
-  g.strokeStyle = rgba([255, 230, 196], 0.35 + 0.4 * on); g.lineWidth = Math.max(1, rw * 0.06);
-  g.beginPath(); g.ellipse(cx, ty, rw, Math.max(0.8, eT), 0, 0, Math.PI * 2); g.stroke();
+  // rim: the far edge glows (lit from inside), the near edge is faint
+  const lw = Math.max(0.9, rw * 0.05);
+  g.lineWidth = lw;
+  g.strokeStyle = rgba([255, 228, 190], 0.22 + 0.38 * on); g.beginPath(); g.ellipse(cx, ty, rw, Math.max(0.7, eT), 0, Math.PI, Math.PI * 2); g.stroke();
+  g.strokeStyle = rgba([255, 228, 190], 0.08 + 0.14 * on); g.beginPath(); g.ellipse(cx, ty, rw, Math.max(0.7, eT), 0, 0, Math.PI); g.stroke();
+  // thick glass base
+  g.strokeStyle = rgba([255, 196, 130], 0.08 + 0.3 * on); g.lineWidth = Math.max(1, rw * 0.08);
+  g.beginPath(); g.ellipse(cx, by - eB * 0.15, rw * 0.96, Math.max(0.7, eB * 0.85), 0, 0, Math.PI); g.stroke();
   // flame
   if (c.lit) {
-    const fh = c.fh * s, fw = fh * 0.34, fcx = cx + c.fl * fw * 0.6, fb = fy + fh * 0.32;
-    const halo = g.createRadialGradient(fcx, fb - fh * 0.45, 0, fcx, fb - fh * 0.45, fh * 2.2);
-    halo.addColorStop(0, 'rgba(255,200,120,0.55)'); halo.addColorStop(0.4, 'rgba(255,160,80,0.16)'); halo.addColorStop(1, 'rgba(255,140,60,0)');
-    g.fillStyle = halo; g.beginPath(); g.arc(fcx, fb - fh * 0.45, fh * 2.2, 0, Math.PI * 2); g.fill();
+    const fh = c.fh * s, fw = fh * 0.32, fcx = cx + c.fl * fw * 0.6, fb = fy + fh * 0.3;
+    const halo = g.createRadialGradient(fcx, fb - fh * 0.45, 0, fcx, fb - fh * 0.45, fh * 2.6);
+    halo.addColorStop(0, 'rgba(255,206,130,0.5)'); halo.addColorStop(0.35, 'rgba(255,166,86,0.14)'); halo.addColorStop(1, 'rgba(255,140,60,0)');
+    g.fillStyle = halo; g.beginPath(); g.arc(fcx, fb - fh * 0.45, fh * 2.6, 0, Math.PI * 2); g.fill();
     const tear = (sc, col) => {
       g.fillStyle = col; g.beginPath();
       g.moveTo(fcx + c.fl * fh * 0.25, fb - fh * sc);
@@ -485,11 +519,10 @@ function drawCandle(c) {
       g.bezierCurveTo(fcx - fw * sc * 1.0, fb - fh * 0.05, fcx - fw * sc * 0.9, fb - fh * sc * 0.55, fcx + c.fl * fh * 0.25, fb - fh * sc);
       g.fill();
     };
-    tear(1.0, 'rgba(255,170,70,0.9)'); tear(0.82, 'rgba(255,214,130,0.95)'); tear(0.58, 'rgba(255,246,222,1)');
-    g.fillStyle = 'rgba(40,30,30,0.6)'; g.fillRect(fcx - 0.6, fb - fh * 0.22, 1.2, fh * 0.2);
-    g.fillStyle = 'rgba(120,150,255,0.25)'; g.beginPath(); g.ellipse(fcx, fb - fh * 0.06, fw * 0.6, fh * 0.08, 0, 0, Math.PI * 2); g.fill();
+    tear(1.0, 'rgba(255,164,66,0.85)'); tear(0.82, 'rgba(255,210,126,0.95)'); tear(0.56, 'rgba(255,248,226,1)');
+    g.fillStyle = 'rgba(40,26,20,0.55)'; g.fillRect(fcx - 0.6, fb - fh * 0.2, 1.2, fh * 0.18);
+    g.fillStyle = 'rgba(120,150,255,0.22)'; g.beginPath(); g.ellipse(fcx, fb - fh * 0.06, fw * 0.6, fh * 0.08, 0, 0, Math.PI * 2); g.fill();
   }
-  // depth of field
   const r = coc(z);
   const out = r > 1.2 ? blurCopy(L, r * 0.5) : L;
   ctx.drawImage(out, x0, y0);
@@ -514,6 +547,8 @@ finish(ctx, {
   grade: (r, g, b) => {
     const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
     const s = 0.88; r = l + (r - l) * s; g = l + (g - l) * s; b = l + (b - l) * s;
+    const k = l > 0 ? (l * l * (3 - 2 * l) * 0.35 + l * 0.65) / l : 1;      // mild S-curve on luminance
+    r *= k; g *= k; b *= k;
     const c = 0.018 * (1 - smooth(0.0, 0.25, l)); b += c; r -= c * 0.3;
     return [r, g, b];
   },

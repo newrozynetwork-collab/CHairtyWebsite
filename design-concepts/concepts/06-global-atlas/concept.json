@@ -1,5 +1,33 @@
 {
   "number": 6,
   "slug": "06-global-atlas",
-  "name": "Global Atlas"
+  "name": "Global Atlas",
+  "tagline": "Explore the work by where it happens",
+  "idea": "The site works like an atlas. A large map of the five regions opens the homepage beside the lead story, region plates lead into each area of work, and coordinates, keys and legends give every page the feel of a working map.",
+  "fit": "Many visitors start from a place rather than a headline. Leading with geography makes the breadth of the work visible at once and gives every story a clear home.",
+  "informedBy": [
+    "Region and topic taxonomies as entry points",
+    "A dated, typed latest stream tagged by place",
+    "Report covers that set publications apart from news"
+  ],
+  "distinct": "The only concept organised around a map: regions are the main navigation, topics read like a map legend, and impact is shown as supporters spread across the world.",
+  "palette": [
+    { "name": "Ocean", "hex": "#0B2340", "role": "Dark bands, footer" },
+    { "name": "Chart sand", "hex": "#EFE8D8", "role": "Background" },
+    { "name": "Ink", "hex": "#14202E", "role": "Text" },
+    { "name": "Topo green", "hex": "#2D7A63", "role": "Regions, tags" },
+    { "name": "Coral", "hex": "#EE5D48", "role": "Actions, markers" },
+    { "name": "Ice", "hex": "#CFE1EE", "role": "Map water, panels" }
+  ],
+  "fonts": {
+    "heading": { "family": "Space Grotesk", "weights": "500, 600, 700" },
+    "body": { "family": "Literata", "weights": "400" }
+  },
+  "buttons": "Square coral and ocean buttons in Space Grotesk; underlined green text links; legend-style topic chips with a coloured dot.",
+  "imageDirection": "Landscapes and aerial views cropped like map plates, with region labels and coordinate-style captions; the world map does most of the visual work.",
+  "navigation": "“Explore: Regions / Topics” leads the header, beside the main sections and a coral Donate button.",
+  "visualCharacter": "Cartographic, calm, exploratory",
+  "contentEmphasis": "Regions and topics as ways in",
+  "bestFor": "Organisations working across many countries and regions",
+  "tradeoffs": "Depends on keeping region content current; a map is less effective for organisations working in only one or two places."
 }

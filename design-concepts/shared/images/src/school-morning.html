@@ -319,11 +319,11 @@ function childShapes(o) {
     return S;
   }
   const KIDS = [
-    { X: -1.35, Z: 8.6, h: 1.36, hr: 6.1, step: 1, skirt: true, hair: 'puffs', pack: { w: 1.42, h: 1.9, up: 0.05 }, packCol: [92, 48, 44], shirtCol: [70, 66, 70] },
-    { X: -0.55, Z: 9.3, h: 1.18, hr: 5.7, step: -1, skirt: false, hair: 'short', pack: { w: 1.46, h: 1.95, up: 0.14 }, packCol: [44, 58, 84], shirtCol: [74, 70, 72] },
-    { X: -0.05, Z: 13.2, h: 1.3, hr: 6.0, step: -1, skirt: false, hair: 'short', pack: { w: 1.38, h: 1.85, up: 0.02 }, packCol: [58, 70, 52], shirtCol: [72, 68, 70] },
-    { X: 0.45, Z: 13.9, h: 1.1, hr: 5.5, step: 1, skirt: true, hair: 'braids', pack: { w: 1.46, h: 1.9, up: 0.1 }, packCol: [104, 84, 40], shirtCol: [70, 66, 70] },
-    { X: 1.0, Z: 18.4, h: 1.27, hr: 6.0, step: 1, skirt: true, hair: 'pony', pack: { w: 1.36, h: 1.8, up: 0.0 }, packCol: [82, 52, 60], shirtCol: [72, 68, 70] },
+    { X: -1.35, Z: 8.6, h: 1.36, hr: 6.1, step: 1, skirt: true, hair: 'puffs', pack: { w: 1.28, h: 1.62, up: 0.02 }, packCol: [96, 46, 40], shirtCol: [70, 66, 70] },
+    { X: -0.55, Z: 9.3, h: 1.18, hr: 5.7, step: -1, skirt: false, hair: 'short', pack: { w: 1.32, h: 1.66, up: 0.1 }, packCol: [40, 54, 86], shirtCol: [74, 70, 72] },
+    { X: -0.05, Z: 13.2, h: 1.3, hr: 6.0, step: -1, skirt: false, hair: 'short', pack: { w: 1.26, h: 1.6, up: 0.0 }, packCol: [56, 70, 48], shirtCol: [72, 68, 70] },
+    { X: 0.45, Z: 13.9, h: 1.1, hr: 5.5, step: 1, skirt: true, hair: 'braids', pack: { w: 1.32, h: 1.62, up: 0.06 }, packCol: [110, 86, 36], shirtCol: [70, 66, 70] },
+    { X: 1.0, Z: 18.4, h: 1.27, hr: 6.0, step: 1, skirt: true, hair: 'pony', pack: { w: 1.24, h: 1.58, up: 0.0 }, packCol: [84, 50, 62], shirtCol: [72, 68, 70] },
   ];
   for (const k of KIDS) k.shapes = kidShapes(k);
 
@@ -340,7 +340,7 @@ function childShapes(o) {
 
   // ---------- pass 2: sky and ground ----------
   const img = ctx.createImageData(W, H); const D = img.data;
-  const DIRT = hx('#b08e6b'), DIRT2 = hx('#9a7859'), STRAW = hx('#a69c68'), GREEN = hx('#76804c'), GREEN2 = hx('#8a8a55'), BARE = hx('#a48668');
+  const DIRT = hx('#b08e6b'), DIRT2 = hx('#9a7859'), STRAW = hx('#a39a6e'), GREEN = hx('#6f7a4e'), GREEN2 = hx('#8b8758'), BARE = hx('#a2876c'), DARKG = hx('#5a6243');
   const SUNC = [255, 226, 178], AMB = [118, 128, 150];
   const nl = sv[1];
   for (let y = 0; y < H; y++) {
@@ -362,7 +362,8 @@ function childShapes(o) {
       // dry season grass: straw and tired green, worn patches of earth
       const gt = clamp(0.5 + 0.9 * NB.fbm(X / 4, Z / 6, 3));
       let g = mix(mix(STRAW, GREEN, gt), GREEN2, clamp(0.5 + NC.fbm(X / 1.3, Z / 1.9, 2)) * 0.5);
-      g = mix(g, BARE, worn);
+      g = mix(g, DARKG, clamp(NA.fbm(X / 1.1 + 5, Z / 1.6, 3) * 1.6) * 0.6);
+      g = mix(g, BARE, Math.max(worn, clamp((NE.fbm(X / 2.2, Z / 3.0, 3) - 0.3) * 3) * 0.7));
       const det = clamp(0.012 / fp);
       const blade = (NC.n2(x / 2.0, y / 8) * 0.6 + NC.n2(x / 4.5, y / 15) * 0.4) * det;
       g = scl(g, 1 + 0.22 * blade);
@@ -375,10 +376,10 @@ function childShapes(o) {
       let vis = VIS[i + 3] / 255; vis *= 1 - 0.92 * SHD[i + 3] / 255;
       let ao = 1;
       if (Z > 19 && Z < 22.2 && X > B.x0 - 0.8 && X < B.x1 + 0.8) ao = 1 - 0.35 * Math.exp(-(22 - Z) / 0.45) * sstep(B.x0 - 0.8, B.x0, X) * sstep(B.x1 + 0.8, B.x1, X);
-      const sunK = 3.3 * nl * vis;
-      let r = a[0] * (AMB[0] / 255 * 0.62 * ao + sunK * SUNC[0] / 255);
-      let gg = a[1] * (AMB[1] / 255 * 0.62 * ao + sunK * SUNC[1] / 255);
-      let b = a[2] * (AMB[2] / 255 * 0.62 * ao + sunK * SUNC[2] / 255);
+      const sunK = 3.0 * nl * vis;
+      let r = a[0] * (AMB[0] / 255 * 0.84 * ao + sunK * SUNC[0] / 255);
+      let gg = a[1] * (AMB[1] / 255 * 0.84 * ao + sunK * SUNC[1] / 255);
+      let b = a[2] * (AMB[2] / 255 * 0.84 * ao + sunK * SUNC[2] / 255);
       // backlit grass blades glow at their tips
       const tipk = (1 - bare) * clamp(blade * 2.2) * vis * 0.6;
       r += 70 * tipk; gg += 60 * tipk; b += 24 * tipk;
@@ -514,14 +515,18 @@ function childShapes(o) {
     // crown: leaf clusters in irregular lobes; sparse at the edge so the sun breaks through
     const cc = proj(TREE.cx, TREE.cy, TREE.cz); const crx = FL * TREE.ax / TREE.cz, cry = FL * TREE.ay / TREE.cz;
     const lobes = [];
-    for (let k = 0; k < 11; k++) { const a = k / 11 * Math.PI * 2 + rnd(-0.2, 0.2); lobes.push([cc[0] + Math.cos(a) * crx * rnd(0.45, 0.62), cc[1] + Math.sin(a) * cry * rnd(0.4, 0.6) - cry * 0.05, crx * rnd(0.36, 0.5), cry * rnd(0.42, 0.6)]); }
-    lobes.push([cc[0], cc[1], crx * 0.6, cry * 0.62]);
+    setSeed(919);
+    // a broad, slightly flat-topped spreading crown built from irregular lobes
+    for (let k = 0; k < 13; k++) { const t = k / 12; const ang = Math.PI * (1.05 + 0.9 * t); lobes.push([cc[0] + Math.cos(ang) * crx * rnd(0.55, 0.78), cc[1] + Math.sin(ang) * cry * rnd(0.5, 0.72) + cry * 0.1, crx * rnd(0.22, 0.38), cry * rnd(0.26, 0.42)]); }
+    for (let k = 0; k < 6; k++) lobes.push([cc[0] + rnd(-0.55, 0.45) * crx, cc[1] + rnd(-0.2, 0.35) * cry, crx * rnd(0.3, 0.42), cry * rnd(0.3, 0.42)]);
+    for (let k = 0; k < 4; k++) lobes.push([cc[0] + rnd(-0.8, 0.5) * crx, cc[1] + cry * rnd(0.45, 0.7), crx * rnd(0.2, 0.3), cry * rnd(0.18, 0.26)]);
     const inLobe = (x, y) => { let best = 0; for (const L of lobes) { const q = Math.pow((x - L[0]) / L[2], 2) + Math.pow((y - L[1]) / L[3], 2); best = Math.max(best, 1 - q); } return best; };
     for (let i = 0; i < 52000; i++) {
       const x = cc[0] + rnd(-1.15, 1.15) * crx, y = cc[1] + rnd(-1.15, 1.15) * cry;
       const inn = inLobe(x, y); if (inn <= 0) continue;
       const hole = NB.fbm(x / 60, y / 55, 3) + 0.4 * NC.n2(x / 16, y / 16);
-      if (hole > 0.15 + inn * 1.1) continue;
+      if (hole > 0.1 + inn * 1.4) continue;
+      const dsun = Math.hypot(x - SUNP.x, y - SUNP.y); if (dsun < 95 && R() < 0.85 * (1 - dsun / 95)) continue;
       if (R() > 0.25 + inn * 2) continue;
       const s = rnd(4, 10);
       const ds = Math.hypot(x - SUNP.x, y - SUNP.y);
@@ -574,18 +579,18 @@ function childShapes(o) {
     const dark = [34, 29, 27];
     for (const s of k.shapes) {
       let col = dark;
-      if (s.tag === 'shirt') col = mix(dark, k.shirtCol, 0.55);
-      if (s.tag === 'cloth') col = mix(dark, [48, 44, 52], 0.5);
-      if (s.tag === 'pack') col = mix(dark, k.packCol, 0.8);
-      if (s.tag === 'pocket') col = mix(dark, k.packCol, 0.6);
+      if (s.tag === 'shirt') col = mix(dark, k.shirtCol, 0.3);
+      if (s.tag === 'cloth') col = mix(dark, [48, 44, 52], 0.35);
+      if (s.tag === 'pack') col = mix(dark, k.packCol, 0.5);
+      if (s.tag === 'pocket') col = mix(dark, k.packCol, 0.32);
       one.fillStyle = rgba(col); drawShapes(one, [s], map, sc);
     }
     const rim = mk(); rim.drawImage(one.canvas, 0, 0);
-    const rw = Math.max(2, 0.026 * FL / k.Z);
+    const rw = Math.max(2.6, 0.034 * FL / k.Z);
     const c0 = proj(k.X, k.h * 0.6, k.Z); const dir = [SUNP.x - c0[0], SUNP.y - c0[1]]; const dl = Math.hypot(...dir);
     rim.globalCompositeOperation = 'destination-out'; rim.drawImage(one.canvas, -dir[0] / dl * rw, -dir[1] / dl * rw);
     rim.globalCompositeOperation = 'source-in'; rim.fillStyle = 'rgba(255,212,150,1)'; rim.fillRect(0, 0, W, H);
-    one.save(); one.globalCompositeOperation = 'source-atop'; one.globalAlpha = 0.85; one.filter = 'blur(0.7px)'; one.drawImage(rim.canvas, 0, 0); one.restore();
+    one.save(); one.globalCompositeOperation = 'source-atop'; one.globalAlpha = 1; one.filter = 'blur(0.9px)'; one.drawImage(rim.canvas, 0, 0); one.drawImage(rim.canvas, 0, 0); one.restore();
     kidsL.drawImage(one.canvas, 0, 0);
   }
   ctx.save(); ctx.filter = 'blur(0.55px)'; ctx.drawImage(kidsL.canvas, 0, 0); ctx.restore();
