@@ -600,4 +600,21 @@ address { font-style: normal; }
   .legal p { display: inline; }
   .legal p + p::before { content: " "; }
   .legal__mark { display: none; }
+
+  /* interior page at phone width */
+  .crumbs { padding-top: 14px; font-size: 13px; flex-wrap: wrap; }
+  .article-head__grid { display: flex; flex-direction: column-reverse; gap: 18px; margin-top: 14px; }
+  .article-title { font-size: 30px; }
+  .article-dek { font-size: 17px; }
+  .article-meta { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .article-meta .byline .by { flex-basis: 100%; }
+  .article-meta .byline .dot--first { display: none; }
+  .article-body .grid { display: block; }
+  .prose p { font-size: 17px; }
+  .prose .pullquote p { font-size: 21px; }
+  .article-aside { margin-top: 28px; }
+  .article-end .grid { display: grid; grid-template-columns: 1fr; row-gap: 24px; }
+  .related-stories { padding-left: 0; border-left: 0; }
+  .footer--compact .footer__base .wrap { display: block; }
+  .footer__policies { flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; }
 }
