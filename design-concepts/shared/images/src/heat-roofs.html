@@ -201,8 +201,8 @@ function childShapes(o) {
   const norm = v => { const l = Math.hypot(...v); return v.map(a => a / l); };
 
   // ---------- sky: bleached, a touch darker away from the sun so the disc reads ----------
-  function glowAt(x, y) { const dx = (x - SUNP.x) / H, dy = (y - SUNP.y) / H; const d2 = dx * dx + dy * dy; return clamp(1.25 * Math.exp(-d2 / 0.0007) + 0.5 * Math.exp(-d2 / 0.008) + 0.32 * Math.exp(-d2 / 0.05) + 0.22 * Math.exp(-d2 / 0.3)); }
-  const SKY = [[0, '#c3c4bf'], [0.55, '#d4d2c9'], [0.9, '#e2ddd0'], [1, '#e8e2d4']];
+  function glowAt(x, y) { const dx = (x - SUNP.x) / H, dy = (y - SUNP.y) / H; const d2 = dx * dx + dy * dy; return clamp(0.9 * Math.exp(-d2 / 0.0011) + 0.42 * Math.exp(-d2 / 0.009) + 0.26 * Math.exp(-d2 / 0.06) + 0.12 * Math.exp(-d2 / 0.35)); }
+  const SKY = [[0, '#b7b8b2'], [0.5, '#cac8bf'], [0.88, '#dcd7ca'], [1, '#e6dfd0']];
   function sky(x, y) { const c = ramp(SKY, clamp(y / YH)); const g = glowAt(x, y); return [255 - (255 - c[0]) * (1 - g), 255 - (255 - c[1]) * (1 - g * 0.985), 255 - (255 - c[2]) * (1 - g * 0.93)]; }
 
   // ---------- corrugated sheet textures (128 px per metre, 4 m square) ----------
@@ -210,10 +210,11 @@ function childShapes(o) {
   const MATS = [
     { name: 'galv', base: [176, 180, 180], rust: 0.08, metal: 0.95 },
     { name: 'galvOld', base: [146, 146, 140], rust: 0.25, metal: 0.7 },
-    { name: 'rust', base: [148, 98, 66], rust: 0.65, metal: 0.3 },
+    { name: 'rust', base: [150, 94, 58], rust: 0.65, metal: 0.3 },
     { name: 'rustDeep', base: [112, 70, 47], rust: 0.9, metal: 0.18 },
     { name: 'paint', base: [104, 128, 132], rust: 0.35, metal: 0.35 },
     { name: 'paintRed', base: [146, 98, 86], rust: 0.3, metal: 0.3 },
+    { name: 'galvDark', base: [104, 106, 104], rust: 0.3, metal: 0.55 },
   ];
   for (const [mi, m] of MATS.entries()) {
     const c = mk(TS, TS); const id = c.createImageData(TS, TS), d = id.data;
@@ -221,7 +222,7 @@ function childShapes(o) {
     let sum = [0, 0, 0];
     for (let v = 0; v < TS; v++) for (let u = 0; u < TS; u++) {
       const corr = Math.cos(u / (0.076 * TP) * Math.PI * 2);
-      const prof = 0.86 + 0.14 * corr;
+      const ph = (u / (0.076 * TP)) % 1; const crest = Math.exp(-Math.pow((ph - 0.3) / 0.1, 2)); const trough = Math.exp(-Math.pow((ph - 0.8) / 0.14, 2)); const prof = 0.9 + 0.2 * crest - 0.2 * trough + 0.04 * corr;
       const sheetU = (u % Math.round(0.86 * TP));
       const seam = sheetU < 3 ? 0.78 : sheetU < 6 ? 1.06 : 1;
       const fix = ((Math.abs((v % Math.round(1.2 * TP)) - 20) < 2) && (u % 39 < 3)) ? 0.6 : 1;
@@ -236,8 +237,8 @@ function childShapes(o) {
     }
     c.putImageData(id, 0, 0);
     m.tex = c.canvas; m.avg = sum.map(a => a / (TS * TS));
-    const cb = mk(TS, TS); cb.filter = 'blur(3px)'; cb.drawImage(c.canvas, 0, 0); m.texSoft = cb.canvas;
-    m.pat = ctx.createPattern(m.tex, 'repeat'); m.patSoft = ctx.createPattern(m.texSoft, 'repeat');
+    const cb = mk(TS, TS); cb.filter = 'blur(2.5px)'; cb.drawImage(c.canvas, 0, 0); const cc = mk(TS, TS); cc.filter = 'blur(7px)'; cc.drawImage(c.canvas, 0, 0);
+    m.pat = ctx.createPattern(m.tex, 'repeat'); m.patMid = ctx.createPattern(cb.canvas, 'repeat'); m.patSoft = ctx.createPattern(cc.canvas, 'repeat');
     await tick();
   }
 
@@ -247,7 +248,7 @@ function childShapes(o) {
     for (let x = 0; x < W; x++) {
       let c;
       if (y <= YH + 1) c = sky(x, y);
-      else { const Z = FL * HC / (y - YH); const X = (x - VX) * Z / FL; const hk = 1 - Math.exp(-Z / 240); c = mix(mix('#3b322b', '#5f5143', clamp(0.5 + 0.5 * NA.fbm(X / 3, Z / 3, 3))), hazeCol, hk); }
+      else { const Z = FL * HC / (y - YH); const X = (x - VX) * Z / FL; const hk = 1 - Math.exp(-Z / 240); c = mix(mix('#271f1a', '#4a3e33', clamp(0.5 + 0.5 * NA.fbm(X / 3, Z / 3, 3))), hazeCol, hk); }
       const i = (y * W + x) * 4; D[i] = c[0]; D[i + 1] = c[1]; D[i + 2] = c[2]; D[i + 3] = 255;
     }
     if ((y & 127) === 0) await tick();
@@ -281,17 +282,17 @@ function childShapes(o) {
     const rowRot = 0.05 * NA.n2(Zr / 60, 3.3);
     while (X < span) {
       const w = rnd(3.4, 7.0);
-      const gap = R() < 0.16 ? rnd(0.9, 1.6) : rnd(0.2, 0.6);
+      const gap = R() < 0.1 ? rnd(0.8, 1.4) : rnd(0.05, 0.35);
       const cx = X + w / 2, cz = Zr + dRow / 2 + rnd(-0.6, 0.6);
       if (Math.abs(cx - laneX(cz)) > 1.7 + 0.04 * cz) {
-        const big = R() < 0.05;
+        const big = R() < 0.022;
         const m = R();
         blds.push({
-          X: cx, Z: cz, w, d: dRow - rnd(0.3, 1.0), rot: rowRot + gauss() * 0.04 + (R() < 0.07 ? rnd(-0.22, 0.22) : 0),
-          h: big ? rnd(5.0, 6.0) : rnd(2.3, 3.2), flat: big,
+          X: cx, Z: cz, w, d: dRow - rnd(0.15, 0.6), rot: rowRot + gauss() * 0.04 + (R() < 0.07 ? rnd(-0.22, 0.22) : 0),
+          h: big ? rnd(5.0, 6.0) : rnd(2.4, 2.95), flat: big,
           slope: rnd(0.04, 0.14), sdir: Math.floor(R() * 4),
-          mat: big ? -1 : m < 0.2 ? 0 : m < 0.4 ? 1 : m < 0.7 ? 2 : m < 0.88 ? 3 : m < 0.95 ? 4 : 5,
-          seed: Math.floor(R() * 1e9), tank: R() < (big ? 0.7 : 0.11), drum: R() < 0.07,
+          mat: big ? -1 : m < 0.17 ? 0 : m < 0.33 ? 1 : m < 0.47 ? 6 : m < 0.72 ? 2 : m < 0.9 ? 3 : m < 0.96 ? 4 : 5,
+          seed: Math.floor(R() * 1e9), tank: R() < (big ? 0.7 : 0.09), drum: R() < 0.04,
         });
       }
       X += w + gap;
@@ -299,6 +300,7 @@ function childShapes(o) {
     Zr += dRow;
   }
   blds.sort((a, b) => b.Z - a.Z);
+  for (const b of blds) { const sx = VX + FL * b.X / b.Z, sy = YH + FL * (HC - b.h) / b.Z; const dx = (sx - 1380) / 420, dy = (sy - 930) / 170; if (dx * dx + dy * dy < 1 && !b.flat) { const rq = mulberry32(b.seed + 7)(); if (rq < 0.55) { b.tank = true; b.drum = false; } } }
 
   // ---------- shading ----------
   const camP = [0, HC, 0];
@@ -308,9 +310,9 @@ function childShapes(o) {
     const hv = norm([S[0] + v[0], S[1] + v[1], S[2] + v[2]]);
     const ndh = Math.max(0, n[0] * hv[0] + n[1] * hv[1] + n[2] * hv[2]);
     const ndv = Math.max(0, n[0] * v[0] + n[1] * v[1] + n[2] * v[2]);
-    const dif = 0.42 + 0.95 * ndl;
+    const dif = 0.5 + 0.85 * ndl;
     const spec = metal * (1.3 * Math.pow(ndh, 90) + 0.4 * Math.pow(ndh, 12));
-    const refl = metal * (0.12 + 0.5 * Math.pow(1 - ndv, 3));
+    const refl = metal * (0.3 + 0.5 * Math.pow(1 - ndv, 3));
     return { dif, spec, refl };
   }
   const hazeK = Z => 1 - Math.exp(-Z / 260);
@@ -323,7 +325,7 @@ function childShapes(o) {
     const L2W = (lx, ly, lz) => [b.X + lx * cs - lz * sn, ly, b.Z + lx * sn + lz * cs];
     const hk = hazeK(b.Z); const s0 = FL / b.Z;
     if (s0 < 1.2) continue;
-    const ov = 0.2, hw = b.w / 2 + ov, hd = b.d / 2 + ov;
+    const ov = 0.32, hw = b.w / 2 + ov, hd = b.d / 2 + ov;
     const rise = b.flat ? 0.05 : b.slope * (b.sdir < 2 ? b.w : b.d);
     const hAt = (lx, lz) => b.h + rise * (b.sdir === 0 ? (lx / (2 * hw) + 0.5) : b.sdir === 1 ? (0.5 - lx / (2 * hw)) : b.sdir === 2 ? (lz / (2 * hd) + 0.5) : (0.5 - lz / (2 * hd)));
     // walls (visible faces only), mostly in shade; eave shadow at the top
@@ -334,7 +336,7 @@ function childShapes(o) {
       const m = L2W((p0[0] + p1[0]) / 2, 0, (p0[1] + p1[1]) / 2);
       if (n[0] * (camP[0] - m[0]) + n[2] * (camP[2] - m[2]) <= 0) continue;
       const ndl = Math.max(0, n[0] * S[0] + n[2] * S[2]);
-      const col = mix(scl(hx(b.flat ? '#a39e95' : wallBase), 0.38 + 0.85 * ndl), hazeCol, hk);
+      const col = mix(scl(hx(b.flat ? '#a39e95' : wallBase), 0.24 + 0.75 * ndl), hazeCol, hk);
       const a0 = L2W(p0[0], 0, p0[1]), a1 = L2W(p1[0], 0, p1[1]);
       const q = [proj(...a0), proj(...a1), proj(a1[0], b.h, a1[2]), proj(a0[0], b.h, a0[2])];
       ctx.fillStyle = rgba(col); quad(ctx, q); ctx.fill();
@@ -375,7 +377,7 @@ function childShapes(o) {
       const o = proj(...P2(0, lowAtV0 ? 1 : 0)), pU = proj(...P2(1, lowAtV0 ? 1 : 0)), pV = proj(...P2(0, lowAtV0 ? 0 : 1));
       const lt = roofLight(n, ctr, m.metal);
       if (s0 > 5) {
-        const pat = s0 > 22 ? m.pat : m.patSoft;
+        const pat = s0 > 62 ? m.pat : s0 > 30 ? m.patMid : m.patSoft;
         const k = 1 / TP;
         const M = new DOMMatrix([(pU[0] - o[0]) * k / acrossLen, (pU[1] - o[1]) * k / acrossLen, (pV[0] - o[0]) * k / slopeLen, (pV[1] - o[1]) * k / slopeLen, o[0], o[1]]);
         M.translateSelf(rr(0, TS), rr(0, TS));
@@ -383,11 +385,27 @@ function childShapes(o) {
         ctx.save(); quad(ctx, Q); ctx.clip();
         ctx.fillStyle = pat; ctx.fillRect(Math.min(...Q.map(q => q[0])) - 2, Math.min(...Q.map(q => q[1])) - 2, Math.max(...Q.map(q => q[0])) - Math.min(...Q.map(q => q[0])) + 4, Math.max(...Q.map(q => q[1])) - Math.min(...Q.map(q => q[1])) + 4);
         // light: diffuse (multiply), sky reflection and sun glare (screen), then haze
-        const dk = clamp(lt.dif / 1.4) * 255;
+        const dk = clamp(lt.dif / 1.02) * 255;
         ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = rgba([dk * 1.0, dk * 0.985, dk * 0.95]); ctx.fill();
         ctx.globalCompositeOperation = 'source-over';
-        const scrA = clamp(lt.refl * 0.55 + lt.spec);
+        const scrA = clamp(lt.refl * 0.5 + lt.spec, 0, 0.55);
         if (scrA > 0.01) { ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = rgba([255, 250, 238], scrA); ctx.fill(); ctx.globalCompositeOperation = 'source-over'; }
+        // a glare streak across the ribs (metal reflects the sun in a band) and a soft gradient toward the sun
+        if (m.metal > 0.5 && s0 > 7) {
+          const v0 = rr(0.15, 0.85), w0 = rr(0.08, 0.2);
+          const a = proj(...P2(0.5, v0 - w0)), c2 = proj(...P2(0.5, v0 + w0));
+          const sg = ctx.createLinearGradient(a[0], a[1], c2[0], c2[1]);
+          const al = clamp(0.18 + 0.5 * lt.spec + 0.2 * m.metal, 0, 0.42);
+          sg.addColorStop(0, 'rgba(255,252,242,0)'); sg.addColorStop(0.5, `rgba(255,252,242,${al})`); sg.addColorStop(1, 'rgba(255,252,242,0)');
+          ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = sg; ctx.fill(); ctx.globalCompositeOperation = 'source-over';
+        }
+        {
+          const a = proj(...P2(0, 0.5)), c2 = proj(...P2(1, 0.5));
+          const lg = ctx.createLinearGradient(a[0], a[1], c2[0], c2[1]);
+          const toSun = (c2[0] - a[0]) > 0 ? 1 : -1;
+          lg.addColorStop(toSun > 0 ? 0 : 1, 'rgba(30,24,20,0.14)'); lg.addColorStop(toSun > 0 ? 1 : 0, 'rgba(30,24,20,0)');
+          ctx.fillStyle = lg; ctx.fill();
+        }
         // per-roof variation: a sheet or two of different age
         if (s0 > 12 && r() < 0.55) {
           const k0 = Math.floor(rr(0, Math.max(1, acrossLen / 0.86))), u0 = k0 * 0.86 / acrossLen, u1 = u0 + 0.86 / acrossLen;
@@ -397,10 +415,18 @@ function childShapes(o) {
         if (hk > 0.01) { ctx.fillStyle = rgba(hazeCol, hk); ctx.fillRect(Math.min(...Q.map(q => q[0])) - 2, Math.min(...Q.map(q => q[1])) - 2, Math.max(...Q.map(q => q[0])) - Math.min(...Q.map(q => q[0])) + 4, Math.max(...Q.map(q => q[1])) - Math.min(...Q.map(q => q[1])) + 4); }
         ctx.restore();
       } else {
-        let col = scl(m.avg, lt.dif / 1.25 * 1.1);
-        col = mix(col, [255, 250, 238], clamp(lt.refl * 0.55 + lt.spec));
+        let col = scl(m.avg, clamp(lt.dif / 1.02));
+        col = mix(col, [255, 250, 238], clamp(lt.refl * 0.5 + lt.spec, 0, 0.55));
         col = scl(col, rr(0.92, 1.08));
         ctx.fillStyle = rgba(mix(col, hazeCol, hk)); quad(ctx, Q); ctx.fill();
+      }
+      // near roofs: the corrugated profile shows along the low edge
+      if (s0 > 40) {
+        const lowV = lowAtV0 ? 1 : 0; const nW = Math.round(acrossLen / 0.076);
+        ctx.strokeStyle = `rgba(250,246,236,${0.35 * (1 - hk)})`; ctx.lineWidth = Math.max(1, 0.012 * s0);
+        ctx.beginPath();
+        for (let k = 0; k <= nW * 4; k++) { const u = k / (nW * 4); const w = proj(...P2(u, lowV)); const yy = w[1] - Math.sin(u * nW * Math.PI * 2) * 0.012 * s0; k ? ctx.lineTo(w[0], yy) : ctx.moveTo(w[0], yy); }
+        ctx.stroke();
       }
       // edges: dark gap along the low edge, faint highlight on the sun-facing edge
       if (s0 > 4) {
@@ -409,13 +435,13 @@ function childShapes(o) {
       }
     }
     // stones, bricks and the occasional tyre holding sheets down
-    if (s0 > 16 && !b.flat) {
-      const nS = Math.floor(rr(1, 6));
+    if (s0 > 16 && !b.flat && r() < 0.6) {
+      const nS = Math.floor(rr(0, 4));
       for (let j = 0; j < nS; j++) {
         const lx = rr(-0.9, 0.9) * hw, lz = (r() < 0.5 ? -1 : 1) * rr(0.75, 0.92) * hd;
-        const p = proj(...L2W(lx, hAt(lx, lz) + 0.05, lz)); const rad = rr(0.08, 0.16) * s0;
-        if (r() < 0.12) { ctx.fillStyle = rgba(mix([40, 38, 38], hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1], rad * 1.5, rad * 0.75, 0, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = rgba(mix([70, 66, 62], hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1] - rad * 0.08, rad * 0.75, rad * 0.35, 0, 0, Math.PI * 2); ctx.fill(); }
-        else { const sc2 = rr(0.6, 1.1); ctx.fillStyle = `rgba(20,16,14,${0.3 * (1 - hk)})`; ctx.beginPath(); ctx.ellipse(p[0] - rad * 0.4, p[1] + rad * 0.25, rad, rad * 0.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = rgba(mix(scl([168, 158, 146], sc2), hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1], rad, rad * 0.62, rr(-0.4, 0.4), 0, Math.PI * 2); ctx.fill(); }
+        const p = proj(...L2W(lx, hAt(lx, lz) + 0.05, lz)); const rad = rr(0.06, 0.12) * s0;
+        if (r() < 0.06) { ctx.fillStyle = rgba(mix([40, 38, 38], hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1], rad * 1.5, rad * 0.75, 0, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = rgba(mix([70, 66, 62], hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1] - rad * 0.08, rad * 0.75, rad * 0.35, 0, 0, Math.PI * 2); ctx.fill(); }
+        else { const sc2 = rr(0.6, 1.1); ctx.fillStyle = `rgba(20,16,14,${0.3 * (1 - hk)})`; ctx.beginPath(); ctx.ellipse(p[0] - rad * 0.4, p[1] + rad * 0.25, rad, rad * 0.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = rgba(mix(scl([132, 124, 114], sc2), hazeCol, hk)); ctx.beginPath(); ctx.ellipse(p[0], p[1], rad, rad * 0.62, rr(-0.4, 0.4), 0, Math.PI * 2); ctx.fill(); }
       }
     }
     // water tank or drum
@@ -424,22 +450,15 @@ function childShapes(o) {
       const lx = rr(-0.5, 0.5) * hw, lz = rr(-0.5, 0.5) * hd; const base = L2W(lx, hAt(lx, lz), lz); const by = base[1] + (tank ? 0.18 : 0);
       const pB = proj(base[0], by, base[2]), pT = proj(base[0], by + th, base[2]);
       const rp = rad * FL / base[2]; const ry = rp * 0.5;
-      const bc = tank ? [24, 25, 28] : [52, 92, 120];
+      const bc = tank ? [24, 25, 28] : [52, 70, 86];
       const sh = proj(base[0] - S[0] / S[1] * th, base[1], base[2] - S[2] / S[1] * th);
       ctx.fillStyle = `rgba(16,12,10,${0.4 * (1 - hk)})`; ctx.beginPath(); ctx.moveTo(pB[0] - rp, pB[1]); ctx.lineTo(sh[0] - rp, sh[1]); ctx.ellipse(sh[0], sh[1], rp, ry, 0, Math.PI, 0, true); ctx.lineTo(pB[0] + rp, pB[1]); ctx.closePath(); ctx.fill();
       const g = ctx.createLinearGradient(pB[0] - rp, 0, pB[0] + rp, 0);
       g.addColorStop(0, rgba(mix(scl(bc, 0.8), hazeCol, hk))); g.addColorStop(0.55, rgba(mix(scl(bc, 1.3), hazeCol, hk))); g.addColorStop(0.8, rgba(mix(scl(bc, tank ? 4.2 : 2.0), hazeCol, hk))); g.addColorStop(0.92, rgba(mix(scl(bc, tank ? 2.4 : 1.5), hazeCol, hk))); g.addColorStop(1, rgba(mix(scl(bc, 1.1), hazeCol, hk)));
       ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(pB[0] - rp, pT[1]); ctx.lineTo(pB[0] - rp, pB[1]); ctx.ellipse(pB[0], pB[1], rp, ry, 0, Math.PI, 0, true); ctx.lineTo(pB[0] + rp, pT[1]); ctx.closePath(); ctx.fill();
-      if (tank && s0 > 8) { for (let k = 1; k < 4; k++) { const yy = lerp(pB[1], pT[1], k / 4); ctx.strokeStyle = `rgba(0,0,0,${0.25 * (1 - hk)})`; ctx.lineWidth = Math.max(0.6, 0.02 * s0); ctx.beginPath(); ctx.ellipse(pB[0], yy, rp, ry, 0, 0, Math.PI); ctx.stroke(); } }
+      if (tank && s0 > 8) { for (let k = 2; k < 3; k++) { const yy = lerp(pB[1], pT[1], k / 4); ctx.strokeStyle = `rgba(0,0,0,${0.25 * (1 - hk)})`; ctx.lineWidth = Math.max(0.6, 0.02 * s0); ctx.beginPath(); ctx.ellipse(pB[0], yy, rp, ry, 0, 0, Math.PI); ctx.stroke(); } }
       ctx.fillStyle = rgba(mix(scl(bc, tank ? 2.8 : 1.7), hazeCol, hk)); ctx.beginPath(); ctx.ellipse(pT[0], pT[1], rp, ry, 0, 0, Math.PI * 2); ctx.fill();
       if (tank && s0 > 7) { ctx.fillStyle = rgba(mix([16, 16, 18], hazeCol, hk)); ctx.beginPath(); ctx.ellipse(pT[0], pT[1], rp * 0.32, ry * 0.32, 0, 0, Math.PI * 2); ctx.fill(); }
-    }
-    // laundry line on some near roofs
-    if (s0 > 20 && r() < 0.12) {
-      const a = proj(...L2W(-hw * 0.7, b.h + 1.3, -hd * 0.2)), c2 = proj(...L2W(hw * 0.7, b.h + 1.3, hd * 0.1));
-      ctx.strokeStyle = 'rgba(40,36,34,0.6)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.quadraticCurveTo((a[0] + c2[0]) / 2, (a[1] + c2[1]) / 2 + 0.25 * s0, c2[0], c2[1]); ctx.stroke();
-      const nCl = 3 + Math.floor(r() * 4);
-      for (let k = 0; k < nCl; k++) { const t = (k + 0.5) / nCl; const x = lerp(a[0], c2[0], t), y = lerp(a[1], c2[1], t) + 0.25 * s0 * 4 * t * (1 - t) * 0.5; const cw = rr(0.25, 0.5) * s0, chh = rr(0.35, 0.7) * s0; ctx.fillStyle = rgba(mix(['#b85a4a', '#d9c9a0', '#4f7a9a', '#c7a14a', '#7a8a5a', '#e2dccf'][Math.floor(r() * 6)], hazeCol, 0.15)); ctx.fillRect(x - cw / 2, y, cw, chh); }
     }
     if ((++count & 511) === 0) await tick();
   }
@@ -475,6 +494,11 @@ function childShapes(o) {
     const s = ctx.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 1500);
     s.addColorStop(0, 'rgba(255,252,240,0.6)'); s.addColorStop(0.22, 'rgba(255,248,232,0.22)'); s.addColorStop(0.6, 'rgba(255,245,228,0.06)'); s.addColorStop(1, 'rgba(255,245,225,0)');
     ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = s; ctx.fillRect(0, 0, W, H); ctx.restore();
+    // reflected glare from the metal roofs below the sun
+    const gx = SUNP.x - 60, gy = YH + 170;
+    const gg = ctx.createRadialGradient(gx, gy, 0, gx, gy, 520);
+    gg.addColorStop(0, 'rgba(255,250,236,0.34)'); gg.addColorStop(0.5, 'rgba(255,248,232,0.12)'); gg.addColorStop(1, 'rgba(255,248,232,0)');
+    ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.translate(gx, gy); ctx.scale(1.0, 0.75); ctx.translate(-gx, -gy); ctx.fillStyle = gg; ctx.fillRect(gx - 600, gy - 700, 1200, 1400); ctx.restore();
   }
   {
     const src = ctx.getImageData(0, 0, W, H), sd = src.data; const out = ctx.createImageData(W, H), od = out.data;
@@ -491,13 +515,13 @@ function childShapes(o) {
     ctx.putImageData(out, 0, 0);
   }
   {
-    const g = ctx.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 64);
-    g.addColorStop(0, 'rgba(255,255,253,1)'); g.addColorStop(0.5, 'rgba(255,255,250,1)'); g.addColorStop(0.68, 'rgba(255,252,240,0.55)'); g.addColorStop(1, 'rgba(255,250,236,0)');
-    ctx.fillStyle = g; ctx.fillRect(SUNP.x - 80, SUNP.y - 80, 160, 160);
+    const g = ctx.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 120);
+    g.addColorStop(0, 'rgba(255,255,253,1)'); g.addColorStop(0.3, 'rgba(255,255,252,1)'); g.addColorStop(0.36, 'rgba(255,254,246,0.8)'); g.addColorStop(0.6, 'rgba(255,250,236,0.25)'); g.addColorStop(1, 'rgba(255,250,236,0)');
+    ctx.fillStyle = g; ctx.fillRect(SUNP.x - 130, SUNP.y - 130, 260, 260);
   }
   bloom(ctx, { thr: 0.82, str: 0.6, rad: 100, tint: [255, 250, 236] });
   await tick();
-  finish(ctx, { grain: 0.03, vig: 0.16, seed: 9001, lift: 0.028, contrast: 0.06, sat: 0.85, cx: 0.55, cy: 0.45 });
+  finish(ctx, { grain: 0.03, vig: 0.14, seed: 9001, lift: 0.024, contrast: 0.1, sat: 0.84, cx: 0.66, cy: 0.3 });
   window.__done = true;
 })();
 </script>

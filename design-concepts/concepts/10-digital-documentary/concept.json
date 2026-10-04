@@ -54,7 +54,7 @@
   },
   "accent": {
    "family": "Barlow",
-   "weights": "500, 600 (interface)"
+   "weights": "400, 500, 600 (interface)"
   }
  },
  "buttons": "Square uppercase buttons (ember Donate, bone primary, outlined secondary), an amber play control and amber-underlined links.",

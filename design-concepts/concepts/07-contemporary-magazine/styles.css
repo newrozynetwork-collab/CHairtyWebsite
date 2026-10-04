@@ -72,6 +72,7 @@ em, i { font-style: italic; }
   font: 500 15px/1 var(--sans); box-shadow: inset 0 0 0 1.5px var(--ink); background: transparent; white-space: nowrap;
 }
 .chip--on { background: var(--ink); color: var(--cream); box-shadow: none; }
+button.chip { border: 0; cursor: pointer; }
 .chip--tag { background: var(--blush); box-shadow: none; }
 
 /* ---------- image frames (colour-block collage) ---------- */
@@ -182,7 +183,7 @@ em, i { font-style: italic; }
    Home · report spread
    ========================================================================== */
 .report { display: grid; grid-template-columns: 572px 1fr; position: relative; overflow: hidden; }
-.report-block { background: var(--cobalt); color: var(--cream); position: relative; padding: 38px 0 38px 40px; }
+.report-block { grid-column: 1; grid-row: 1; background: var(--cobalt); color: var(--cream); position: relative; padding: 38px 0 38px 40px; }
 .report-more h3 { font: 600 14px/1.2 var(--sans); letter-spacing: .09em; text-transform: uppercase; color: var(--pistachio); }
 .report-more ol { margin-top: 16px; display: grid; gap: 14px; width: 236px; }
 .report-more li a { display: block; font: 400 21px/1.08 var(--serif); }
@@ -201,7 +202,7 @@ em, i { font-style: italic; }
 .cover-img { position: absolute; right: 18px; bottom: 18px; width: 134px; height: 134px; object-view-box: inset(25% 60% 21% 3%); }
 .cover-foot { margin-top: auto; font: 600 13px/1.2 var(--sans); letter-spacing: .04em; }
 .cover-sun { position: absolute; left: 20px; bottom: 44px; width: 46px; height: 24px; }
-.report-body { padding: 40px 40px 38px 80px; }
+.report-body { grid-column: 2; grid-row: 1; padding: 40px 40px 38px 80px; }
 .report-body .kicker { color: var(--cobalt); }
 .report-title { margin-top: 12px; }
 .report-title .t1 { display: block; font: italic 400 72px/.92 var(--serif); letter-spacing: -.02em; }
@@ -216,12 +217,12 @@ em, i { font-style: italic; }
    Home · tomato pull-quote band
    ========================================================================== */
 .quote { background: var(--tomato); }
-.quote-inner { display: grid; grid-template-columns: 128px 1fr; gap: 48px; align-items: center; padding: 28px 0 30px; }
+.quote-inner { display: grid; grid-template-columns: 128px 1fr; gap: 48px; align-items: center; padding: 28px 0 30px; margin-block: 0; }
 .quote .circle { width: 128px; height: 128px; object-position: 55% 50%; }
 .quote blockquote p { font: italic 400 48px/1.02 var(--serif); letter-spacing: -.01em; color: var(--cream); text-wrap: balance; max-width: 1000px; }
 .quote blockquote p .qm { color: var(--ink); }
-.quote cite { display: block; margin-top: 12px; font: 500 16px/1.4 var(--sans); font-style: normal; color: var(--ink); }
-.quote cite a { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; margin-left: 10px; }
+.quote figcaption { display: block; margin-top: 12px; font: 500 16px/1.4 var(--sans); color: var(--ink); }
+.quote figcaption a { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; margin-left: 10px; }
 
 /* ==========================================================================
    Home · field notes strip
@@ -288,7 +289,7 @@ em, i { font-style: italic; }
 .donate-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .donate-row { display: flex; align-items: center; gap: 14px; margin-top: 20px; flex-wrap: wrap; }
 .seg { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--cream); }
-.seg span { height: 34px; padding: 0 14px; display: inline-flex; align-items: center; border-radius: 999px; font: 600 15px/1 var(--sans); }
+.seg button { height: 34px; padding: 0 14px; display: inline-flex; align-items: center; border: 0; background: transparent; color: var(--ink); cursor: pointer; border-radius: 999px; font: 600 15px/1 var(--sans); }
 .seg .on { background: var(--ink); color: var(--cream); }
 .amounts { display: inline-flex; gap: 8px; }
 .amounts .chip { height: 40px; padding: 0 16px; font-weight: 600; }
@@ -356,7 +357,7 @@ em, i { font-style: italic; }
 .pull::before { content: ''; position: absolute; left: 0; top: 0; width: 120px; height: 6px; background: var(--tomato); }
 .pull .qm { font: italic 400 130px/.72 var(--serif); color: var(--tomato); }
 .pull p { font: italic 400 46px/1.03 var(--serif); letter-spacing: -.01em; text-wrap: balance; }
-.pull cite { display: block; margin-top: 10px; font: 500 15px/1.4 var(--sans); font-style: normal; color: var(--ink-2); }
+.pull figcaption { display: block; margin-top: 10px; font: 500 15px/1.4 var(--sans); color: var(--ink-2); }
 .s-side { padding-top: 4px; }
 .film { display: block; }
 .film-img { position: relative; display: block; height: 176px; }
@@ -555,4 +556,28 @@ em, i { font-style: italic; }
   .fm-main { font: 600 15px/1.4 var(--sans); }
   .fm-pol { font: 400 14px/1.4 var(--sans); margin-top: 6px; color: var(--ink-2); }
   .foot-bottom { display: block; margin-top: 12px; padding-top: 10px; font-size: 13px; }
+
+  /* story page (phone) */
+  .s-hero { grid-template-columns: 1fr; }
+  .s-hero-fig .img { flex: none; height: 220px; }
+  .s-hero-fig figcaption { padding: 10px 20px 2px; height: auto; font-size: 13px; }
+  .s-panel { padding: 22px 20px 26px; }
+  .crumbs { font-size: 14px; flex-wrap: wrap; gap: 6px 8px; }
+  .s-panel .kicker { margin-top: 18px; font-size: 13px; }
+  .s-lockup .l1 { font-size: 62px; }
+  .s-lockup .sub { font-size: 23px; }
+  .s-panel .hero-dek { font-size: 16px; }
+  .s-tools { flex-wrap: wrap; }
+  .s-body { grid-template-columns: 1fr; grid-template-areas: "a" "q" "b" "sb" "sa"; padding: 28px 0 0; }
+  .cols { column-count: 1; }
+  .prose { font-size: 18px; }
+  .prose .drop::first-letter { font-size: 96px; }
+  .pull { grid-template-columns: 40px 1fr; gap: 8px; margin: 24px 0; }
+  .pull .qm { font-size: 90px; }
+  .pull p { font-size: 32px; }
+  .s-side { margin-top: 24px; }
+  .s-end { grid-template-columns: 1fr; padding: 28px 0 32px; }
+  .footer--compact .fc { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .footer--compact nav { flex-wrap: wrap; gap: 10px 16px; }
+  .footer--compact .legal { flex-direction: column; gap: 6px; }
 }

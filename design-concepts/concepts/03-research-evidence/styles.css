@@ -519,6 +519,8 @@ figcaption .credit { font-family: var(--mono); color: var(--ink-4); letter-spaci
 .kf .num::after { content: ""; display: block; width: 24px; height: 4px; background: var(--amber); margin-top: 8px; }
 .kf .lbl { font: 400 15.5px/1.4 var(--sans); color: var(--ink-2); padding-top: 2px; }
 .pull { margin-top: 24px; padding: 2px 0 2px 20px; border-left: 4px solid var(--amber); }
+.pull--top { margin: 0 0 26px; }
+.aside #s3 { margin-top: 0; }
 .pull p { font: italic 400 21px/1.4 var(--serif); color: var(--ink); }
 .pull footer { margin-top: 10px; font: 400 14px/1.45 var(--sans); color: var(--ink-3); }
 .method-note { margin-top: 24px; border: 1px solid var(--line); padding: 14px 16px 16px; }
@@ -734,5 +736,29 @@ figcaption .credit { font-family: var(--mono); color: var(--ink-4); letter-spaci
   .ft-bottom .contact .sep { display: none; }
   .ft-bottom .contact .press { display: block; margin-top: 4px; }
   .ft-bottom .legal { margin-left: 0; text-align: left; flex: 1 1 100%; }
+
+  /* story page (interior) */
+  .crumbs { flex-wrap: wrap; row-gap: 6px; }
+  .art-head { padding: 18px 0 22px; }
+  .art-titles h1 { font-size: 29px; line-height: 1.12; }
+  .art-titles .dek { font-size: 17px; }
+  .art-meta { flex-wrap: wrap; gap: 12px; }
+  .share { margin-left: 0; }
+  .art-fig { margin-top: 18px; }
+  .art-fig .duo { aspect-ratio: 16 / 9; }
+  .art-body { padding: 22px 0 26px; }
+  .art-body > .grid { row-gap: 26px; }
+  .reading p { font-size: 17.5px; }
+  .reading h2 { font-size: 22px; }
+  .end { padding: 20px 0; }
+  .end .grid { row-gap: 12px; }
+  .end-report { grid-template-columns: 84px minmax(0, 1fr); gap: 16px; }
+  .end-report .cover { width: 84px; }
+  .end-report h3 { font-size: 18px; }
+  .end-report .links { flex-wrap: wrap; gap: 8px 18px; }
+  .end-give .btn { width: 100%; }
+  .ft-compact .wrap { flex-wrap: wrap; height: auto; padding-top: 20px; padding-bottom: 22px; gap: 14px; }
+  .ft-compact nav { flex-wrap: wrap; gap: 8px 18px; }
+  .ft-compact .legal { margin-left: 0; text-align: left; }
 }
 

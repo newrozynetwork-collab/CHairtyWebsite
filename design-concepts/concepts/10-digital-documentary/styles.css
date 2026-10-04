@@ -70,7 +70,7 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
 .on-bone .eyebrow { color: var(--ink); }
 .on-bone .eyebrow::before { background: var(--ember); }
 .sec-title {
-  font: 600 54px/.94 var(--f-display); letter-spacing: .005em; text-transform: uppercase;
+  font: 600 54px/.94 var(--f-display); letter-spacing: .02em; text-transform: uppercase;
   margin-top: 14px;
 }
 .timecode { font-family: var(--f-display); font-variant-numeric: tabular-nums; letter-spacing: .08em; }
@@ -208,8 +208,8 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
 .hero-label { display: flex; align-items: center; gap: 16px; }
 .hero-label .kicker { font: 600 15px/1 var(--f-display); letter-spacing: .2em; text-transform: uppercase; color: var(--bone); }
 .hero-title { margin-top: 20px; text-transform: uppercase; }
-.hero-title .t-main { display: block; font: 700 120px/.84 var(--f-display); letter-spacing: .004em; white-space: nowrap; }
-.hero-title .t-sub { display: block; margin-top: 16px; font: 500 30px/1.05 var(--f-display); letter-spacing: .04em; color: rgba(237, 231, 221, .92); }
+.hero-title .t-main { display: block; font: 500 116px/.84 var(--f-display); letter-spacing: .065em; white-space: nowrap; margin-left: -.04em; }
+.hero-title .t-sub { display: block; margin-top: 18px; font: 400 24px/1.1 var(--f-display); letter-spacing: .15em; color: rgba(237, 231, 221, .92); }
 .hero-dek { margin-top: 20px; max-width: 600px; font: 400 19px/1.5 var(--f-read); color: rgba(237, 231, 221, .9); }
 .byline { margin-top: 12px; font: 500 15px/1.4 var(--f-ui); color: var(--smoke); letter-spacing: .01em; }
 .byline b { color: var(--bone); font-weight: 600; }
@@ -287,16 +287,16 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
 }
 .cover-top { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px 10px; font: 600 13px/1 var(--f-display); letter-spacing: .18em; text-transform: uppercase; }
 .cover-top .sun { width: 24px; height: 15px; }
-.cover-img { height: 92px; position: relative; overflow: hidden; display: block; }
+.cover-img { height: 84px; position: relative; overflow: hidden; display: block; }
 .cover-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; filter: saturate(.75) contrast(1.05) sepia(.12); }
 .cover-body { padding: 12px 14px 12px; display: flex; flex-direction: column; flex: 1; border-top: 4px solid var(--amber); }
-.cover-title { font: 700 39px/.86 var(--f-display); text-transform: uppercase; letter-spacing: .01em; }
-.cover-sub { margin-top: 7px; font: 600 14px/1.15 var(--f-display); letter-spacing: .08em; text-transform: uppercase; color: var(--ash); }
+.cover-title { font: 700 37px/.86 var(--f-display); text-transform: uppercase; letter-spacing: .01em; }
+.cover-sub { margin-top: 8px; font: 600 13px/1.2 var(--f-display); letter-spacing: .08em; text-transform: uppercase; color: var(--ash); }
 .cover-foot { margin-top: auto; display: flex; justify-content: space-between; font: 600 13px/1 var(--f-display); letter-spacing: .14em; text-transform: uppercase; color: var(--ash); }
 .report-copy { padding-top: 2px; }
 .report-title { margin-top: 14px; text-transform: uppercase; }
-.report-title .t-main { display: block; font: 700 68px/.86 var(--f-display); letter-spacing: .005em; }
-.report-title .t-sub { display: block; margin-top: 10px; font: 500 26px/1.05 var(--f-display); letter-spacing: .04em; color: rgba(237, 231, 221, .92); }
+.report-title .t-main { display: block; font: 500 66px/.86 var(--f-display); letter-spacing: .055em; margin-left: -.03em; }
+.report-title .t-sub { display: block; margin-top: 12px; font: 400 21px/1.1 var(--f-display); letter-spacing: .15em; color: rgba(237, 231, 221, .92); }
 .report-meta { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
 .report-meta span { font: 600 15px/1 var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: var(--smoke); padding-right: 10px; border-right: 1px solid var(--line-d2); }
 .report-meta span:last-child { border-right: 0; }
@@ -458,8 +458,8 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
 .crumbs span { color: rgba(237, 231, 221, .4); }
 .s-hero-copy { grid-column: 1; grid-row: 2; align-self: end; }
 .s-title { margin-top: 14px; text-transform: uppercase; }
-.s-title .t-main { display: block; font: 700 92px/.84 var(--f-display); letter-spacing: .004em; }
-.s-title .t-sub { display: block; margin-top: 12px; font: 500 28px/1.05 var(--f-display); letter-spacing: .04em; color: rgba(237, 231, 221, .92); }
+.s-title .t-main { display: block; font: 500 90px/.84 var(--f-display); letter-spacing: .065em; margin-left: -.04em; }
+.s-title .t-sub { display: block; margin-top: 14px; font: 400 22px/1.1 var(--f-display); letter-spacing: .15em; color: rgba(237, 231, 221, .92); }
 .s-dek { margin-top: 14px; max-width: 800px; font: 400 18px/1.5 var(--f-read); color: rgba(237, 231, 221, .9); }
 .s-meta { margin-top: 12px; display: flex; align-items: center; gap: 28px; }
 .s-meta .byline { margin: 0; }
@@ -634,8 +634,8 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
   .hero-label .tag { height: 26px; font-size: 13px; }
   .hero-label .kicker { font-size: 14px; letter-spacing: .16em; }
   .hero-title { margin-top: 14px; }
-  .hero-title .t-main { font-size: 61px; }
-  .hero-title .t-sub { margin-top: 10px; font-size: 22px; letter-spacing: .035em; }
+  .hero-title .t-main { font-size: 56px; letter-spacing: .055em; }
+  .hero-title .t-sub { margin-top: 10px; font-size: 18px; letter-spacing: .12em; line-height: 1.2; }
   .hero-dek { margin-top: 14px; font-size: 16.5px; line-height: 1.5; }
   .byline { margin-top: 10px; font-size: 14px; }
   .byline .by-sep { display: none; }
@@ -703,8 +703,8 @@ button { background: none; border: 0; padding: 0; cursor: pointer; }
   .report-copy { display: contents; }
   .report-copy .eyebrow { grid-column: 2; grid-row: 1; margin-top: 2px; }
   .report-title { grid-column: 2; grid-row: 2; margin: 10px 0 0; }
-  .report-title .t-main { font-size: 34px; line-height: .9; white-space: nowrap; }
-  .report-title .t-sub { font-size: 17px; margin-top: 6px; line-height: 1.1; }
+  .report-title .t-main { font-size: 31px; line-height: .9; white-space: nowrap; letter-spacing: .04em; }
+  .report-title .t-sub { font-size: 15px; margin-top: 6px; line-height: 1.2; letter-spacing: .1em; }
   .report-meta { grid-column: 2; grid-row: 3; margin-top: 9px; gap: 6px; flex-wrap: nowrap; white-space: nowrap; }
   .report-meta span { font-size: 13px; letter-spacing: .06em; padding-right: 6px; }
   .report-summary { grid-column: 1 / -1; grid-row: 5; margin-top: 16px; font-size: 16px; line-height: 1.48; }

@@ -112,6 +112,17 @@
 
   <!-- REPORT · spread with the cover -->
   <section class="report" data-section="report" aria-labelledby="rep-title">
+    <div class="report-body">
+      <p class="kicker">Featured report</p>
+      <h2 class="report-title" id="rep-title"><span class="t1">Unequal Ground:</span> <span class="t2">Education for Displaced Children</span></h2>
+      <p class="meta">Report · September 2026 · 84 pages</p>
+      <p class="report-sum">Based on interviews with 212 families, teachers and officials, this report examines why displaced children are left out of school and sets out twelve practical recommendations.</p>
+      <div class="report-actions">
+        <a class="btn btn--ink" href="#">Read the report <svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--line" href="#"><svg class="ico"><use href="#i-down"/></svg>Download PDF (2.4 MB)</a>
+        <a class="link" href="#">Executive summary</a>
+      </div>
+    </div>
     <div class="report-block">
       <div class="report-more">
         <h3>More reports</h3>
@@ -132,28 +143,17 @@
         <div class="cover-foot">September 2026</div>
       </div>
     </div>
-    <div class="report-body">
-      <p class="kicker">Featured report</p>
-      <h2 class="report-title" id="rep-title"><span class="t1">Unequal Ground:</span> <span class="t2">Education for Displaced Children</span></h2>
-      <p class="meta">Report · September 2026 · 84 pages</p>
-      <p class="report-sum">Based on interviews with 212 families, teachers and officials, this report examines why displaced children are left out of school and sets out twelve practical recommendations.</p>
-      <div class="report-actions">
-        <a class="btn btn--ink" href="#">Read the report <svg class="ico"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn--line" href="#"><svg class="ico"><use href="#i-down"/></svg>Download PDF (2.4 MB)</a>
-        <a class="link" href="#">Executive summary</a>
-      </div>
-    </div>
   </section>
 
   <!-- PULL QUOTE · tomato band -->
   <section class="quote" data-section="quote" aria-label="Testimony">
-    <div class="wrap quote-inner">
+    <figure class="wrap quote-inner">
       <img class="circle" src="../../shared/images/window-silhouette.jpg" alt="The silhouette of a woman at a window holding a small picture frame to her chest, backlit through a sheer curtain.">
-      <blockquote>
-        <p><span class="qm">“</span>I keep his chair at the table. One day someone will tell me where he is.<span class="qm">”</span></p>
-        <cite>— Amira, whose brother has been missing since 2023 (name changed) <a href="story.html">Read the feature</a></cite>
-      </blockquote>
-    </div>
+      <div>
+        <blockquote><p><span class="qm">“</span>I keep his chair at the table. One day someone will tell me where he is.<span class="qm">”</span></p></blockquote>
+        <figcaption>— Amira, whose brother has been missing since 2023 (name changed) <a href="story.html">Read the feature</a></figcaption>
+      </div>
+    </figure>
   </section>
 
   <!-- FIELD NOTES · horizontal strip -->
@@ -239,11 +239,11 @@
     <section class="donate" data-section="donate" aria-labelledby="give-title">
       <div class="donate-head">
         <h2 id="give-title">Support our work</h2>
-        <div class="seg" role="group" aria-label="Frequency"><span class="on">Monthly</span><span>One-off</span></div>
+        <div class="seg" role="group" aria-label="Frequency"><button type="button" class="on" aria-pressed="true">Monthly</button><button type="button" aria-pressed="false">One-off</button></div>
       </div>
       <p class="act-lede">Your gift funds independent research and on-the-ground support.</p>
       <div class="donate-row">
-        <div class="amounts" role="group" aria-label="Amount"><span class="chip">£10</span><span class="chip chip--on">£25</span><span class="chip">£50</span><span class="chip">Other</span></div>
+        <div class="amounts" role="group" aria-label="Amount"><button type="button" class="chip" aria-pressed="false">£10</button><button type="button" class="chip chip--on" aria-pressed="true">£25</button><button type="button" class="chip" aria-pressed="false">£50</button><button type="button" class="chip" aria-pressed="false">Other</button></div>
         <a class="btn btn--ink" href="#">Give monthly <svg class="ico"><use href="#i-arrow"/></svg></a>
       </div>
     </section>

@@ -86,7 +86,7 @@ address { font-style: normal; }
   letter-spacing: .1em; text-transform: uppercase; color: var(--navy);
 }
 .meta .topic { color: var(--slate); font-weight: 500; }
-.meta .sep { color: var(--gold); margin: 0 7px; }
+.meta .sep { color: var(--slate); margin: 0 7px; }
 .date { font: 400 14px/1.3 var(--sans); color: var(--slate); }
 
 /* ---------- buttons and links ---------- */
@@ -170,7 +170,7 @@ address { font-style: normal; }
   font: 400 15px/1.5 var(--sans); color: var(--slate);
 }
 .byline .by { font-weight: 600; color: var(--navy); }
-.byline .dot { margin: 0 10px; color: var(--gold); }
+.byline .dot { margin: 0 10px; color: var(--slate); }
 .hero__actions { display: flex; gap: 14px; margin-top: 30px; }
 .hero__figure .frame img { aspect-ratio: 6 / 5; object-position: 66% 60%; }
 .caption {
@@ -250,7 +250,7 @@ address { font-style: normal; }
 .card h3 { margin-top: 8px; font: 400 20px/1.3 var(--serif); color: var(--navy); }
 .card .date { margin-top: 9px; }
 .card .date .type { font-weight: 600; color: var(--navy); }
-.card .date .sep { color: var(--gold); margin: 0 7px; }
+.card .date .sep { color: var(--slate); margin: 0 7px; }
 .more { grid-column: span 3; border-left: 1px solid var(--rule); padding-left: 28px; }
 .more__title { font: 600 13px/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--slate); padding-bottom: 2px; }
 .more li { padding: 14px 0 15px; border-bottom: 1px solid var(--rule); }
@@ -267,7 +267,7 @@ address { font-style: normal; }
 .report__summary, .report__actions { grid-column: 2; }
 .report .h2 { font-size: 31px; line-height: 1.12; }
 .report__meta { margin-top: 10px; font: 500 15px/1.4 var(--sans); color: var(--on-navy-2); letter-spacing: .02em; }
-.report__meta .dot { color: var(--gold-pale); margin: 0 8px; }
+.report__meta .dot { color: var(--on-navy-2); margin: 0 8px; }
 .report__summary { margin-top: 14px; max-width: 610px; font: 400 17px/1.58 var(--sans); color: var(--on-navy); }
 .report__actions { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
 .report__actions .btn { height: 46px; padding: 0 20px; font-size: 15px; }
@@ -307,7 +307,7 @@ address { font-style: normal; }
 .field { display: flex; flex-direction: column; gap: 9px; }
 .fieldlabel { font: 600 13px/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--slate); }
 .seg { display: inline-flex; border: 1px solid var(--navy); }
-.seg span { display: inline-flex; align-items: center; height: 46px; padding: 0 16px; font: 600 15px/1 var(--sans); color: var(--navy); }
+.seg span { display: inline-flex; align-items: center; height: 44px; padding: 0 16px; font: 600 15px/1 var(--sans); color: var(--navy); }
 .seg .is-on { background: var(--navy); color: var(--white); }
 .amounts { display: flex; gap: 7px; }
 .amounts span {

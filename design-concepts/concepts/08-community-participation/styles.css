@@ -80,7 +80,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .btn--leaf { background: var(--leaf-ink); color: #fff; }
 .btn--ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); padding-left: 8px; }
 .btn--sm { height: 44px; padding: 0 20px; font-size: 16px; }
-.btn--block { width: 100%; }
 .play-dot { width: 38px; height: 38px; border-radius: 50%; background: var(--coral); display: grid; place-items: center; color: var(--navy); }
 .play-dot .ic { width: 18px; height: 18px; margin-left: 2px; }
 
@@ -161,7 +160,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* ---------- hero ---------- */
 .hero { position: relative; padding: 36px 0 40px; }
 .hero-blob { position: absolute; pointer-events: none; }
-.hero-blob--a { width: 330px; height: 330px; left: -236px; top: 170px; fill: var(--sky-tint); transform: rotate(-30deg); }
 .hero-blob--b { width: 540px; height: 540px; right: -190px; top: -40px; fill: var(--sun-tint); transform: rotate(18deg); }
 .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
 .hero-copy { grid-column: 1 / 7; padding-right: 20px; }
@@ -295,7 +293,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .cover__kicker { margin-top: 9px; font-weight: 700; font-size: 13px; line-height: 1; }
 .cover__title { margin-top: 5px; font-family: var(--head); font-weight: 700; font-size: 19px; line-height: 1.02; letter-spacing: -.03em; }
 .cover__sub { margin-top: 4px; font-size: 13px; line-height: 1.15; }
-.cover__mark { position: absolute; right: 8px; bottom: 6px; width: 26px; height: 26px; }
+.cover__mark { position: absolute; right: 15px; top: 15px; width: 22px; height: 22px; }
 .report-meta { font-size: 15px; font-weight: 700; color: var(--ink-2); }
 .report-meta .t { display: block; }
 .report-meta .sep { display: none; }
@@ -324,7 +322,10 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .trust-row > section { margin: 52px 0 60px; }
 .faq-card { grid-column: 1 / 8; padding: 28px 36px 30px; border-radius: 32px; background: var(--paper); box-shadow: var(--shadow); }
 .faq-head { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.faq-head .section-title { margin-top: 12px; }
+.faq-head .section-title { margin-top: 0; }
+.principles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.principles li { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 13px 0 10px; border-radius: 999px; background: var(--sky-tint); font-weight: 700; font-size: 15px; }
+.principles .ic { width: 16px; height: 16px; stroke-width: 2.6; color: var(--leaf-ink); }
 .faq-img { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 6px var(--sky-tint); }
 .faq { margin-top: 14px; }
 .faq-item { border-top: 1.5px solid var(--line); }
@@ -367,6 +368,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .footer-brand { grid-column: 1 / 5; }
 .brand--light { color: var(--cream); }
 .brand--light .brand-name { font-size: 20px; }
+.brand-desc--light { color: #C9D3DD; }
 .footer-contact { margin-top: 18px; font-size: 16px; line-height: 1.6; color: #C9D3DD; }
 .footer-contact a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 248, 236, .35); }
 .social { display: flex; gap: 8px; }
@@ -474,12 +476,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .amounts--end span { background: var(--cream); }
 .give-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
 .give-row .seg, .give-row .amounts { margin-top: 0; }
-.end-card--give > .btn { margin-top: 14px; }
-.end-card .news-form { margin-top: 12px; }
-.field-row--sm { margin-top: 0; padding: 4px; }
-.field-row--sm input { height: 40px; font-size: 16px; padding: 0 10px; }
-.field-row--sm .btn { height: 40px; padding: 0 14px; font-size: 15px; }
-.end-card .consent { margin-top: 10px; font-size: 14px; align-items: flex-start; }
 .end-card--report { display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 18px; align-items: center; padding: 20px 22px; }
 .cover--sm { height: 112px; padding: 5px 5px 8px; border-radius: 8px; transform: rotate(-3deg); }
 .cover--sm .cover__img { height: 56px; border-radius: 5px; }
@@ -527,7 +523,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
   /* hero: headline + 2x2 action tiles */
   .hero { padding: 16px 0 24px; }
-  .hero-blob--a { display: none; }
   .hero-blob--b { width: 340px; height: 340px; right: -150px; top: 196px; }
   .hero-grid { display: block; }
   .hero-copy { padding: 0; }
@@ -649,17 +644,19 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .trust-row { display: flex; flex-direction: column; }
   .trust-row > section { margin: 24px 0 0; }
   .trust-row > section:last-child { margin-bottom: 26px; }
-  .faq-card { padding: 20px 18px 20px; border-radius: 26px; }
-  .faq-head .eyebrow { height: 30px; font-size: 14px; }
+  .faq-card { padding: 18px 18px 16px; border-radius: 26px; }
+  .principles { gap: 6px; margin-top: 10px; }
+  .principles li { height: 30px; padding: 0 10px 0 8px; gap: 5px; font-size: 14px; }
+  .principles .ic { width: 14px; height: 14px; }
   .faq-img { display: none; }
-  .faq { margin-top: 12px; }
-  .faq-q { min-height: 52px; font-size: 17px; gap: 10px; }
+  .faq { margin-top: 10px; }
+  .faq-q { min-height: 48px; font-size: 17px; gap: 10px; }
   .faq-q .tag { display: none; }
   .faq-toggle { width: 30px; height: 30px; }
   .faq-a { padding: 0 0 12px; font-size: 16px; }
   .trust-links { gap: 6px 16px; padding-top: 12px; }
   .trust-links a { height: auto; padding: 0; background: none; font-size: 15px; line-height: 1.5; white-space: nowrap; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; text-decoration-color: rgba(29, 43, 58, .3); }
-  .news-card { padding: 20px 18px 20px; border-radius: 26px; }
+  .news-card { padding: 18px 18px 16px; border-radius: 26px; }
   .news-art { right: 14px; top: 12px; width: 70px; height: 57px; }
   .news-card .section-title { margin-top: 12px; font-size: 26px; }
   .news-text { margin-top: 8px; font-size: 16px; }
@@ -667,12 +664,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .news-form { margin-top: 0; padding-top: 14px; }
   .field-label { font-size: 15px; }
   .field-row { padding: 5px; }
-  .field-row input { height: 42px; font-size: 16px; padding: 0 10px; }
-  .field-row .btn { height: 42px; padding: 0 16px; font-size: 15px; }
+  .field-row input { height: 40px; font-size: 16px; padding: 0 10px; }
+  .field-row .btn { height: 40px; padding: 0 16px; font-size: 15px; }
   .consent { align-items: flex-start; margin-top: 10px; font-size: 14px; }
 
   /* bottom tab bar, shown in flow just above the footer */
-  .tabbar { display: block; padding: 14px 12px 14px; }
+  .tabbar { display: block; padding: 10px 12px 12px; }
   .tabbar ul {
     display: grid; grid-template-columns: repeat(5, 1fr); align-items: end;
     padding: 8px 6px 9px; border-radius: 28px; background: var(--paper);
@@ -716,13 +713,13 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .footer-inline { margin-left: 0; gap: 4px 14px; font-size: 14px; }
 
   /* footer: compact, accordion rows */
-  .site-footer { padding: 24px 0 16px; border-radius: 30px 30px 0 0; }
+  .site-footer { padding: 22px 0 14px; border-radius: 30px 30px 0 0; }
   .footer-grid { display: block; }
   .brand--light .brand-name { font-size: 18px; }
   .brand--light .brand-mark { width: 40px; height: 40px; }
   .footer-contact { margin-top: 12px; font-size: 15px; line-height: 1.5; }
   .footer-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
-  .footer-col h2 { display: flex; align-items: center; justify-content: space-between; height: 44px; padding: 0 14px 0 16px; border-radius: 14px; background: rgba(255, 255, 255, .08); font-size: 15px; }
+  .footer-col h2 { display: flex; align-items: center; justify-content: space-between; height: 40px; padding: 0 14px 0 16px; border-radius: 14px; background: rgba(255, 255, 255, .08); font-size: 15px; }
   .footer-col h2::after { content: "+"; font-family: var(--head); font-weight: 400; font-size: 22px; color: var(--cream); }
   .footer-col ul { display: none; }
   .footer-legal { flex-direction: column-reverse; align-items: flex-start; gap: 12px; margin-top: 16px; padding-top: 14px; font-size: 13px; line-height: 1.45; }

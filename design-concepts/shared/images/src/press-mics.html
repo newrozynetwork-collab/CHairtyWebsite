@@ -547,57 +547,58 @@ async function renderRT(top, cam, opts) {
 }
 // ================================================================ scene: press-mics
 // ===================== PRESS MICS =====================
-// Close view from the floor of the hall: a bundle of press microphones (muted foam covers, no logos, no flags)
-// taped onto a clamp at the front edge of a dark wooden podium, fanning up towards the empty speaking position.
-// Behind the podium the stage wall of the hall dissolves into deep blur: daylight windows, warm wall lights, bokeh.
+// Close side view at microphone height: a cluster of press microphones (muted foam covers, no logos, no flags)
+// clipped to the top front edge of a dark wooden lectern, all aimed up at the empty speaking position on the
+// left. Behind, the press hall dissolves into deep blur: daylight windows, warm wall lights, bokeh.
 async function main() {
   const rand = makeRand(31337);
   const nA = makeNoise(201), nB = makeNoise(202), nC = makeNoise(203), nD = makeNoise(204);
-  const F = 2600;
-  const cam = makeCam([0.42, 1.24, 0.72], -25 * Math.PI / 180, 2 * Math.PI / 180, F, W / 2, H / 2);
+  const F = 3900;
+  const cam = makeCam([0.5, 1.25, 1.4], -21 * Math.PI / 180, 3 * Math.PI / 180, F, W / 2, 760);
   const EXPO = 1.2;
 
   // ---------- 1. backdrop: blurred hall, painted in screen space ----------
   const bg = newLayer(), g = bg.getContext('2d');
   {
     let gr = g.createLinearGradient(0, 0, 0, H);
-    gr.addColorStop(0, '#231e1b'); gr.addColorStop(0.3, '#3f352d'); gr.addColorStop(0.55, '#57493d'); gr.addColorStop(0.8, '#3c3229'); gr.addColorStop(1, '#2a231e');
+    gr.addColorStop(0, '#221d1a'); gr.addColorStop(0.3, '#3e342c'); gr.addColorStop(0.55, '#55473b'); gr.addColorStop(0.8, '#3a3028'); gr.addColorStop(1, '#251f1b');
     g.fillStyle = gr; g.fillRect(0, 0, W, H);
-    // tall daylight windows on the left side of the stage
+    // speaker side (left): tall daylight windows
     for (let k = 0; k < 3; k++) {
-      const x0 = -80 + k * 300, w = 210 - k * 30, y0 = 90 + k * 50, y1 = 1180 - k * 40;
+      const x0 = -100 + k * 280, w = 200 - k * 34, y0 = 80 + k * 55, y1 = 1150 - k * 45;
       const wg = g.createLinearGradient(0, y0, 0, y1);
-      wg.addColorStop(0, '#c0cacd'); wg.addColorStop(0.5, '#dcdfd7'); wg.addColorStop(1, '#a9aba1');
-      g.globalAlpha = 0.92 - k * 0.22; g.fillStyle = wg; g.fillRect(x0, y0, w, y1 - y0); g.globalAlpha = 1;
+      wg.addColorStop(0, '#bfc9cc'); wg.addColorStop(0.5, '#dadcd4'); wg.addColorStop(1, '#a7a99f');
+      g.globalAlpha = 0.9 - k * 0.24; g.fillStyle = wg; g.fillRect(x0, y0, w, y1 - y0); g.globalAlpha = 1;
     }
-    // softly lit back wall panel behind the speaker position (mid-tone, so the dark foam reads against it)
-    let rg = g.createRadialGradient(1250, 640, 80, 1250, 640, 820);
-    rg.addColorStop(0, 'rgba(204,170,128,0.85)'); rg.addColorStop(0.6, 'rgba(170,138,104,0.45)'); rg.addColorStop(1, 'rgba(150,120,92,0)');
+    // softly lit wall in the middle (mid-tone behind the microphone heads)
+    let rg = g.createRadialGradient(1000, 620, 60, 1000, 620, 860);
+    rg.addColorStop(0, 'rgba(200,166,126,0.8)'); rg.addColorStop(0.6, 'rgba(166,134,102,0.4)'); rg.addColorStop(1, 'rgba(150,120,92,0)');
     g.fillStyle = rg; g.fillRect(0, 0, W, H);
-    // timber slats on the right, a heavy curtain at the far right
-    for (let k = 0; k < 14; k++) {
-      const x = 1700 + k * 50;
-      g.fillStyle = k % 3 === 0 ? 'rgba(146,104,66,0.5)' : 'rgba(98,72,50,0.45)';
-      g.fillRect(x, 230, 30, 900);
-    }
-    for (let k = 0; k < 9; k++) {
-      const x = 2180 + k * 26;
-      g.fillStyle = k % 2 ? 'rgba(70,42,36,0.85)' : 'rgba(96,58,48,0.85)';
-      g.fillRect(x, 0, 30, H);
-    }
-    // wall lights
-    for (const [x, y, r] of [[1880, 380, 200], [560, 300, 150]]) {
+    // audience side (right): timber slats, wall lights, rows of seats with a few people
+    for (let k = 0; k < 14; k++) { const x = 1640 + k * 54; g.fillStyle = k % 3 === 0 ? 'rgba(146,104,66,0.45)' : 'rgba(98,72,50,0.4)'; g.fillRect(x, 260, 32, 760); }
+    for (const [x, y, r] of [[1820, 400, 190], [2250, 360, 220]]) {
       const q = g.createRadialGradient(x, y, 0, x, y, r);
-      q.addColorStop(0, 'rgba(255,214,162,0.8)'); q.addColorStop(1, 'rgba(255,200,140,0)');
+      q.addColorStop(0, 'rgba(255,212,160,0.78)'); q.addColorStop(1, 'rgba(255,200,140,0)');
       g.fillStyle = q; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
     }
-    // stage floor / riser edge far behind
-    let fl = g.createLinearGradient(0, 1100, 0, H); fl.addColorStop(0, 'rgba(40,32,27,0.3)'); fl.addColorStop(1, 'rgba(22,18,15,1)');
-    g.fillStyle = fl; g.fillRect(0, 1100, W, H - 1100);
+    for (let row = 0; row < 6; row++) {
+      const y = 1230 - row * 60, sc = 1.05 - row * 0.1;
+      for (let k = 0; k < 12; k++) {
+        const x = 1500 + k * 98 * sc + (row % 2) * 44;
+        g.fillStyle = `rgba(${30 + row * 5},${26 + row * 4},${23 + row * 4},0.95)`;
+        g.beginPath(); g.roundRect(x - 36 * sc, y - 78 * sc, 72 * sc, 90 * sc, 12 * sc); g.fill();
+        if ((k * 7 + row * 3) % 4 === 0) {
+          g.fillStyle = 'rgba(33,28,25,0.95)';
+          g.beginPath(); g.ellipse(x, y - 128 * sc, 20 * sc, 24 * sc, 0, 0, Math.PI * 2); g.fill();
+          g.beginPath(); g.ellipse(x, y - 78 * sc, 44 * sc, 30 * sc, 0, Math.PI, 0); g.fill();
+        }
+      }
+    }
+    let fl = g.createLinearGradient(0, 1150, 0, H); fl.addColorStop(0, 'rgba(30,25,22,0.4)'); fl.addColorStop(1, 'rgba(18,15,13,1)');
+    g.fillStyle = fl; g.fillRect(0, 1150, W, H - 1150);
   }
   const bgBlur = blurCopy(blurCopy(bg, 44, 0.5), 30, 0.5);
   {
-    // lens bokeh: a few ceiling downlights and glints, varied in size and brightness
     const bc = bgBlur.getContext('2d');
     bc.globalCompositeOperation = 'screen';
     const disc = (x, y, r, a, tint) => {
@@ -605,10 +606,10 @@ async function main() {
       q.addColorStop(0, rgba(tint, a * 0.7)); q.addColorStop(0.8, rgba(tint, a * 0.85)); q.addColorStop(0.94, rgba(tint, a)); q.addColorStop(1, rgba(tint, 0));
       bc.fillStyle = q; bc.beginPath(); bc.arc(x, y, r, 0, Math.PI * 2); bc.fill();
     };
-    const lights = [[980, 70, 70, 0.3], [1420, 110, 64, 0.34], [1830, 60, 76, 0.3], [2240, 150, 60, 0.22], [640, 140, 56, 0.18], [1650, 240, 50, 0.2], [2020, 300, 46, 0.18], [1180, 260, 44, 0.14]];
+    const lights = [[900, 80, 70, 0.28], [1330, 120, 64, 0.32], [1760, 60, 76, 0.3], [2180, 140, 62, 0.24], [560, 150, 54, 0.16], [1560, 250, 50, 0.2], [1990, 300, 46, 0.18], [1120, 270, 44, 0.14]];
     for (const [x, y, r, a] of lights) disc(x, y, r, a, [255, 221, 172]);
-    for (let k = 0; k < 6; k++) disc(rand.range(1750, 2150), rand.range(330, 520), rand.range(22, 34), 0.1 + 0.1 * rand(), [255, 205, 150]);
-    for (let k = 0; k < 4; k++) disc(rand.range(60, 600), rand.range(250, 1000), rand.range(24, 34), 0.07 + 0.05 * rand(), [235, 240, 236]);
+    for (let k = 0; k < 7; k++) disc(rand.range(1700, 2350), rand.range(340, 560), rand.range(22, 34), 0.1 + 0.1 * rand(), [255, 205, 150]);
+    for (let k = 0; k < 4; k++) disc(rand.range(60, 560), rand.range(250, 1000), rand.range(24, 34), 0.07 + 0.05 * rand(), [235, 240, 236]);
     bc.globalCompositeOperation = 'source-over';
   }
   const bgData = bgBlur.getContext('2d').getImageData(0, 0, W, H).data;
@@ -629,52 +630,52 @@ async function main() {
   };
   const bboxOf = (pts, pad) => [[0, 1, 2].map(i => Math.min(...pts.map(p => p[i])) - pad), [0, 1, 2].map(i => Math.max(...pts.map(p => p[i])) + pad)];
   const top = [];
-  const HB = [0.0, 1.17, -0.06];                  // clamp at the podium's front edge
-  const M = [0.0, 1.6, -0.74];                    // where the speaker's mouth would be
-  const ax0 = norm(sub(M, HB)), ux = [1, 0, 0], vy = norm(cross(ax0, ux));
-  const metalMat = (col, s = 0.35, gl = 60) => () => ({ a: lin(col), s, g: gl, kind: 'metal' });
+  const HB = [0.165, 1.235, 0.0];                 // clip bar on the lectern's top front edge
+  const M = [-0.55, 1.65, 0.02];                  // where the speaker's mouth would be
+  const ax0 = norm(sub(M, HB)), uz = [0, 0, 1], vy = norm(cross(uz, ax0));
+  const paintMat = (col, s = 0.22, gl = 50) => () => ({ a: lin(col), s, g: gl, kind: 'paint' });
+  const metalMat = (col, s = 0.7, gl = 80) => () => ({ a: lin(col), s, g: gl, kind: 'metal' });
   function foamMat(col, scale) {
     const c = lin(col);
     return h => {
       const n1 = nA(h.px * scale + h.pz * scale * 0.7, h.py * scale), n2 = nB(h.px * scale * 2.3 - h.pz * scale, h.py * scale * 2.3 + h.pz * scale * 0.5);
-      return { a: scl(c, 0.78 + 0.36 * n1 * n2 + 0.08 * (n2 - 0.5)), s: 0.0, g: 1, kind: 'foam', bump: (n1 - 0.5) * 0.6 };
+      return { a: scl(c, 0.8 + 0.34 * n1 * n2 + 0.08 * (n2 - 0.5)), s: 0.0, g: 1, kind: 'foam', bump: (n1 - 0.5) * 0.6 };
     };
   }
   const mics = [];
   function addMic(m) {
-    const tail = add(HB, add(mul(ux, m.off[0]), mul(vy, m.off[1])));
-    const dir = norm(add(sub(M, tail), [m.jit[0], m.jit[1], 0]));
+    const tail = add(HB, add(mul(uz, m.off[0]), mul(vy, m.off[1])));
+    const dir = norm(add(sub(M, tail), [0, m.jit[1], m.jit[0]]));
     const at = d => add(tail, mul(dir, d));
     const kids = [];
     const bodyEnd = m.body;
-    // tapered body (thicker towards the head) + collar
     const b0 = at(0.0), b1 = at(bodyEnd);
     const bb = bboxOf([b0, b1], m.br + 0.01);
-    kids.push(SDF(bb[0], bb[1], (x, y, z) => sdRoundCone(x, y, z, b0[0], b0[1], b0[2], b1[0], b1[1], b1[2], m.br * 0.7, m.br), metalMat(m.bodyCol || '#1d1e20', 0.4, 70), { ne: 2e-4 }));
-    if (m.band) kids.push(Cyl(at(bodyEnd * 0.55), at(bodyEnd * 0.55 + 0.01), m.br * 0.9 + 0.0025, metalMat('#8e9194', 0.8, 90)));
+    kids.push(SDF(bb[0], bb[1], (x, y, z) => sdRoundCone(x, y, z, b0[0], b0[1], b0[2], b1[0], b1[1], b1[2], m.br * 0.72, m.br), paintMat(m.bodyCol || '#1c1d1f'), { ne: 2e-4 }));
+    if (m.band) kids.push(Cyl(at(bodyEnd * 0.42), at(bodyEnd * 0.42 + 0.012), m.br * 0.88 + 0.0022, m.band === true ? metalMat('#8b8e91') : paintMat(m.band, 0.2)));
     if (m.type === 'ball' || m.type === 'grille') {
-      const r = m.r, c = at(bodyEnd + r * 0.75);
-      kids.push(Cyl(at(bodyEnd - 0.012), at(bodyEnd + 0.008), m.br + 0.0035, metalMat('#55585b', 0.7, 80)));
+      const r = m.r, c = at(bodyEnd + r * 0.72);
+      kids.push(Cyl(at(bodyEnd - 0.014), at(bodyEnd + 0.006), m.br + 0.0032, metalMat('#4e5154', 0.6, 70)));
       if (m.type === 'ball') kids.push(Sphere(c, r, foamMat(m.col, 380)));
       else kids.push(Sphere(c, r, h => {
-        const q = sub([h.px, h.py, h.pz], c), u = Math.atan2(q[1], q[0]) * 30, v = Math.acos(clamp(dot(q, dir) / r, -1, 1)) * 30;
+        const q = sub([h.px, h.py, h.pz], c), u = Math.atan2(q[1], q[2]) * 28, v = Math.acos(clamp(dot(q, dir) / r, -1, 1)) * 28;
         const hole = Math.abs(Math.sin(u + Math.sin(v) * 0.6) * Math.sin(v));
-        return { a: scl(lin('#aeb2b5'), 0.25 + 0.75 * smooth(0.2, 0.7, 1 - hole)), s: 0.8, g: 50, kind: 'metal' };
+        return { a: scl(lin('#a9adb0'), 0.22 + 0.78 * smooth(0.2, 0.7, 1 - hole)), s: 0.7, g: 50, kind: 'metal' };
       }));
       m.headC = c; m.headR = r;
     } else if (m.type === 'egg') {
-      const r = m.r, a = at(bodyEnd + r * 0.6), b = at(bodyEnd + r * 1.5);
-      kids.push(Cyl(at(bodyEnd - 0.012), at(bodyEnd + 0.008), m.br + 0.0035, metalMat('#55585b', 0.7, 80)));
+      const r = m.r, a = at(bodyEnd + r * 0.6), b = at(bodyEnd + r * 1.55);
+      kids.push(Cyl(at(bodyEnd - 0.014), at(bodyEnd + 0.006), m.br + 0.0032, metalMat('#4e5154', 0.6, 70)));
       const bb2 = bboxOf([a, b], r + 0.01);
-      kids.push(SDF(bb2[0], bb2[1], (x, y, z) => sdRoundCone(x, y, z, a[0], a[1], a[2], b[0], b[1], b[2], r, r * 0.84), foamMat(m.col, 380), { ne: 2e-4 }));
+      kids.push(SDF(bb2[0], bb2[1], (x, y, z) => sdRoundCone(x, y, z, a[0], a[1], a[2], b[0], b[1], b[2], r, r * 0.82), foamMat(m.col, 380), { ne: 2e-4 }));
       m.headC = b; m.headR = r;
     } else if (m.type === 'shotgun' || m.type === 'fur') {
       const r = m.r, a = at(bodyEnd + r * 0.8), b = at(bodyEnd + m.flen - r);
       if (m.type === 'fur') {
         const bb2 = bboxOf([a, b], r + 0.02);
-        kids.push(SDF(bb2[0], bb2[1], (x, y, z) => sdCapsule(x, y, z, a[0], a[1], a[2], b[0], b[1], b[2], r) - 0.0045 * nC(x * 300, y * 300 + z * 300), h => {
-          const n = nD(h.px * 900 + h.pz * 400, h.py * 900 - h.pz * 300), n2 = nA(h.px * 160, h.py * 160 + h.pz * 160);
-          return { a: scl(lin(m.col), 0.45 + 0.6 * n + 0.25 * n2), s: 0, g: 1, kind: 'fur', bump: (n - 0.5) * 1.4 };
+        kids.push(SDF(bb2[0], bb2[1], (x, y, z) => sdCapsule(x, y, z, a[0], a[1], a[2], b[0], b[1], b[2], r) - 0.004 * nC(x * 320, y * 320 + z * 320), h => {
+          const n = nD(h.px * 1100 + h.pz * 500, h.py * 1100 - h.pz * 400), n2 = nA(h.px * 180, h.py * 180 + h.pz * 180);
+          return { a: scl(lin(m.col), 0.42 + 0.62 * n + 0.22 * n2), s: 0, g: 1, kind: 'fur', bump: (n - 0.5) * 1.5 };
         }, { ne: 7e-4, k: 0.6, steps: 140 }));
       } else {
         kids.push(Cyl(a, b, r, foamMat(m.col, 330)));
@@ -683,57 +684,36 @@ async function main() {
       }
       m.headC = b; m.headR = r;
     }
+    // clip holding the tail on the bar
+    kids.push(Box(at(0.012), [0.016, 0.014, 0.014], paintMat('#141516', 0.2), { ax: [dir, norm(cross(uz, dir)), uz] }));
     m.tail = tail; m.dir = dir;
     top.push(Group(kids));
     mics.push(m);
   }
-  // muted covers: charcoal, slate, dusty navy, dark maroon, olive grey, black, fur
-  addMic({ type: 'shotgun', off: [-0.058, 0.03], jit: [0.03, 0.02], body: 0.19, r: 0.021, flen: 0.18, br: 0.0105, col: '#5e6064', band: true });
-  addMic({ type: 'ball', off: [-0.03, 0.045], jit: [0.02, 0.03], body: 0.22, r: 0.041, br: 0.02, col: '#3a3b3e' });
-  addMic({ type: 'ball', off: [0.03, 0.04], jit: [-0.015, 0.035], body: 0.2, r: 0.04, br: 0.0195, col: '#5b3536' });
-  addMic({ type: 'egg', off: [0.0, 0.005], jit: [0.0, 0.0], body: 0.23, r: 0.034, br: 0.019, col: '#344459' });
-  addMic({ type: 'grille', off: [-0.045, -0.02], jit: [0.035, -0.015], body: 0.2, r: 0.029, br: 0.019, bodyCol: '#26272a', band: true });
-  addMic({ type: 'fur', off: [0.058, 0.0], jit: [-0.04, 0.0], body: 0.13, r: 0.034, flen: 0.15, br: 0.012, col: '#857a6d' });
-  addMic({ type: 'ball', off: [0.02, -0.03], jit: [-0.01, -0.03], body: 0.19, r: 0.038, br: 0.019, col: '#26272a' });
-  addMic({ type: 'ball', off: [0.065, 0.055], jit: [-0.05, 0.04], body: 0.17, r: 0.036, br: 0.018, col: '#5c6150' });
-  // gaffer tape binding the bundle + clamp and short stand on the podium edge
+  // off: [depth (z), height across the bundle]; muted covers
+  addMic({ type: 'shotgun', off: [-0.06, 0.085], jit: [0.03, 0.03], body: 0.19, r: 0.021, flen: 0.19, br: 0.0105, col: '#5d5f63', band: true });
+  addMic({ type: 'ball', off: [0.04, 0.06], jit: [-0.01, 0.025], body: 0.22, r: 0.042, br: 0.0205, col: '#38393c' });
+  addMic({ type: 'ball', off: [-0.03, 0.025], jit: [0.03, 0.0], body: 0.21, r: 0.04, br: 0.0195, col: '#5a3638', band: '#3f4a57' });
+  addMic({ type: 'egg', off: [0.08, 0.0], jit: [-0.045, 0.0], body: 0.21, r: 0.034, br: 0.019, col: '#35455a' });
+  addMic({ type: 'grille', off: [0.01, -0.03], jit: [0.0, -0.01], body: 0.2, r: 0.029, br: 0.019, bodyCol: '#242528', band: true });
+  addMic({ type: 'fur', off: [-0.07, -0.025], jit: [0.045, -0.02], body: 0.14, r: 0.034, flen: 0.15, br: 0.012, col: '#867b6e' });
+  addMic({ type: 'ball', off: [0.05, -0.065], jit: [-0.02, -0.035], body: 0.18, r: 0.038, br: 0.019, col: '#252628', band: '#5d4636' });
+  addMic({ type: 'ball', off: [-0.035, 0.115], jit: [0.02, 0.05], body: 0.17, r: 0.036, br: 0.018, col: '#5b604f' });
+  // the clip bar and its post
   {
-    const kids = [];
-    const tapeC = add(HB, mul(ax0, 0.06));
-    const tapeMat = h => ({ a: scl(lin('#8b8a84'), 0.85 + 0.25 * nA(h.px * 400, h.py * 400 + h.pz * 200)), s: 0.15, g: 18, kind: 'tape' });
-    const segs = mics.map(m => [m.tail, add(m.tail, mul(m.dir, 0.12))]);
-    kids.push(SDF([tapeC[0] - 0.12, tapeC[1] - 0.1, tapeC[2] - 0.1], [tapeC[0] + 0.12, tapeC[1] + 0.1, tapeC[2] + 0.1], (x, y, z) => {
-      let d = 9;
-      for (let i = 0; i < segs.length; i++) { const a = segs[i][0], b = segs[i][1]; d = smin(d, sdCapsule(x, y, z, a[0], a[1], a[2], b[0], b[1], b[2], 0.019), 0.012); }
-      const q = sub([x, y, z], tapeC);
-      return Math.max(d - 0.004, Math.abs(dot(q, ax0)) - 0.022);
-    }, tapeMat, { ne: 3e-4, k: 0.8 }));
-    const dark = metalMat('#1a1b1d', 0.35, 50);
-    kids.push(Box([HB[0], HB[1] - 0.035, HB[2] + 0.005], [0.07, 0.012, 0.02], dark, { ax: [[1, 0, 0], norm([0, ax0[2], -ax0[1]]).map(v => -v), ax0] }));
-    kids.push(Cyl([HB[0], 1.105, HB[2] - 0.03], [HB[0], HB[1] - 0.03, HB[2]], 0.01, dark));
-    kids.push(Cyl([HB[0], 1.105, HB[2] - 0.03], [HB[0], 1.118, HB[2] - 0.03], 0.05, dark));
+    const kids = [], dark = paintMat('#18191b', 0.3);
+    kids.push(Box([HB[0] + 0.005, HB[1] - 0.012, 0], [0.012, 0.012, 0.11], dark));
+    kids.push(Cyl([HB[0] + 0.005, 1.105, 0], [HB[0] + 0.005, HB[1] - 0.02, 0], 0.009, dark));
+    kids.push(Cyl([HB[0] + 0.005, 1.105, 0], [HB[0] + 0.005, 1.116, 0], 0.045, dark));
     top.push(Group(kids));
   }
-  // gooseneck house microphone on the speaker's side (thin, matte black)
+  // cables: out of the tails, down onto the podium and over its front edge (right)
   {
-    const kids = [], dark = metalMat('#161718', 0.3, 40);
-    const P0 = [0.22, 1.105, -0.42], P1 = [0.22, 1.3, -0.36], P2 = [0.16, 1.4, -0.46], P3 = [0.13, 1.41, -0.58];
-    const bz = t => { const u = 1 - t; return [0, 1, 2].map(i => u * u * u * P0[i] + 3 * u * u * t * P1[i] + 3 * u * t * t * P2[i] + t * t * t * P3[i]); };
-    const N = 20;
-    for (let i = 0; i < N; i++) { const a = bz(i / N), b = bz((i + 1) / N); kids.push(Cyl(a, b, 0.0058, dark)); kids.push(Sphere(b, 0.0058, dark)); }
-    const d = norm(sub(P3, bz(0.95)));
-    kids.push(Cyl(P3, add(P3, mul(d, 0.045)), 0.009, dark));
-    kids.push(Sphere(add(P3, mul(d, 0.06)), 0.017, foamMat('#222325', 500)));
-    kids.push(Cyl([0.22, 1.105, -0.42], [0.22, 1.125, -0.42], 0.032, dark));
-    top.push(Group(kids));
-  }
-  // cables from the tails over the front edge of the podium
-  {
-    const cm = () => ({ a: lin('#121212'), s: 0.3, g: 40, kind: 'cable' });
+    const cm = () => ({ a: lin('#121212'), s: 0.25, g: 40, kind: 'cable' });
     const cr = (p0, p1, p2, p3, t) => [0, 1, 2].map(i => 0.5 * ((2 * p1[i]) + (-p0[i] + p2[i]) * t + (2 * p0[i] - 5 * p1[i] + 4 * p2[i] - p3[i]) * t * t + (-p0[i] + 3 * p1[i] - 3 * p2[i] + p3[i]) * t * t * t));
-    for (const [mi, ex] of [[1, -0.08], [2, 0.05], [6, 0.0], [3, 0.11]]) {
-      const kids = [], a = mics[mi].tail;
-      const pts = [a, add(a, [0, -0.03, 0.03]), [ex, 1.112, 0.0], [ex + 0.01, 1.09, 0.035], [ex + 0.02, 0.8, 0.04]];
+    for (const [mi, ez] of [[1, 0.05], [6, 0.11]]) {
+      const kids = [], a = mics[mi].tail, d = mics[mi].dir;
+      const pts = [a, add(a, mul(d, -0.035)), [0.205, 1.2, ez], [0.222, 1.15, ez + 0.01], [0.226, 0.9, ez + 0.02]];
       const P = [pts[0]].concat(pts, [pts[pts.length - 1]]);
       let prev = null;
       for (let s = 1; s < P.length - 2; s++) for (let k = 0; k <= 8; k++) {
@@ -744,22 +724,43 @@ async function main() {
       top.push(Group(kids));
     }
   }
-  // podium: dark walnut top with rounded edges, notes on the speaker's side
+  // lectern: dark walnut, sloped reading top (low on the speaker's side), side panel towards us
   const WAL = lin('#4b3426'), WAL2 = lin('#2c1e15');
+  const XB = -0.33, XF = 0.2, YB = 1.06, YF = 1.2, ZH = 0.3;
+  const slope = Math.atan2(YF - YB, XF - XB);
+  const tu = [Math.cos(slope), Math.sin(slope), 0], tv = [-Math.sin(slope), Math.cos(slope), 0];
   const woodTop = h => {
-    const g1 = fbm(nB, h.px * 5, h.pz * 38 + h.px * 3, 4), g2 = nC(h.px * 2, h.pz * 7);
+    const q = (h.px - XB) * tu[0] + (h.py - YB) * tu[1];
+    const g1 = fbm(nB, h.pz * 6, q * 30, 4), g2 = nC(h.pz * 2, q * 7);
     return { a: scl(mixc(WAL, WAL2, clamp(0.35 + 0.9 * (g1 - 0.5) + 0.3 * (g2 - 0.5))), 0.95), s: 0.3, g: 40, kind: 'wood' };
   };
-  const panelMat = h => { const g1 = fbm(nB, h.px * 4, h.py * 30, 4); return { a: scl(mixc(WAL, WAL2, clamp(0.5 + 0.9 * (g1 - 0.5))), 0.8), s: 0.25, g: 30, kind: 'wood' }; };
-  top.push(Box([0, 1.08, -0.31], [0.55, 0.025, 0.31], woodTop));
-  top.push(Cyl([-0.55, 1.08, 0.0], [0.55, 1.08, 0.0], 0.025, woodTop));
-  top.push(Box([0, 0.55, -0.012], [0.52, 0.5, 0.02], panelMat));
-  top.push(Box([0, 1.0, 0.012], [0.53, 0.018, 0.012], panelMat));                 // moulding under the top
+  const sideMat = h => {
+    const g1 = fbm(nB, h.px * 22 + 3, h.py * 2.2, 4), g2 = nD(h.px * 60, h.py * 6);
+    let a = scl(mixc(WAL, WAL2, clamp(0.45 + 1.0 * (g1 - 0.5) + 0.2 * (g2 - 0.5))), 0.85);
+    // a slim lighter edge banding along the sloped top edge and the front edge
+    const dTop = (YB + (h.px - XB) * Math.tan(slope)) - h.py, dFront = XF - h.px;
+    if (Math.min(dTop, dFront) < 0.012 && Math.abs(h.pz) > ZH - 0.001) a = scl(lin('#6a4a34'), 1.0);
+    return { a, s: 0.22, g: 30, kind: 'wood' };
+  };
+  // top board (sloped)
+  const tc = [(XB + XF) / 2 + tv[0] * -0.015, (YB + YF) / 2 + tv[1] * -0.015, 0];
+  top.push(Box(tc, [Math.hypot(XF - XB, YF - YB) / 2 + 0.015, 0.015, ZH + 0.012], woodTop, { ax: [tu, tv, [0, 0, 1]] }));
+  // side panels as prisms (trapezoid in x-y, thickness in z)
+  const prism = zc => (x, y, z) => {
+    const dz = Math.abs(z - zc) - 0.018;
+    const dTop = ((x - XB) * tv[0] + (y - YB) * tv[1]) + 0.03;          // below the sloped top
+    const d2 = Math.max(XB - x, x - XF, -y, dTop);
+    return Math.max(dz, d2);
+  };
+  for (const zc of [ZH, -ZH]) top.push(SDF([XB - 0.01, -0.01, zc - 0.03], [XF + 0.01, YF + 0.01, zc + 0.03], prism(zc), sideMat, { k: 0.95, ne: 2e-4 }));
+  top.push(Box([XF - 0.012, (YF - 0.03) / 2, 0], [0.012, (YF - 0.03) / 2, ZH], sideMat));
+  // book-rest lip on the speaker's side
+  top.push(Box([XB + 0.01, YB + 0.02, 0], [0.012, 0.025, ZH], woodTop));
 
   // ---------- 3. lighting ----------
-  const KEY = norm([0.42, 0.62, -0.66]), KEYC = [1.0, 0.9, 0.78], KEYI = 2.6;      // TV lights on the audience side
-  const RIM = norm([-0.55, 0.35, 0.76]), RIMC = [0.84, 0.9, 0.98], RIMI = 2.2;     // daylight from the windows behind the speaker
-  const FILL = norm([0.9, 0.1, 0.4]), FILLC = [1.0, 0.86, 0.7], FILLI = 0.5;
+  const KEY = norm([0.62, 0.55, 0.56]), KEYC = [1.0, 0.9, 0.78], KEYI = 2.5;      // TV lights on the audience side
+  const RIM = norm([-0.75, 0.35, -0.55]), RIMC = [0.84, 0.9, 0.98], RIMI = 2.3;   // daylight windows behind the speaker
+  const FILL = norm([0.0, 0.2, 1.0]), FILLC = [1.0, 0.86, 0.7], FILLI = 0.45;
   const res = await renderRT(top, cam, {
     sun: KEY, sunJit: 0.12, aoR: 0.05, aoN: 4, aoMax: 5, visR: 5, aoBlur: 6, seed: 9,
     miss,
@@ -779,7 +780,6 @@ async function main() {
       let gg = m.a[1] * (KEYC[1] * k + RIMC[1] * rr + FILLC[1] * ff + amb * 0.88);
       let b = m.a[2] * (KEYC[2] * k + RIMC[2] * rr + FILLC[2] * ff + amb * 0.8);
       if (soft) {
-        // velvet sheen of foam / fur at grazing angles, picked up from the back light
         const sh = Math.pow(1 - ndv, 2.5) * (0.5 * RIMI * Math.max(0, nx * RIM[0] + ny * RIM[1] + nz * RIM[2] + 0.3) + 0.25 * KEYI * Math.max(0, nx * KEY[0] + ny * KEY[1] + nz * KEY[2] + 0.3));
         r += sh * 0.05 * RIMC[0] * (0.6 + m.a[0] * 4); gg += sh * 0.05 * RIMC[1] * (0.6 + m.a[1] * 4); b += sh * 0.05 * RIMC[2] * (0.6 + m.a[2] * 4);
       }
@@ -790,13 +790,12 @@ async function main() {
           const sp = m.s * Math.pow(nh, m.g) * (m.g + 2) / 8 * I * vis * Math.max(0, nx * L[0] + ny * L[1] + nz * L[2]);
           r += sp * C[0]; gg += sp * C[1]; b += sp * C[2];
         }
-        // soft environment: the blurred hall, warmer below, brighter towards the windows (+z)
         const dn = h.dx * nx + h.dy * ny + h.dz * nz;
         const rx = h.dx - 2 * dn * nx, ry = h.dy - 2 * dn * ny, rz = h.dz - 2 * dn * nz;
         const fres = 0.04 + 0.96 * Math.pow(1 - ndv, 5);
-        const e = 0.18 + 0.22 * smooth(-0.3, 0.8, ry) + 0.25 * smooth(0.0, 0.9, rz);
-        const kk = m.kind === 'metal' ? 0.35 * m.s : 0.5 * fres * m.s;
-        r += e * 1.0 * kk; gg += e * 0.92 * kk; b += e * 0.85 * kk;
+        const e = 0.12 + 0.2 * smooth(-0.3, 0.8, ry) + 0.25 * smooth(0.0, 0.9, -rx);
+        const kk = m.kind === 'metal' ? 0.45 * m.s : 0.6 * fres * m.s;
+        r += e * 1.0 * kk; gg += e * 0.93 * kk; b += e * 0.86 * kk;
       }
       return [r, gg, b];
     },
@@ -805,13 +804,13 @@ async function main() {
 
   // ---------- 4. depth of field (focus on the heads) ----------
   {
-    const zf = 0.86;
+    const zf = 1.53;
     const b1 = blurCopy(cvs, 2), b2 = blurCopy(cvs, 5), b3 = blurCopy(cvs, 11);
     const d0 = ctx.getImageData(0, 0, W, H), d = d0.data;
     const d1 = b1.getContext('2d').getImageData(0, 0, W, H).data, d2 = b2.getContext('2d').getImageData(0, 0, W, H).data, d3 = b3.getContext('2d').getImageData(0, 0, W, H).data;
     for (let i = 0; i < W * H; i++) {
       if (!res.ID[i]) continue;
-      const c = Math.abs(1 / zf - 1 / res.T[i]) * 8.5;
+      const c = Math.abs(1 / zf - 1 / res.T[i]) * 16;
       if (c < 0.35) continue;
       const j = i * 4, w1 = clamp((c - 0.35) / 1.4), w2 = clamp((c - 1.8) / 3), w3 = clamp((c - 5) / 6);
       for (let k = 0; k < 3; k++) { let v = lerp(d[j + k], d1[j + k], w1); v = lerp(v, d2[j + k], w2); d[j + k] = lerp(v, d3[j + k], w3); }

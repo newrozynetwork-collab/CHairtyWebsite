@@ -2,18 +2,66 @@
   "number": 9,
   "slug": "09-institutional-trust",
   "name": "Institutional Trust",
-  "tagline": "Draft",
-  "idea": "Draft",
-  "fit": "Draft",
-  "informedBy": ["Draft", "Draft", "Draft"],
-  "distinct": "Draft",
-  "palette": [{"name": "Navy", "hex": "#14213D", "role": "Text"}],
-  "fonts": {"heading": {"family": "Libre Caslon Display", "weights": "400"}, "body": {"family": "Public Sans", "weights": "400, 500, 600"}, "accent": {"family": "Libre Caslon Text", "weights": "400, 400 italic"}},
-  "buttons": "Draft",
-  "imageDirection": "Draft",
-  "navigation": "Draft",
-  "visualCharacter": "Draft",
-  "contentEmphasis": "Draft",
-  "bestFor": "Draft",
-  "tradeoffs": "Draft"
+  "tagline": "Measured, accountable and quietly authoritative, like a good annual report",
+  "idea": "Credibility comes first. A calm split hero leads into a footnoted impact panel and a register that links each principle to its published evidence: methodology, accounts, corrections and safeguarding. Caslon type, navy, ivory and gold rules give the site the poise of an annual report.",
+  "fit": "Donors, journalists and policymakers need to trust the evidence before they act on it. This concept shows how the work is done and funded on the homepage itself, turning transparency into a reason to give.",
+  "informedBy": [
+    "Trust pages for methods, finances, corrections and safeguarding",
+    "Impact shown as dated results, apart from the news",
+    "Publications treated as curated objects with real covers"
+  ],
+  "distinct": "The only concept built on proof: every figure is footnoted and every principle links to a published document, so the homepage reads like a well-kept register.",
+  "palette": [
+    {
+      "name": "Navy",
+      "hex": "#14213D",
+      "role": "Text and dark bands"
+    },
+    {
+      "name": "Ivory",
+      "hex": "#FAF7F0",
+      "role": "Background"
+    },
+    {
+      "name": "Parchment",
+      "hex": "#F2EDE2",
+      "role": "Register and panels"
+    },
+    {
+      "name": "Antique gold",
+      "hex": "#A88A55",
+      "role": "Rules and icons"
+    },
+    {
+      "name": "Burgundy",
+      "hex": "#7A2135",
+      "role": "Donate actions"
+    },
+    {
+      "name": "Slate",
+      "hex": "#4A5568",
+      "role": "Secondary text"
+    }
+  ],
+  "fonts": {
+    "heading": {
+      "family": "Libre Caslon Display",
+      "weights": "400"
+    },
+    "body": {
+      "family": "Public Sans",
+      "weights": "400, 500, 600"
+    },
+    "accent": {
+      "family": "Libre Caslon Text",
+      "weights": "400, 400 italic"
+    }
+  },
+  "buttons": "Square-cornered: burgundy to give, navy to read, navy outlines for secondary actions, gold-underlined links.",
+  "imageDirection": "Few images, each framed by a thin gold keyline or white mat: muted interiors, landscapes and architecture, always captioned.",
+  "navigation": "Navy utility bar, mega-menu chevrons, breadcrumbs; compact menu on mobile.",
+  "visualCharacter": "Classical, calm and formal; navy, ivory and gold hairlines",
+  "contentEmphasis": "Measured impact, governance documents and publications",
+  "bestFor": "Organisations whose case rests on credibility with donors, institutions, journalists and policymakers",
+  "tradeoffs": "Less emotional immediacy and campaign energy; the formal tone and dense registers can feel reserved to younger or first-time supporters."
 }
