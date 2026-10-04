@@ -183,8 +183,8 @@ function childShapes(o) {
 
 // ---------------------------------------------------------------------------
 // school-morning — a small single-storey school with painted walls, early morning. The low sun
-// shines through a big tree at the left; children with backpacks walk up the dirt path toward
-// the door, their long shadows stretching back toward us. Calm sky upper right.
+// breaks through the edge of a big tree at the left; children with backpacks walk up the dirt path
+// toward the door, their long shadows stretching back toward us. Calm sky upper right.
 (async function main() {
   const ctx = document.getElementById('c').getContext('2d');
   setSeed(3131);
@@ -193,18 +193,18 @@ function childShapes(o) {
   // ---------- camera and sun ----------
   const YH = 912, VX = 1200, FL = 1900, HC = 1.45;
   const proj = (X, Y, Z) => [VX + FL * X / Z, YH + FL * (HC - Y) / Z];
-  const SUNP = { x: 640, y: 432 };
+  const SUNP = { x: 830, y: 455 };
   const sv = (() => { const v = [(SUNP.x - VX) / FL, (YH - SUNP.y) / FL, 1]; const l = Math.hypot(...v); return v.map(a => a / l); })();
   const SDX = -sv[0], SDZ = -sv[2]; const SDL = Math.hypot(SDX, SDZ);
-  const SHX = SDX / SDL, SHZ = SDZ / SDL, SHL = Math.hypot(sv[0], sv[2]) / sv[1]; // ground shadow direction and length per metre of height
+  const SHX = SDX / SDL, SHZ = SDZ / SDL, SHL = Math.hypot(sv[0], sv[2]) / sv[1];
 
   // ---------- sky ----------
-  const SKY = [[0, '#a7b6c2'], [0.3, '#bcc6cb'], [0.62, '#d6d6cf'], [0.85, '#e8dfcd'], [1, '#efe2c9']];
+  const SKY = [[0, '#a3b3bf'], [0.3, '#b9c3c8'], [0.62, '#d3d4cc'], [0.85, '#e6decb'], [1, '#ede0c6']];
   const skyRow = []; for (let y = 0; y < H; y++) skyRow.push(ramp(SKY, clamp(y / YH)));
   const GLOW = [255, 240, 205];
   function glowAt(x, y) {
     const dx = (x - SUNP.x) / H, dy = (y - SUNP.y) / H; const d2 = dx * dx + dy * dy;
-    return clamp(1.0 * Math.exp(-d2 / 0.00018) + 0.5 * Math.exp(-d2 / 0.0035) + 0.32 * Math.exp(-d2 / 0.03) + 0.16 * Math.exp(-d2 / 0.2));
+    return clamp(1.3 * Math.exp(-d2 / 0.00022) + 0.55 * Math.exp(-d2 / 0.0035) + 0.32 * Math.exp(-d2 / 0.03) + 0.16 * Math.exp(-d2 / 0.2));
   }
   function sky(x, y) {
     const c = skyRow[clamp(Math.round(y), 0, H - 1)]; const g = glowAt(x, y);
@@ -215,13 +215,12 @@ function childShapes(o) {
   const hz = []; for (let x = 0; x <= W; x++) hz[x] = sky(Math.min(x, W - 1), YH - 4);
 
   // ---------- scene solids for shadow rays ----------
-  const B = { x0: -0.5, x1: 10.5, z0: 22, z1: 28.5, wh: 3.1, rx0: -1.0, rx1: 11.0, rz0: 21.5, rz1: 29.0, ridge: 4.55, eave: 2.95, rzc: 25.25 };
+  const B = { x0: 0.6, x1: 11.6, z0: 22, z1: 28.5, wh: 3.1, rx0: 0.1, rx1: 12.1, rz0: 21.5, rz1: 29.0, ridge: 4.55, eave: 2.95, rzc: 25.25 };
   const roofY = Z => B.ridge - (B.ridge - B.eave) * Math.abs(Z - B.rzc) / (B.rzc - B.rz0);
-  const TREE = { x: -11.2, z: 24.5, r: 0.42, th: 4.6, cx: -10.8, cy: 7.5, cz: 24.5, ax: 6.8, ay: 3.9, az: 5.6 };
+  const TREE = { x: -11.0, z: 24.5, r: 0.45, th: 4.6, cx: -10.8, cy: 7.5, cz: 24.5, ax: 6.8, ay: 3.9, az: 5.6 };
   function slab(o, d, lo, hi) { let t0 = 0, t1 = 1e9; for (let k = 0; k < 3; k++) { if (Math.abs(d[k]) < 1e-9) { if (o[k] < lo[k] || o[k] > hi[k]) return null; continue; } let a = (lo[k] - o[k]) / d[k], b = (hi[k] - o[k]) / d[k]; if (a > b) { const t = a; a = b; b = t; } t0 = Math.max(t0, a); t1 = Math.min(t1, b); if (t0 > t1) return null; } return [t0, t1]; }
   function sunVis(X, Y, Z) {
     const o = [X, Y, Z];
-    // building
     const bi = slab(o, sv, [B.rx0, 0, B.rz0], [B.rx1, B.ridge, B.rz1]);
     if (bi) {
       for (let k = 0; k <= 10; k++) {
@@ -230,10 +229,8 @@ function childShapes(o) {
         if (px > B.rx0 && px < B.rx1 && pz > B.rz0 && pz < B.rz1 && py > B.eave - 0.12 && py < roofY(pz)) return 0;
       }
     }
-    // trunk
     const ts = ((TREE.x - X) * sv[0] + (TREE.z - Z) * sv[2]) / (sv[0] * sv[0] + sv[2] * sv[2]);
     if (ts > 0 && Y + ts * sv[1] < TREE.th) { const dx = X + sv[0] * ts - TREE.x, dz = Z + sv[2] * ts - TREE.z; if (dx * dx + dz * dz < TREE.r * TREE.r) return 0; }
-    // canopy (noisy ellipsoid, partially transparent)
     const ox = (X - TREE.cx) / TREE.ax, oy = (Y - TREE.cy) / TREE.ay, oz = (Z - TREE.cz) / TREE.az;
     const dx = sv[0] / TREE.ax, dy = sv[1] / TREE.ay, dz = sv[2] / TREE.az;
     const a = dx * dx + dy * dy + dz * dz, b = 2 * (ox * dx + oy * dy + oz * dz), c = ox * ox + oy * oy + oz * oz - 1;
@@ -255,10 +252,10 @@ function childShapes(o) {
   }
 
   // ---------- path ----------
-  const PATH = [[1.0, -1.9], [4, -1.6], [8, -0.95], [12, -0.25], [16, 0.35], [19.5, 0.85], [22, 1.05]];
+  const PATH = [[1.0, -1.85], [4, -1.5], [8, -0.85], [12, -0.05], [16, 0.75], [19.5, 1.5], [22, 2.15]];
   function pathX(Z) { if (Z <= PATH[0][0]) return PATH[0][1]; for (let i = 1; i < PATH.length; i++) if (Z <= PATH[i][0]) { const a = PATH[i - 1], b = PATH[i]; const t = (Z - a[0]) / (b[0] - a[0]); return lerp(a[1], b[1], t * t * (3 - 2 * t) * 0.3 + t * 0.7); } return PATH[PATH.length - 1][1]; }
 
-  // ---------- pass 1: sun visibility on the ground (blurred a little for penumbra) ----------
+  // ---------- pass 1: sun visibility on the ground ----------
   const visC = mk(); const visI = visC.createImageData(W, H); const VD = visI.data;
   for (let y = YH + 1; y < H; y++) {
     const Z = FL * HC / (y - YH);
@@ -274,31 +271,76 @@ function childShapes(o) {
   const VIS = visB.getImageData(0, 0, W, H).data;
   await tick();
 
-  // ---------- children (positions, sizes) ----------
+  // ---------- children: school-age, seen from behind, walking (shapes in metres) ----------
+  function kidShapes(o) {
+    const hu = o.h / o.hr, T = o.hr, S = [];
+    const M = (u, v) => [u * hu, v * hu];
+    const poly = (pts, tag) => S.push({ t: 'poly', tag, p: pts.map(q => M(q[0], q[1])) });
+    const ell = (u, v, rx, ry, rot = 0, tag) => S.push({ t: 'ell', tag, c: M(u, v), rx: rx * hu, ry: ry * hu, rot });
+    const lmb = (pts, tag) => S.push({ t: 'limb', tag, p: pts.map(q => [q[0] * hu, q[1] * hu, q[2] * hu]) });
+    const cr = T * 0.47; // crotch height
+    for (const side of [-1, 1]) {
+      const trailing = (side === 1) === (o.step > 0);
+      const x = side * 0.24;
+      if (!trailing) {
+        lmb([[x, cr + 0.15, 0.5], [x * 1.0, cr * 0.56, 0.38], [x * 0.98, cr * 0.32, 0.33], [x * 0.96, 0.34, 0.22]], 'leg');
+        ell(x * 0.96 + side * 0.01, 0.14, 0.19, 0.15, 0, 'leg');
+      } else {
+        lmb([[x, cr + 0.15, 0.5], [x * 1.04, cr * 0.6, 0.38], [x * 1.08, cr * 0.36, 0.32], [x * 1.1, 0.66, 0.21]], 'leg');
+        ell(x * 1.12, 0.4, 0.15, 0.3, side * 0.08, 'leg');
+      }
+    }
+    // shorts or skirt
+    if (o.skirt) poly([[-0.56, T - 2.6], [-0.66, cr + 0.45], [-0.84, cr - 0.5], [-0.3, cr - 0.6], [0.3, cr - 0.6], [0.84, cr - 0.5], [0.66, cr + 0.45], [0.56, T - 2.6]], 'cloth');
+    else poly([[-0.56, T - 2.6], [-0.62, cr + 0.25], [-0.6, cr - 0.28], [-0.05, cr - 0.2], [0.05, cr - 0.2], [0.6, cr - 0.28], [0.62, cr + 0.25], [0.56, T - 2.6]], 'cloth');
+    // torso (shirt)
+    poly([[-0.15, T - 1.1], [-0.44, T - 1.22], [-0.7, T - 1.36], [-0.72, T - 1.8], [-0.6, T - 2.4], [-0.58, T - 2.75], [0, T - 2.8], [0.58, T - 2.75], [0.6, T - 2.4], [0.72, T - 1.8], [0.7, T - 1.36], [0.44, T - 1.22], [0.15, T - 1.1]], 'shirt');
+    // arms with a slight swing
+    for (const side of [-1, 1]) {
+      const fwd = (side === 1) === (o.step > 0) ? -1 : 1;
+      const el = [side * (0.82 + 0.03 * fwd), T - 2.42 + (fwd < 0 ? 0.08 : 0)];
+      const wr = [side * (0.86 + 0.07 * fwd), T - 3.25 + (fwd < 0 ? 0.22 : 0)];
+      lmb([[side * 0.64, T - 1.42, 0.32], [el[0], el[1], 0.27], [wr[0], wr[1], 0.21]], 'arm');
+      ell(wr[0] + side * 0.01, wr[1] - 0.2, 0.12, 0.18, 0, 'arm');
+    }
+    // neck, head, hair
+    lmb([[0, T - 0.86, 0.34], [0, T - 1.22, 0.36]], 'skin');
+    ell(0, T - 0.5, 0.4, 0.5, 0, 'head');
+    if (o.hair === 'puffs') { ell(-0.29, T - 0.14, 0.2, 0.18, 0, 'head'); ell(0.29, T - 0.14, 0.2, 0.18, 0, 'head'); }
+    if (o.hair === 'braids') { lmb([[-0.19, T - 0.72, 0.13], [-0.23, T - 1.2, 0.11], [-0.25, T - 1.5, 0.09]], 'head'); lmb([[0.19, T - 0.72, 0.13], [0.23, T - 1.2, 0.11], [0.25, T - 1.5, 0.09]], 'head'); }
+    if (o.hair === 'pony') { ell(0.02, T - 0.12, 0.17, 0.13, 0, 'head'); lmb([[0.03, T - 0.2, 0.17], [0.07, T - 0.65, 0.14], [0.09, T - 1.05, 0.08]], 'head'); }
+    if (o.hair === 'short') ell(0, T - 0.46, 0.42, 0.53, 0, 'head');
+    // backpack: a little wider than the back at the bottom, rising above the shoulders, grab loop on top
+    const pw = o.pack.w, top = T - 1.12 + (o.pack.up || 0), bot = top - o.pack.h, r = 0.24;
+    poly([[-pw / 2 + r, top], [pw / 2 - r, top], [pw / 2, top - r], [pw / 2 + 0.05, bot + r], [pw / 2 - r, bot], [-pw / 2 + r, bot], [-pw / 2 - 0.05, bot + r], [-pw / 2, top - r]], 'pack');
+    lmb([[-0.13, top - 0.03, 0.065], [-0.08, top + 0.13, 0.065], [0.08, top + 0.13, 0.065], [0.13, top - 0.03, 0.065]], 'pack');
+    // front pocket seam (slightly darker) on the pack
+    poly([[-pw * 0.32, bot + o.pack.h * 0.45], [pw * 0.32, bot + o.pack.h * 0.45], [pw * 0.34, bot + 0.12], [-pw * 0.34, bot + 0.12]], 'pocket');
+    return S;
+  }
   const KIDS = [
-    { X: -1.25, Z: 8.9, h: 1.37, hr: 6.1, step: 1, skirt: true, hair: 'puffs', pack: { w: 1.38, h: 1.85, up: 0.05 }, packCol: '#3d2a2a' },
-    { X: -0.38, Z: 9.5, h: 1.2, hr: 5.7, step: -1, skirt: false, hair: 'short', pack: { w: 1.42, h: 1.9, up: 0.12 }, packCol: '#232a38' },
-    { X: 0.02, Z: 13.6, h: 1.31, hr: 6.0, step: -1, skirt: false, hair: 'short', pack: { w: 1.35, h: 1.8, up: 0.0 }, packCol: '#2d3326' },
-    { X: 0.62, Z: 14.3, h: 1.12, hr: 5.5, step: 1, skirt: true, hair: 'braids', pack: { w: 1.42, h: 1.85, up: 0.1 }, packCol: '#40302a' },
-    { X: 0.95, Z: 18.6, h: 1.28, hr: 6.0, step: 1, skirt: false, hair: 'short', pack: { w: 1.32, h: 1.75, up: 0.0 }, packCol: '#2a2a2e' },
+    { X: -1.35, Z: 8.6, h: 1.36, hr: 6.1, step: 1, skirt: true, hair: 'puffs', pack: { w: 1.42, h: 1.9, up: 0.05 }, packCol: [92, 48, 44], shirtCol: [70, 66, 70] },
+    { X: -0.55, Z: 9.3, h: 1.18, hr: 5.7, step: -1, skirt: false, hair: 'short', pack: { w: 1.46, h: 1.95, up: 0.14 }, packCol: [44, 58, 84], shirtCol: [74, 70, 72] },
+    { X: -0.05, Z: 13.2, h: 1.3, hr: 6.0, step: -1, skirt: false, hair: 'short', pack: { w: 1.38, h: 1.85, up: 0.02 }, packCol: [58, 70, 52], shirtCol: [72, 68, 70] },
+    { X: 0.45, Z: 13.9, h: 1.1, hr: 5.5, step: 1, skirt: true, hair: 'braids', pack: { w: 1.46, h: 1.9, up: 0.1 }, packCol: [104, 84, 40], shirtCol: [70, 66, 70] },
+    { X: 1.0, Z: 18.4, h: 1.27, hr: 6.0, step: 1, skirt: true, hair: 'pony', pack: { w: 1.36, h: 1.8, up: 0.0 }, packCol: [82, 52, 60], shirtCol: [72, 68, 70] },
   ];
-  setSeed(99);
-  for (const k of KIDS) k.shapes = childShapes(k);
+  for (const k of KIDS) k.shapes = kidShapes(k);
 
-  // child shadows on the ground (projected silhouettes), as a mask
+  // their shadows on the ground (projected silhouettes) as a mask
   const shM = mk(); shM.fillStyle = '#000';
   for (const k of KIDS) {
     const map = (u, v) => proj(k.X + u + v * SHL * SHX, 0, k.Z + v * SHL * SHZ);
     const sc = (u, v) => FL / (k.Z + v * SHL * SHZ);
-    drawShapes(shM, k.shapes, map, sc);
+    drawShapes(shM, k.shapes.filter(s => s.tag !== 'pocket'), map, sc);
   }
-  const shB = mk(); shB.filter = 'blur(2.2px)'; shB.drawImage(shM.canvas, 0, 0);
+  const shB = mk(); shB.filter = 'blur(2.4px)'; shB.drawImage(shM.canvas, 0, 0);
   const SHD = shB.getImageData(0, 0, W, H).data;
   await tick();
 
   // ---------- pass 2: sky and ground ----------
   const img = ctx.createImageData(W, H); const D = img.data;
-  const DIRT = hx('#b4916c'), DIRT2 = hx('#a07c5a'), GRASS1 = hx('#7d8250'), GRASS2 = hx('#9b9258'), GRASS3 = hx('#6b7448');
+  const DIRT = hx('#b08e6b'), DIRT2 = hx('#9a7859'), STRAW = hx('#a69c68'), GREEN = hx('#76804c'), GREEN2 = hx('#8a8a55'), BARE = hx('#a48668');
   const SUNC = [255, 226, 178], AMB = [118, 128, 150];
   const nl = sv[1];
   for (let y = 0; y < H; y++) {
@@ -308,38 +350,38 @@ function childShapes(o) {
       continue;
     }
     const Z = FL * HC / (y - YH); const fp = Z / FL;
-    const hzk = 1 - Math.exp(-Z / 420);
+    const hzk = 1 - Math.exp(-Z / 380);
     const px = pathX(Z);
     for (let x = 0; x < W; x++) {
       const X = (x - VX) * Z / FL;
-      // materials: path, schoolyard, grass
       const pw = 0.95 + 0.12 * NA.n2(Z / 2.2, 4.4) + 0.05 * NB.n2(Z / 0.5, X);
       const onPath = clamp((pw - Math.abs(X - px)) / Math.max(fp, 0.04) * 0.5 + 0.5);
-      const yard = clamp(sstep(16.6, 18.6, Z + 0.8 * NA.n2(X / 3, 1.7)) * sstep(-4.2, -2.8, X + 0.6 * NB.n2(Z / 2, 2.2)) * sstep(13.5, 12.0, X));
-      const bare = Math.max(onPath, yard, clamp(0.5 + 0.9 * NC.fbm(X / 3.5, Z / 5, 3) - 0.75) * 0.8);
+      const yard = clamp(sstep(16.4, 18.6, Z + 0.8 * NA.n2(X / 3, 1.7)) * sstep(-3.4, -2.0, X + 0.6 * NB.n2(Z / 2, 2.2)) * sstep(14.5, 13.0, X));
+      const worn = clamp(0.5 + 0.9 * NC.fbm(X / 3.0, Z / 4.5, 3) - 0.72) * 0.9;
+      const bare = Math.max(onPath, yard);
+      // dry season grass: straw and tired green, worn patches of earth
       const gt = clamp(0.5 + 0.9 * NB.fbm(X / 4, Z / 6, 3));
-      let g = mix(mix(GRASS1, GRASS2, gt), GRASS3, clamp(0.5 + NC.fbm(X / 1.3, Z / 1.9, 2)) * 0.45);
+      let g = mix(mix(STRAW, GREEN, gt), GREEN2, clamp(0.5 + NC.fbm(X / 1.3, Z / 1.9, 2)) * 0.5);
+      g = mix(g, BARE, worn);
       const det = clamp(0.012 / fp);
-      const blade = (NC.n2(x / 2.2, y / 9) * 0.6 + NC.n2(x / 5, y / 17) * 0.4) * det;
-      g = scl(g, 1 + 0.2 * blade);
+      const blade = (NC.n2(x / 2.0, y / 8) * 0.6 + NC.n2(x / 4.5, y / 15) * 0.4) * det;
+      g = scl(g, 1 + 0.22 * blade);
       let d = mix(DIRT, DIRT2, clamp(0.5 + 0.8 * NA.fbm(X / 1.6, Z / 2.4, 3)));
       const peb = NE.n2(X / 0.06, Z / 0.08) * clamp(0.004 / fp);
       const rut = Math.exp(-Math.pow((Math.abs(X - px) - 0.42) / 0.12, 2)) * onPath * 0.06;
       d = scl(d, 1 + 0.1 * peb + 0.06 * NB.n2(X / 0.4, Z / 0.6) * clamp(0.02 / fp) - rut);
       let a = mix(g, d, bare);
-      // lighting: sky ambient + sun (with blurred visibility and the children's shadows)
       const i = (y * W + x) * 4;
       let vis = VIS[i + 3] / 255; vis *= 1 - 0.92 * SHD[i + 3] / 255;
-      // ambient occlusion at the building foot
       let ao = 1;
       if (Z > 19 && Z < 22.2 && X > B.x0 - 0.8 && X < B.x1 + 0.8) ao = 1 - 0.35 * Math.exp(-(22 - Z) / 0.45) * sstep(B.x0 - 0.8, B.x0, X) * sstep(B.x1 + 0.8, B.x1, X);
       const sunK = 3.3 * nl * vis;
       let r = a[0] * (AMB[0] / 255 * 0.62 * ao + sunK * SUNC[0] / 255);
       let gg = a[1] * (AMB[1] / 255 * 0.62 * ao + sunK * SUNC[1] / 255);
       let b = a[2] * (AMB[2] / 255 * 0.62 * ao + sunK * SUNC[2] / 255);
-      // grass blades catch the backlight
-      const tipk = (1 - bare) * clamp(blade * 2) * vis * 0.5;
-      r += 60 * tipk; gg += 52 * tipk; b += 20 * tipk;
+      // backlit grass blades glow at their tips
+      const tipk = (1 - bare) * clamp(blade * 2.2) * vis * 0.6;
+      r += 70 * tipk; gg += 60 * tipk; b += 24 * tipk;
       const hc = hz[x];
       r += (hc[0] - r) * hzk; gg += (hc[1] - gg) * hzk; b += (hc[2] - b) * hzk;
       D[i] = r; D[i + 1] = gg; D[i + 2] = b; D[i + 3] = 255;
@@ -349,201 +391,211 @@ function childShapes(o) {
   ctx.putImageData(img, 0, 0);
   await tick();
 
-  // ---------- distant treeline and low hills (hazy, behind the school) ----------
+  // ---------- distant hills and treeline (painted from leaf dabs, hazy) ----------
+  function paintTree(c, x, yb, hp, Z, seed, shape = 0) {
+    const r = mulberry32(seed); const rr = (a, b) => a + (b - a) * r();
+    const hk = 0.45 + 0.5 * (1 - Math.exp(-Z / 380)), hzc = hz[clamp(Math.round(x), 0, W)];
+    const back = clamp(1 - Math.abs(x - SUNP.x) / 900);
+    const lit = mix(mix('#8d9150', '#c8c27a', back * 0.5), hzc, hk), mid = mix('#58633c', hzc, hk), dark = mix('#323b28', hzc, hk);
+    const th = shape === 2 ? 0 : hp * 0.35, tw = Math.max(1, hp * 0.035);
+    if (th > 0) { c.strokeStyle = rgba(mix('#3a332b', hzc, hk)); c.lineWidth = tw; c.beginPath(); c.moveTo(x, yb); c.lineTo(x, yb - th); c.stroke(); }
+    const lobes = []; const nl = 3 + Math.floor(r() * 4);
+    const cw = hp * (shape === 2 ? 0.7 : shape ? 0.36 : 0.5), cyc = shape === 2 ? yb - hp * 0.45 : yb - th - hp * 0.28;
+    for (let k = 0; k < nl; k++) lobes.push([x + rr(-0.8, 0.8) * cw * 0.7, cyc + rr(-0.6, 0.5) * hp * 0.2, rr(0.45, 0.75) * cw]);
+    const nd = clamp(Math.round(hp * hp * 0.12), 16, 2200);
+    for (let k = 0; k < nd; k++) {
+      const L = lobes[Math.floor(r() * lobes.length)]; const a = r() * Math.PI * 2, d = Math.sqrt(r()) * L[2];
+      const px = L[0] + Math.cos(a) * d, py = L[1] + Math.sin(a) * d * 0.72;
+      const edge = d / L[2];
+      // backlit: rims toward the sun glow, the rest stays dark
+      const rim = clamp((edge - 0.75) * 4) * clamp(0.5 + (SUNP.x < px ? -0.5 : 0.5) * 0.8 - (py - cyc) / (hp * 0.6));
+      const col = mix(mix(dark, mid, r() * 0.6), lit, rim * 0.8);
+      c.fillStyle = rgba(col, 0.92); const rad = Math.max(0.7, hp * rr(0.016, 0.034));
+      c.beginPath(); c.ellipse(px, py, rad * 1.3, rad, r() * 3, 0, Math.PI * 2); c.fill();
+    }
+  }
   setSeed(5);
   {
     const far = mk();
-    // hills
     far.beginPath(); far.moveTo(0, YH + 2);
-    for (let x = 0; x <= W; x += 6) { const t = x / W; far.lineTo(x, YH - 34 - 46 * NA.fbm(t * 2.3, 0.5, 4) - 30 * sstep(0.55, 1.0, t)); }
-    far.lineTo(W, YH + 2); far.closePath(); far.fillStyle = 'rgba(160,166,160,1)'; far.fill();
-    // treeline
-    for (let i = 0; i < 520; i++) {
-      const Z = rnd(140, 420); const X = rnd(-0.75, 0.75) * Z;
-      const [x, yb] = proj(X, 0, Z); const hp = FL * rnd(6, 13) / Z;
-      const hk = 1 - Math.exp(-Z / 420);
-      const col = mix(mix('#4f5a44', '#7b8270', R() * 0.5), hz[clamp(Math.round(x), 0, W)], 0.55 + hk * 0.3);
-      far.fillStyle = rgba(col);
-      far.beginPath();
-      const n = 4 + Math.floor(R() * 4);
-      for (let k = 0; k < n; k++) { const bx = x + rnd(-0.5, 0.5) * hp * 0.7, by = yb - hp * rnd(0.35, 0.8); const rr = hp * rnd(0.22, 0.38); far.moveTo(bx + rr, by); far.arc(bx, by, rr, 0, Math.PI * 2); }
-      far.rect(x - hp * 0.5, yb - hp * 0.4, hp, hp * 0.4 + 1);
-      far.fill();
-    }
-    ctx.save(); ctx.filter = 'blur(1.2px)'; ctx.drawImage(far.canvas, 0, 0); ctx.restore();
+    for (let x = 0; x <= W; x += 6) { const t = x / W; far.lineTo(x, YH - 30 - 40 * NA.fbm(t * 2.3, 0.5, 4) - 26 * sstep(0.55, 1.0, t)); }
+    far.lineTo(W, YH + 2); far.closePath(); far.fillStyle = rgba(mix('#9aa29a', hz[1200], 0.35)); far.fill();
+    for (let X = -260; X < 330; X += rnd(4, 11)) { const Z = rnd(160, 380); const [x, yb] = proj(X, 0, Z); if (x < -60 || x > W + 60) continue; if (R() < 0.2) continue; paintTree(far, x, yb, rnd(6, 14) * FL / Z, Z, Math.floor(R() * 1e9), R() < 0.3 ? 1 : 0); }
+    for (let X = -120; X < 160; X += rnd(3, 8)) { const Z = rnd(60, 120); const [x, yb] = proj(X, 0, Z); if (x < -60 || x > W + 60) continue; if (R() < 0.55) continue; paintTree(far, x, yb, rnd(1.0, 2.2) * FL / Z, Z, Math.floor(R() * 1e9), 2); }
+    ctx.save(); ctx.filter = 'blur(0.9px)'; ctx.drawImage(far.canvas, 0, 0); ctx.restore();
   }
   await tick();
 
   // ---------- the school ----------
   const P = (X, Y, Z) => proj(X, Y, Z);
   const poly = (c, pts, fill) => { c.beginPath(); pts.forEach((p, i) => { const q = P(...p); i ? c.lineTo(q[0], q[1]) : c.moveTo(q[0], q[1]); }); c.closePath(); c.fillStyle = fill; c.fill(); };
-  const SHADE = [0.66, 0.68, 0.76]; // facade in open shade: sky + warm bounce from the sunlit yard
+  const SHADE = [0.66, 0.68, 0.76];
   const shade = (col, k = 1) => { col = hx(col); return [col[0] * SHADE[0] * k + 10, col[1] * SHADE[1] * k + 8, col[2] * SHADE[2] * k + 6]; };
-  const bld = mk();
+  const bld = mk(); setSeed(404);
   {
     const Zf = B.z0;
-    // plinth
     poly(bld, [[B.x0 - 0.05, 0, Zf - 0.02], [B.x1 + 0.05, 0, Zf - 0.02], [B.x1 + 0.05, 0.28, Zf - 0.02], [B.x0 - 0.05, 0.28, Zf - 0.02]], rgba(shade('#8d7a68')));
-    // painted lower band and upper wall
-    poly(bld, [[B.x0, 0.28, Zf], [B.x1, 0.28, Zf], [B.x1, 1.05, Zf], [B.x0, 1.05, Zf]], rgba(shade('#5e958f')));
-    poly(bld, [[B.x0, 1.05, Zf], [B.x1, 1.05, Zf], [B.x1, 1.12, Zf], [B.x0, 1.12, Zf]], rgba(shade('#3f6d73')));
-    poly(bld, [[B.x0, 1.12, Zf], [B.x1, 1.12, Zf], [B.x1, B.wh, Zf], [B.x0, B.wh, Zf]], rgba(shade('#ead9b6')));
-    // wall texture: soft plaster mottling and red dust splashed up from the yard
+    poly(bld, [[B.x0, 0.28, Zf], [B.x1, 0.28, Zf], [B.x1, 1.05, Zf], [B.x0, 1.05, Zf]], rgba(shade('#6b968f')));
+    poly(bld, [[B.x0, 1.05, Zf], [B.x1, 1.05, Zf], [B.x1, 1.12, Zf], [B.x0, 1.12, Zf]], rgba(shade('#476f72')));
+    poly(bld, [[B.x0, 1.12, Zf], [B.x1, 1.12, Zf], [B.x1, B.wh, Zf], [B.x0, B.wh, Zf]], rgba(shade('#e6d6b6')));
     const [fx0, fy0] = P(B.x0, B.wh, Zf), [fx1, fy1] = P(B.x1, 0, Zf);
     bld.save(); bld.beginPath(); bld.rect(fx0, fy0, fx1 - fx0, fy1 - fy0); bld.clip();
-    for (let i = 0; i < 260; i++) { const x = rnd(fx0, fx1), y = rnd(fy0, fy1); const r = rnd(6, 30); bld.fillStyle = `rgba(${R() < 0.5 ? '255,250,235' : '90,80,70'},${rnd(0.02, 0.05)})`; bld.beginPath(); bld.ellipse(x, y, r * 1.6, r, 0, 0, Math.PI * 2); bld.fill(); }
+    for (let i = 0; i < 420; i++) { const x = rnd(fx0, fx1), y = rnd(fy0, fy1); const r = rnd(5, 26); bld.fillStyle = `rgba(${R() < 0.5 ? '255,250,235' : '90,78,66'},${rnd(0.025, 0.06)})`; bld.beginPath(); bld.ellipse(x, y, r * 1.7, r, 0, 0, Math.PI * 2); bld.fill(); }
+    // rain streaks under the eave, red dust splashed up from the yard
+    for (let i = 0; i < 40; i++) { const x = rnd(fx0, fx1); const g = bld.createLinearGradient(0, fy0, 0, fy0 + rnd(30, 90)); g.addColorStop(0, 'rgba(90,80,70,0.14)'); g.addColorStop(1, 'rgba(90,80,70,0)'); bld.fillStyle = g; bld.fillRect(x, fy0, rnd(2, 6), 90); }
     const dg = bld.createLinearGradient(0, fy1, 0, fy1 - 60); dg.addColorStop(0, 'rgba(150,95,60,0.35)'); dg.addColorStop(1, 'rgba(150,95,60,0)'); bld.fillStyle = dg; bld.fillRect(fx0, fy1 - 60, fx1 - fx0, 60);
     bld.restore();
-    // windows: open blue shutters, dark interior with a hint of the far window light
-    const winX = [3.1, 5.6, 8.1];
+    const winX = [4.2, 6.7, 9.2];
     for (const wx of winX) {
       const w0 = wx - 0.65, w1 = wx + 0.65, s0 = 1.0, s1 = 2.2;
       poly(bld, [[w0 - 0.08, s0 - 0.08, Zf - 0.01], [w1 + 0.08, s0 - 0.08, Zf - 0.01], [w1 + 0.08, s1 + 0.08, Zf - 0.01], [w0 - 0.08, s1 + 0.08, Zf - 0.01]], rgba(shade('#cfc3a8', 0.95)));
-      poly(bld, [[w0, s0, Zf - 0.015], [w1, s0, Zf - 0.015], [w1, s1, Zf - 0.015], [w0, s1, Zf - 0.015]], rgba([34, 32, 33]));
-      // light from windows on the far wall
-      poly(bld, [[w0 + 0.3, s0 + 0.15, Zf - 0.016], [w1 - 0.25, s0 + 0.15, Zf - 0.016], [w1 - 0.3, s1 - 0.25, Zf - 0.016], [w0 + 0.35, s1 - 0.25, Zf - 0.016]], rgba([70, 68, 64], 0.6));
-      // frame bars
-      bld.strokeStyle = rgba(shade('#4b7a99')); bld.lineWidth = Math.max(1, 0.06 * FL / Zf);
+      poly(bld, [[w0, s0, Zf - 0.015], [w1, s0, Zf - 0.015], [w1, s1, Zf - 0.015], [w0, s1, Zf - 0.015]], rgba([36, 34, 35]));
+      poly(bld, [[w0 + 0.3, s0 + 0.15, Zf - 0.016], [w1 - 0.25, s0 + 0.15, Zf - 0.016], [w1 - 0.3, s1 - 0.25, Zf - 0.016], [w0 + 0.35, s1 - 0.25, Zf - 0.016]], rgba([72, 70, 66], 0.55));
+      bld.strokeStyle = rgba(shade('#56808f')); bld.lineWidth = Math.max(1, 0.06 * FL / Zf);
       bld.beginPath(); { const a = P(wx, s0, Zf - 0.02), b = P(wx, s1, Zf - 0.02); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); } bld.stroke();
-      // open shutters
-      poly(bld, [[w0 - 0.62, s0 - 0.02, Zf - 0.12], [w0 - 0.04, s0 - 0.02, Zf - 0.03], [w0 - 0.04, s1 + 0.02, Zf - 0.03], [w0 - 0.62, s1 + 0.02, Zf - 0.12]], rgba(shade('#4f7f9c')));
-      poly(bld, [[w1 + 0.04, s0 - 0.02, Zf - 0.03], [w1 + 0.62, s0 - 0.02, Zf - 0.12], [w1 + 0.62, s1 + 0.02, Zf - 0.12], [w1 + 0.04, s1 + 0.02, Zf - 0.03]], rgba(shade('#4a7895')));
-      // sill shadow
+      poly(bld, [[w0 - 0.62, s0 - 0.02, Zf - 0.12], [w0 - 0.04, s0 - 0.02, Zf - 0.03], [w0 - 0.04, s1 + 0.02, Zf - 0.03], [w0 - 0.62, s1 + 0.02, Zf - 0.12]], rgba(shade('#5a8597')));
+      poly(bld, [[w1 + 0.04, s0 - 0.02, Zf - 0.03], [w1 + 0.62, s0 - 0.02, Zf - 0.12], [w1 + 0.62, s1 + 0.02, Zf - 0.12], [w1 + 0.04, s1 + 0.02, Zf - 0.03]], rgba(shade('#557f91')));
       poly(bld, [[w0 - 0.1, s0 - 0.08, Zf - 0.05], [w1 + 0.1, s0 - 0.08, Zf - 0.05], [w1 + 0.1, s0 - 0.16, Zf - 0.01], [w0 - 0.1, s0 - 0.16, Zf - 0.01]], rgba(shade('#9b8f7a', 0.8)));
     }
-    // door: open, painted leaf swung inward, dark classroom beyond
-    const d0 = 0.55, d1 = 1.55;
+    const d0 = 1.65, d1 = 2.65;
     poly(bld, [[d0 - 0.1, 0.28, Zf - 0.01], [d1 + 0.1, 0.28, Zf - 0.01], [d1 + 0.1, 2.25, Zf - 0.01], [d0 - 0.1, 2.25, Zf - 0.01]], rgba(shade('#cdbf9f', 0.95)));
-    poly(bld, [[d0, 0.28, Zf - 0.015], [d1, 0.28, Zf - 0.015], [d1, 2.15, Zf - 0.015], [d0, 2.15, Zf - 0.015]], rgba([30, 28, 29]));
-    poly(bld, [[d0, 0.28, Zf - 0.016], [d0 + 0.22, 0.32, Zf + 0.8], [d0 + 0.22, 2.1, Zf + 0.8], [d0, 2.15, Zf - 0.016]], rgba(shade('#3e7387', 0.85)));
-    // step
+    poly(bld, [[d0, 0.28, Zf - 0.015], [d1, 0.28, Zf - 0.015], [d1, 2.15, Zf - 0.015], [d0, 2.15, Zf - 0.015]], rgba([32, 30, 31]));
+    poly(bld, [[d0, 0.28, Zf - 0.016], [d0 + 0.22, 0.32, Zf + 0.8], [d0 + 0.22, 2.1, Zf + 0.8], [d0, 2.15, Zf - 0.016]], rgba(shade('#4c7b88', 0.85)));
     poly(bld, [[d0 - 0.25, 0, Zf - 0.55], [d1 + 0.25, 0, Zf - 0.55], [d1 + 0.25, 0.2, Zf - 0.55], [d0 - 0.25, 0.2, Zf - 0.55]], rgba(shade('#9a8a76')));
-    poly(bld, [[d0 - 0.25, 0.2, Zf - 0.55], [d1 + 0.25, 0.2, Zf - 0.55], [d1 + 0.25, 0.2, Zf], [d0 - 0.25, 0.2, Zf]], rgba(mix(shade('#b4a690'), [255, 230, 190], 0.15)));
-    // eave shadow band on the wall top
-    const eg = (() => { const a = P(0, B.wh, Zf), b = P(0, B.wh - 0.55, Zf); const g = bld.createLinearGradient(0, a[1], 0, b[1]); g.addColorStop(0, 'rgba(40,36,40,0.45)'); g.addColorStop(1, 'rgba(40,36,40,0)'); return g; })();
-    { const a = P(B.x0, B.wh, Zf), b = P(B.x1, B.wh - 0.55, Zf); bld.fillStyle = eg; bld.fillRect(a[0], a[1], b[0] - a[0], b[1] - a[1]); }
-    // roof: front slope of corrugated sheet, reflecting the bright morning sky
+    poly(bld, [[d0 - 0.25, 0.2, Zf - 0.55], [d1 + 0.25, 0.2, Zf - 0.55], [d1 + 0.25, 0.2, Zf], [d0 - 0.25, 0.2, Zf]], rgba(mix(shade('#b4a690'), [255, 230, 190], 0.18)));
+    { const a = P(B.x0, B.wh, Zf), b = P(B.x1, B.wh - 0.55, Zf); const g = bld.createLinearGradient(0, a[1], 0, b[1]); g.addColorStop(0, 'rgba(40,36,40,0.45)'); g.addColorStop(1, 'rgba(40,36,40,0)'); bld.fillStyle = g; bld.fillRect(a[0], a[1], b[0] - a[0], b[1] - a[1]); }
     const r0 = [B.rx0, B.eave, B.rz0], r1 = [B.rx1, B.eave, B.rz0], r2 = [B.rx1, B.ridge, B.rzc], r3 = [B.rx0, B.ridge, B.rzc];
     const rq = [r0, r1, r2, r3].map(p => P(...p));
     bld.save(); bld.beginPath(); rq.forEach((q, i) => i ? bld.lineTo(q[0], q[1]) : bld.moveTo(q[0], q[1])); bld.closePath(); bld.clip();
     const rg = bld.createLinearGradient(0, rq[2][1], 0, rq[0][1]);
-    rg.addColorStop(0, '#d9d6cc'); rg.addColorStop(0.55, '#b9b7b0'); rg.addColorStop(1, '#8f8e8b');
+    rg.addColorStop(0, '#dcd8cc'); rg.addColorStop(0.55, '#bcb9b0'); rg.addColorStop(1, '#8f8d88');
     bld.fillStyle = rg; bld.fillRect(rq[0][0] - 10, rq[2][1] - 10, rq[1][0] - rq[0][0] + 20, rq[0][1] - rq[2][1] + 20);
-    // brighter toward the sun side (left)
-    const sg = bld.createLinearGradient(rq[0][0], 0, rq[1][0], 0); sg.addColorStop(0, 'rgba(255,240,210,0.35)'); sg.addColorStop(0.5, 'rgba(255,240,210,0.08)'); sg.addColorStop(1, 'rgba(255,240,210,0)');
+    const sg = bld.createLinearGradient(rq[0][0], 0, rq[1][0], 0); sg.addColorStop(0, 'rgba(255,240,210,0.4)'); sg.addColorStop(0.45, 'rgba(255,240,210,0.08)'); sg.addColorStop(1, 'rgba(255,240,210,0)');
     bld.fillStyle = sg; bld.fillRect(rq[0][0] - 10, rq[2][1] - 10, rq[1][0] - rq[0][0] + 20, rq[0][1] - rq[2][1] + 20);
-    // corrugations converge toward the vanishing point
     const nC = 150;
-    for (let i = 0; i <= nC; i++) {
-      const X = lerp(B.rx0, B.rx1, i / nC);
-      const a = P(X, B.eave, B.rz0), b = P(X, B.ridge, B.rzc);
-      bld.strokeStyle = i % 2 ? 'rgba(70,70,74,0.22)' : 'rgba(255,252,240,0.18)'; bld.lineWidth = 1.2;
-      bld.beginPath(); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); bld.stroke();
-    }
-    // sheet overlaps and a few rust streaks
-    for (let i = 0; i < 9; i++) { const X = lerp(B.rx0, B.rx1, (i + 0.5) / 9) + rnd(-0.2, 0.2); const a = P(X, B.eave, B.rz0), b = P(X + 0.25, lerp(B.eave, B.ridge, 0.7), lerp(B.rz0, B.rzc, 0.7)); const g = bld.createLinearGradient(a[0], a[1], b[0], b[1]); g.addColorStop(0, 'rgba(120,70,40,0.25)'); g.addColorStop(1, 'rgba(120,70,40,0)'); bld.strokeStyle = g; bld.lineWidth = rnd(4, 9); bld.beginPath(); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); bld.stroke(); }
+    for (let i = 0; i <= nC; i++) { const X = lerp(B.rx0, B.rx1, i / nC); const a = P(X, B.eave, B.rz0), b = P(X, B.ridge, B.rzc); bld.strokeStyle = i % 2 ? 'rgba(70,70,74,0.22)' : 'rgba(255,252,240,0.18)'; bld.lineWidth = 1.2; bld.beginPath(); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); bld.stroke(); }
+    for (let i = 0; i < 10; i++) { const X = lerp(B.rx0, B.rx1, (i + 0.5) / 10) + rnd(-0.2, 0.2); const a = P(X, B.eave, B.rz0), b = P(X + 0.25, lerp(B.eave, B.ridge, 0.7), lerp(B.rz0, B.rzc, 0.7)); const g = bld.createLinearGradient(a[0], a[1], b[0], b[1]); g.addColorStop(0, 'rgba(120,70,40,0.28)'); g.addColorStop(1, 'rgba(120,70,40,0)'); bld.strokeStyle = g; bld.lineWidth = rnd(4, 9); bld.beginPath(); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); bld.stroke(); }
     bld.restore();
-    // ridge cap catching the sun, fascia board
-    { const a = P(B.rx0, B.ridge, B.rzc), b = P(B.rx1, B.ridge, B.rzc); bld.strokeStyle = 'rgba(255,238,200,0.9)'; bld.lineWidth = 2.2; bld.beginPath(); bld.moveTo(a[0], a[1] - 0.5); bld.lineTo(b[0], b[1] - 0.5); bld.stroke(); }
+    { const a = P(B.rx0, B.ridge, B.rzc), b = P(B.rx1, B.ridge, B.rzc); const g = bld.createLinearGradient(a[0], 0, b[0], 0); g.addColorStop(0, 'rgba(255,238,200,0.95)'); g.addColorStop(1, 'rgba(255,238,200,0.5)'); bld.strokeStyle = g; bld.lineWidth = 2.2; bld.beginPath(); bld.moveTo(a[0], a[1] - 0.5); bld.lineTo(b[0], b[1] - 0.5); bld.stroke(); }
     poly(bld, [[B.rx0, B.eave, B.rz0], [B.rx1, B.eave, B.rz0], [B.rx1, B.eave - 0.2, B.rz0], [B.rx0, B.eave - 0.2, B.rz0]], rgba(shade('#6a5a4d')));
-    // barge edges
     for (const X of [B.rx0, B.rx1]) { const a = P(X, B.eave - 0.2, B.rz0), b = P(X, B.ridge, B.rzc); bld.strokeStyle = rgba(shade('#5f5246')); bld.lineWidth = 3; bld.beginPath(); bld.moveTo(a[0], a[1]); bld.lineTo(b[0], b[1]); bld.stroke(); }
-    // sunlit left edge of the building (light grazing the corner)
-    { const a = P(B.x0, 0.28, Zf), b = P(B.x0, B.wh - 0.1, Zf); const g = bld.createLinearGradient(a[0], 0, a[0] + 26, 0); g.addColorStop(0, 'rgba(255,226,170,0.5)'); g.addColorStop(1, 'rgba(255,226,170,0)'); bld.fillStyle = g; bld.fillRect(a[0], b[1], 26, a[1] - b[1]); }
-    // a small rain tank on a stand at the right end
+    { const a = P(B.x0, 0.28, Zf), b = P(B.x0, B.wh - 0.1, Zf); const g = bld.createLinearGradient(a[0], 0, a[0] + 26, 0); g.addColorStop(0, 'rgba(255,226,170,0.55)'); g.addColorStop(1, 'rgba(255,226,170,0)'); bld.fillStyle = g; bld.fillRect(a[0], b[1], 26, a[1] - b[1]); }
     const tx = B.x1 - 0.9, tz = Zf - 1.1;
     poly(bld, [[tx - 0.55, 0, tz], [tx + 0.55, 0, tz], [tx + 0.55, 0.5, tz], [tx - 0.55, 0.5, tz]], rgba(shade('#7d6f62')));
     { const a = P(tx - 0.6, 0.5, tz), b = P(tx + 0.6, 1.95, tz); const g = bld.createLinearGradient(a[0], 0, b[0], 0); g.addColorStop(0, rgba(shade('#3b4a52', 1.3))); g.addColorStop(0.4, rgba(shade('#26323a'))); g.addColorStop(1, rgba(shade('#1e272d'))); bld.fillStyle = g; bld.beginPath(); bld.roundRect(a[0], b[1], b[0] - a[0], a[1] - b[1], 6); bld.fill(); }
   }
+  // the school sits in morning haze: a light veil toward the sun side
   ctx.drawImage(bld.canvas, 0, 0);
+  {
+    const g = ctx.createLinearGradient(1150, 0, 2300, 0); g.addColorStop(0, 'rgba(236,226,206,0.16)'); g.addColorStop(1, 'rgba(236,226,206,0.04)');
+    ctx.save(); ctx.globalCompositeOperation = 'source-atop'; ctx.restore();
+    const L = mk(); L.drawImage(bld.canvas, 0, 0); L.globalCompositeOperation = 'source-in'; L.fillStyle = g; L.fillRect(0, 0, W, H); ctx.drawImage(L.canvas, 0, 0);
+  }
   await tick();
 
-  // ---------- the tree (backlit) ----------
-  setSeed(808);
-  const tr = mk();
+  // ---------- the big tree: trunk, limbs and a crown painted from leaf clusters, backlit ----------
+  const tr = mk(); setSeed(808);
   {
-    // trunk and limbs
     const tcol = '#2b2622';
-    tr.fillStyle = tcol; tr.strokeStyle = tcol; tr.lineCap = 'round';
-    const T0 = proj(TREE.x, 0, TREE.z), T1 = proj(TREE.x + 0.3, TREE.th, TREE.z);
-    const tw = FL * 0.9 / TREE.z;
-    tr.beginPath(); tr.moveTo(T0[0] - tw * 0.75, T0[1] + 4); tr.quadraticCurveTo(T0[0] - tw * 0.45, T0[1] - 40, T1[0] - tw * 0.32, T1[1]); tr.lineTo(T1[0] + tw * 0.32, T1[1]); tr.quadraticCurveTo(T0[0] + tw * 0.5, T0[1] - 40, T0[0] + tw * 0.8, T0[1] + 4); tr.closePath(); tr.fill();
-    const limbs = [[[0.3, 4.6], [-2.8, 7.8], [-5.5, 9.2]], [[0.3, 4.6], [2.2, 7.2], [4.6, 8.4]], [[0.2, 4.4], [-0.6, 8.2], [-0.2, 10.6]], [[0.3, 4.8], [3.6, 6.2], [5.8, 6.6]], [[0.2, 4.5], [-3.6, 6.0], [-6.2, 6.4]]];
+    const T0p = proj(TREE.x, 0, TREE.z), T1p = proj(TREE.x + 0.3, TREE.th, TREE.z);
+    const tw = FL * 0.95 / TREE.z;
+    tr.fillStyle = tcol;
+    tr.beginPath(); tr.moveTo(T0p[0] - tw * 0.85, T0p[1] + 4); tr.quadraticCurveTo(T0p[0] - tw * 0.45, T0p[1] - 40, T1p[0] - tw * 0.32, T1p[1]); tr.lineTo(T1p[0] + tw * 0.32, T1p[1]); tr.quadraticCurveTo(T0p[0] + tw * 0.5, T0p[1] - 40, T0p[0] + tw * 0.9, T0p[1] + 4); tr.closePath(); tr.fill();
+    tr.strokeStyle = tcol; tr.lineCap = 'round';
+    const limbs = [[[0.3, 4.6], [-2.8, 7.8], [-5.5, 9.4]], [[0.3, 4.6], [2.4, 7.0], [5.2, 8.3]], [[0.2, 4.4], [-0.6, 8.2], [-0.2, 10.8]], [[0.3, 4.8], [3.8, 6.0], [6.2, 6.4]], [[0.2, 4.5], [-3.6, 6.0], [-6.2, 6.6]], [[0.3, 4.6], [1.4, 8.6], [2.6, 10.2]]];
     for (const L of limbs) {
       const pts = L.map(([dx, y]) => proj(TREE.x + dx, y, TREE.z));
-      tr.lineWidth = tw * 0.42; tr.beginPath(); tr.moveTo(pts[0][0], pts[0][1]); tr.quadraticCurveTo(pts[1][0], pts[1][1], pts[2][0], pts[2][1]); tr.lineWidth = tw * 0.3; tr.stroke();
+      const n = 24;
+      for (let k = 0; k < n; k++) {
+        const t = k / n, t2 = (k + 1) / n; const q = s => [(1 - s) * (1 - s) * pts[0][0] + 2 * (1 - s) * s * pts[1][0] + s * s * pts[2][0], (1 - s) * (1 - s) * pts[0][1] + 2 * (1 - s) * s * pts[1][1] + s * s * pts[2][1]];
+        const a = q(t), b = q(t2); tr.lineWidth = lerp(tw * 0.38, tw * 0.07, t); tr.beginPath(); tr.moveTo(a[0], a[1]); tr.lineTo(b[0], b[1]); tr.stroke();
+      }
     }
-    // canopy: many leaf clumps inside a flattened dome
-    const clumps = [];
-    for (let i = 0; i < 2600; i++) {
-      let ux, uy, uz; do { ux = rnd(-1, 1); uy = rnd(-1, 1); uz = rnd(-1, 1); } while (ux * ux + uy * uy + uz * uz > 1);
-      const surf = Math.sqrt(ux * ux + uy * uy + uz * uz);
-      if (surf < 0.55 && R() < 0.7) continue;
-      const X = TREE.cx + ux * TREE.ax, Y = TREE.cy + uy * TREE.ay * (uy < 0 ? 0.75 : 1), Z = TREE.cz + uz * TREE.az;
-      const n = NA.n2(X / 2.2, Y / 2.0);
-      if (n < -0.32 && surf > 0.7) continue; // gaps where the sky shows through
-      clumps.push({ X, Y, Z, r: rnd(0.45, 0.95) * (1.1 - 0.3 * surf) });
-    }
-    clumps.sort((a, b) => b.Z - a.Z);
-    for (const c of clumps) {
-      const [x, y] = proj(c.X, c.Y, c.Z); const rp = c.r * FL / c.Z;
-      tr.fillStyle = rgba(mix('#2a3123', '#3a4230', R()));
+    // crown: leaf clusters in irregular lobes; sparse at the edge so the sun breaks through
+    const cc = proj(TREE.cx, TREE.cy, TREE.cz); const crx = FL * TREE.ax / TREE.cz, cry = FL * TREE.ay / TREE.cz;
+    const lobes = [];
+    for (let k = 0; k < 11; k++) { const a = k / 11 * Math.PI * 2 + rnd(-0.2, 0.2); lobes.push([cc[0] + Math.cos(a) * crx * rnd(0.45, 0.62), cc[1] + Math.sin(a) * cry * rnd(0.4, 0.6) - cry * 0.05, crx * rnd(0.36, 0.5), cry * rnd(0.42, 0.6)]); }
+    lobes.push([cc[0], cc[1], crx * 0.6, cry * 0.62]);
+    const inLobe = (x, y) => { let best = 0; for (const L of lobes) { const q = Math.pow((x - L[0]) / L[2], 2) + Math.pow((y - L[1]) / L[3], 2); best = Math.max(best, 1 - q); } return best; };
+    for (let i = 0; i < 52000; i++) {
+      const x = cc[0] + rnd(-1.15, 1.15) * crx, y = cc[1] + rnd(-1.15, 1.15) * cry;
+      const inn = inLobe(x, y); if (inn <= 0) continue;
+      const hole = NB.fbm(x / 60, y / 55, 3) + 0.4 * NC.n2(x / 16, y / 16);
+      if (hole > 0.15 + inn * 1.1) continue;
+      if (R() > 0.25 + inn * 2) continue;
+      const s = rnd(4, 10);
+      const ds = Math.hypot(x - SUNP.x, y - SUNP.y);
+      const glow = Math.exp(-ds / 260) * clamp(1 - inn * 1.6);
+      const edge = clamp(1 - inn * 3);
+      const base = mix(mix([34, 41, 29], [52, 58, 37], R()), [172, 168, 92], clamp(glow * 0.9 + edge * 0.25 * R()));
+      tr.fillStyle = rgba(base);
       tr.beginPath();
-      const k = 5 + Math.floor(R() * 4);
-      for (let j = 0; j < k; j++) { const a = rnd(0, Math.PI * 2), d = rnd(0, 0.65) * rp; const rr = rp * rnd(0.32, 0.55); tr.moveTo(x + Math.cos(a) * d + rr, y + Math.sin(a) * d); tr.arc(x + Math.cos(a) * d, y + Math.sin(a) * d * 0.8, rr, 0, Math.PI * 2); }
+      const k = 3 + Math.floor(R() * 4);
+      for (let j = 0; j < k; j++) { const a = rnd(0, Math.PI * 2), dd = rnd(0, 1) * s; const rx = s * rnd(0.32, 0.55), ry = rx * rnd(0.45, 0.7); const px = x + Math.cos(a) * dd, py = y + Math.sin(a) * dd * 0.7; tr.moveTo(px + rx, py); tr.ellipse(px, py, rx, ry, rnd(0, Math.PI), 0, Math.PI * 2); }
       tr.fill();
     }
-    // fine leaf fringe on the outer edge
-    for (let i = 0; i < 4200; i++) {
-      const a = rnd(0, Math.PI * 2); const ex = Math.cos(a), ey = Math.sin(a);
-      if (ey > 0.55) continue;
-      const X = TREE.cx + ex * TREE.ax * rnd(0.86, 1.04), Y = TREE.cy - ey * TREE.ay * rnd(0.86, 1.06), Z = TREE.cz + rnd(-0.5, 0.5) * TREE.az;
-      const [x, y] = proj(X, Y, Z); const rp = rnd(0.07, 0.16) * FL / Z;
-      tr.fillStyle = rgba(mix('#2a3123', '#3a4230', R()));
-      tr.beginPath(); tr.ellipse(x, y, rp * 1.3, rp, rnd(0, 3), 0, Math.PI * 2); tr.fill();
-    }
   }
-  // translucent glow in the leaves nearest the sun; rim light on sun-facing edges
+  // rim light on the sun-facing leaf edges
   {
-    const g = tr.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 520);
-    g.addColorStop(0, 'rgba(196,190,110,0.85)'); g.addColorStop(0.35, 'rgba(120,128,70,0.45)'); g.addColorStop(1, 'rgba(90,100,60,0)');
-    tr.save(); tr.globalCompositeOperation = 'source-atop'; tr.fillStyle = g; tr.fillRect(0, 0, W, H); tr.restore();
     const rim = mk(); rim.drawImage(tr.canvas, 0, 0);
     rim.globalCompositeOperation = 'destination-out';
-    for (const [ox, oy] of [[3, 2], [5, 3]]) rim.drawImage(tr.canvas, ox, oy);
-    rim.globalCompositeOperation = 'source-in'; rim.fillStyle = 'rgba(232,214,150,0.9)'; rim.fillRect(0, 0, W, H);
-    tr.save(); tr.globalCompositeOperation = 'source-atop'; tr.globalAlpha = 0.55; tr.filter = 'blur(1px)'; tr.drawImage(rim.canvas, 0, 0); tr.restore();
+    const dx = 1200 - SUNP.x, dy = 600 - SUNP.y, dl = Math.hypot(dx, dy);
+    rim.drawImage(tr.canvas, dx / dl * 2.5, dy / dl * 2.5);
+    rim.globalCompositeOperation = 'source-in'; rim.fillStyle = 'rgba(236,220,160,1)'; rim.fillRect(0, 0, W, H);
+    const mask = mk(); const g = mask.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 700); g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0.15)'); mask.fillStyle = g; mask.fillRect(0, 0, W, H);
+    rim.globalCompositeOperation = 'destination-in'; rim.drawImage(mask.canvas, 0, 0);
+    tr.save(); tr.globalCompositeOperation = 'source-atop'; tr.globalAlpha = 0.6; tr.drawImage(rim.canvas, 0, 0); tr.restore();
   }
-  ctx.save(); ctx.filter = 'blur(0.8px)'; ctx.drawImage(tr.canvas, 0, 0); ctx.restore();
+  ctx.save(); ctx.filter = 'blur(0.7px)'; ctx.drawImage(tr.canvas, 0, 0); ctx.restore();
   await tick();
 
-  // ---------- children (silhouettes with rim light from the low sun) ----------
+  // ---------- foreground grass tufts, backlit ----------
+  {
+    const G = mk(); setSeed(2222);
+    for (let i = 0; i < 2400; i++) {
+      const Z = Math.exp(rnd(Math.log(2.6), Math.log(9))); const X = rnd(-0.7, 0.7) * Z * 1.25;
+      if (Math.abs(X - pathX(Z)) < 1.25) continue;
+      const [x, yb] = proj(X, 0, Z); if (yb > H + 40) continue;
+      const h = rnd(0.08, 0.32) * FL / Z; const lean = rnd(-0.3, 0.3);
+      const vis = sunVis(X, 0.15, Z);
+      const col = mix([58, 60, 38], [214, 200, 130], vis * rnd(0.3, 0.8));
+      G.strokeStyle = rgba(col, 0.75); G.lineWidth = rnd(1, 2.4) * clamp(8 / Z, 0.7, 2.2);
+      G.beginPath(); G.moveTo(x, yb); G.quadraticCurveTo(x + lean * h * 0.3, yb - h * 0.6, x + lean * h, yb - h); G.stroke();
+    }
+    ctx.save(); ctx.filter = 'blur(0.8px)'; ctx.drawImage(G.canvas, 0, 0); ctx.restore();
+  }
+  await tick();
+
+  // ---------- children: dark backlit silhouettes, coloured packs, warm rim light ----------
   const kidsL = mk();
   for (const k of [...KIDS].sort((a, b) => b.Z - a.Z)) {
     const one = mk();
     const map = (u, v) => proj(k.X + u, v, k.Z), sc = () => FL / k.Z;
-    one.fillStyle = '#2a2420';
-    drawShapes(one, k.shapes.filter(s => !s.pack), map, sc);
-    one.fillStyle = k.packCol;
-    drawShapes(one, k.shapes.filter(s => s.pack), map, sc);
-    // rim light: the part of the silhouette within a few px of the sun-facing edge
+    const dark = [34, 29, 27];
+    for (const s of k.shapes) {
+      let col = dark;
+      if (s.tag === 'shirt') col = mix(dark, k.shirtCol, 0.55);
+      if (s.tag === 'cloth') col = mix(dark, [48, 44, 52], 0.5);
+      if (s.tag === 'pack') col = mix(dark, k.packCol, 0.8);
+      if (s.tag === 'pocket') col = mix(dark, k.packCol, 0.6);
+      one.fillStyle = rgba(col); drawShapes(one, [s], map, sc);
+    }
     const rim = mk(); rim.drawImage(one.canvas, 0, 0);
-    const rw = Math.max(1.6, 0.022 * FL / k.Z);
-    const dir = [SUNP.x - proj(k.X, k.h * 0.6, k.Z)[0], SUNP.y - proj(k.X, k.h * 0.6, k.Z)[1]]; const dl = Math.hypot(...dir);
+    const rw = Math.max(2, 0.026 * FL / k.Z);
+    const c0 = proj(k.X, k.h * 0.6, k.Z); const dir = [SUNP.x - c0[0], SUNP.y - c0[1]]; const dl = Math.hypot(...dir);
     rim.globalCompositeOperation = 'destination-out'; rim.drawImage(one.canvas, -dir[0] / dl * rw, -dir[1] / dl * rw);
-    rim.globalCompositeOperation = 'source-in'; rim.fillStyle = 'rgba(255,214,150,1)'; rim.fillRect(0, 0, W, H);
-    one.save(); one.globalCompositeOperation = 'source-atop'; one.globalAlpha = 0.75; one.filter = 'blur(0.8px)'; one.drawImage(rim.canvas, 0, 0); one.restore();
+    rim.globalCompositeOperation = 'source-in'; rim.fillStyle = 'rgba(255,212,150,1)'; rim.fillRect(0, 0, W, H);
+    one.save(); one.globalCompositeOperation = 'source-atop'; one.globalAlpha = 0.85; one.filter = 'blur(0.7px)'; one.drawImage(rim.canvas, 0, 0); one.restore();
     kidsL.drawImage(one.canvas, 0, 0);
   }
-  ctx.save(); ctx.filter = 'blur(0.6px)'; ctx.drawImage(kidsL.canvas, 0, 0); ctx.restore();
+  ctx.save(); ctx.filter = 'blur(0.55px)'; ctx.drawImage(kidsL.canvas, 0, 0); ctx.restore();
   await tick();
 
-  // ---------- light: sun disc veiled by leaves, shafts through the canopy, haze, bloom ----------
+  // ---------- light: sun through the leaves, shafts in the morning haze, veil, bloom ----------
   {
-    const sd = mk(); const g = sd.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 60);
-    g.addColorStop(0, 'rgba(255,252,240,1)'); g.addColorStop(0.3, 'rgba(255,248,226,0.95)'); g.addColorStop(1, 'rgba(255,240,210,0)');
+    const sd = mk(); const g = sd.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 70);
+    g.addColorStop(0, 'rgba(255,253,244,1)'); g.addColorStop(0.35, 'rgba(255,250,232,0.95)'); g.addColorStop(1, 'rgba(255,240,210,0)');
     sd.fillStyle = g; sd.fillRect(SUNP.x - 80, SUNP.y - 80, 160, 160);
-    // only where the canopy lets the sky through
     sd.globalCompositeOperation = 'destination-out'; sd.drawImage(tr.canvas, 0, 0);
     ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.drawImage(sd.canvas, 0, 0); ctx.restore();
   }
@@ -551,19 +603,19 @@ function childShapes(o) {
     const q = 4, rw4 = W / q, rh4 = H / q;
     const rays = mk(rw4, rh4); rays.drawImage(ctx.canvas, 0, 0, rw4, rh4);
     const rd = rays.getImageData(0, 0, rw4, rh4), rdd = rd.data;
-    for (let i = 0; i < rdd.length; i += 4) { const y = Math.floor(i / 4 / rw4) * q; const l = luma(rdd[i], rdd[i + 1], rdd[i + 2]); const k = clamp((l - 0.86) / 0.14) * (y < YH ? 1 : 0); rdd[i] *= k; rdd[i + 1] *= k * 0.95; rdd[i + 2] *= k * 0.82; }
+    for (let i = 0; i < rdd.length; i += 4) { const y = Math.floor(i / 4 / rw4) * q; const l = luma(rdd[i], rdd[i + 1], rdd[i + 2]); const k = clamp((l - 0.84) / 0.16) * (y < YH ? 1 : 0); rdd[i] *= k; rdd[i + 1] *= k * 0.95; rdd[i + 2] *= k * 0.8; }
     rays.putImageData(rd, 0, 0);
     const acc = mk(rw4, rh4); acc.globalCompositeOperation = 'lighter';
     const sx = SUNP.x / q, sy = SUNP.y / q;
-    for (let k = 0; k < 40; k++) { const s = 1 + k * 0.045; acc.globalAlpha = 0.05 * (1 - k / 40); acc.drawImage(rays.canvas, sx - sx * s, sy - sy * s, rw4 * s, rh4 * s); }
-    ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.globalAlpha = 0.55; ctx.filter = 'blur(2px)'; ctx.drawImage(acc.canvas, 0, 0, W, H); ctx.restore();
+    for (let k = 0; k < 48; k++) { const s = 1 + k * 0.05; acc.globalAlpha = 0.055 * (1 - k / 48); acc.drawImage(rays.canvas, sx - sx * s, sy - sy * s, rw4 * s, rh4 * s); }
+    ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.globalAlpha = 0.7; ctx.filter = 'blur(2px)'; ctx.drawImage(acc.canvas, 0, 0, W, H); ctx.restore();
   }
   const veil = ctx.createRadialGradient(SUNP.x, SUNP.y, 0, SUNP.x, SUNP.y, 0.75 * W);
   veil.addColorStop(0, 'rgba(255,236,200,0.30)'); veil.addColorStop(0.3, 'rgba(255,232,196,0.10)'); veil.addColorStop(1, 'rgba(255,230,190,0)');
   ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = veil; ctx.fillRect(0, 0, W, H); ctx.restore();
   bloom(ctx, { thr: 0.74, str: 0.5, rad: 70 });
   await tick();
-  finish(ctx, { grain: 0.028, vig: 0.2, seed: 3131, lift: 0.02, contrast: 0.05, sat: 0.9, cx: 0.45 });
+  finish(ctx, { grain: 0.028, vig: 0.2, seed: 3131, lift: 0.02, contrast: 0.06, sat: 0.9, cx: 0.45 });
   window.__done = true;
 })();
 </script>

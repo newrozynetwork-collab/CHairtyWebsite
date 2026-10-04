@@ -58,7 +58,7 @@
     }
   },
   "buttons": "Hard-edged condensed capitals: yellow for Donate, red for urgent actions; links carry a thick underline.",
-  "imageDirection": "Black-and-yellow duotones for lead stories, red for related content, halftone dots on report covers; hard crops, always captioned and credited.",
+  "imageDirection": "Black-and-yellow duotones for lead stories, red for related content, halftone dots on report covers; hard rectangular crops, with captions and credits on lead images.",
   "navigation": "Thick black bar, condensed capitals, big yellow Donate block; on mobile, a menu button and sticky action bar.",
   "visualCharacter": "Loud, high-contrast campaign posters in black, yellow and red",
   "contentEmphasis": "Campaigns and actions first, backed by stories and evidence",

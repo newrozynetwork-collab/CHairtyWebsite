@@ -614,6 +614,7 @@ address { font-style: normal; }
   .prose .pullquote p { font-size: 21px; }
   .article-aside { margin-top: 28px; }
   .article-end .grid { display: grid; grid-template-columns: 1fr; row-gap: 24px; }
+  .related-report, .related-stories, .support { grid-column: auto; }
   .related-stories { padding-left: 0; border-left: 0; }
   .footer--compact .footer__base .wrap { display: block; }
   .footer__policies { flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; }

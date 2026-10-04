@@ -319,7 +319,8 @@ p { text-wrap: pretty; }
 .donate__form { margin-top: 22px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .donate__row { display: flex; gap: 12px; flex-wrap: wrap; }
 .seg { display: inline-flex; box-shadow: inset 0 0 0 3px var(--white); }
-.seg span { display: inline-flex; align-items: center; height: 52px; padding: 0 16px; font-weight: 800; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; }
+.seg button, .amount { border: 0; border-radius: 0; background: transparent; cursor: pointer; }
+.seg button { display: inline-flex; align-items: center; height: 52px; padding: 0 16px; font-family: var(--sans); font-weight: 800; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: inherit; }
 .seg .on { background: var(--white); color: var(--black); }
 .amounts { display: flex; gap: 8px; }
 .amount {
@@ -573,7 +574,7 @@ p { text-wrap: pretty; }
 .takeaction .amount { box-shadow: inset 0 0 0 3px var(--black); color: var(--black); min-width: 0; flex: 1; height: 48px; font-size: 22px; }
 .takeaction .amount.on { background: var(--black); color: var(--yellow); }
 .takeaction .seg { box-shadow: inset 0 0 0 3px var(--black); margin-top: 14px; display: flex; }
-.takeaction .seg span { flex: 1; justify-content: center; height: 44px; }
+.takeaction .seg button { flex: 1; justify-content: center; height: 44px; }
 .takeaction .seg .on { background: var(--black); color: var(--white); }
 .takeaction .btn { width: 100%; margin-top: 12px; height: 54px; }
 
