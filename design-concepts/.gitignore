@@ -1,0 +1,7 @@
+node_modules/
+concepts/*/captures/
+deck/assets/
+deck/preview/
+deck/deck.html
+shared/images/_contact-sheet.jpg
+shared/images/src/_contact.html

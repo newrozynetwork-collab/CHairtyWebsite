@@ -1,0 +1,595 @@
+[
+ {
+  "family": "Anton",
+  "id": "anton",
+  "license": "OFL-1.1",
+  "weights": [
+   400
+  ],
+  "italics": false
+ },
+ {
+  "family": "Archivo",
+  "id": "archivo",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Archivo Narrow",
+  "id": "archivo-narrow",
+  "license": "OFL-1.1",
+  "weights": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "italics": true
+ },
+ {
+  "family": "Atkinson Hyperlegible",
+  "id": "atkinson-hyperlegible",
+  "license": "OFL-1.1",
+  "weights": [
+   400,
+   700
+  ],
+  "italics": true
+ },
+ {
+  "family": "Barlow",
+  "id": "barlow",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Barlow Condensed",
+  "id": "barlow-condensed",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Big Shoulders Display",
+  "id": "big-shoulders-display",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": false
+ },
+ {
+  "family": "Bitter",
+  "id": "bitter",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Bricolage Grotesque",
+  "id": "bricolage-grotesque",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "italics": false
+ },
+ {
+  "family": "Cormorant Garamond",
+  "id": "cormorant-garamond",
+  "license": "OFL-1.1",
+  "weights": [
+   300,
+   400,
+   500,
+   600,
+   700
+  ],
+  "italics": true
+ },
+ {
+  "family": "DM Sans",
+  "id": "dm-sans",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "DM Serif Display",
+  "id": "dm-serif-display",
+  "license": "OFL-1.1",
+  "weights": [
+   400
+  ],
+  "italics": true
+ },
+ {
+  "family": "EB Garamond",
+  "id": "eb-garamond",
+  "license": "OFL-1.1",
+  "weights": [
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "italics": true
+ },
+ {
+  "family": "Epilogue",
+  "id": "epilogue",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Fraunces",
+  "id": "fraunces",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "IBM Plex Mono",
+  "id": "ibm-plex-mono",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700
+  ],
+  "italics": true
+ },
+ {
+  "family": "IBM Plex Sans",
+  "id": "ibm-plex-sans",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700
+  ],
+  "italics": true
+ },
+ {
+  "family": "IBM Plex Serif",
+  "id": "ibm-plex-serif",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700
+  ],
+  "italics": true
+ },
+ {
+  "family": "Instrument Sans",
+  "id": "instrument-sans",
+  "license": "OFL-1.1",
+  "weights": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "italics": true
+ },
+ {
+  "family": "Instrument Serif",
+  "id": "instrument-serif",
+  "license": "OFL-1.1",
+  "weights": [
+   400
+  ],
+  "italics": true
+ },
+ {
+  "family": "Inter",
+  "id": "inter",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "JetBrains Mono",
+  "id": "jetbrains-mono",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "italics": true
+ },
+ {
+  "family": "Karla",
+  "id": "karla",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "italics": true
+ },
+ {
+  "family": "Lexend",
+  "id": "lexend",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": false
+ },
+ {
+  "family": "Libre Caslon Display",
+  "id": "libre-caslon-display",
+  "license": "OFL-1.1",
+  "weights": [
+   400
+  ],
+  "italics": false
+ },
+ {
+  "family": "Libre Caslon Text",
+  "id": "libre-caslon-text",
+  "license": "OFL-1.1",
+  "weights": [
+   400,
+   700
+  ],
+  "italics": true
+ },
+ {
+  "family": "Libre Franklin",
+  "id": "libre-franklin",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Literata",
+  "id": "literata",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Lora",
+  "id": "lora",
+  "license": "OFL-1.1",
+  "weights": [
+   400,
+   500,
+   600,
+   700
+  ],
+  "italics": true
+ },
+ {
+  "family": "Manrope",
+  "id": "manrope",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "italics": false
+ },
+ {
+  "family": "Newsreader",
+  "id": "newsreader",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "italics": true
+ },
+ {
+  "family": "Nunito Sans",
+  "id": "nunito-sans",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Oswald",
+  "id": "oswald",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700
+  ],
+  "italics": false
+ },
+ {
+  "family": "Playfair Display",
+  "id": "playfair-display",
+  "license": "OFL-1.1",
+  "weights": [
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Public Sans",
+  "id": "public-sans",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Source Sans 3",
+  "id": "source-sans-3",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Source Serif 4",
+  "id": "source-serif-4",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ },
+ {
+  "family": "Space Grotesk",
+  "id": "space-grotesk",
+  "license": "OFL-1.1",
+  "weights": [
+   300,
+   400,
+   500,
+   600,
+   700
+  ],
+  "italics": false
+ },
+ {
+  "family": "Spectral",
+  "id": "spectral",
+  "license": "OFL-1.1",
+  "weights": [
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "italics": true
+ },
+ {
+  "family": "Syne",
+  "id": "syne",
+  "license": "OFL-1.1",
+  "weights": [
+   400,
+   500,
+   600,
+   700,
+   800
+  ],
+  "italics": false
+ },
+ {
+  "family": "Work Sans",
+  "id": "work-sans",
+  "license": "OFL-1.1",
+  "weights": [
+   100,
+   200,
+   300,
+   400,
+   500,
+   600,
+   700,
+   800,
+   900
+  ],
+  "italics": true
+ }
+]
