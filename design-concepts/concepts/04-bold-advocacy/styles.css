@@ -183,8 +183,8 @@ p { text-wrap: pretty; }
 .hero__media { position: absolute; top: 0; right: 0; bottom: 0; left: 620px; }
 .hero__media img { object-position: 55% 60%; }
 .hero__media::before {
-  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 10px; z-index: 1;
-  background: var(--yellow);
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, var(--black) 0%, rgba(11, 11, 11, 0.6) 8%, rgba(11, 11, 11, 0) 26%);
 }
 .hero__caption {
   position: absolute; z-index: 2; right: 40px; bottom: 34px; max-width: 300px;
