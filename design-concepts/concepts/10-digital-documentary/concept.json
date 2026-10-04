@@ -6,9 +6,9 @@
  "idea": "The homepage behaves like the opening of a documentary: a full-bleed film frame, a title card and a timeline that doubles as chapter navigation. Dark, graded imagery carries the emotion; every long read moves onto a light bone page for easy reading.",
  "fit": "Your strongest material is testimony and long investigations. Supporters can enter through a four-minute film, while journalists and researchers get a calm, accessible reading page with findings and downloads.",
  "informedBy": [
-  "Immersive report pages with a photo hero, chapters and downloads.",
-  "Video features with a poster frame and a clear play control.",
-  "A serif reading face for long text, sans-serif for the interface."
+  "Immersive report pages with chapters and downloads.",
+  "Video features with a poster frame and play control.",
+  "Serif for long reading, sans-serif for the interface."
  ],
  "distinct": "The only film-led concept: a chapter timeline, timecodes, letterboxed frames and graded imagery on near-black, balanced by light bone reading pages.",
  "palette": [
@@ -57,8 +57,8 @@
    "weights": "400, 500, 600 (interface)"
   }
  },
- "buttons": "Square uppercase buttons (ember Donate, bone primary, outlined secondary), an amber play control and amber-underlined links.",
- "imageDirection": "Letterboxed, cinematic crops with a warm-dark grade, film grain and scrims behind text; captions on key frames; people only in silhouette.",
+ "buttons": "Square uppercase buttons: ember Donate, bone primary, outlined secondary; amber play control and underlined links.",
+ "imageDirection": "Letterboxed, cinematic crops with a warm-dark grade, film grain and scrims behind text; people only in silhouette.",
  "navigation": "Slim transparent bar over the film frame with Watch and ember Donate; a sticky Watch bar on mobile.",
  "visualCharacter": "Cinematic and dark, with calm bone reading pages",
  "contentEmphasis": "Flagship investigations, short films, chaptered storytelling",
